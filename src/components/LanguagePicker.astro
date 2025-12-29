@@ -1,0 +1,73 @@
+---
+import { languages } from '../i18n/ui';
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const currentPath = Astro.url.pathname.replace(/^\/(ca|es|en)/, '') || '/';
+---
+
+<div class="relative inline-block text-left">
+  <button
+    id="language-button"
+    type="button"
+    class="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition rounded-lg hover:bg-gray-100"
+    aria-expanded="false"
+    aria-haspopup="true"
+  >
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+    </svg>
+    <span class="uppercase">{lang}</span>
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+
+  <div
+    id="language-menu"
+    class="hidden absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+    role="menu"
+    aria-orientation="vertical"
+  >
+    <div class="py-1" role="none">
+      {Object.entries(languages).map(([code, name]) => {
+        const href = code === 'ca' ? currentPath : `/${code}${currentPath}`;
+        return (
+          <a
+            href={href}
+            class={`block px-4 py-2 text-sm hover:bg-gray-100 transition ${
+              lang === code ? 'bg-primary-50 text-primary-700 font-semibold' : 'text-gray-700'
+            }`}
+            role="menuitem"
+          >
+            {name}
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</div>
+
+<script>
+  const button = document.getElementById('language-button');
+  const menu = document.getElementById('language-menu');
+
+  button?.addEventListener('click', () => {
+    const isHidden = menu?.classList.contains('hidden');
+    if (isHidden) {
+      menu?.classList.remove('hidden');
+      button?.setAttribute('aria-expanded', 'true');
+    } else {
+      menu?.classList.add('hidden');
+      button?.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!button?.contains(e.target as Node) && !menu?.contains(e.target as Node)) {
+      menu?.classList.add('hidden');
+      button?.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>

@@ -1,0 +1,33 @@
+{
+  "name": "axis-cambrils-fisioterapia",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Landing page multiidioma para Axis Cambrils - Centro de Fisioterapia",
+  "author": "Axis Cambrils",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tu-usuario/fisio-landing.git"
+  },
+  "keywords": [
+    "fisioterapia",
+    "astro",
+    "tailwindcss",
+    "i18n",
+    "landing-page"
+  ],
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^4.15.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.5.0"
+  }
+}

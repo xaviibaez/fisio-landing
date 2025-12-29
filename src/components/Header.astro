@@ -1,0 +1,68 @@
+---
+import LanguagePicker from './LanguagePicker.astro';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const currentPath = Astro.url.pathname;
+---
+
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <nav class="container mx-auto px-4 py-4">
+    <div class="flex items-center justify-between">
+      <a href={getLocalizedPath('/', lang)} class="text-2xl font-heading font-bold text-primary-600">
+        Axis Cambrils
+      </a>
+      
+      <!-- Desktop Menu -->
+      <ul class="hidden md:flex items-center gap-8">
+        <li><a href={getLocalizedPath('/#servicios', lang)} class="text-gray-700 hover:text-primary-600 transition">{t('nav.services')}</a></li>
+        <li><a href={getLocalizedPath('/#nosotros', lang)} class="text-gray-700 hover:text-primary-600 transition">{t('nav.about')}</a></li>
+        <li><a href={getLocalizedPath('/blog', lang)} class={`transition ${currentPath.includes('/blog') ? 'text-primary-600 font-semibold' : 'text-gray-700 hover:text-primary-600'}`}>{t('nav.blog')}</a></li>
+        <li><a href={getLocalizedPath('/#contacto', lang)} class="text-gray-700 hover:text-primary-600 transition">{t('nav.contact')}</a></li>
+        <li>
+          <LanguagePicker />
+        </li>
+        <li>
+          <a href={getLocalizedPath('/#contacto', lang)} class="bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition-all transform hover:scale-105">
+            {t('nav.bookAppointment')}
+          </a>
+        </li>
+      </ul>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-button" class="md:hidden text-gray-700 hover:text-primary-600" aria-label="Toggle menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+      <ul class="flex flex-col gap-4">
+        <li><a href={getLocalizedPath('/#servicios', lang)} class="block text-gray-700 hover:text-primary-600 transition">{t('nav.services')}</a></li>
+        <li><a href={getLocalizedPath('/#nosotros', lang)} class="block text-gray-700 hover:text-primary-600 transition">{t('nav.about')}</a></li>
+        <li><a href={getLocalizedPath('/blog', lang)} class={`block transition ${currentPath.includes('/blog') ? 'text-primary-600 font-semibold' : 'text-gray-700 hover:text-primary-600'}`}>{t('nav.blog')}</a></li>
+        <li><a href={getLocalizedPath('/#contacto', lang)} class="block text-gray-700 hover:text-primary-600 transition">{t('nav.contact')}</a></li>
+        <li class="flex justify-center">
+          <LanguagePicker />
+        </li>
+        <li>
+          <a href={getLocalizedPath('/#contacto', lang)} class="block text-center bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition">
+            {t('nav.bookAppointment')}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const button = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+
+  button?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>
