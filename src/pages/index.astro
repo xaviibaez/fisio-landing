@@ -53,9 +53,9 @@ const latestPosts = allPosts
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Service Card 1 - Sports -->
-          <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Service Card 1 - Drenatge Limfàtic -->
+          <a href={lang === 'ca' ? '/serveis/drenatge-linfatic' : lang === 'es' ? '/es/servicios/drenatge-linfatic' : '/en/services/drenatge-linfatic'} class="block bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
             <div class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
               <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
@@ -83,10 +83,10 @@ const latestPosts = allPosts
                 <span>{t('services.sports.feature3')}</span>
               </li>
             </ul>
-          </div>
+          </a>
 
           <!-- Service Card 2 - Traumatology -->
-          <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
+          <a href={lang === 'ca' ? '/serveis/reflexologia-podal' : lang === 'es' ? '/es/servicios/reflexologia-podal' : '/en/services/reflexologia-podal'} class="block bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
             <div class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
               <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
@@ -108,10 +108,10 @@ const latestPosts = allPosts
                 <span>{t('services.traumatology.feature2')}</span>
               </li>
             </ul>
-          </div>
+          </a>
 
           <!-- Service Card 3 - Neurological -->
-          <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
+          <a href={lang === 'ca' ? '/serveis/sol-pelvic' : lang === 'es' ? '/es/servicios/sol-pelvic' : '/en/services/sol-pelvic'} class="block bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
             <div class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
               <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
@@ -133,10 +133,10 @@ const latestPosts = allPosts
                 <span>{t('services.neurological.feature2')}</span>
               </li>
             </ul>
-          </div>
+          </a>
 
           <!-- Service Card 4 - Pediatric -->
-          <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
+          <a href={lang === 'ca' ? '/serveis/kinesiotape-puncio-ventoses' : lang === 'es' ? '/es/servicios/kinesiotape-puncio-ventoses' : '/en/services/kinesiotape-puncio-ventoses'} class="block bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
             <div class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
               <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -158,10 +158,10 @@ const latestPosts = allPosts
                 <span>{t('services.pediatric.feature2')}</span>
               </li>
             </ul>
-          </div>
+          </a>
 
           <!-- Service Card 5 - Respiratory -->
-          <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
+          <a href={lang === 'ca' ? '/serveis/mesoterapia-estetica' : lang === 'es' ? '/es/servicios/mesoterapia-estetica' : '/en/services/mesoterapia-estetica'} class="block bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
             <div class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
               <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
@@ -183,10 +183,10 @@ const latestPosts = allPosts
                 <span>{t('services.respiratory.feature2')}</span>
               </li>
             </ul>
-          </div>
+          </a>
 
           <!-- Service Card 6 - Geriatric -->
-          <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
+          <a href={lang === 'ca' ? '/serveis/magnetoterapia' : lang === 'es' ? '/es/servicios/magnetoterapia' : '/en/services/magnetoterapia'} class="block bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
             <div class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
               <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
@@ -220,10 +220,10 @@ const latestPosts = allPosts
                 <span>{t('services.geriatric.feature4')}</span>
               </li>
             </ul>
-          </div>
+          </a>
 
           <!-- Service Card 7 - Pressotherapy -->
-          <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
+          <a href={lang === 'ca' ? '/serveis/pressoterapia' : lang === 'es' ? '/es/servicios/pressoterapia' : '/en/services/pressoterapia'} class="block bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
             <div class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
               <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
@@ -257,10 +257,10 @@ const latestPosts = allPosts
                 <span>{t('services.pressotherapy.feature4')}</span>
               </li>
             </ul>
-          </div>
+          </a>
 
           <!-- Service Card 8 - Home Care -->
-          <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
+          <a href={lang === 'ca' ? '/serveis/fisioterapia-domiciliaria' : lang === 'es' ? '/es/servicios/fisioterapia-domiciliaria' : '/en/services/fisioterapia-domiciliaria'} class="block bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
             <div class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
               <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
@@ -294,7 +294,7 @@ const latestPosts = allPosts
                 <span>{t('services.homecare.feature4')}</span>
               </li>
             </ul>
-          </div>
+          </a>
         </div>
       </div>
     </section>

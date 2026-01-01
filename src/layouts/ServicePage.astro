@@ -1,0 +1,119 @@
+---
+import Layout from './Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const { frontmatter } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title={`${frontmatter.title} - Axis Cambrils`} description={frontmatter.shortDescription}>
+  <Header />
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl md:text-5xl font-heading font-bold mb-4">{frontmatter.title}</h1>
+          <p class="text-xl md:text-2xl text-primary-50">
+            {frontmatter.shortDescription}
+          </p>
+        </div>
+      </div>
+      <div class="absolute bottom-0 left-0 right-0">
+        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <article class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <!-- Description -->
+          <div class="prose prose-lg max-w-none mb-12">
+            <p class="text-xl text-gray-700 leading-relaxed">
+              {frontmatter.description}
+            </p>
+          </div>
+
+          <!-- Benefits Section -->
+          {frontmatter.benefits && frontmatter.benefits.length > 0 && (
+            <div class="mb-12 bg-primary-50 rounded-xl p-8">
+              <h2 class="text-3xl font-heading font-bold mb-6 text-primary-900">{t('service.benefits')}</h2>
+              <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {frontmatter.benefits.map((benefit: string) => (
+                  <li class="flex items-start gap-3">
+                    <svg class="w-6 h-6 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-gray-700">{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <!-- Main Content from Markdown -->
+          <div class="prose prose-lg max-w-none mb-12">
+            <slot />
+          </div>
+
+          <!-- Process Section -->
+          {frontmatter.process && frontmatter.process.length > 0 && (
+            <div class="mb-12">
+              <h2 class="text-3xl font-heading font-bold mb-8">{t('service.process')}</h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {frontmatter.process.map((item: any, index: number) => (
+                  <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary-600">
+                    <div class="flex items-center gap-3 mb-3">
+                      <span class="w-8 h-8 bg-primary-600 text-white rounded-full flex items-center justify-center font-bold text-sm">
+                        {index + 1}
+                      </span>
+                      <h3 class="text-xl font-bold text-gray-900">{item.step}</h3>
+                    </div>
+                    <p class="text-gray-600">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Duration & Price -->
+          {(frontmatter.duration || frontmatter.price) && (
+            <div class="mb-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+              {frontmatter.duration && (
+                <div class="bg-white border-2 border-primary-200 rounded-xl p-6">
+                  <div class="flex items-center gap-3 mb-2">
+                    <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h3 class="text-lg font-bold text-gray-900">{t('service.duration')}</h3>
+                  </div>
+                  <p class="text-2xl font-semibold text-primary-600">{frontmatter.duration}</p>
+                </div>
+              )}
+              {frontmatter.price && (
+                <div class="bg-white border-2 border-primary-200 rounded-xl p-6">
+                  <div class="flex items-center gap-3 mb-2">
+                    <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h3 class="text-lg font-bold text-gray-900">{t('service.price')}</h3>
+                  </div>
+                  <p class="text-2xl font-semibold text-primary-600">{frontmatter.price}</p>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>

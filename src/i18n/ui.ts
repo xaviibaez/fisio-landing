@@ -70,6 +70,16 @@ export const ui = {
     'services.homecare.feature3': 'Post-cirurgia o lesió',
     'services.homecare.feature4': 'Persones grans',
     
+    // Service Pages
+    'service.benefits': 'Beneficis',
+    'service.process': 'Com funciona?',
+    'service.duration': 'Durada',
+    'service.price': 'Preu',
+    'service.viewAll': 'Veure Tots els Serveis',
+    'service.cta.title': 'Vols reservar una cita?',
+    'service.cta.subtitle': 'Contacta amb nosaltres per més informació o per reservar la teva sessió',
+    'service.cta.call': 'Trucar Ara',
+    
     // About
     'about.title': 'Per què triar-nos?',
     'about.subtitle': 'A Axis Cambrils, combinem experiència, tecnologia i un tracte proper per oferir-te el millor servei de fisioteràpia.',
@@ -220,6 +230,16 @@ export const ui = {
     'services.homecare.feature3': 'Post-cirugía o lesión',
     'services.homecare.feature4': 'Personas mayores',
     
+    // Service Pages
+    'service.benefits': 'Beneficios',
+    'service.process': '¿Cómo funciona?',
+    'service.duration': 'Duración',
+    'service.price': 'Precio',
+    'service.viewAll': 'Ver Todos los Servicios',
+    'service.cta.title': '¿Quieres reservar una cita?',
+    'service.cta.subtitle': 'Contáctanos para más información o para reservar tu sesión',
+    'service.cta.call': 'Llamar Ahora',
+    
     // About
     'about.title': '¿Por qué elegirnos?',
     'about.subtitle': 'En Axis Cambrils, combinamos experiencia, tecnología y un trato cercano para ofrecerte el mejor servicio de fisioterapia.',
@@ -369,6 +389,16 @@ export const ui = {
     'services.homecare.feature2': 'Family environment',
     'services.homecare.feature3': 'Post-surgery or injury',
     'services.homecare.feature4': 'Elderly people',
+    
+    // Service Pages
+    'service.benefits': 'Benefits',
+    'service.process': 'How does it work?',
+    'service.duration': 'Duration',
+    'service.price': 'Price',
+    'service.viewAll': 'View All Services',
+    'service.cta.title': 'Want to book an appointment?',
+    'service.cta.subtitle': 'Contact us for more information or to book your session',
+    'service.cta.call': 'Call Now',
     
     // About
     'about.title': 'Why choose us?',
