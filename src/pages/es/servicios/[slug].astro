@@ -1,6 +1,6 @@
 ---
-import ServicePage from '../../layouts/ServicePage.astro';
-import { getServiceStaticPaths } from '../../utils/servicePages';
+import ServicePage from '../../../layouts/ServicePage.astro';
+import { getServiceStaticPaths } from '../../../utils/servicePages';
 import { getCollection } from 'astro:content';
 
 export const getStaticPaths = getServiceStaticPaths;
@@ -8,9 +8,9 @@ export const getStaticPaths = getServiceStaticPaths;
 const { slug } = Astro.params;
 const allServices = await getCollection('services');
 
-// Try to get Catalan version first, then fallback to Spanish, then English
-const service = allServices.find(s => s.id === `ca/${slug}.md`) 
-  || allServices.find(s => s.id === `es/${slug}.md`)
+// Try to get Spanish version first, then fallback to Catalan, then English
+const service = allServices.find(s => s.id === `es/${slug}.md`) 
+  || allServices.find(s => s.id === `ca/${slug}.md`)
   || allServices.find(s => s.id === `en/${slug}.md`)
   || allServices.find(s => s.slug === slug);
 
