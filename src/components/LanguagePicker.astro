@@ -3,7 +3,19 @@ import { languages } from '../i18n/ui';
 import { getLangFromUrl } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
-const currentPath = Astro.url.pathname.replace(/^\/(ca|es|en)/, '') || '/';
+let currentPath = Astro.url.pathname.replace(/^\/(ca|es|en)/, '') || '/';
+
+// Translate service paths based on target language
+const translateServicePath = (path: string, targetLang: string) => {
+  // Extract the slug from the service path
+  const serviceMatch = path.match(/\/(serveis|servicios|services)\/(.+)/);
+  if (serviceMatch) {
+    const slug = serviceMatch[2];
+    const serviceWord = targetLang === 'ca' ? 'serveis' : targetLang === 'es' ? 'servicios' : 'services';
+    return `/${serviceWord}/${slug}`;
+  }
+  return path;
+};
 ---
 
 <div class="relative inline-block text-left language-picker">
@@ -29,7 +41,8 @@ const currentPath = Astro.url.pathname.replace(/^\/(ca|es|en)/, '') || '/';
   >
     <div class="py-1" role="none">
       {Object.entries(languages).map(([code, name]) => {
-        const href = code === 'ca' ? currentPath : `/${code}${currentPath}`;
+        const translatedPath = translateServicePath(currentPath, code);
+        const href = code === 'ca' ? translatedPath : `/${code}${translatedPath}`;
         return (
           <a
             href={href}
