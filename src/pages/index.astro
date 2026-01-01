@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ServiceCard from '../components/ServiceCard.astro';
 import { getCollection } from 'astro:content';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { siteConfig } from '../config';
@@ -13,6 +14,26 @@ const allPosts = await getCollection('blog');
 const latestPosts = allPosts
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 3);
+
+// Get services in the current language
+const allServices = await getCollection('services');
+const langPrefix = lang === 'ca' ? 'ca/' : lang === 'es' ? 'es/' : 'en/';
+const services = allServices
+  .filter(s => s.id.startsWith(langPrefix))
+  .sort((a, b) => a.data.order - b.data.order)
+  .map(service => {
+    const slug = service.id.replace(langPrefix, '').replace('.md', '');
+    const serviceWord = lang === 'ca' ? 'serveis' : lang === 'es' ? 'servicios' : 'services';
+    const href = lang === 'ca' ? `/${serviceWord}/${slug}` : `/${lang}/${serviceWord}/${slug}`;
+    
+    return {
+      title: service.data.title,
+      description: service.data.shortDescription,
+      features: service.data.benefits.slice(0, 4), // Max 4 features
+      href,
+      icon: service.data.icon
+    };
+  });
 ---
 
 <Layout title={`Axis Cambrils - ${t('hero.subtitle')}`}>
@@ -54,247 +75,15 @@ const latestPosts = allPosts
         </div>
 
         <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <!-- Service Card 1 - Drenatge Limfàtic -->
-          <a href={lang === 'ca' ? '/serveis/drenatge-linfatic' : lang === 'es' ? '/es/servicios/drenatge-linfatic' : '/en/services/drenatge-linfatic'} class="block bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
-            <div class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
-              <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-heading font-bold mb-3">{t('services.sports.title')}</h3>
-            <p class="text-gray-600 mb-4">{t('services.sports.description')}</p>
-            <ul class="text-gray-600 space-y-2">
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.sports.feature1')}</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.sports.feature2')}</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.sports.feature3')}</span>
-              </li>
-            </ul>
-          </a>
-
-          <!-- Service Card 2 - Traumatology -->
-          <a href={lang === 'ca' ? '/serveis/reflexologia-podal' : lang === 'es' ? '/es/servicios/reflexologia-podal' : '/en/services/reflexologia-podal'} class="block bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
-            <div class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
-              <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-heading font-bold mb-3">{t('services.traumatology.title')}</h3>
-            <p class="text-gray-600 mb-4">{t('services.traumatology.description')}</p>
-            <ul class="text-gray-600 space-y-2">
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.traumatology.feature1')}</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.traumatology.feature2')}</span>
-              </li>
-            </ul>
-          </a>
-
-          <!-- Service Card 3 - Neurological -->
-          <a href={lang === 'ca' ? '/serveis/sol-pelvic' : lang === 'es' ? '/es/servicios/sol-pelvic' : '/en/services/sol-pelvic'} class="block bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
-            <div class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
-              <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-heading font-bold mb-3">{t('services.neurological.title')}</h3>
-            <p class="text-gray-600 mb-4">{t('services.neurological.description')}</p>
-            <ul class="text-gray-600 space-y-2">
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.neurological.feature1')}</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.neurological.feature2')}</span>
-              </li>
-            </ul>
-          </a>
-
-          <!-- Service Card 4 - Pediatric -->
-          <a href={lang === 'ca' ? '/serveis/kinesiotape-puncio-ventoses' : lang === 'es' ? '/es/servicios/kinesiotape-puncio-ventoses' : '/en/services/kinesiotape-puncio-ventoses'} class="block bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
-            <div class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
-              <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-heading font-bold mb-3">{t('services.pediatric.title')}</h3>
-            <p class="text-gray-600 mb-4">{t('services.pediatric.description')}</p>
-            <ul class="text-gray-600 space-y-2">
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.pediatric.feature1')}</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.pediatric.feature2')}</span>
-              </li>
-            </ul>
-          </a>
-
-          <!-- Service Card 5 - Respiratory -->
-          <a href={lang === 'ca' ? '/serveis/mesoterapia-estetica' : lang === 'es' ? '/es/servicios/mesoterapia-estetica' : '/en/services/mesoterapia-estetica'} class="block bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
-            <div class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
-              <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-heading font-bold mb-3">{t('services.respiratory.title')}</h3>
-            <p class="text-gray-600 mb-4">{t('services.respiratory.description')}</p>
-            <ul class="text-gray-600 space-y-2">
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.respiratory.feature1')}</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.respiratory.feature2')}</span>
-              </li>
-            </ul>
-          </a>
-
-          <!-- Service Card 6 - Geriatric -->
-          <a href={lang === 'ca' ? '/serveis/magnetoterapia' : lang === 'es' ? '/es/servicios/magnetoterapia' : '/en/services/magnetoterapia'} class="block bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
-            <div class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
-              <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-heading font-bold mb-3">{t('services.geriatric.title')}</h3>
-            <p class="text-gray-600 mb-4">{t('services.geriatric.description')}</p>
-            <ul class="text-gray-600 space-y-2">
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.geriatric.feature1')}</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.geriatric.feature2')}</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.geriatric.feature3')}</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.geriatric.feature4')}</span>
-              </li>
-            </ul>
-          </a>
-
-          <!-- Service Card 7 - Pressotherapy -->
-          <a href={lang === 'ca' ? '/serveis/pressoterapia' : lang === 'es' ? '/es/servicios/pressoterapia' : '/en/services/pressoterapia'} class="block bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
-            <div class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
-              <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-heading font-bold mb-3">{t('services.pressotherapy.title')}</h3>
-            <p class="text-gray-600 mb-4">{t('services.pressotherapy.description')}</p>
-            <ul class="text-gray-600 space-y-2">
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.pressotherapy.feature1')}</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.pressotherapy.feature2')}</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.pressotherapy.feature3')}</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.pressotherapy.feature4')}</span>
-              </li>
-            </ul>
-          </a>
-
-          <!-- Service Card 8 - Home Care -->
-          <a href={lang === 'ca' ? '/serveis/fisioterapia-domiciliaria' : lang === 'es' ? '/es/servicios/fisioterapia-domiciliaria' : '/en/services/fisioterapia-domiciliaria'} class="block bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all transform hover:-translate-y-2">
-            <div class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
-              <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-heading font-bold mb-3">{t('services.homecare.title')}</h3>
-            <p class="text-gray-600 mb-4">{t('services.homecare.description')}</p>
-            <ul class="text-gray-600 space-y-2">
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.homecare.feature1')}</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.homecare.feature2')}</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.homecare.feature3')}</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>{t('services.homecare.feature4')}</span>
-              </li>
-            </ul>
-          </a>
+          {services.map((service) => (
+            <ServiceCard
+              title={service.title}
+              description={service.description}
+              features={service.features}
+              href={service.href}
+              icon={service.icon}
+            />
+          ))}
         </div>
       </div>
     </section>
