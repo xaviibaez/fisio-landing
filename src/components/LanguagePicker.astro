@@ -6,11 +6,10 @@ const lang = getLangFromUrl(Astro.url);
 const currentPath = Astro.url.pathname.replace(/^\/(ca|es|en)/, '') || '/';
 ---
 
-<div class="relative inline-block text-left">
+<div class="relative inline-block text-left language-picker">
   <button
-    id="language-button"
     type="button"
-    class="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition rounded-lg hover:bg-gray-100"
+    class="language-button inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition rounded-lg hover:bg-gray-100"
     aria-expanded="false"
     aria-haspopup="true"
   >
@@ -24,8 +23,7 @@ const currentPath = Astro.url.pathname.replace(/^\/(ca|es|en)/, '') || '/';
   </button>
 
   <div
-    id="language-menu"
-    class="hidden absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+    class="language-menu hidden absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
     role="menu"
     aria-orientation="vertical"
   >
@@ -49,25 +47,38 @@ const currentPath = Astro.url.pathname.replace(/^\/(ca|es|en)/, '') || '/';
 </div>
 
 <script>
-  const button = document.getElementById('language-button');
-  const menu = document.getElementById('language-menu');
+  document.querySelectorAll('.language-picker').forEach((picker) => {
+    const button = picker.querySelector('.language-button');
+    const menu = picker.querySelector('.language-menu');
 
-  button?.addEventListener('click', () => {
-    const isHidden = menu?.classList.contains('hidden');
-    if (isHidden) {
-      menu?.classList.remove('hidden');
-      button?.setAttribute('aria-expanded', 'true');
-    } else {
-      menu?.classList.add('hidden');
-      button?.setAttribute('aria-expanded', 'false');
-    }
+    button?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isHidden = menu?.classList.contains('hidden');
+      
+      // Cerrar todos los otros menús abiertos
+      document.querySelectorAll('.language-menu').forEach((m) => {
+        if (m !== menu) {
+          m.classList.add('hidden');
+        }
+      });
+      
+      if (isHidden) {
+        menu?.classList.remove('hidden');
+        button?.setAttribute('aria-expanded', 'true');
+      } else {
+        menu?.classList.add('hidden');
+        button?.setAttribute('aria-expanded', 'false');
+      }
+    });
   });
 
-  // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!button?.contains(e.target as Node) && !menu?.contains(e.target as Node)) {
-      menu?.classList.add('hidden');
-      button?.setAttribute('aria-expanded', 'false');
-    }
+  // Cerrar menús cuando se hace clic fuera
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.language-menu').forEach((menu) => {
+      menu.classList.add('hidden');
+    });
+    document.querySelectorAll('.language-button').forEach((button) => {
+      button.setAttribute('aria-expanded', 'false');
+    });
   });
 </script>
