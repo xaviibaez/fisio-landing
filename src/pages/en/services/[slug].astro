@@ -1,26 +1,7 @@
 ---
-import ServicePage from '../../../layouts/ServicePage.astro';
-import { getServiceStaticPaths } from '../../../utils/servicePages';
-import { getCollection } from 'astro:content';
+import ServicePageComponent from '../../serveis/[slug].astro';
 
-export const getStaticPaths = getServiceStaticPaths;
-
-const { slug } = Astro.params;
-const allServices = await getCollection('services');
-
-// Try to get English version first, then fallback to Catalan, then Spanish
-const service = allServices.find(s => s.id === `en/${slug}.md`) 
-  || allServices.find(s => s.id === `ca/${slug}.md`)
-  || allServices.find(s => s.id === `es/${slug}.md`)
-  || allServices.find(s => s.slug === slug);
-
-if (!service) {
-  return Astro.redirect('/404');
-}
-
-const { Content } = await service.render();
+export { getStaticPaths } from '../../serveis/[slug].astro';
 ---
 
-<ServicePage frontmatter={service.data}>
-  <Content />
-</ServicePage>
+<ServicePageComponent {...Astro.props} />

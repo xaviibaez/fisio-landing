@@ -2,14 +2,18 @@
 import ServicePage from '../../layouts/ServicePage.astro';
 import { getServiceStaticPaths } from '../../utils/servicePages';
 import { getCollection } from 'astro:content';
+import { getLangFromUrl } from '../../i18n/utils';
 
 export const getStaticPaths = getServiceStaticPaths;
 
 const { slug } = Astro.params;
+const lang = getLangFromUrl(Astro.url);
 const allServices = await getCollection('services');
 
-// Try to get Catalan version first, then fallback to Spanish, then English
-const service = allServices.find(s => s.id === `ca/${slug}.md`) 
+// Try to get service in current language first, then fallback to other languages
+const langPrefix = lang === 'ca' ? 'ca' : lang === 'es' ? 'es' : 'en';
+const service = allServices.find(s => s.id === `${langPrefix}/${slug}.md`) 
+  || allServices.find(s => s.id === `ca/${slug}.md`)
   || allServices.find(s => s.id === `es/${slug}.md`)
   || allServices.find(s => s.id === `en/${slug}.md`)
   || allServices.find(s => s.slug === slug);
