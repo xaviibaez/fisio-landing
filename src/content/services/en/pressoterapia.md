@@ -3,6 +3,7 @@ title: 'Pressotherapy'
 shortDescription: 'Mechanical massage system to stimulate lymphatic and venous circulation using air chambers.'
 description: 'Pressotherapy consists of a pumping system provided by special accessories equipped with air chambers. These chambers inflate alternately pushing fluids from the extremities towards the interior, exerting a mechanical massage that serves to stimulate and make lymphatic and venous circulation more efficient. The device reproduces the controlled compression mechanism simulating a manual lymphatic drainage massage.'
 icon: 'wind'
+image: '/images/DL.png'
 benefits:
   - 'Reduction of edema and lymphedema'
   - 'Treatment of venous ulcers'

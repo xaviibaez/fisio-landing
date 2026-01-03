@@ -3,6 +3,7 @@ title: 'Reflexologia Podal'
 shortDescription: 'Tècnica terapèutica mil·lenària que estimula zones reflexes dels peus connectades amb tot el cos.'
 description: 'La Reflexologia Podal és una tècnica terapèutica amb orígens asiàtics que es basa en lestimulació manual de zones reflexes situades a la planta dels peus. Aquestes zones estan connectades amb diferents parts del cos a través del Sistema Nerviós Perifèric, permetent equilibrar el cos físic i emocional per millorar diferents trastorns i problemes funcionals.'
 icon: 'foot'
+image: '/images/DL.png'
 benefits:
   - 'Equilibri físic i emocional del cos'
   - 'Millora del sistema respiratori'

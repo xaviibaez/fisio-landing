@@ -3,6 +3,7 @@ title: 'Sòl Pèlvic'
 shortDescription: 'Avaluació i tractament especialitzat dels problemes musculars i funcionals del sòl pèlvic.'
 description: 'La fisioteràpia del sòl pèlvic està enfocada a avaluar i tractar els problemes musculars i funcionals que afecten a aquesta zona tan important del cos. Ajudem en casos de pèrdues dorina, prolapses, diàstasis abdominal, dolor pelvià, dolor en les relacions sexuals i debilitat de la musculatura perineal, tant en dones com en homes.'
 icon: 'heart-pulse'
+image: '/images/DL.png'
 benefits:
   - 'Recuperació del control desfínters'
   - 'Reducció o eliminació de les pèrdues dorina'

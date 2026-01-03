@@ -33,30 +33,45 @@ const t = useTranslations(lang);
     <!-- Main Content -->
     <article class="py-16 bg-white">
       <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
-          <!-- Description -->
-          <div class="prose prose-lg max-w-none mb-12">
-            <p class="text-xl text-gray-700 leading-relaxed">
-              {frontmatter.description}
-            </p>
-          </div>
+        <div class="max-w-6xl mx-auto">
+          <!-- Image & Description Grid -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 items-start">
+            {frontmatter.image && (
+              <div class="rounded-xl overflow-hidden shadow-lg lg:sticky lg:top-8">
+                <img 
+                  src={frontmatter.image} 
+                  alt={frontmatter.title}
+                  class="w-full h-auto object-cover"
+                />
+              </div>
+            )}
+            
+            <div>
+              <!-- Description -->
+              <div class="prose prose-lg max-w-none mb-8">
+                <p class="text-xl text-gray-700 leading-relaxed">
+                  {frontmatter.description}
+                </p>
+              </div>
 
-          <!-- Benefits Section -->
-          {frontmatter.benefits && frontmatter.benefits.length > 0 && (
-            <div class="mb-12 bg-primary-50 rounded-xl p-8">
-              <h2 class="text-3xl font-heading font-bold mb-6 text-primary-900">{t('service.benefits')}</h2>
-              <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {frontmatter.benefits.map((benefit: string) => (
-                  <li class="flex items-start gap-3">
-                    <svg class="w-6 h-6 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                    </svg>
-                    <span class="text-gray-700">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
+              <!-- Benefits Section -->
+              {frontmatter.benefits && frontmatter.benefits.length > 0 && (
+                <div class="bg-primary-50 rounded-xl p-6">
+                  <h2 class="text-2xl font-heading font-bold mb-4 text-primary-900">{t('service.benefits')}</h2>
+                  <ul class="space-y-3">
+                    {frontmatter.benefits.map((benefit: string) => (
+                      <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="text-gray-700">{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
-          )}
+          </div>
 
           <!-- Main Content from Markdown -->
           <div class="prose prose-lg max-w-none mb-12">

@@ -3,6 +3,7 @@ title: 'Home Physiotherapy'
 shortDescription: 'Professional physiotherapy treatment at your home for people with mobility difficulties.'
 description: 'If you cannot come to our center, we come to your home! This service is offered to people who have difficulty traveling or who prefer to receive treatment in their family environment. This modality is especially beneficial for people who are convalescing from an injury, surgery or illness, as well as for elderly people or people with disabilities who may have difficulties accessing our clinic.'
 icon: 'home'
+image: '/images/DL.png'
 benefits:
   - 'Treatment at your own home'
   - 'Comfort and coziness of your family environment'

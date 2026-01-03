@@ -3,6 +3,7 @@ title: 'Aesthetic Mesotherapy'
 shortDescription: 'Minimally invasive medical treatment to improve skin and treat cellulite, sagging and wrinkles.'
 description: 'Aesthetic Mesotherapy is a minimally invasive medical treatment used to improve skin appearance and treat various aesthetic conditions such as cellulite, sagging, wrinkles and localized fat. Through the injection of small amounts of pharmacological substances and nutrients directly into the mesodermis (middle layer of the skin), visible and lasting results are achieved.'
 icon: 'sparkles'
+image: '/images/DL.png'
 benefits:
   - 'Visible reduction of cellulite'
   - 'Elimination of localized fat'

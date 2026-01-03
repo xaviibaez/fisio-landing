@@ -3,6 +3,7 @@ title: 'Kinesiotape, Dry Needling and Cupping'
 shortDescription: 'Complementary techniques to reduce pain, improve muscle function and accelerate recovery.'
 description: 'Set of advanced therapeutic techniques that we use to reduce pain, improve muscle and joint function, facilitate neuromuscular recovery and treat scars. These tools complement conventional physiotherapy treatment to optimize results.'
 icon: 'bandage'
+image: '/images/DL.png'
 benefits:
   - 'Significant reduction of muscle and joint pain'
   - 'Improvement of muscle function and strength'

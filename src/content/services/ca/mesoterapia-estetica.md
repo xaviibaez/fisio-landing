@@ -3,6 +3,7 @@ title: 'Mesoteràpia Estètica'
 shortDescription: 'Tractament mèdic mínimament invasiu per millorar la pell i tractar cel·lulitis, flacciditat i arrugues.'
 description: 'La Mesoteràpia Estètica és un tractament mèdic mínimament invasiu que sutilitza per millorar laparença de la pell i tractar diverses condicions estètiques com la cel·lulitis, la flacciditat, les arrugues i el greix localitzat. Mitjançant la injecció de petites quantitats de substàncies farmacològiques i nutrients directament a la mesodermis (capa mitjana de la pell), saconsegueixen resultats visibles i duradors.'
 icon: 'sparkles'
+image: '/images/DL.png'
 benefits:
   - 'Reducció visible de la cel·lulitis'
   - 'Eliminació de greix localitzat'

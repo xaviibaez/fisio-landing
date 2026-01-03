@@ -3,6 +3,7 @@ title: 'Pressoteràpia'
 shortDescription: 'Sistema de massatge mecànic per estimular la circulació limfàtica i venosa mitjançant cambres daire.'
 description: 'La Pressoteràpia consisteix en un sistema de bombament subministrat per accessoris especials equipats amb cambres daire. Aquestes cambres sinflen alternativament empenyent els líquids des de lextrem de les extremitats cap a linterior, exercint un massatge mecànic que serveix per estimular i fer més eficient la circulació limfàtica i venosa. El dispositiu reprodueix el mecanisme de compressió controlada simulant un massatge linfodrenant manual.'
 icon: 'wind'
+image: '/images/DL.png'
 benefits:
   - 'Reducció dedemes i linfedemes'
   - 'Tractament dúlceres venoses'
