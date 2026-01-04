@@ -69,6 +69,13 @@ export const ui = {
     'services.homecare.feature2': 'Entorn familiar',
     'services.homecare.feature3': 'Post-cirurgia o lesió',
     'services.homecare.feature4': 'Persones grans',
+
+    'services.personaltraining.title': 'Entrenament Personal i Recuperació Funcional',
+    'services.personaltraining.description': 'Programes personalitzats de reeducació del moviment, readaptació esportiva i abdominopèlvica, anàlisi de la marxa per corredors i entrenaments individuals o grupals.',
+    'services.personaltraining.feature1': 'Reeducació del moviment',
+    'services.personaltraining.feature2': 'Readaptació esportiva',
+    'services.personaltraining.feature3': 'Anàlisi de la marxa',
+    'services.personaltraining.feature4': 'Entrenaments personals/grupals',
     
     // What is Physiotherapy
     'whatIs.title': 'Què és la Fisioteràpia?',
@@ -247,6 +254,13 @@ export const ui = {
     'services.homecare.feature2': 'Entorno familiar',
     'services.homecare.feature3': 'Post-cirugía o lesión',
     'services.homecare.feature4': 'Personas mayores',
+
+    'services.personaltraining.title': 'Entrenamiento Personal y Recuperación Funcional',
+    'services.personaltraining.description': 'Programas personalizados de reeducación del movimiento, readaptación deportiva y abdominopélvica, análisis de la marcha para corredores y entrenamientos individuales o grupales.',
+    'services.personaltraining.feature1': 'Reeducación del movimiento',
+    'services.personaltraining.feature2': 'Readaptación deportiva',
+    'services.personaltraining.feature3': 'Análisis de la marcha',
+    'services.personaltraining.feature4': 'Entrenamientos personales/grupales',
     
     // What is Physiotherapy
     'whatIs.title': '¿Qué es la Fisioterapia?',
@@ -425,6 +439,13 @@ export const ui = {
     'services.homecare.feature2': 'Family environment',
     'services.homecare.feature3': 'Post-surgery or injury',
     'services.homecare.feature4': 'Elderly people',
+
+    'services.personaltraining.title': 'Personal Training and Functional Recovery',
+    'services.personaltraining.description': 'Personalized programs for movement re-education, sports and abdominopelvic readaptation, gait analysis for runners, and individual or group training sessions.',
+    'services.personaltraining.feature1': 'Movement re-education',
+    'services.personaltraining.feature2': 'Sports readaptation',
+    'services.personaltraining.feature3': 'Gait analysis',
+    'services.personaltraining.feature4': 'Personal/group training',
     
     // What is Physiotherapy
     'whatIs.title': 'What is Physiotherapy?',
