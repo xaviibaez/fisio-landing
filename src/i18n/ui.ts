@@ -123,6 +123,13 @@ export const ui = {
     'about.values.innovationText': 'Formació constant en noves tècniques',
     'about.values.results': 'Resultats:',
     'about.values.resultsText': 'La teva recuperació és el nostre objectiu',
+
+    // Gallery
+    'gallery.title': 'El Nostre Centre',
+    'gallery.subtitle': 'Coneix les nostres instal·lacions',
+    'gallery.viewAll': 'Veure totes les fotos',
+    'gallery.pageTitle': 'Galeria del Centre',
+    'gallery.pageSubtitle': 'Descobreix les nostres instal·lacions modernes i equipades amb la millor tecnologia per al teu tractament.',
     
     // Blog
     'blog.title': 'Consells de Salut',
@@ -308,6 +315,13 @@ export const ui = {
     'about.values.innovationText': 'Formación constante en nuevas técnicas',
     'about.values.results': 'Resultados:',
     'about.values.resultsText': 'Tu recuperación es nuestro objetivo',
+
+    // Gallery
+    'gallery.title': 'Nuestro Centro',
+    'gallery.subtitle': 'Conoce nuestras instalaciones',
+    'gallery.viewAll': 'Ver todas las fotos',
+    'gallery.pageTitle': 'Galería del Centro',
+    'gallery.pageSubtitle': 'Descubre nuestras instalaciones modernas y equipadas con la mejor tecnología para tu tratamiento.',
     
     // Blog
     'blog.title': 'Consejos de Salud',
@@ -493,6 +507,13 @@ export const ui = {
     'about.values.innovationText': 'Constant training in new techniques',
     'about.values.results': 'Results:',
     'about.values.resultsText': 'Your recovery is our goal',
+
+    // Gallery
+    'gallery.title': 'Our Center',
+    'gallery.subtitle': 'Discover our facilities',
+    'gallery.viewAll': 'View all photos',
+    'gallery.pageTitle': 'Center Gallery',
+    'gallery.pageSubtitle': 'Discover our modern facilities equipped with the best technology for your treatment.',
     
     // Blog
     'blog.title': 'Health Tips',
