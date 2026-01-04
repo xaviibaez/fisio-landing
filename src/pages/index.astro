@@ -3,9 +3,14 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ServiceCard from '../components/ServiceCard.astro';
+import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { siteConfig } from '../config';
+
+import galleryImg1 from '../assets/gallery/1.png';
+import galleryImg2 from '../assets/gallery/2.png';
+import galleryImg3 from '../assets/gallery/3.png';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -280,7 +285,7 @@ const services = allServices
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="relative rounded-xl overflow-hidden shadow-md aspect-[4/3]">
-              <img src="/images/gallery/1.png" alt="Centre Axis Cambrils" class="w-full h-full object-cover" />
+              <Image src={galleryImg1} alt="Centre Axis Cambrils" class="w-full h-full object-cover" loading="lazy" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
                 <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
                   <p class="text-sm">Recepció del centre</p>
@@ -288,7 +293,7 @@ const services = allServices
               </div>
             </div>
             <div class="relative rounded-xl overflow-hidden shadow-md aspect-[4/3]">
-              <img src="/images/gallery/2.png" alt="Sala de tractament" class="w-full h-full object-cover" />
+              <Image src={galleryImg2} alt="Sala de tractament" class="w-full h-full object-cover" loading="lazy" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
                 <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
                   <p class="text-sm">Sala de tractament</p>
@@ -296,7 +301,7 @@ const services = allServices
               </div>
             </div>
             <div class="relative rounded-xl overflow-hidden shadow-md aspect-[4/3]">
-              <img src="/images/gallery/3.png" alt="Equipament modern" class="w-full h-full object-cover" />
+              <Image src={galleryImg3} alt="Equipament modern" class="w-full h-full object-cover" loading="lazy" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
                 <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
                   <p class="text-sm">Equipament modern</p>
