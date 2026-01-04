@@ -41,8 +41,21 @@ const services = allServices
   
   <main>
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white py-20 md:py-32">
-      <div class="container mx-auto px-4">
+    <section class="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white py-20 md:py-32 overflow-hidden">
+      <!-- Animated waves background -->
+      <div class="absolute inset-0 overflow-hidden">
+        <svg class="absolute bottom-0 left-0 w-[200%] h-64 md:h-80 animate-wave" viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path fill="rgba(255,255,255,0.1)" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,138.7C672,128,768,160,864,181.3C960,203,1056,213,1152,197.3C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+        <svg class="absolute bottom-0 left-0 w-[200%] h-52 md:h-72 animate-wave-slow" viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path fill="rgba(255,255,255,0.15)" d="M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,90.7C672,85,768,107,864,128C960,149,1056,171,1152,165.3C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+        <svg class="absolute bottom-0 left-0 w-[200%] h-44 md:h-64 animate-wave-slower" viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path fill="rgba(255,255,255,0.08)" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,234.7C960,224,1056,192,1152,181.3C1248,171,1344,181,1392,186.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+      </div>
+
+      <div class="container mx-auto px-4 relative z-10">
         <div class="max-w-3xl">
           <h1 class="text-4xl md:text-6xl font-heading font-bold mb-6">
             {t('hero.title')}
@@ -57,12 +70,32 @@ const services = allServices
           </div>
         </div>
       </div>
-      <div class="absolute bottom-0 left-0 right-0">
+      <div class="absolute bottom-0 left-0 right-0 z-10">
         <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
         </svg>
       </div>
     </section>
+
+    <style>
+      @keyframes wave {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      @keyframes wave-reverse {
+        0% { transform: translateX(-50%); }
+        100% { transform: translateX(0); }
+      }
+      .animate-wave {
+        animation: wave 15s linear infinite;
+      }
+      .animate-wave-slow {
+        animation: wave-reverse 20s linear infinite;
+      }
+      .animate-wave-slower {
+        animation: wave 25s linear infinite;
+      }
+    </style>
 
     <!-- What is Physiotherapy Section -->
     <section class="py-20 bg-gray-50">
