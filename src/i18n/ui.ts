@@ -70,6 +70,24 @@ export const ui = {
     'services.homecare.feature3': 'Post-cirurgia o lesió',
     'services.homecare.feature4': 'Persones grans',
     
+    // What is Physiotherapy
+    'whatIs.title': 'Què és la Fisioteràpia?',
+    'whatIs.description': 'És una disciplina de la salut que s\'enfoca a prevenir, tractar i rehabilitar problemes físics i funcionals del cos humà. Els fisioterapeutes utilitzem una varietat de tècniques i modalitats per ajudar els pacients a recuperar o millorar el seu moviment i funció, alleujar el dolor i millorar la seva qualitat de vida.',
+    'whatIs.conditions.title': 'Algunes de les condicions en què la fisioteràpia pot ser beneficiosa:',
+    'whatIs.conditions.musculoskeletal': 'Lesions musculoesquelètiques',
+    'whatIs.conditions.musculoskeletalDesc': 'Lesions esportives, fractures, esquinços, distensions musculars i condicions com l\'osteoartritis.',
+    'whatIs.conditions.postop': 'Rehabilitació postoperatòria',
+    'whatIs.conditions.postopDesc': 'Després de cirurgies ortopèdiques o altres intervencions quirúrgiques per recuperar la funció i la mobilitat.',
+    'whatIs.conditions.neurological': 'Problemes neurològics',
+    'whatIs.conditions.neurologicalDesc': 'Lesions cerebrals traumàtiques, accidents cerebrovasculars, paràlisi cerebral i altres condicions neurològiques.',
+    'whatIs.conditions.chronic': 'Dolor crònic',
+    'whatIs.conditions.chronicDesc': 'Dolor crònic a l\'esquena, el coll o altres àrees del cos per reduir el dolor i millorar la funció.',
+    'whatIs.conditions.respiratory': 'Problemes respiratoris',
+    'whatIs.conditions.respiratoryDesc': 'Malaltia pulmonar obstructiva crònica (MPOC), fibrosi quística i millora de la capacitat respiratòria.',
+    'whatIs.conditions.sports': 'Lesions esportives',
+    'whatIs.conditions.sportsDesc': 'Tractament i prevenció de lesions esportives, així com millora del rendiment.',
+    'whatIs.techniques': 'Utilitzem una varietat de tècniques: exercicis terapèutics, teràpia manual, electroteràpia, massatge, estiraments i modalitats de calor o fred. El tractament s\'adapta a les necessitats individuals de cada pacient.',
+
     // Service Pages
     'service.benefits': 'Beneficis',
     'service.process': 'Com funciona?',
@@ -230,6 +248,24 @@ export const ui = {
     'services.homecare.feature3': 'Post-cirugía o lesión',
     'services.homecare.feature4': 'Personas mayores',
     
+    // What is Physiotherapy
+    'whatIs.title': '¿Qué es la Fisioterapia?',
+    'whatIs.description': 'Es una disciplina de la salud que se enfoca en prevenir, tratar y rehabilitar problemas físicos y funcionales del cuerpo humano. Los fisioterapeutas utilizamos una variedad de técnicas y modalidades para ayudar a los pacientes a recuperar o mejorar su movimiento y función, aliviar el dolor y mejorar su calidad de vida.',
+    'whatIs.conditions.title': 'Algunas de las condiciones en las que la fisioterapia puede ser beneficiosa:',
+    'whatIs.conditions.musculoskeletal': 'Lesiones musculoesqueléticas',
+    'whatIs.conditions.musculoskeletalDesc': 'Lesiones deportivas, fracturas, esguinces, distensiones musculares y condiciones como la osteoartritis.',
+    'whatIs.conditions.postop': 'Rehabilitación postoperatoria',
+    'whatIs.conditions.postopDesc': 'Después de cirugías ortopédicas u otras intervenciones quirúrgicas para recuperar la función y la movilidad.',
+    'whatIs.conditions.neurological': 'Problemas neurológicos',
+    'whatIs.conditions.neurologicalDesc': 'Lesiones cerebrales traumáticas, accidentes cerebrovasculares, parálisis cerebral y otras condiciones neurológicas.',
+    'whatIs.conditions.chronic': 'Dolor crónico',
+    'whatIs.conditions.chronicDesc': 'Dolor crónico en la espalda, el cuello u otras áreas del cuerpo para reducir el dolor y mejorar la función.',
+    'whatIs.conditions.respiratory': 'Problemas respiratorios',
+    'whatIs.conditions.respiratoryDesc': 'Enfermedad pulmonar obstructiva crónica (EPOC), fibrosis quística y mejora de la capacidad respiratoria.',
+    'whatIs.conditions.sports': 'Lesiones deportivas',
+    'whatIs.conditions.sportsDesc': 'Tratamiento y prevención de lesiones deportivas, así como mejora del rendimiento.',
+    'whatIs.techniques': 'Utilizamos una variedad de técnicas: ejercicios terapéuticos, terapia manual, electroterapia, masaje, estiramientos y modalidades de calor o frío. El tratamiento se adapta a las necesidades individuales de cada paciente.',
+
     // Service Pages
     'service.benefits': 'Beneficios',
     'service.process': '¿Cómo funciona?',
@@ -390,6 +426,24 @@ export const ui = {
     'services.homecare.feature3': 'Post-surgery or injury',
     'services.homecare.feature4': 'Elderly people',
     
+    // What is Physiotherapy
+    'whatIs.title': 'What is Physiotherapy?',
+    'whatIs.description': 'It is a health discipline that focuses on preventing, treating and rehabilitating physical and functional problems of the human body. Physiotherapists use a variety of techniques and modalities to help patients recover or improve their movement and function, relieve pain and improve their quality of life.',
+    'whatIs.conditions.title': 'Some of the conditions where physiotherapy can be beneficial:',
+    'whatIs.conditions.musculoskeletal': 'Musculoskeletal injuries',
+    'whatIs.conditions.musculoskeletalDesc': 'Sports injuries, fractures, sprains, muscle strains and conditions such as osteoarthritis.',
+    'whatIs.conditions.postop': 'Post-operative rehabilitation',
+    'whatIs.conditions.postopDesc': 'After orthopedic surgeries or other surgical interventions to recover function and mobility.',
+    'whatIs.conditions.neurological': 'Neurological problems',
+    'whatIs.conditions.neurologicalDesc': 'Traumatic brain injuries, strokes, cerebral palsy and other neurological conditions.',
+    'whatIs.conditions.chronic': 'Chronic pain',
+    'whatIs.conditions.chronicDesc': 'Chronic pain in the back, neck or other areas of the body to reduce pain and improve function.',
+    'whatIs.conditions.respiratory': 'Respiratory problems',
+    'whatIs.conditions.respiratoryDesc': 'Chronic obstructive pulmonary disease (COPD), cystic fibrosis and improved respiratory capacity.',
+    'whatIs.conditions.sports': 'Sports injuries',
+    'whatIs.conditions.sportsDesc': 'Treatment and prevention of sports injuries, as well as performance improvement.',
+    'whatIs.techniques': 'We use a variety of techniques: therapeutic exercises, manual therapy, electrotherapy, massage, stretching and heat or cold modalities. Treatment is tailored to the individual needs of each patient.',
+
     // Service Pages
     'service.benefits': 'Benefits',
     'service.process': 'How does it work?',
