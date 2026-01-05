@@ -1,6 +1,9 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import Layout from './Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -8,46 +11,36 @@ interface Props {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Layout title={post.data.title} description={post.data.description}>
-  <main class="min-h-screen">
-    <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-      <nav class="container mx-auto px-4 py-4">
-        <div class="flex items-center justify-between">
-          <a href="/" class="text-2xl font-heading font-bold text-primary-600">
-            Axis Cambrils
-          </a>
-          <a href="/blog" class="text-gray-600 hover:text-primary-600 transition">
-            ← Volver al blog
-          </a>
+  <Header />
+  
+  <main class="pt-24 pb-20">
+    <div class="container mx-auto px-4">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <div class="mb-4">
+          <span class="inline-block bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-medium">
+            {post.data.category}
+          </span>
         </div>
-      </nav>
-    </header>
-
-    <!-- Article -->
-    <article class="container mx-auto px-4 py-12 max-w-4xl">
-      <!-- Category Badge -->
-      <div class="mb-4">
-        <span class="inline-block bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-medium">
-          {post.data.category}
-        </span>
+        <h1 class="text-4xl md:text-5xl font-heading font-bold mb-4 text-gray-900">
+          {post.data.title}
+        </h1>
+        <div class="flex items-center justify-center gap-4 text-gray-600">
+          <span>{post.data.author}</span>
+          <span>•</span>
+          <time datetime={post.data.date.toISOString()}>
+            {post.data.date.toLocaleDateString(lang === 'en' ? 'en-US' : lang === 'es' ? 'es-ES' : 'ca-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+        </div>
       </div>
 
-      <!-- Title -->
-      <h1 class="text-4xl md:text-5xl font-heading font-bold mb-4 text-gray-900">
-        {post.data.title}
-      </h1>
-
-      <!-- Meta -->
-      <div class="flex items-center gap-4 text-gray-600 mb-8 pb-8 border-b">
-        <span>{post.data.author}</span>
-        <span>•</span>
-        <time datetime={post.data.date.toISOString()}>
-          {post.data.date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
-        </time>
-      </div>
+      <!-- Article Content -->
+      <article class="max-w-4xl mx-auto">
 
       <!-- Content -->
       <div class="prose prose-lg max-w-none
@@ -83,9 +76,12 @@ const { Content } = await post.render();
         <h2 class="text-3xl font-heading font-bold mb-4">¿Necesitas ayuda profesional?</h2>
         <p class="text-xl mb-6 text-primary-50">Agenda tu cita con nuestro equipo de especialistas</p>
         <a href="/#contacto" class="inline-block bg-white text-primary-600 px-8 py-4 rounded-lg font-semibold hover:bg-primary-50 transition-all transform hover:scale-105">
-          Reservar Cita
+          {t('hero.cta')}
         </a>
       </div>
-    </article>
+      </article>
+    </div>
   </main>
+  
+  <Footer />
 </Layout>
