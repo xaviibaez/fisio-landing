@@ -37,7 +37,7 @@ const imageModule = imagePath && images[imagePath] ? await images[imagePath]() :
                   src={imageModule.default} 
                   alt={frontmatter.title}
                   class="w-full h-auto object-cover"
-                  loading="lazy"
+                  loading="eager"
                 />
               </div>
             )}
