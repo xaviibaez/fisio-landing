@@ -8,8 +8,9 @@ export const siteConfig = {
   url: 'https://www.axiscambrils.com',
   
   contact: {
-    email: 'info@axiscambrils.com',
-    phone: '+34 977 123 456',
+    email: 'fisioaxiscambrils@gmail.com',
+    phone1: '+34 977 79 54 33',
+    phone2: '+34 608 03 28 57',
     address: {
       street: 'Carrer de Sant Josep, 15',
       city: 'Cambrils',
@@ -22,8 +23,6 @@ export const siteConfig = {
   social: {
     facebook: 'https://facebook.com/axiscambrils',
     instagram: 'https://instagram.com/axiscambrils',
-    // twitter: '',
-    // linkedin: ''
   },
   
   i18n: {

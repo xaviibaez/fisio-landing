@@ -234,4 +234,4 @@ Proyecto privado - Axis Cambrils © 2025
 
 ## 🤝 Soporte
 
-Para preguntas o soporte, contacta a: info@axiscambrils.com
+Para preguntas o soporte, contacta a: fisioaxiscambrils@gmail.com
