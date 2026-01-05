@@ -285,26 +285,29 @@ const services = allServices
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="relative rounded-xl overflow-hidden shadow-md aspect-[4/3]">
-              <Image src={galleryImg1} alt="Centre Axis Cambrils" class="w-full h-full object-cover" loading="lazy" />
+              <Image src={galleryImg1} alt={t('gallery.img1.title')} class="w-full h-full object-cover" loading="lazy" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
                 <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
-                  <p class="text-sm">Recepció del centre</p>
+                  <h3 class="font-bold text-lg mb-1">{t('gallery.img1.title')}</h3>
+                  <p class="text-sm text-gray-200">{t('gallery.img1.description')}</p>
                 </div>
               </div>
             </div>
             <div class="relative rounded-xl overflow-hidden shadow-md aspect-[4/3]">
-              <Image src={galleryImg2} alt="Sala de tractament" class="w-full h-full object-cover" loading="lazy" />
+              <Image src={galleryImg2} alt={t('gallery.img2.title')} class="w-full h-full object-cover" loading="lazy" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
                 <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
-                  <p class="text-sm">Sala de tractament</p>
+                  <h3 class="font-bold text-lg mb-1">{t('gallery.img2.title')}</h3>
+                  <p class="text-sm text-gray-200">{t('gallery.img2.description')}</p>
                 </div>
               </div>
             </div>
             <div class="relative rounded-xl overflow-hidden shadow-md aspect-[4/3]">
-              <Image src={galleryImg3} alt="Equipament modern" class="w-full h-full object-cover" loading="lazy" />
+              <Image src={galleryImg3} alt={t('gallery.img3.title')} class="w-full h-full object-cover" loading="lazy" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
                 <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
-                  <p class="text-sm">Equipament modern</p>
+                  <h3 class="font-bold text-lg mb-1">{t('gallery.img3.title')}</h3>
+                  <p class="text-sm text-gray-200">{t('gallery.img3.description')}</p>
                 </div>
               </div>
             </div>

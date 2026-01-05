@@ -130,6 +130,12 @@ export const ui = {
     'gallery.viewAll': 'Veure totes les fotos',
     'gallery.pageTitle': 'Galeria del Centre',
     'gallery.pageSubtitle': 'Descobreix les nostres instal·lacions modernes i equipades amb la millor tecnologia per al teu tractament.',
+    'gallery.img1.title': 'Recepció del centre',
+    'gallery.img1.description': "Espai acollidor per rebre't",
+    'gallery.img2.title': 'Sala de tractament',
+    'gallery.img2.description': 'Equipament professional',
+    'gallery.img3.title': 'Equipament modern',
+    'gallery.img3.description': 'Tecnologia d\'última generació',
     
     // Blog
     'blog.title': 'Consells de Salut',
@@ -322,6 +328,12 @@ export const ui = {
     'gallery.viewAll': 'Ver todas las fotos',
     'gallery.pageTitle': 'Galería del Centro',
     'gallery.pageSubtitle': 'Descubre nuestras instalaciones modernas y equipadas con la mejor tecnología para tu tratamiento.',
+    'gallery.img1.title': 'Recepción del centro',
+    'gallery.img1.description': 'Espacio acogedor para recibirte',
+    'gallery.img2.title': 'Sala de tratamiento',
+    'gallery.img2.description': 'Equipamiento profesional',
+    'gallery.img3.title': 'Equipamiento moderno',
+    'gallery.img3.description': 'Tecnología de última generación',
     
     // Blog
     'blog.title': 'Consejos de Salud',
@@ -514,6 +526,12 @@ export const ui = {
     'gallery.viewAll': 'View all photos',
     'gallery.pageTitle': 'Center Gallery',
     'gallery.pageSubtitle': 'Discover our modern facilities equipped with the best technology for your treatment.',
+    'gallery.img1.title': 'Center reception',
+    'gallery.img1.description': 'Welcoming space to receive you',
+    'gallery.img2.title': 'Treatment room',
+    'gallery.img2.description': 'Professional equipment',
+    'gallery.img3.title': 'Modern equipment',
+    'gallery.img3.description': 'Latest generation technology',
     
     // Blog
     'blog.title': 'Health Tips',
