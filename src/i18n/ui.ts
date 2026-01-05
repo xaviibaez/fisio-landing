@@ -9,7 +9,7 @@ export const defaultLang = 'ca';
 export const ui = {
   ca: {
     'nav.services': 'Serveis',
-    'nav.about': 'Nosaltres',
+    'nav.about': 'Centre',
     'nav.aboutUs': 'Nosaltres',
     'nav.blog': 'Blog',
     'nav.contact': 'Contacte',
@@ -221,7 +221,7 @@ export const ui = {
     'aboutUs.cta.subtitle': 'Reserva la teva cita i descobreix per què som el centre de fisioterapèutic de confiança a Cambrils.',  },
   es: {
     'nav.services': 'Servicios',
-    'nav.about': 'Nosotros',
+    'nav.about': 'Centro',
     'nav.aboutUs': 'Nosotros',
     'nav.blog': 'Blog',
     'nav.contact': 'Contacto',
@@ -435,7 +435,7 @@ export const ui = {
   },
   en: {
     'nav.services': 'Services',
-    'nav.about': 'About',
+    'nav.about': 'Center',
     'nav.aboutUs': 'About Us',
     'nav.blog': 'Blog',
     'nav.contact': 'Contact',
