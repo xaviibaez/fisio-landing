@@ -9,14 +9,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const allPosts = await getCollection('blog');
-const sortedPosts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-
-const categories = ['deportiva', 'traumatologica', 'neurologica', 'pediatrica', 'respiratoria', 'geriatrica'];
-const selectedCategory = Astro.url.searchParams.get('categoria');
-
-const filteredPosts = selectedCategory 
-  ? sortedPosts.filter(post => post.data.category === selectedCategory)
-  : sortedPosts;
+const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <Layout title={`${t('blog.title')} - Axis Cambrils`} description={t('blog.subtitle')}>
@@ -31,32 +24,10 @@ const filteredPosts = selectedCategory
       </div>
     </div>
 
-    <!-- Category Filter -->
-    <section class="bg-white border-b sticky top-16 z-40">
-      <div class="container mx-auto px-4 py-6">
-        <div class="flex flex-wrap gap-3">
-          <a 
-            href={lang === 'ca' ? '/blog' : `/${lang}/blog`}
-            class={`px-4 py-2 rounded-lg font-medium transition ${!selectedCategory ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
-          >
-            {t('category.todos')}
-          </a>
-          {categories.map((category) => (
-            <a 
-              href={lang === 'ca' ? `/blog?categoria=${category}` : `/${lang}/blog?categoria=${category}`}
-              class={`px-4 py-2 rounded-lg font-medium transition capitalize ${selectedCategory === category ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
-            >
-              {t(`category.${category}` as any)}
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-
     <!-- Blog Posts Grid -->
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
-        {filteredPosts.length === 0 ? (
+        {posts.length === 0 ? (
           <div class="text-center py-16">
             <svg class="w-24 h-24 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -69,7 +40,7 @@ const filteredPosts = selectedCategory
           </div>
         ) : (
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map((post) => (
+            {posts.map((post) => (
               <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-2">
                 <div class="bg-gradient-to-br from-primary-500 to-primary-600 h-48 flex items-center justify-center">
                   <svg class="w-20 h-20 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,14 +48,6 @@ const filteredPosts = selectedCategory
                   </svg>
                 </div>
                 <div class="p-6">
-                  <div class="mb-3">
-                    <a 
-                      href={lang === 'ca' ? `/blog?categoria=${post.data.category}` : `/${lang}/blog?categoria=${post.data.category}`}
-                      class="inline-block bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-primary-200 transition"
-                    >
-                      {t(`category.${post.data.category}` as any)}
-                    </a>
-                  </div>
                   <h2 class="text-xl font-heading font-bold mb-2 line-clamp-2">
                     <a href={lang === 'ca' ? `/blog/${post.slug}` : `/${lang}/blog/${post.slug}`} class="hover:text-primary-600 transition">
                       {post.data.title}
