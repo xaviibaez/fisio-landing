@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from './Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -7,26 +8,23 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const { frontmatter } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/services/*.{jpeg,jpg,png,gif,webp}');
+const imagePath = frontmatter.image?.replace('/images/', '/src/assets/services/');
+const imageModule = imagePath && images[imagePath] ? await images[imagePath]() : null;
 ---
 
 <Layout title={`${frontmatter.title} - Axis Cambrils`} description={frontmatter.shortDescription}>
   <Header />
   
-  <main>
+  <main class="min-h-screen">
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white py-16 md:py-24">
+    <section class="bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white py-16">
       <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center">
-          <h1 class="text-4xl md:text-5xl font-heading font-bold mb-4">{frontmatter.title}</h1>
-          <p class="text-xl md:text-2xl text-primary-50">
-            {frontmatter.shortDescription}
-          </p>
-        </div>
-      </div>
-      <div class="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
-        </svg>
+        <h1 class="text-4xl md:text-5xl font-heading font-bold mb-4">{frontmatter.title}</h1>
+        <p class="text-xl text-primary-50 max-w-2xl">
+          {frontmatter.shortDescription}
+        </p>
       </div>
     </section>
 
@@ -36,12 +34,13 @@ const t = useTranslations(lang);
         <div class="max-w-6xl mx-auto">
           <!-- Image & Description Grid -->
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 items-start">
-            {frontmatter.image && (
+            {imageModule && (
               <div class="rounded-xl overflow-hidden shadow-lg lg:sticky lg:top-8">
-                <img 
-                  src={frontmatter.image} 
+                <Image 
+                  src={imageModule.default} 
                   alt={frontmatter.title}
                   class="w-full h-auto object-cover"
+                  loading="lazy"
                 />
               </div>
             )}
