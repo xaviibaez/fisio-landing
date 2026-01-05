@@ -44,15 +44,15 @@
   </button>
 
   <!-- Image container -->
-  <div class="relative max-w-5xl max-h-[90vh] mx-4">
+  <div class="relative max-w-5xl max-h-[90vh] mx-4 overflow-hidden">
     <img 
       id="modal-image" 
       src="" 
       alt="" 
-      class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
+      class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl transition-all duration-300 ease-out"
     />
     <!-- Caption -->
-    <div id="modal-caption" class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg">
+    <div id="modal-caption" class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg transition-opacity duration-300">
       <h3 id="modal-title" class="text-white font-bold text-xl mb-1"></h3>
       <p id="modal-description" class="text-gray-200 text-sm"></p>
     </div>
@@ -93,15 +93,48 @@
       document.body.style.overflow = '';
     }
 
-    function updateModalContent() {
+    function updateModalContent(direction: 'left' | 'right' | 'none' = 'none') {
       const item = galleryItems[currentIndex] as HTMLElement;
       const imgSrc = item.dataset.src || '';
       const imgAlt = item.dataset.alt || '';
       const imgDesc = item.dataset.description || '';
+      const modalCaption = document.getElementById('modal-caption');
 
       if (modalImage) {
-        modalImage.src = imgSrc;
-        modalImage.alt = imgAlt;
+        if (direction !== 'none') {
+          // Animación de salida
+          const exitDirection = direction === 'right' ? '-100%' : '100%';
+          const enterDirection = direction === 'right' ? '100%' : '-100%';
+          
+          modalImage.style.transform = `translateX(${exitDirection})`;
+          modalImage.style.opacity = '0';
+          if (modalCaption) modalCaption.style.opacity = '0';
+          
+          setTimeout(() => {
+            // Cambiar imagen mientras está fuera de vista
+            modalImage.src = imgSrc;
+            modalImage.alt = imgAlt;
+            
+            // Posicionar para entrada
+            modalImage.style.transition = 'none';
+            modalImage.style.transform = `translateX(${enterDirection})`;
+            
+            // Forzar reflow
+            modalImage.offsetHeight;
+            
+            // Animación de entrada
+            modalImage.style.transition = 'all 0.3s ease-out';
+            modalImage.style.transform = 'translateX(0)';
+            modalImage.style.opacity = '1';
+            if (modalCaption) modalCaption.style.opacity = '1';
+          }, 150);
+        } else {
+          // Sin animación (primera apertura)
+          modalImage.src = imgSrc;
+          modalImage.alt = imgAlt;
+          modalImage.style.transform = 'translateX(0)';
+          modalImage.style.opacity = '1';
+        }
       }
       if (modalTitle) modalTitle.textContent = imgAlt;
       if (modalDescription) modalDescription.textContent = imgDesc;
@@ -110,12 +143,12 @@
 
     function showPrev() {
       currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-      updateModalContent();
+      updateModalContent('left');
     }
 
     function showNext() {
       currentIndex = (currentIndex + 1) % totalImages;
-      updateModalContent();
+      updateModalContent('right');
     }
 
     // Event listeners
