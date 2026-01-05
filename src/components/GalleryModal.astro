@@ -1,0 +1,173 @@
+---
+// Modal/Lightbox component for gallery images
+---
+
+<!-- Modal Overlay -->
+<div 
+  id="gallery-modal" 
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Image viewer"
+>
+  <!-- Close button -->
+  <button 
+    id="modal-close" 
+    class="absolute top-4 right-4 z-10 p-2 text-white/80 hover:text-white transition-colors"
+    aria-label="Tancar"
+  >
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+
+  <!-- Previous button -->
+  <button 
+    id="modal-prev" 
+    class="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 text-white/80 hover:text-white transition-colors bg-black/30 rounded-full hover:bg-black/50"
+    aria-label="Imatge anterior"
+  >
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+    </svg>
+  </button>
+
+  <!-- Next button -->
+  <button 
+    id="modal-next" 
+    class="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 text-white/80 hover:text-white transition-colors bg-black/30 rounded-full hover:bg-black/50"
+    aria-label="Imatge següent"
+  >
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+    </svg>
+  </button>
+
+  <!-- Image container -->
+  <div class="relative max-w-5xl max-h-[90vh] mx-4">
+    <img 
+      id="modal-image" 
+      src="" 
+      alt="" 
+      class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
+    />
+    <!-- Caption -->
+    <div id="modal-caption" class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg">
+      <h3 id="modal-title" class="text-white font-bold text-xl mb-1"></h3>
+      <p id="modal-description" class="text-gray-200 text-sm"></p>
+    </div>
+  </div>
+
+  <!-- Image counter -->
+  <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-sm">
+    <span id="modal-counter"></span>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('gallery-modal');
+    const modalImage = document.getElementById('modal-image') as HTMLImageElement;
+    const modalTitle = document.getElementById('modal-title');
+    const modalDescription = document.getElementById('modal-description');
+    const modalCounter = document.getElementById('modal-counter');
+    const closeBtn = document.getElementById('modal-close');
+    const prevBtn = document.getElementById('modal-prev');
+    const nextBtn = document.getElementById('modal-next');
+    
+    const galleryItems = document.querySelectorAll('[data-gallery-item]');
+    let currentIndex = 0;
+    const totalImages = galleryItems.length;
+
+    function openModal(index: number) {
+      currentIndex = index;
+      updateModalContent();
+      modal?.classList.remove('hidden');
+      modal?.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal?.classList.add('hidden');
+      modal?.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    function updateModalContent() {
+      const item = galleryItems[currentIndex] as HTMLElement;
+      const imgSrc = item.dataset.src || '';
+      const imgAlt = item.dataset.alt || '';
+      const imgDesc = item.dataset.description || '';
+
+      if (modalImage) {
+        modalImage.src = imgSrc;
+        modalImage.alt = imgAlt;
+      }
+      if (modalTitle) modalTitle.textContent = imgAlt;
+      if (modalDescription) modalDescription.textContent = imgDesc;
+      if (modalCounter) modalCounter.textContent = `${currentIndex + 1} / ${totalImages}`;
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+      updateModalContent();
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % totalImages;
+      updateModalContent();
+    }
+
+    // Event listeners
+    galleryItems.forEach((item, index) => {
+      item.addEventListener('click', () => openModal(index));
+    });
+
+    closeBtn?.addEventListener('click', closeModal);
+    prevBtn?.addEventListener('click', showPrev);
+    nextBtn?.addEventListener('click', showNext);
+
+    // Close on overlay click
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (modal?.classList.contains('hidden')) return;
+      
+      switch (e.key) {
+        case 'Escape':
+          closeModal();
+          break;
+        case 'ArrowLeft':
+          showPrev();
+          break;
+        case 'ArrowRight':
+          showNext();
+          break;
+      }
+    });
+
+    // Swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    modal?.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    modal?.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          showNext();
+        } else {
+          showPrev();
+        }
+      }
+    }, { passive: true });
+  });
+</script>
