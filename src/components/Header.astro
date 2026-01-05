@@ -19,6 +19,7 @@ const currentPath = Astro.url.pathname;
         <li><a href={getLocalizedPath('/#servicios', lang)} class="text-gray-700 hover:text-primary-600 transition">{t('nav.services')}</a></li>
         <li><a href={getLocalizedPath('/#nosotros', lang)} class="text-gray-700 hover:text-primary-600 transition">{t('nav.about')}</a></li>
         <li><a href={getLocalizedPath('/#contacto', lang)} class="text-gray-700 hover:text-primary-600 transition">{t('nav.contact')}</a></li>
+        <li><a href={getLocalizedPath('/nosaltres', lang)} class={`transition ${currentPath.includes('/nosaltres') || currentPath.includes('/nosotros') || currentPath.includes('/about-us') ? 'text-primary-600 font-semibold' : 'text-gray-700 hover:text-primary-600'}`}>{t('nav.aboutUs')}</a></li>
         <li><a href={getLocalizedPath('/blog', lang)} class={`transition ${currentPath.includes('/blog') ? 'text-primary-600 font-semibold' : 'text-gray-700 hover:text-primary-600'}`}>{t('nav.blog')}</a></li>
         <li>
           <LanguagePicker />
@@ -44,6 +45,7 @@ const currentPath = Astro.url.pathname;
         <li><a href={getLocalizedPath('/#servicios', lang)} class="block text-gray-700 hover:text-primary-600 transition">{t('nav.services')}</a></li>
         <li><a href={getLocalizedPath('/#nosotros', lang)} class="block text-gray-700 hover:text-primary-600 transition">{t('nav.about')}</a></li>
         <li><a href={getLocalizedPath('/#contacto', lang)} class="block text-gray-700 hover:text-primary-600 transition">{t('nav.contact')}</a></li>
+        <li><a href={getLocalizedPath('/nosaltres', lang)} class={`block transition ${currentPath.includes('/nosaltres') || currentPath.includes('/nosotros') || currentPath.includes('/about-us') ? 'text-primary-600 font-semibold' : 'text-gray-700 hover:text-primary-600'}`}>{t('nav.aboutUs')}</a></li>
         <li><a href={getLocalizedPath('/blog', lang)} class={`block transition ${currentPath.includes('/blog') ? 'text-primary-600 font-semibold' : 'text-gray-700 hover:text-primary-600'}`}>{t('nav.blog')}</a></li>
         <li class="flex justify-center">
           <LanguagePicker />

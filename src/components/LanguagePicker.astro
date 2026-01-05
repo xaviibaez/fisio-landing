@@ -5,15 +5,26 @@ import { getLangFromUrl } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 let currentPath = Astro.url.pathname.replace(/^\/(ca|es|en)/, '') || '/';
 
-// Translate service paths based on target language
-const translateServicePath = (path: string, targetLang: string) => {
-  // Extract the slug from the service path
+// Translate paths based on target language
+const translatePath = (path: string, targetLang: string) => {
+  // Service paths
   const serviceMatch = path.match(/\/(serveis|servicios|services)\/(.+)/);
   if (serviceMatch) {
     const slug = serviceMatch[2];
     const serviceWord = targetLang === 'ca' ? 'serveis' : targetLang === 'es' ? 'servicios' : 'services';
     return `/${serviceWord}/${slug}`;
   }
+  
+  // About us page
+  if (path === '/nosaltres' || path === '/nosotros' || path === '/about-us') {
+    return targetLang === 'ca' ? '/nosaltres' : targetLang === 'es' ? '/nosotros' : '/about-us';
+  }
+  
+  // Gallery page
+  if (path === '/galeria' || path === '/gallery') {
+    return targetLang === 'en' ? '/gallery' : '/galeria';
+  }
+  
   return path;
 };
 ---
@@ -41,7 +52,7 @@ const translateServicePath = (path: string, targetLang: string) => {
   >
     <div class="py-1" role="none">
       {Object.entries(languages).map(([code, name]) => {
-        const translatedPath = translateServicePath(currentPath, code);
+        const translatedPath = translatePath(currentPath, code);
         const href = code === 'ca' ? translatedPath : `/${code}${translatedPath}`;
         return (
           <a
