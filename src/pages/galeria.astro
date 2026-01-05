@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
@@ -24,6 +26,7 @@ const galleryImages = [
 ---
 
 <Layout title={`${t('gallery.pageTitle')} | Axis Cambrils`} description={t('gallery.pageSubtitle')}>
+  <Header />
   <main class="pt-24 pb-20">
     <div class="container mx-auto px-4">
       <!-- Header -->
@@ -66,4 +69,5 @@ const galleryImages = [
       </div>
     </div>
   </main>
+  <Footer />
 </Layout>
