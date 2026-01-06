@@ -192,6 +192,7 @@ export const ui = {
     'contact.info.email': 'Email',
     'contact.info.schedule': 'Horari',
     'contact.info.scheduleText': 'De Dilluns a Divendres de 9h a 21h',
+    'contact.info.whatsappText': 'Escriu-nos per WhatsApp',
     'contact.map': 'Mapa d\'Ubicació',
     
     // Footer
@@ -406,6 +407,7 @@ export const ui = {
     'contact.info.email': 'Email',
     'contact.info.schedule': 'Horario',
     'contact.info.scheduleText': 'De Lunes a Viernes de 9h a 21h',
+    'contact.info.whatsappText': 'Escríbenos por WhatsApp',
     'contact.map': 'Mapa de Ubicación',
     
     // Footer
@@ -622,6 +624,7 @@ export const ui = {
     'contact.info.email': 'Email',
     'contact.info.schedule': 'Schedule',
     'contact.info.scheduleText': 'Monday to Friday from 9am to 9pm',
+    'contact.info.whatsappText': 'Message us on WhatsApp',
     'contact.map': 'Location Map',
     
     // Footer
