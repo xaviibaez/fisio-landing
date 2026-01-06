@@ -191,8 +191,7 @@ export const ui = {
     'contact.info.phone': 'Telèfon',
     'contact.info.email': 'Email',
     'contact.info.schedule': 'Horari',
-    'contact.info.scheduleText': 'Dilluns a Divendres: 9:00 - 20:00',
-    'contact.info.scheduleText2': 'Dissabtes: 9:00 - 14:00',
+    'contact.info.scheduleText': 'De Dilluns a Divendres de 9h a 21h',
     'contact.map': 'Mapa d\'Ubicació',
     
     // Footer
@@ -406,8 +405,7 @@ export const ui = {
     'contact.info.phone': 'Teléfono',
     'contact.info.email': 'Email',
     'contact.info.schedule': 'Horario',
-    'contact.info.scheduleText': 'Lunes a Viernes: 9:00 - 20:00',
-    'contact.info.scheduleText2': 'Sábados: 9:00 - 14:00',
+    'contact.info.scheduleText': 'De Lunes a Viernes de 9h a 21h',
     'contact.map': 'Mapa de Ubicación',
     
     // Footer
@@ -623,8 +621,7 @@ export const ui = {
     'contact.info.phone': 'Phone',
     'contact.info.email': 'Email',
     'contact.info.schedule': 'Schedule',
-    'contact.info.scheduleText': 'Monday to Friday: 9:00 - 20:00',
-    'contact.info.scheduleText2': 'Saturdays: 9:00 - 14:00',
+    'contact.info.scheduleText': 'Monday to Friday from 9am to 9pm',
     'contact.map': 'Location Map',
     
     // Footer
