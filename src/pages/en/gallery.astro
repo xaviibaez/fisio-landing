@@ -3,87 +3,16 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import GalleryModal from '../../components/GalleryModal.astro';
-import { Image } from 'astro:assets';
+import GalleryContent from '../../components/GalleryContent.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-
-import img1 from '../../assets/gallery/1.png';
-import img2 from '../../assets/gallery/2.png';
-import img3 from '../../assets/gallery/3.png';
-import img4 from '../../assets/gallery/4.png';
-import img5 from '../../assets/gallery/5.png';
-import img6 from '../../assets/gallery/6.png';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-
-const galleryImages = [
-  { src: img1, alt: 'Center reception', description: 'Our reception, where we will welcome you with a smile' },
-  { src: img2, alt: 'Treatment room', description: 'Treatment rooms equipped with modern technology' },
-  { src: img3, alt: 'Modern equipment', description: 'State-of-the-art equipment for your treatment' },
-  { src: img4, alt: 'Rehabilitation area', description: 'Spacious area for rehabilitation exercises' },
-  { src: img5, alt: 'Physiotherapy room', description: 'Quiet and professional environment' },
-  { src: img6, alt: 'Center exterior', description: 'Easy access and nearby parking' },
-];
 ---
 
 <Layout title={`${t('gallery.pageTitle')} | Axis Cambrils`} description={t('gallery.pageSubtitle')}>
   <Header />
-  <main class="pt-24 pb-20">
-    <div class="container mx-auto px-4">
-      <!-- Header -->
-      <div class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-heading font-bold mb-4">{t('gallery.pageTitle')}</h1>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">{t('gallery.pageSubtitle')}</p>
-      </div>
-
-      <!-- Gallery Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {galleryImages.map((image) => (
-          <div 
-            class="relative rounded-2xl overflow-hidden shadow-md cursor-pointer group"
-            data-gallery-item
-            data-src={image.src.src}
-            data-alt={image.alt}
-            data-description={image.description}
-          >
-            <div class="aspect-[4/3]">
-              <Image 
-                src={image.src} 
-                alt={image.alt} 
-                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                loading="lazy"
-              />
-            </div>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
-              <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h3 class="font-bold text-lg mb-1">{image.alt}</h3>
-                <p class="text-sm text-gray-200">{image.description}</p>
-              </div>
-            </div>
-            <!-- Hover overlay with zoom icon -->
-            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-              <div class="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 rounded-full p-3">
-                <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
-                </svg>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <!-- CTA Section -->
-      <div class="mt-16 text-center">
-        <div class="bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl p-8 md:p-12 text-white max-w-3xl mx-auto">
-          <h2 class="text-2xl md:text-3xl font-heading font-bold mb-4">Come visit us!</h2>
-          <p class="text-lg mb-6 text-primary-100">Book your appointment and discover our facilities in person.</p>
-          <a href="/en/#contacto" class="inline-block bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-primary-50 transition-colors">
-            Book Appointment
-          </a>
-        </div>
-      </div>
-    </div>
-  </main>
+  <GalleryContent />
   <Footer />
   <GalleryModal />
 </Layout>
