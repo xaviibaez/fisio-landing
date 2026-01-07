@@ -12,64 +12,25 @@ import usImg3 from '../assets/us/3.png';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// Datos del equipo
-const teamMembers = [
+// Configuración del equipo con las imágenes
+const teamConfig = [
   {
-    name: 'Montse Prim',
-    role: 'Fisioterapeuta',
-    col: '1810',
+    id: 'montse',
     image: usImg3,
-    education: [
-      '1994-1997: Diplomatura en Fisioteràpia. Blanquerna, Universitat Ramon Llull',
-      '1998-2000: Màster en Logopèdia ISEP, Universitat Politècnica de Catalunya'
-    ],
-    courses: [
-      '1995: Curs de quiromassatge Dr Sagrera Ferrandiz',
-      '1998: Curs traumatologia i Ortopèdia, Isfyes',
-      '2000: Curs Mètode Perfetti, Universitat Rovira i Virgili',
-      '2001: Curs de Drenatge limfàtic, Institut Ferlo',
-      '2001: Curs de Fisioteràpia en Geriatria, Universitat Alcalà',
-      '2004: Postgrau de Reflexologia podal, Universitat Rovira i Virgili',
-      '2005: Curs Avançat d\'Aprofundiment en Reflexoteràpia, Universitat Rovira i Virgili',
-      '2007: Drenatge Limfàtic. Actuació Fisioterapèutica en edemes, Universitat Rovira i Virgili'
-    ]
+    educationCount: 2,
+    coursesCount: 8
   },
   {
-    name: 'Maria Cabré',
-    role: 'Fisioterapeuta',
-    col: '2849',
+    id: 'maria',
     image: usImg2,
-    education: [
-      '1996-1999: Diplomatura en Fisioteràpia. Escoles Gimbernat, Universitat Autònoma de Barcelona',
-      '2000-2001: Postgrau de fisioteràpia en Neurologia. Blanquerna, Universitat Ramon Llull'
-    ],
-    courses: [
-      '2007: Drenatge Limfàtic. Actuació Fisioterapèutica en edemes, Universitat Rovira i Virgili'
-    ]
+    educationCount: 2,
+    coursesCount: 1
   },
   {
-    name: 'Vania Moreno',
-    role: 'Fisioterapeuta',
-    col: '11792',
+    id: 'vania',
     image: usImg1,
-    education: [
-      '2004-2005: Cicle d\'activitats físiques i esportives en el medi natural, I.E.S. Cal·lípolis, Tarragona',
-      '2008-2010: Cicle d\'animació d\'activitats físiques i esportives, I.E.S. Joan Oró, Lleida',
-      '2010-2015: Grau en Fisioteràpia',
-      '2018-2019: Màster en Reeducació del Sòl Pelvià',
-      'Actualment cursant Postgrau en Psiconeuroinmunologia Clínica'
-    ],
-    courses: [
-      'Gener 2016: Discinèsia escapular, avaluació i exercicis terapèutics',
-      'Març 2016: Dolor Orofacial i mandibular',
-      'Maig 2016: Fisioteràpia esportiva: actualització, avaluació, tractament i rehabilitació',
-      'Octubre 2016: Tractament en dolor miofascial: punxada en sec',
-      'Desembre 2016: Nivell I i II en Quinesiotaping i embenat',
-      'Abril 2017: Tècniques Hipopressives (nivells I, II, III)',
-      'Juliol 2017: Messoteràpia estètica per a fisioterapeutes',
-      'Desembre 2017: Especialista en la Clínica del Corredor',
-      'Abril 2018: Disfuncions temporomandibulars'
-    ]
+    educationCount: 5,
+    coursesCount: 9
   }
 ];
 ---
@@ -87,41 +48,41 @@ const teamMembers = [
       
       <!-- Team Members Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-        {teamMembers.map((member) => (
+        {teamConfig.map((member) => (
           <div class="bg-white rounded-2xl shadow-lg">
             <div class="aspect-square overflow-hidden rounded-t-2xl">
               <Image 
                 src={member.image} 
-                alt={member.name}
+                alt={t(`team.${member.id}.name`)}
                 class="w-full h-full object-cover"
                 loading="lazy"
               />
             </div>
             <div class="p-6">
-              <h2 class="text-xl font-heading font-bold text-primary-700">{member.name}</h2>
-              <p class="text-gray-600 mb-4">{member.role} · Col. {member.col}</p>
+              <h2 class="text-xl font-heading font-bold text-primary-700">{t(`team.${member.id}.name`)}</h2>
+              <p class="text-gray-600 mb-4">{t(`team.${member.id}.role`)} · Col. {t(`team.${member.id}.col`)}</p>
               
               <div class="space-y-4 text-sm">
                 <div>
                   <h3 class="font-bold text-gray-800 mb-2">{t('aboutUs.team.education')}</h3>
                   <ul class="space-y-1 text-gray-600">
-                    {member.education.map((item) => (
+                    {Array.from({ length: member.educationCount }, (_, i) => i + 1).map((num) => (
                       <li class="flex items-start gap-2">
                         <span class="text-primary-500 mt-1">•</span>
-                        <span>{item}</span>
+                        <span>{t(`team.${member.id}.education.${num}`)}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
                 
-                {member.courses.length > 0 && (
+                {member.coursesCount > 0 && (
                   <div>
                     <h3 class="font-bold text-gray-800 mb-2">{t('aboutUs.team.courses')}</h3>
                     <ul class="space-y-1 text-gray-600">
-                      {member.courses.map((item) => (
+                      {Array.from({ length: member.coursesCount }, (_, i) => i + 1).map((num) => (
                         <li class="flex items-start gap-2">
                           <span class="text-primary-500 mt-1">•</span>
-                          <span>{item}</span>
+                          <span>{t(`team.${member.id}.courses.${num}`)}</span>
                         </li>
                       ))}
                     </ul>
