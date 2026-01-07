@@ -1,0 +1,99 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div id="cookie-banner" class="fixed bottom-6 right-6 max-w-sm z-50 opacity-0 scale-95 transition-all duration-500 ease-out">
+  <div class="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
+    <!-- Cookie Icon Header -->
+    <div class="bg-gradient-to-br from-primary-500 to-primary-600 p-4 text-center">
+      <div class="text-5xl mb-2 animate-bounce">🍪</div>
+    </div>
+    
+    <!-- Content -->
+    <div class="p-6">
+      <h3 class="font-bold text-lg text-gray-900 mb-2">{t('cookies.title')}</h3>
+      <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+        {t('cookies.message')}
+      </p>
+      
+      <!-- Buttons -->
+      <div class="flex flex-col gap-2">
+        <button
+          id="cookie-accept"
+          class="w-full px-4 py-2.5 text-sm font-semibold text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition transform hover:scale-105 active:scale-95"
+        >
+          {t('cookies.accept')}
+        </button>
+        <button
+          id="cookie-reject"
+          class="w-full px-4 py-2.5 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition"
+        >
+          {t('cookies.reject')}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initCookieBanner() {
+    const banner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('cookie-accept');
+    const rejectBtn = document.getElementById('cookie-reject');
+    
+    // Check if user has already made a choice
+    const cookieConsent = localStorage.getItem('cookieConsent');
+    
+    if (!cookieConsent) {
+      // Show banner with animation after a delay
+      setTimeout(() => {
+        banner?.classList.remove('opacity-0', 'scale-95');
+        banner?.classList.add('opacity-100', 'scale-100');
+      }, 1000);
+    }
+    
+    // Accept cookies
+    acceptBtn?.addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'accepted');
+      hideBanner();
+    });
+    
+    // Reject cookies
+    rejectBtn?.addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'rejected');
+      hideBanner();
+    });
+    
+    function hideBanner() {
+      banner?.classList.add('opacity-0', 'scale-95');
+      setTimeout(() => {
+        banner?.classList.add('hidden');
+      }, 500);
+    }
+  }
+  
+  // Initialize on page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCookieBanner);
+  } else {
+    initCookieBanner();
+  }
+</script>
+
+<style>
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .animate-bounce {
+    animation: bounce 2s infinite;
+  }
+</style>

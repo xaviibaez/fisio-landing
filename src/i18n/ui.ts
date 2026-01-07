@@ -204,6 +204,12 @@ export const ui = {
     'contact.info.whatsappText': 'Escriu-nos per WhatsApp',
     'contact.map': 'Mapa d\'Ubicació',
     
+    // Cookies
+    'cookies.title': 'Utilitzem cookies',
+    'cookies.message': 'Utilitzem cookies per millorar la teva experiència i serveis com Google Maps.',
+    'cookies.accept': '✓ Acceptar tot',
+    'cookies.reject': 'Només essencials',
+    
     // Footer
     'footer.description': 'Centre de Fisioteràpia especialitzat en recuperació, prevenció i benestar. La teva salut és la nostra prioritat.',
     'footer.links': 'Enllaços',
@@ -428,6 +434,12 @@ export const ui = {
     'contact.info.scheduleText': 'De Lunes a Viernes de 9h a 21h',
     'contact.info.whatsappText': 'Escríbenos por WhatsApp',
     'contact.map': 'Mapa de Ubicación',
+    
+    // Cookies
+    'cookies.title': 'Utilizamos cookies',
+    'cookies.message': 'Utilizamos cookies para mejorar tu experiencia y servicios como Google Maps.',
+    'cookies.accept': '✓ Aceptar todo',
+    'cookies.reject': 'Solo esenciales',
     
     // Footer
     'footer.description': 'Centro de Fisioterapia especializado en recuperación, prevención y bienestar. Tu salud es nuestra prioridad.',
@@ -654,6 +666,12 @@ export const ui = {
     'contact.info.scheduleText': 'Monday to Friday from 9am to 9pm',
     'contact.info.whatsappText': 'Message us on WhatsApp',
     'contact.map': 'Location Map',
+    
+    // Cookies
+    'cookies.title': 'We use cookies',
+    'cookies.message': 'We use cookies to improve your experience and services like Google Maps.',
+    'cookies.accept': '✓ Accept all',
+    'cookies.reject': 'Essential only',
     
     // Footer
     'footer.description': 'Physiotherapy Center specialized in recovery, prevention and wellness. Your health is our priority.',
