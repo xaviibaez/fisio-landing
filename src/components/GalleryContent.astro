@@ -10,15 +10,15 @@ import img5 from '../assets/gallery/5.png';
 import img6 from '../assets/gallery/6.png';
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const translation = useTranslations(lang);
 
 const galleryImages = [
-  { src: img1, alt: t('gallery.img1.title'), description: t('gallery.img1.description') },
-  { src: img2, alt: t('gallery.img2.title'), description: t('gallery.img2.description') },
-  { src: img3, alt: t('gallery.img3.title'), description: t('gallery.img3.description') },
-  { src: img4, alt: t('gallery.img4.title'), description: t('gallery.img4.description') },
-  { src: img5, alt: t('gallery.img5.title'), description: t('gallery.img5.description') },
-  { src: img6, alt: t('gallery.img6.title'), description: t('gallery.img6.description') },
+  { src: img1, alt: translation('gallery.img1.title'), description: translation('gallery.img1.description') },
+  { src: img2, alt: translation('gallery.img2.title'), description: translation('gallery.img2.description') },
+  { src: img3, alt: translation('gallery.img3.title'), description: translation('gallery.img3.description') },
+  { src: img4, alt: translation('gallery.img4.title'), description: translation('gallery.img4.description') },
+  { src: img5, alt: translation('gallery.img5.title'), description: translation('gallery.img5.description') },
+  { src: img6, alt: translation('gallery.img6.title'), description: translation('gallery.img6.description') },
 ];
 ---
 
@@ -26,8 +26,8 @@ const galleryImages = [
   <div class="container mx-auto px-4">
     <!-- Header -->
     <div class="text-center mb-12">
-      <h1 class="text-4xl md:text-5xl font-heading font-bold mb-4">{t('gallery.pageTitle')}</h1>
-      <p class="text-xl text-gray-600 max-w-2xl mx-auto">{t('gallery.pageSubtitle')}</p>
+      <h1 class="text-4xl md:text-5xl font-heading font-bold mb-4">{translation('gallery.pageTitle')}</h1>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">{translation('gallery.pageSubtitle')}</p>
     </div>
 
     <!-- Gallery Grid -->
@@ -69,10 +69,10 @@ const galleryImages = [
     <!-- CTA Section -->
     <div class="mt-16 text-center">
       <div class="bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl p-8 md:p-12 text-white max-w-3xl mx-auto">
-        <h2 class="text-2xl md:text-3xl font-heading font-bold mb-4">{t('gallery.cta.title')}</h2>
-        <p class="text-lg mb-6 text-primary-100">{t('gallery.cta.subtitle')}</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold mb-4">{translation('gallery.cta.title')}</h2>
+        <p class="text-lg mb-6 text-primary-100">{translation('gallery.cta.subtitle')}</p>
         <a href={getLocalizedPath('/#contacto', lang)} class="inline-block bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-primary-50 transition-colors">
-          {t('gallery.cta.button')}
+          {translation('gallery.cta.button')}
         </a>
       </div>
     </div>
