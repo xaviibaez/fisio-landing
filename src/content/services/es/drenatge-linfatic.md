@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: 'Drenaje Linfático'
 shortDescription: 'Técnica que estimula el flujo linfático para tratar la retención de líquidos, inflamación y celulitis.'
 description: 'El drenaje linfático es una técnica terapéutica suave que estimula el sistema linfático para eliminar toxinas y líquidos retenidos. El sistema linfático es una red de vasos, ganglios y órganos que transportan y filtran la linfa, un líquido que contiene glóbulos blancos y desechos celulares. Este tratamiento mejora la circulación, reduce la inflamación y fortalece el sistema inmunológico.'

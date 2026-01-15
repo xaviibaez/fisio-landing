@@ -1,4 +1,5 @@
 ---
+lang: "ca"
 title: 'Kinesiotape, Punció Seca i Ventoses'
 shortDescription: 'Tècniques complementàries per reduir el dolor, millorar la funció muscular i accelerar la recuperació.'
 description: 'Conjunt de tècniques terapèutiques avançades que utilitzem per reduir el dolor, millorar la funció muscular i articular, facilitar la recuperació neuromuscular i tractar cicatrius. Aquestes eines complementen el tractament de fisioteràpia convencional per optimitzar els resultats.'

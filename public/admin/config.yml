@@ -13,13 +13,42 @@ public_folder: /images/uploads
 
 # Collections
 collections:
-  # Blog Posts Collection
-  - name: "blog"
-    label: "Blog Posts"
-    folder: "src/content/blog"
+  # Blog Posts - Catalan
+  - name: "blog_ca"
+    label: "Blog (Català)"
+    folder: "src/content/blog/ca"
     create: true
     slug: "{{slug}}"
     fields:
+      - { label: "Lang", name: "lang", widget: "hidden", default: "ca" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Author", name: "author", widget: "string", default: "Axis Cambrils" }
+      - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { 
+          label: "Category", 
+          name: "category", 
+          widget: "select", 
+          options: 
+            - { label: "Esportiva", value: "deportiva" }
+            - { label: "Traumatològica", value: "traumatologica" }
+            - { label: "Neurològica", value: "neurologica" }
+            - { label: "Pediàtrica", value: "pediatrica" }
+            - { label: "Respiratòria", value: "respiratoria" }
+            - { label: "Geriàtrica", value: "geriatrica" }
+        }
+      - { label: "Tags", name: "tags", widget: "list", allow_add: true, default: [] }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # Blog Posts - Spanish
+  - name: "blog_es"
+    label: "Blog (Español)"
+    folder: "src/content/blog/es"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Lang", name: "lang", widget: "hidden", default: "es" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Author", name: "author", widget: "string", default: "Axis Cambrils" }
@@ -40,6 +69,34 @@ collections:
       - { label: "Featured Image", name: "image", widget: "image", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
 
+  # Blog Posts - English
+  - name: "blog_en"
+    label: "Blog (English)"
+    folder: "src/content/blog/en"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Lang", name: "lang", widget: "hidden", default: "en" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Author", name: "author", widget: "string", default: "Axis Cambrils" }
+      - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { 
+          label: "Category", 
+          name: "category", 
+          widget: "select", 
+          options: 
+            - { label: "Sports", value: "deportiva" }
+            - { label: "Traumatology", value: "traumatologica" }
+            - { label: "Neurology", value: "neurologica" }
+            - { label: "Pediatric", value: "pediatrica" }
+            - { label: "Respiratory", value: "respiratoria" }
+            - { label: "Geriatric", value: "geriatrica" }
+        }
+      - { label: "Tags", name: "tags", widget: "list", allow_add: true, default: [] }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
   # Services Collection - Catalan
   - name: "services_ca"
     label: "Services (Català)"
@@ -47,6 +104,7 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
+      - { label: "Lang", name: "lang", widget: "hidden", default: "ca" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Short Description", name: "shortDescription", widget: "text" }
       - { label: "Description", name: "description", widget: "text" }
@@ -96,6 +154,7 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
+      - { label: "Lang", name: "lang", widget: "hidden", default: "es" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Short Description", name: "shortDescription", widget: "text" }
       - { label: "Description", name: "description", widget: "text" }
@@ -145,6 +204,7 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
+      - { label: "Lang", name: "lang", widget: "hidden", default: "en" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Short Description", name: "shortDescription", widget: "text" }
       - { label: "Description", name: "description", widget: "text" }
