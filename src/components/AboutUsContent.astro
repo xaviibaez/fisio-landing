@@ -12,6 +12,10 @@ import usImg3 from '../assets/us/3.png';
 const lang = getLangFromUrl(Astro.url);
 const translation = useTranslations(lang);
 
+// Helper function for type-safe dynamic translation keys
+const getTeamTranslation = (member: string, key: string): string => 
+  translation(`team.${member}.${key}` as const as Parameters<typeof translation>[0]);
+
 // Configuración del equipo con las imágenes
 const teamConfig = [
   {
@@ -53,14 +57,14 @@ const teamConfig = [
             <div class="aspect-square overflow-hidden rounded-t-2xl">
               <Image 
                 src={member.image} 
-                alt={translation(`team.${member.id}.name`)}
+                alt={translation(`team.${member.id}.name` as any)}
                 class="w-full h-full object-cover"
                 loading="lazy"
               />
             </div>
             <div class="p-6">
-              <h2 class="text-xl font-heading font-bold text-primary-700">{translation(`team.${member.id}.name`)}</h2>
-              <p class="text-gray-600 mb-4">{translation(`team.${member.id}.role`)} · Col. {translation(`team.${member.id}.col`)}</p>
+              <h2 class="text-xl font-heading font-bold text-primary-700">{translation(`team.${member.id}.name` as any)}</h2>
+              <p class="text-gray-600 mb-4">{translation(`team.${member.id}.role` as any)} · Col. {translation(`team.${member.id}.col` as any)}</p>
               
               <div class="space-y-4 text-sm">
                 <div>
@@ -69,7 +73,7 @@ const teamConfig = [
                     {Array.from({ length: member.educationCount }, (_, i) => i + 1).map((num) => (
                       <li class="flex items-start gap-2">
                         <span class="text-primary-500 mt-1">•</span>
-                        <span>{translation(`team.${member.id}.education.${num}`)}</span>
+                        <span>{translation(`team.${member.id}.education.${num}` as any)}</span>
                       </li>
                     ))}
                   </ul>
@@ -82,7 +86,7 @@ const teamConfig = [
                       {Array.from({ length: member.coursesCount }, (_, i) => i + 1).map((num) => (
                         <li class="flex items-start gap-2">
                           <span class="text-primary-500 mt-1">•</span>
-                          <span>{translation(`team.${member.id}.courses.${num}`)}</span>
+                          <span>{translation(`team.${member.id}.courses.${num}` as any)}</span>
                         </li>
                       ))}
                     </ul>
