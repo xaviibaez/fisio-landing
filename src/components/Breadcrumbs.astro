@@ -1,0 +1,42 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { generateBreadcrumbSchema } from '../utils/seo';
+import { siteConfig } from '../config';
+
+interface Props {
+  items: Array<{ name: string; url: string }>;
+}
+
+const { items } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Always include home
+const breadcrumbItems = [
+  { name: lang === 'ca' ? 'Inici' : lang === 'es' ? 'Inicio' : 'Home', url: siteConfig.url },
+  ...items,
+];
+
+const schema = generateBreadcrumbSchema(breadcrumbItems);
+---
+
+<nav aria-label="Breadcrumb" class="mb-6">
+  <ol class="flex items-center space-x-2 text-sm text-gray-600">
+    {breadcrumbItems.map((item, index) => (
+      <li class="flex items-center">
+        {index > 0 && (
+          <svg class="w-4 h-4 mx-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+          </svg>
+        )}
+        {index === breadcrumbItems.length - 1 ? (
+          <span class="text-gray-900 font-medium" aria-current="page">{item.name}</span>
+        ) : (
+          <a href={item.url} class="hover:text-primary-600 transition-colors">{item.name}</a>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

@@ -3,7 +3,10 @@ import type { CollectionEntry } from 'astro:content';
 import Layout from './Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+import { generateArticleSchema } from '../utils/seo';
+import { siteConfig } from '../config';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -13,13 +16,46 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const postUrl = `${siteConfig.url}/blog/${post.slug}`;
+const postImage = post.data.image ? `${siteConfig.url}${post.data.image}` : `${siteConfig.url}/og-image.jpg`;
+const datePublished = post.data.date.toISOString();
+const dateModified = post.data.date.toISOString(); // Update this if you track modified dates
+
+const articleSchema = generateArticleSchema(
+  post.data.title,
+  post.data.description,
+  post.data.author,
+  datePublished,
+  dateModified,
+  post.data.image
+);
+
+const breadcrumbItems = [
+  { 
+    name: lang === 'ca' ? 'Blog' : lang === 'es' ? 'Blog' : 'Blog', 
+    url: getLocalizedPath('/blog', lang) 
+  },
+  { name: post.data.title, url: postUrl },
+];
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
+<Layout 
+  title={post.data.title} 
+  description={post.data.description}
+  image={post.data.image || '/og-image.jpg'}
+  keywords={post.data.tags?.join(', ')}
+  author={post.data.author}
+  type="article"
+  schema={articleSchema}
+>
   <Header />
   
   <main class="pt-24 pb-20">
     <div class="container mx-auto px-4">
+      <!-- Breadcrumbs -->
+      <Breadcrumbs items={breadcrumbItems} />
+      
       <!-- Header -->
       <div class="text-center mb-12">
         <div class="mb-4">

@@ -2,16 +2,36 @@
 import { siteConfig } from '../config';
 import { getLangFromUrl } from '../i18n/utils';
 import CookieBanner from '../components/CookieBanner.astro';
+import { getAlternateLanguages, generateLocalBusinessSchema } from '../utils/seo';
 
 interface Props {
   title: string;
   description?: string;
   image?: string;
+  keywords?: string;
+  author?: string;
+  type?: 'website' | 'article' | 'service';
+  noindex?: boolean;
+  schema?: object;
 }
 
-const { title, description = siteConfig.description, image = '/og-image.jpg' } = Astro.props;
+const { 
+  title, 
+  description = siteConfig.description, 
+  image = '/og-image.jpg',
+  keywords,
+  author = siteConfig.name,
+  type = 'website',
+  noindex = false,
+  schema
+} = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || siteConfig.url);
+const ogImage = new URL(image, Astro.site || siteConfig.url);
+const alternateLanguages = getAlternateLanguages(Astro.url.pathname, lang);
+
+// Generate default schema if not provided
+const pageSchema = schema || generateLocalBusinessSchema();
 ---
 
 <!DOCTYPE html>
@@ -20,28 +40,51 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || siteConfig.url);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <meta name="author" content={author} />
     <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
+    <meta name="googlebot" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
     
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
     
+    <!-- Alternate Languages (hreflang) -->
+    {alternateLanguages.map((alt) => (
+      <link rel="alternate" hreflang={alt.lang} href={alt.url} />
+    ))}
+    
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.site || siteConfig.url)} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:site_name" content={siteConfig.name} />
     <meta property="og:locale" content={lang === 'ca' ? 'ca_ES' : lang === 'es' ? 'es_ES' : 'en_GB'} />
+    {alternateLanguages.filter(alt => alt.lang !== 'x-default').map((alt) => (
+      <meta property="og:locale:alternate" content={alt.lang} />
+    ))}
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonicalURL} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(image, Astro.site || siteConfig.url)} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={title} />
+    <meta name="twitter:creator" content="@axiscambrils" />
+    <meta name="twitter:site" content="@axiscambrils" />
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
