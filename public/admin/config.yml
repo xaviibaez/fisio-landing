@@ -30,18 +30,16 @@ collections:
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Author", name: "author", widget: "string", default: "Axis Cambrils" }
       - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
-      - { 
-          label: "Category", 
-          name: "category", 
-          widget: "select", 
-          options: 
-            - { label: "Esportiva", value: "deportiva" }
-            - { label: "Traumatològica", value: "traumatologica" }
-            - { label: "Neurològica", value: "neurologica" }
-            - { label: "Pediàtrica", value: "pediatrica" }
-            - { label: "Respiratòria", value: "respiratoria" }
-            - { label: "Geriàtrica", value: "geriatrica" }
-        }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Esportiva", value: "deportiva" }
+          - { label: "Traumatològica", value: "traumatologica" }
+          - { label: "Neurològica", value: "neurologica" }
+          - { label: "Pediàtrica", value: "pediatrica" }
+          - { label: "Respiratòria", value: "respiratoria" }
+          - { label: "Geriàtrica", value: "geriatrica" }
       - { label: "Tags", name: "tags", widget: "list", allow_add: true, default: [] }
       - { label: "Featured Image", name: "image", widget: "image", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
@@ -58,18 +56,16 @@ collections:
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Author", name: "author", widget: "string", default: "Axis Cambrils" }
       - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
-      - { 
-          label: "Category", 
-          name: "category", 
-          widget: "select", 
-          options: 
-            - { label: "Deportiva", value: "deportiva" }
-            - { label: "Traumatológica", value: "traumatologica" }
-            - { label: "Neurológica", value: "neurologica" }
-            - { label: "Pediátrica", value: "pediatrica" }
-            - { label: "Respiratoria", value: "respiratoria" }
-            - { label: "Geriátrica", value: "geriatrica" }
-        }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Deportiva", value: "deportiva" }
+          - { label: "Traumatológica", value: "traumatologica" }
+          - { label: "Neurológica", value: "neurologica" }
+          - { label: "Pediátrica", value: "pediatrica" }
+          - { label: "Respiratoria", value: "respiratoria" }
+          - { label: "Geriátrica", value: "geriatrica" }
       - { label: "Tags", name: "tags", widget: "list", allow_add: true, default: [] }
       - { label: "Featured Image", name: "image", widget: "image", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
@@ -86,18 +82,16 @@ collections:
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Author", name: "author", widget: "string", default: "Axis Cambrils" }
       - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
-      - { 
-          label: "Category", 
-          name: "category", 
-          widget: "select", 
-          options: 
-            - { label: "Sports", value: "deportiva" }
-            - { label: "Traumatology", value: "traumatologica" }
-            - { label: "Neurology", value: "neurologica" }
-            - { label: "Pediatric", value: "pediatrica" }
-            - { label: "Respiratory", value: "respiratoria" }
-            - { label: "Geriatric", value: "geriatrica" }
-        }
+      - label: "Category" 
+        name: "category" 
+        widget: "select" 
+        options: 
+          - { label: "Sports", value: "deportiva" }
+          - { label: "Traumatology", value: "traumatologica" }
+          - { label: "Neurology", value: "neurologica" }
+          - { label: "Pediatric", value: "pediatrica" }
+          - { label: "Respiratory", value: "respiratoria" }
+          - { label: "Geriatric", value: "geriatrica" }
       - { label: "Tags", name: "tags", widget: "list", allow_add: true, default: [] }
       - { label: "Featured Image", name: "image", widget: "image", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
@@ -120,29 +114,27 @@ collections:
           name: "benefits", 
           widget: "list"
         }
-      - { 
-          label: "Process Steps", 
-          name: "process", 
-          widget: "list", 
-          allow_add: true,
-          required: false,
-          fields:
-            - { label: "Step", name: "step", widget: "string" }
-            - { label: "Description", name: "description", widget: "text" }
-        }
+      - label: "Process Steps"
+        name: "process"
+        widget: "list" 
+        allow_add: true,
+        required: false,
+        fields:
+          - { label: "Step", name: "step", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+        
       - { label: "Duration", name: "duration", widget: "string", required: false, hint: "e.g., 60 minuts" }
       - { label: "Price", name: "price", widget: "string", required: false, hint: "e.g., 50€" }
       - { label: "Order", name: "order", widget: "number", default: 0, hint: "Display order (lower numbers first)" }
-      - { 
-          label: "FAQs", 
-          name: "faqs", 
-          widget: "list", 
-          allow_add: true,
-          required: false,
-          fields:
-            - { label: "Question", name: "question", widget: "string" }
-            - { label: "Answer", name: "answer", widget: "markdown" }
-        }
+      - label: "FAQs", 
+        name: "faqs", 
+        widget: "list", 
+        allow_add: true,
+        required: false,
+        fields:
+          - { label: "Question", name: "question", widget: "string" }
+          - { label: "Answer", name: "answer", widget: "markdown" }
+        
       - { 
           label: "Gallery Images", 
           name: "gallery", 
@@ -170,29 +162,26 @@ collections:
           name: "benefits", 
           widget: "list"
         }
-      - { 
-          label: "Process Steps", 
-          name: "process", 
-          widget: "list", 
-          allow_add: true,
-          required: false,
-          fields:
-            - { label: "Step", name: "step", widget: "string" }
-            - { label: "Description", name: "description", widget: "text" }
-        }
+      - label: "Process Steps", 
+        name: "process", 
+        widget: "list", 
+        allow_add: true,
+        required: false,
+        fields:
+          - { label: "Step", name: "step", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
       - { label: "Duration", name: "duration", widget: "string", required: false, hint: "e.g., 60 minutos" }
       - { label: "Price", name: "price", widget: "string", required: false, hint: "e.g., 50€" }
       - { label: "Order", name: "order", widget: "number", default: 0, hint: "Display order (lower numbers first)" }
-      - { 
-          label: "FAQs", 
-          name: "faqs", 
-          widget: "list", 
-          allow_add: true,
-          required: false,
-          fields:
-            - { label: "Question", name: "question", widget: "string" }
-            - { label: "Answer", name: "answer", widget: "markdown" }
-        }
+      - label: "FAQs", 
+        name: "faqs", 
+        widget: "list", 
+        allow_add: true,
+        required: false,
+        fields:
+          - { label: "Question", name: "question", widget: "string" }
+          - { label: "Answer", name: "answer", widget: "markdown" }
+        
       - { 
           label: "Gallery Images", 
           name: "gallery", 
@@ -220,29 +209,27 @@ collections:
           name: "benefits", 
           widget: "list"
         }
-      - { 
-          label: "Process Steps", 
-          name: "process", 
-          widget: "list", 
-          allow_add: true,
-          required: false,
-          fields:
-            - { label: "Step", name: "step", widget: "string" }
-            - { label: "Description", name: "description", widget: "text" }
-        }
+      - label: "Process Steps", 
+        name: "process", 
+        widget: "list", 
+        allow_add: true,
+        required: false,
+        fields:
+          - { label: "Step", name: "step", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+        
       - { label: "Duration", name: "duration", widget: "string", required: false, hint: "e.g., 60 minutes" }
       - { label: "Price", name: "price", widget: "string", required: false, hint: "e.g., €50" }
       - { label: "Order", name: "order", widget: "number", default: 0, hint: "Display order (lower numbers first)" }
-      - { 
-          label: "FAQs", 
-          name: "faqs", 
-          widget: "list", 
-          allow_add: true,
-          required: false,
-          fields:
-            - { label: "Question", name: "question", widget: "string" }
-            - { label: "Answer", name: "answer", widget: "markdown" }
-        }
+      - label: "FAQs", 
+        name: "faqs", 
+        widget: "list", 
+        allow_add: true,
+        required: false,
+        fields:
+          - { label: "Question", name: "question", widget: "string" }
+          - { label: "Answer", name: "answer", widget: "markdown" }
+        
       - { 
           label: "Gallery Images", 
           name: "gallery", 
