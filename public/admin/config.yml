@@ -117,8 +117,8 @@ collections:
       - label: "Process Steps"
         name: "process"
         widget: "list" 
-        allow_add: true,
-        required: false,
+        allow_add: true
+        required: false
         fields:
           - { label: "Step", name: "step", widget: "string" }
           - { label: "Description", name: "description", widget: "text" }
@@ -126,11 +126,11 @@ collections:
       - { label: "Duration", name: "duration", widget: "string", required: false, hint: "e.g., 60 minuts" }
       - { label: "Price", name: "price", widget: "string", required: false, hint: "e.g., 50€" }
       - { label: "Order", name: "order", widget: "number", default: 0, hint: "Display order (lower numbers first)" }
-      - label: "FAQs", 
-        name: "faqs", 
-        widget: "list", 
-        allow_add: true,
-        required: false,
+      - label: "FAQs" 
+        name: "faqs" 
+        widget: "list" 
+        allow_add: true
+        required: false
         fields:
           - { label: "Question", name: "question", widget: "string" }
           - { label: "Answer", name: "answer", widget: "markdown" }
@@ -162,22 +162,22 @@ collections:
           name: "benefits", 
           widget: "list"
         }
-      - label: "Process Steps", 
-        name: "process", 
-        widget: "list", 
-        allow_add: true,
-        required: false,
+      - label: "Process Steps" 
+        name: "process"
+        widget: "list"
+        allow_add: true
+        required: false
         fields:
           - { label: "Step", name: "step", widget: "string" }
           - { label: "Description", name: "description", widget: "text" }
       - { label: "Duration", name: "duration", widget: "string", required: false, hint: "e.g., 60 minutos" }
       - { label: "Price", name: "price", widget: "string", required: false, hint: "e.g., 50€" }
       - { label: "Order", name: "order", widget: "number", default: 0, hint: "Display order (lower numbers first)" }
-      - label: "FAQs", 
-        name: "faqs", 
-        widget: "list", 
-        allow_add: true,
-        required: false,
+      - label: "FAQs"
+        name: "faqs"
+        widget: "list"
+        allow_add: true
+        required: false
         fields:
           - { label: "Question", name: "question", widget: "string" }
           - { label: "Answer", name: "answer", widget: "markdown" }
@@ -209,11 +209,11 @@ collections:
           name: "benefits", 
           widget: "list"
         }
-      - label: "Process Steps", 
-        name: "process", 
-        widget: "list", 
-        allow_add: true,
-        required: false,
+      - label: "Process Steps"
+        name: "process"
+        widget: "list" 
+        allow_add: true
+        required: false
         fields:
           - { label: "Step", name: "step", widget: "string" }
           - { label: "Description", name: "description", widget: "text" }
@@ -221,11 +221,11 @@ collections:
       - { label: "Duration", name: "duration", widget: "string", required: false, hint: "e.g., 60 minutes" }
       - { label: "Price", name: "price", widget: "string", required: false, hint: "e.g., €50" }
       - { label: "Order", name: "order", widget: "number", default: 0, hint: "Display order (lower numbers first)" }
-      - label: "FAQs", 
-        name: "faqs", 
-        widget: "list", 
-        allow_add: true,
-        required: false,
+      - label: "FAQs" 
+        name: "faqs"
+        widget: "list"
+        allow_add: true
+        required: false
         fields:
           - { label: "Question", name: "question", widget: "string" }
           - { label: "Answer", name: "answer", widget: "markdown" }
