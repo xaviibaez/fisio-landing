@@ -1,15 +1,20 @@
 backend:
   name: git-gateway
-  branch: main # Branch to update (optional; defaults to master)
-  # Uncomment below to enable drafts
-  # publish_mode: editorial_workflow
+  branch: main
 
-# Uncomment below to enable the Open Authoring feature (for public repos)
-# open_authoring: true
+# Optional: Editorial workflow for drafts
+# publish_mode: editorial_workflow
+
+# Site URL for previews
+site_url: https://axiscambrils.com
+display_url: https://axiscambrils.com
 
 # Media files will be stored in the repo under public/images/uploads
 media_folder: public/images/uploads
 public_folder: /images/uploads
+
+# Locale for CMS interface
+locale: ca
 
 # Collections
 collections:
