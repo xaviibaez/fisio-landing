@@ -1,6 +1,6 @@
 ---
 lang: ca
-title: Drenatge Limfàtic TEST ADDING DATA
+title: Drenatge Limfàtic TEST ADDING DATA VERSION 2
 shortDescription: Tècnica que estimula el flux limfàtic per tractar la retenció
   de líquids, inflamació i cel·lulitis. TEST ADDING DATA
 description: El drenatge limfàtic2 és una tècnica terapèutica suau que estimula
