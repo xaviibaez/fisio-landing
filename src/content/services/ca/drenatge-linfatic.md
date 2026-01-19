@@ -1,14 +1,14 @@
 ---
 lang: ca
-title: Drenatge Limfàtic
+title: Drenatge Limfàtic TEST ADDING DATA
 shortDescription: Tècnica que estimula el flux limfàtic per tractar la retenció
-  de líquids, inflamació i cel·lulitis.
+  de líquids, inflamació i cel·lulitis. TEST ADDING DATA
 description: El drenatge limfàtic2 és una tècnica terapèutica suau que estimula
   el sistema limfàtic per eliminar toxines i líquids retinguts. El sistema
   limfàtic és una xarxa de vasos, ganglis i òrgans que transporten i filtren la
   limfa, un líquid que conté glòbuls blancs i deixalles cel·lulars. Aquest
   tractament millora la circulació, redueix la inflamació i enforteix el sistema
-  immunològic.
+  immunològic TEST ADDING DATA.
 icon: droplet
 image: /images/DL.png
 benefits:
@@ -29,25 +29,26 @@ process:
     description: Moviments suaus, lents i rítmics seguint les vies limfàtiques
   - step: Finalització
     description: Recomanacions post-tractament i pautes dhidratació
+  - step: TEST ADDING STEP
+    description: TEST ADDING DATA
 duration: 60 minuts
 order: 1
 ---
-
 ## Com funciona el Drenatge Limfàtic?
 
-La terapeuta utilitza moviments suaus, lents i rítmics sobre la pell per estimular el flux de limfa i millorar la circulació. A diferència d'altres massatges, el drenatge limfàtic no utilitza pressions fortes, sinó tècniques específiques que segueixen el recorregut natural del sistema limfàtic.
+La terapeuta utilitza moviments suaus, lents i rítmics sobre la pell per estimular el flux de limfa i millorar la circulació. A diferència d'altres massatges, el drenatge limfàtic no utilitza pressions fortes, sinó tècniques específiques que segueixen el recorregut natural del sistema limfàtic. TEST ADDING DATA
 
 ## Per a qui està indicat?
 
 Aquest tractament és especialment beneficiós per a:
 
-- Persones amb retenció de líquids
-- Problemes circulatoris i cames pesades
-- Recuperació post-quirúrgica (lipo, mastectomia)
-- Reducció de cel·lulitis i greix localitzat
-- Embarassades (amb autorització mèdica)
-- Sistema immunològic debilitat
-- Edemes i limfedemes
+* Persones amb retenció de líquids
+* Problemes circulatoris i cames pesades
+* Recuperació post-quirúrgica (lipo, mastectomia)
+* Reducció de cel·lulitis i greix localitzat
+* Embarassades (amb autorització mèdica)
+* Sistema immunològic debilitat
+* Edemes i limfedemes
 
 ## Funcions del Sistema Limfàtic
 
