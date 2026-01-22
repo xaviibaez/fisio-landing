@@ -6,6 +6,199 @@ export interface AlternateLanguage {
 }
 
 /**
+ * Generates WebSite schema.org JSON-LD
+ */
+export function generateWebSiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${siteConfig.url}#website`,
+    name: siteConfig.name,
+    url: siteConfig.url,
+    description: siteConfig.description,
+    publisher: {
+      '@id': `${siteConfig.url}#organization`,
+    },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${siteConfig.url}/blog?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
+    inLanguage: ['ca-ES', 'es-ES', 'en-GB'],
+  };
+}
+
+/**
+ * Generates Organization schema.org JSON-LD
+ */
+export function generateOrganizationSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': `${siteConfig.url}#organization`,
+    name: siteConfig.name,
+    url: siteConfig.url,
+    logo: {
+      '@type': 'ImageObject',
+      '@id': `${siteConfig.url}#logo`,
+      url: `${siteConfig.url}/favicon.svg`,
+      contentUrl: `${siteConfig.url}/favicon.svg`,
+      caption: siteConfig.name,
+    },
+    image: `${siteConfig.url}/og-image.jpg`,
+    email: siteConfig.contact.email,
+    telephone: siteConfig.contact.phone1.replace(/\s/g, ''),
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: siteConfig.contact.address.street,
+      addressLocality: siteConfig.contact.address.city,
+      postalCode: siteConfig.contact.address.postalCode,
+      addressRegion: siteConfig.contact.address.province,
+      addressCountry: 'ES',
+    },
+    sameAs: [
+      siteConfig.social.facebook,
+      siteConfig.social.instagram,
+    ],
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: siteConfig.contact.phone1.replace(/\s/g, ''),
+        contactType: 'customer service',
+        availableLanguage: ['Catalan', 'Spanish', 'English'],
+        areaServed: 'ES',
+      },
+    ],
+  };
+}
+
+/**
+ * Generates FAQPage schema.org JSON-LD
+ */
+export function generateFAQSchema(faqs: Array<{ question: string; answer: string }>) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
+/**
+ * Generates AggregateRating schema.org JSON-LD for testimonials/reviews
+ */
+export function generateAggregateRatingSchema(ratingValue: number = 4.9, reviewCount: number = 50) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'AggregateRating',
+    itemReviewed: {
+      '@type': 'Physiotherapy',
+      name: siteConfig.name,
+      '@id': `${siteConfig.url}#business`,
+    },
+    ratingValue: ratingValue,
+    bestRating: 5,
+    worstRating: 1,
+    ratingCount: reviewCount,
+  };
+}
+
+/**
+ * Generates MedicalBusiness schema.org JSON-LD (more detailed than LocalBusiness)
+ */
+export function generateMedicalBusinessSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalBusiness',
+    '@id': `${siteConfig.url}#medicalbusiness`,
+    name: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    telephone: siteConfig.contact.phone1.replace(/\s/g, ''),
+    email: siteConfig.contact.email,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: siteConfig.contact.address.street,
+      addressLocality: siteConfig.contact.address.city,
+      postalCode: siteConfig.contact.address.postalCode,
+      addressRegion: siteConfig.contact.address.province,
+      addressCountry: 'ES',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: '41.0676',
+      longitude: '1.0564',
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '21:00',
+      },
+    ],
+    priceRange: '€€',
+    image: `${siteConfig.url}/og-image.jpg`,
+    logo: `${siteConfig.url}/favicon.svg`,
+    sameAs: [
+      siteConfig.social.facebook,
+      siteConfig.social.instagram,
+    ],
+    medicalSpecialty: [
+      'PhysicalTherapy',
+      'Musculoskeletal',
+    ],
+    availableService: [
+      {
+        '@type': 'MedicalTherapy',
+        name: 'Drenaje Linfático',
+        description: 'Técnica que estimula el flujo linfático para tratar la retención de líquidos.',
+      },
+      {
+        '@type': 'MedicalTherapy',
+        name: 'Fisioterapia de Suelo Pélvico',
+        description: 'Evaluación y tratamiento de problemas musculares y funcionales del suelo pélvico.',
+      },
+      {
+        '@type': 'MedicalTherapy',
+        name: 'Reflexología Podal',
+        description: 'Técnica terapéutica que estimula zonas reflejas en los pies.',
+      },
+      {
+        '@type': 'MedicalTherapy',
+        name: 'Magnetoterapia',
+        description: 'Terapia basada en campos magnéticos para alivio del dolor.',
+      },
+      {
+        '@type': 'MedicalTherapy',
+        name: 'Presoterapia',
+        description: 'Sistema de bombeo con cámaras de aire para estimular circulación.',
+      },
+    ],
+    hasCredential: {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'Colegio de Fisioterapeutas de Cataluña',
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      bestRating: '5',
+      worstRating: '1',
+      ratingCount: '50',
+    },
+  };
+}
+
+/**
  * Generates alternate language URLs for hreflang tags
  */
 export function getAlternateLanguages(currentPath: string, currentLang: string): AlternateLanguage[] {

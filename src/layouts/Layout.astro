@@ -2,7 +2,13 @@
 import { siteConfig } from '../config';
 import { getLangFromUrl } from '../i18n/utils';
 import CookieBanner from '../components/CookieBanner.astro';
-import { getAlternateLanguages, generateLocalBusinessSchema } from '../utils/seo';
+import { 
+  getAlternateLanguages, 
+  generateLocalBusinessSchema, 
+  generateWebSiteSchema, 
+  generateOrganizationSchema,
+  generateMedicalBusinessSchema 
+} from '../utils/seo';
 
 interface Props {
   title: string;
@@ -30,8 +36,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || siteConfig.url);
 const ogImage = new URL(image, Astro.site || siteConfig.url);
 const alternateLanguages = getAlternateLanguages(Astro.url.pathname, lang);
 
-// Generate default schema if not provided
+// Check if this is the homepage
+const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '/es' || Astro.url.pathname === '/es/' || Astro.url.pathname === '/en' || Astro.url.pathname === '/en/';
+
+// Generate schemas - use multiple schemas for homepage
 const pageSchema = schema || generateLocalBusinessSchema();
+const websiteSchema = generateWebSiteSchema();
+const organizationSchema = generateOrganizationSchema();
+const medicalBusinessSchema = isHomePage ? generateMedicalBusinessSchema() : null;
 ---
 
 <!DOCTYPE html>
@@ -46,6 +58,22 @@ const pageSchema = schema || generateLocalBusinessSchema();
     <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
     <meta name="googlebot" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
     
+    <!-- Theme & Mobile App -->
+    <meta name="theme-color" content="#0891b2" />
+    <meta name="msapplication-TileColor" content="#0891b2" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Axis Cambrils" />
+    <meta name="application-name" content="Axis Cambrils" />
+    <meta name="format-detection" content="telephone=yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    
+    <!-- Geo & Business Info -->
+    <meta name="geo.region" content="ES-CT" />
+    <meta name="geo.placename" content="Cambrils, Tarragona" />
+    <meta name="geo.position" content="41.0676;1.0564" />
+    <meta name="ICBM" content="41.0676, 1.0564" />
+    
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
     
@@ -55,7 +83,7 @@ const pageSchema = schema || generateLocalBusinessSchema();
     ))}
     
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content={type} />
+    <meta property="og:type" content={type === 'service' ? 'website' : type} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -66,7 +94,7 @@ const pageSchema = schema || generateLocalBusinessSchema();
     <meta property="og:site_name" content={siteConfig.name} />
     <meta property="og:locale" content={lang === 'ca' ? 'ca_ES' : lang === 'es' ? 'es_ES' : 'en_GB'} />
     {alternateLanguages.filter(alt => alt.lang !== 'x-default').map((alt) => (
-      <meta property="og:locale:alternate" content={alt.lang} />
+      <meta property="og:locale:alternate" content={alt.lang.replace('-', '_')} />
     ))}
     
     <!-- Twitter -->
@@ -79,21 +107,41 @@ const pageSchema = schema || generateLocalBusinessSchema();
     <meta name="twitter:creator" content="@axiscambrils" />
     <meta name="twitter:site" content="@axiscambrils" />
     
-    <!-- Favicon -->
+    <!-- Favicon & Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-192x192.png" />
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- DNS Prefetch & Preconnect for Performance -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://maps.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" />
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
     
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    {medicalBusinessSchema && (
+      <script type="application/ld+json" set:html={JSON.stringify(medicalBusinessSchema)} />
+    )}
     
     <title>{title}</title>
   </head>
   <body class="font-sans antialiased bg-white text-gray-900">
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-primary-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400">
+      {lang === 'ca' ? 'Saltar al contingut principal' : lang === 'es' ? 'Saltar al contenido principal' : 'Skip to main content'}
+    </a>
     <slot />
     <CookieBanner />
   </body>

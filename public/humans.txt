@@ -1,0 +1,15 @@
+/* TEAM */
+Centro: Axis Cambrils
+Ubicación: Cambrils, Tarragona, España
+Web: https://www.axiscambrils.com
+
+/* DEVELOPMENT */
+Developer: xaviibaez
+GitHub: https://github.com/xaviibaez
+Tech: Astro, TailwindCSS, TypeScript
+
+/* SITE */
+Last update: 2026/01/22
+Language: Catalan, Spanish, English
+Standards: HTML5, CSS3, JavaScript ES6+
+Software: Astro 4.x, TailwindCSS 3.x

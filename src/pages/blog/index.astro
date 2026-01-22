@@ -12,10 +12,14 @@ const allPosts = await getCollection('blog');
 const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<Layout title={`${t('blog.title')} - Axis Cambrils`} description={t('blog.subtitle')}>
+<Layout 
+  title={lang === 'ca' ? 'Blog de Fisioteràpia i Salut | Axis Cambrils' : lang === 'es' ? 'Blog de Fisioterapia y Salud | Axis Cambrils' : 'Physiotherapy & Health Blog | Axis Cambrils'} 
+  description={t('blog.mainSubtitle')}
+  keywords={lang === 'ca' ? 'blog fisioteràpia, consells salut, exercicis rehabilitació, prevenció lesions, salut física, benestar' : lang === 'es' ? 'blog fisioterapia, consejos salud, ejercicios rehabilitación, prevención lesiones, salud física, bienestar' : 'physiotherapy blog, health tips, rehabilitation exercises, injury prevention, physical health, wellness'}
+>
   <Header />
   
-  <main class="pt-24 pb-20">
+  <main id="main-content" class="pt-24 pb-20">
     <div class="container mx-auto px-4">
       <!-- Header -->
       <div class="text-center mb-12">

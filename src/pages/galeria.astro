@@ -10,7 +10,11 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<Layout title={`${t('gallery.pageTitle')} | Axis Cambrils`} description={t('gallery.pageSubtitle')}>
+<Layout 
+  title={`${t('gallery.pageTitle')} | Axis Cambrils - ${lang === 'ca' ? 'Instal·lacions Modernes' : lang === 'es' ? 'Instalaciones Modernas' : 'Modern Facilities'}`} 
+  description={t('gallery.pageSubtitle')}
+  keywords={lang === 'ca' ? 'galeria fisioteràpia, instal·lacions Axis Cambrils, centre fisioteràpia Cambrils, equipament modern' : lang === 'es' ? 'galería fisioterapia, instalaciones Axis Cambrils, centro fisioterapia Cambrils, equipamiento moderno' : 'physiotherapy gallery, Axis Cambrils facilities, physiotherapy center Cambrils, modern equipment'}
+>
   <Header />
   <GalleryContent />
   <Footer />

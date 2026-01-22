@@ -42,10 +42,14 @@ const services = allServices
   });
 ---
 
-<Layout title={`Axis Cambrils - ${t('hero.subtitle')}`}>
+<Layout 
+  title={lang === 'ca' ? 'Axis Cambrils | Centre de Fisioteràpia a Cambrils' : lang === 'es' ? 'Axis Cambrils | Centro de Fisioterapia en Cambrils' : 'Axis Cambrils | Physiotherapy Center in Cambrils'}
+  description={lang === 'ca' ? 'Centre de fisioteràpia especialitzat a Cambrils. Tractaments personalitzats: drenatge limfàtic, sòl pèlvic, reflexologia, magnetoteràpia i més. Reserva la teva cita!' : lang === 'es' ? 'Centro de fisioterapia especializado en Cambrils. Tratamientos personalizados: drenaje linfático, suelo pélvico, reflexología, magnetoterapia y más. ¡Reserva tu cita!' : 'Specialized physiotherapy center in Cambrils. Personalized treatments: lymphatic drainage, pelvic floor, reflexology, magnetotherapy and more. Book your appointment!'}
+  keywords={lang === 'ca' ? 'fisioteràpia Cambrils, fisioterapeuta, drenatge limfàtic, sòl pèlvic, reflexologia podal, magnetoteràpia, pressoteràpia, rehabilitació, tractament dolor' : lang === 'es' ? 'fisioterapia Cambrils, fisioterapeuta, drenaje linfático, suelo pélvico, reflexología podal, magnetoterapia, presoterapia, rehabilitación, tratamiento dolor' : 'physiotherapy Cambrils, physiotherapist, lymphatic drainage, pelvic floor, foot reflexology, magnetotherapy, pressotherapy, rehabilitation, pain treatment'}
+>
   <Header />
   
-  <main>
+  <main id="main-content">
     <!-- Hero Section -->
     <section class="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white py-20 md:py-32 overflow-hidden">
       <!-- Animated waves background -->

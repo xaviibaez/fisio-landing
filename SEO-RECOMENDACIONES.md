@@ -1,384 +1,293 @@
-# Recomendaciones SEO - Fuera del Código
+# Recomendaciones SEO Externas - Axis Cambrils
 
-Este documento contiene todas las acciones que debes realizar **fuera del código** para mejorar el SEO de tu sitio web.
-
-## 📋 Checklist de Implementación
-
-### 1. Google Search Console
-
-**Acción:** Configurar y verificar tu sitio en Google Search Console
-
-**Pasos:**
-1. Ve a [Google Search Console](https://search.google.com/search-console)
-2. Añade tu propiedad: `https://www.axiscambrils.com`
-3. Verifica la propiedad usando uno de estos métodos:
-   - Archivo HTML (sube a `/public/`)
-   - Meta tag (añade al `<head>`)
-   - DNS (si tienes acceso)
-4. Envía el sitemap: `https://www.axiscambrils.com/sitemap.xml`
-
-**Beneficios:**
-- Ver cómo Google indexa tu sitio
-- Detectar errores de rastreo
-- Ver qué palabras clave te traen tráfico
-- Monitorear el rendimiento en búsquedas
+Este documento contiene todas las acciones que debes realizar **fuera del código** para completar la optimización SEO del sitio web.
 
 ---
 
-### 2. Google My Business / Google Business Profile
+## 1. Google Search Console
 
-**Acción:** Crear y optimizar tu perfil de Google Business
+### Verificación del sitio
+1. Accede a [Google Search Console](https://search.google.com/search-console)
+2. Añade la propiedad: `https://www.axiscambrils.com`
+3. Verifica mediante:
+   - Registro DNS (recomendado)
+   - Archivo HTML en la raíz
+   - Meta tag (ya puedes usar el existente en el código)
 
-**Pasos:**
-1. Ve a [Google Business Profile](https://www.google.com/business/)
-2. Crea o reclama tu negocio
-3. Completa TODOS los campos:
-   - Nombre: "Axis Cambrils"
-   - Categoría: "Fisioterapeuta" / "Centro de fisioterapia"
-   - Dirección completa: Carrer de Sant Josep, 15, 43850 Cambrils, Tarragona
+### Después de verificar
+1. **Envía el sitemap**: `https://www.axiscambrils.com/sitemap-index.xml`
+2. **Solicita indexación** de las páginas principales
+3. **Revisa** el informe de cobertura semanalmente
+4. **Monitoriza** las consultas de búsqueda y posiciones
+
+---
+
+## 2. Google Business Profile (Google My Business)
+
+### Crear/Verificar el perfil
+1. Accede a [Google Business Profile](https://business.google.com)
+2. Busca "Axis Cambrils" o créalo si no existe
+3. **Datos a incluir:**
+   - Nombre: `Axis Cambrils - Centre de Fisioteràpia`
+   - Categoría principal: `Fisioterapeuta`
+   - Categorías secundarias: `Centro de rehabilitación`, `Clínica de salud`
+   - Dirección: Carrer de Sant Josep, 15, 43850 Cambrils, Tarragona
    - Teléfono: +34 977 79 54 33
-   - Horario de atención
-   - Fotos del centro (mínimo 10-15)
-   - Descripción detallada de servicios
-   - Enlace al sitio web
+   - Sitio web: https://www.axiscambrils.com
+   - Horario: Lunes a Viernes 9:00 - 21:00
 
-**Beneficios:**
-- Aparecer en búsquedas locales ("fisioterapia Cambrils")
-- Mostrar en Google Maps
-- Recibir reseñas de clientes
-- Aumentar visibilidad local
+### Optimización del perfil
+1. **Sube fotos de calidad**:
+   - Fachada exterior (para reconocimiento)
+   - Interior del centro
+   - Equipo profesional
+   - Equipamiento
 
----
+2. **Responde a todas las reseñas** (positivas y negativas)
 
-### 3. Bing Webmaster Tools
+3. **Publica actualizaciones** semanalmente:
+   - Nuevos servicios
+   - Consejos de salud
+   - Ofertas especiales
+   - Posts del blog
 
-**Acción:** Configurar tu sitio en Bing (similar a Google Search Console)
-
-**Pasos:**
-1. Ve a [Bing Webmaster Tools](https://www.bing.com/webmasters)
-2. Añade tu sitio
-3. Verifica la propiedad
-4. Envía el sitemap
-
-**Beneficios:**
-- Aumentar visibilidad en Bing (segundo motor de búsqueda más usado)
-- Detectar problemas de indexación
+4. **Activa la mensajería** para consultas directas
 
 ---
 
-### 4. Optimización de Imágenes
+## 3. Imágenes y Archivos Necesarios
 
-**Acción:** Crear y optimizar imágenes para SEO
+### Crear og-image.jpg
+Crea una imagen OG de **1200x630 píxeles** con:
+- Logo de Axis Cambrils
+- Texto: "Centre de Fisioteràpia a Cambrils"
+- Colores corporativos (primary-600: #0891b2)
+- Ubicarla en: `/public/og-image.jpg`
 
-**Imágenes necesarias:**
-1. **Imagen OG (Open Graph):** `/public/og-image.jpg`
-   - Tamaño: 1200x630px
-   - Formato: JPG o PNG
-   - Debe incluir: Logo, nombre del negocio, tagline
-   - Peso: < 200KB
+### Crear iconos PWA
+Genera los iconos en las siguientes resoluciones y colócalos en `/public/icons/`:
+- `icon-72x72.png`
+- `icon-96x96.png`
+- `icon-128x128.png`
+- `icon-144x144.png`
+- `icon-152x152.png`
+- `icon-192x192.png`
+- `icon-384x384.png`
+- `icon-512x512.png`
 
-2. **Favicon mejorado:**
-   - Crear favicon.ico (16x16, 32x32, 48x48)
-   - Crear apple-touch-icon.png (180x180)
-   - Añadir a `/public/`
+**Herramienta recomendada**: [RealFaviconGenerator](https://realfavicongenerator.net/)
 
-3. **Imágenes de servicios:**
-   - Optimizar todas las imágenes en `/src/assets/services/`
-   - Usar herramientas como [TinyPNG](https://tinypng.com/) o [Squoosh](https://squoosh.app/)
-   - Añadir texto alternativo descriptivo en el código
-
-**Herramientas recomendadas:**
-- [TinyPNG](https://tinypng.com/) - Comprimir imágenes
-- [Squoosh](https://squoosh.app/) - Optimización avanzada
-- [Canva](https://www.canva.com/) - Crear imágenes OG
-
----
-
-### 5. Contenido y Keywords
-
-**Acción:** Investigar y usar palabras clave relevantes
-
-**Palabras clave principales:**
-- fisioterapia Cambrils
-- fisioterapeuta Cambrils
-- centro fisioterapia Tarragona
-- rehabilitación Cambrils
-- drenaje linfático Cambrils
-- fisioterapia deportiva Cambrils
-
-**Herramientas:**
-- [Google Keyword Planner](https://ads.google.com/home/tools/keyword-planner/)
-- [Ubersuggest](https://neilpatel.com/es/ubersuggest/)
-- [Answer The Public](https://answerthepublic.com/)
-
-**Acciones:**
-1. Crear contenido de blog regular (1-2 posts/mes)
-2. Usar palabras clave de forma natural en títulos y contenido
-3. Crear contenido local (ej: "Guía de fisioterapia en Cambrils")
-4. Responder preguntas frecuentes en el blog
+### Crear favicon.ico
+Además del SVG, añade un `favicon.ico` en `/public/` para compatibilidad con navegadores antiguos.
 
 ---
 
-### 6. Enlaces Locales (Link Building)
+## 4. Bing Webmaster Tools
 
-**Acción:** Conseguir enlaces desde sitios locales relevantes
-
-**Estrategias:**
-1. **Directorios locales:**
-   - Páginas Amarillas
-   - Yelp
-   - Foursquare
-   - TripAdvisor (si aplica)
-
-2. **Asociaciones profesionales:**
-   - Colegio de Fisioterapeutas de Cataluña
-   - Asociaciones locales de salud
-
-3. **Colaboraciones:**
-   - Gimnasios locales
-   - Centros deportivos
-   - Clínicas médicas
-   - Blogs de salud locales
-
-4. **Prensa local:**
-   - Contactar medios locales de Cambrils/Tarragona
-   - Ofrecer artículos sobre salud y bienestar
+1. Accede a [Bing Webmaster Tools](https://www.bing.com/webmasters)
+2. Importa la configuración de Google Search Console (opción más fácil)
+3. O verifica manualmente y envía el sitemap
 
 ---
 
-### 7. Reseñas y Reputación Online
+## 5. Redes Sociales
 
-**Acción:** Gestionar y fomentar reseñas positivas
+### Configurar perfiles consistentes
+Asegúrate de que todos los perfiles tengan:
+- Mismo nombre: "Axis Cambrils"
+- Misma descripción
+- Enlace al sitio web
+- Foto de perfil/logo consistente
 
-**Plataformas importantes:**
-1. **Google Business Profile** (más importante)
-2. **Facebook**
-3. **Yelp**
-4. **Páginas Amarillas**
-
-**Estrategia:**
-- Pedir reseñas a clientes satisfechos (después del tratamiento)
-- Responder TODAS las reseñas (positivas y negativas)
-- Crear un proceso sistemático para solicitar reseñas
-- Usar enlaces directos para facilitar el proceso
-
-**Ejemplo de mensaje:**
-> "¡Hola [Nombre]! Esperamos que tu tratamiento haya ido bien. Si tienes un momento, nos encantaría que compartieras tu experiencia en Google: [enlace]"
+### Plataformas recomendadas para fisioterapia
+1. **Instagram** - Ideal para contenido visual de tratamientos
+2. **Facebook** - Para comunidad local y reseñas
+3. **LinkedIn** - Para credibilidad profesional
+4. **YouTube** - Para vídeos de ejercicios y consejos
 
 ---
 
-### 8. Redes Sociales
+## 6. Directorios Locales y de Salud
 
-**Acción:** Optimizar perfiles sociales y publicar contenido regular
+### Registrar en directorios relevantes
+1. **Páginas Amarillas** - https://www.paginasamarillas.es
+2. **QDQ** - https://www.qdq.com
+3. **Doctoralia** - https://www.doctoralia.es (muy importante para salud)
+4. **TopDoctors** - https://www.topdoctors.es
+5. **Colegio de Fisioterapeutas de Catalunya** - Directorio oficial
+6. **Yelp** - https://www.yelp.es
+7. **TripAdvisor** (si aplica turismo de salud)
 
-**Plataformas prioritarias:**
-1. **Facebook**
-   - Perfil completo y actualizado
-   - Publicar 2-3 veces por semana
-   - Compartir consejos de salud, casos de éxito, ofertas
-
-2. **Instagram**
-   - Fotos del centro, equipo, tratamientos
-   - Stories diarias
-   - Reels con ejercicios o consejos
-
-3. **LinkedIn** (opcional pero recomendado)
-   - Perfil profesional
-   - Artículos sobre fisioterapia
-
-**Beneficios SEO:**
-- Señales sociales (aunque no son factor directo, ayudan)
-- Tráfico de referencia
-- Construcción de marca
+### Información NAP consistente
+**¡MUY IMPORTANTE!** Usa exactamente los mismos datos en TODOS los directorios:
+- **N**ombre: Axis Cambrils
+- **A**ddress: Carrer de Sant Josep, 15, 43850 Cambrils, Tarragona
+- **P**hone: +34 977 79 54 33
 
 ---
 
-### 9. Velocidad y Performance
+## 7. Backlinks de Calidad
 
-**Acción:** Optimizar la velocidad del sitio
+### Estrategias recomendadas
+1. **Colaboraciones locales**:
+   - Gimnasios de Cambrils
+   - Clubs deportivos locales
+   - Centros de yoga/pilates
+   - Tiendas de deporte
 
-**Herramientas de análisis:**
-- [Google PageSpeed Insights](https://pagespeed.web.dev/)
-- [GTmetrix](https://gtmetrix.com/)
-- [WebPageTest](https://www.webpagetest.org/)
+2. **Medios locales**:
+   - Diario de Tarragona
+   - Revistas locales de Cambrils
+   - Blogs de salud de la zona
 
-**Acciones:**
-1. Comprimir imágenes (ya mencionado)
-2. Habilitar compresión GZIP en el servidor
-3. Usar CDN (Cloudflare es gratuito)
-4. Minimizar CSS/JS
-5. Lazy loading de imágenes (ya implementado en código)
+3. **Guest posting**:
+   - Escribir artículos para blogs de salud
+   - Colaborar con otros fisioterapeutas
 
-**Objetivo:**
-- PageSpeed Score: > 90 (móvil y desktop)
-- Tiempo de carga: < 3 segundos
-
----
-
-### 10. Analytics y Tracking
-
-**Acción:** Configurar herramientas de análisis
-
-**Google Analytics 4:**
-1. Crear cuenta en [Google Analytics](https://analytics.google.com/)
-2. Añadir el código de tracking al sitio
-3. Configurar objetivos (citas, formularios, llamadas)
-4. Revisar datos semanalmente
-
-**Google Tag Manager (opcional pero recomendado):**
-- Facilita la gestión de tags sin tocar código
-- Útil para Facebook Pixel, otros trackers
-
-**Beneficios:**
-- Entender comportamiento de usuarios
-- Ver qué páginas funcionan mejor
-- Optimizar conversiones
+4. **Sponsors locales**:
+   - Eventos deportivos
+   - Carreras populares
+   - Equipos deportivos
 
 ---
 
-### 11. SSL y Seguridad
+## 8. Google Analytics 4
 
-**Acción:** Asegurar que el sitio tiene SSL activo
+### Configuración
+1. Crea una propiedad en [Google Analytics](https://analytics.google.com)
+2. Obtén el ID de medición (G-XXXXXXXXXX)
+3. Añade el script al sitio (puedes usar Partytown para rendimiento)
 
-**Verificar:**
-- URL debe ser `https://` (no `http://`)
-- Certificado SSL válido
-- Sin errores de seguridad en navegadores
-
-**Si no tienes SSL:**
-- Usar [Let's Encrypt](https://letsencrypt.org/) (gratis)
-- O configurar con tu proveedor de hosting
-
----
-
-### 12. Contenido Local
-
-**Acción:** Crear contenido específico para Cambrils y Tarragona
-
-**Ideas de contenido:**
-1. "Guía completa de fisioterapia en Cambrils"
-2. "Los mejores ejercicios para la playa en Cambrils"
-3. "Fisioterapia para deportistas en Tarragona"
-4. "Tratamientos de fisioterapia más demandados en Cambrils"
-5. Casos de éxito locales (con permiso)
-
-**Beneficios:**
-- Mejor ranking en búsquedas locales
-- Mayor relevancia para usuarios locales
-- Más autoridad en el área
+### Eventos importantes a trackear
+- Clics en "Reservar Cita"
+- Clics en teléfono
+- Clics en WhatsApp
+- Formularios enviados
+- Tiempo en página de servicios
 
 ---
 
-### 13. Schema.org Markup (Verificación)
+## 9. Schema.org - Mejoras Adicionales
 
-**Acción:** Verificar que los schemas funcionan correctamente
+### Reseñas en Google
+Cuando tengas reseñas reales en Google Business:
+1. Actualiza el schema `AggregateRating` con datos reales
+2. Archivo: `/src/utils/seo.ts` función `generateMedicalBusinessSchema`
 
-**Herramientas:**
-- [Google Rich Results Test](https://search.google.com/test/rich-results)
-- [Schema Markup Validator](https://validator.schema.org/)
-
-**Qué verificar:**
-- LocalBusiness schema aparece correctamente
-- Article schema en posts del blog
-- Service schema en páginas de servicios
-- BreadcrumbList en todas las páginas
+### FAQs
+Considera añadir una sección de preguntas frecuentes en la página principal o de servicios. El schema FAQPage ya está implementado en el código, solo necesitas usarlo.
 
 ---
 
-### 14. Mobile-First
+## 10. Monitorización Continua
 
-**Acción:** Asegurar que el sitio es completamente responsive
+### Herramientas gratuitas
+1. **Google Search Console** - Rendimiento en búsqueda
+2. **Google Analytics** - Tráfico y comportamiento
+3. **PageSpeed Insights** - Velocidad del sitio
+4. **Lighthouse** - Auditoría completa (en Chrome DevTools)
 
-**Verificar:**
-- [Google Mobile-Friendly Test](https://search.google.com/test/mobile-friendly)
-- Probar en diferentes dispositivos
-- Velocidad en móvil
-
-**Ya implementado en código, pero verificar:**
-- Todos los elementos son accesibles en móvil
-- Formularios funcionan bien
-- Botones tienen tamaño adecuado para touch
-
----
-
-### 15. Competencia
-
-**Acción:** Analizar la competencia local
-
-**Herramientas:**
-- [SEMrush](https://www.semrush.com/) (versión gratuita)
-- [Ahrefs](https://ahrefs.com/) (versión gratuita limitada)
-- Búsqueda manual en Google
-
-**Qué analizar:**
-- Qué palabras clave usan
-- Qué contenido publican
-- Dónde tienen enlaces
-- Cómo estructuran su sitio
+### KPIs a seguir mensualmente
+- Posición media en búsquedas
+- Número de impresiones
+- CTR (Click-Through Rate)
+- Tráfico orgánico
+- Tasa de rebote
+- Conversiones (llamadas, formularios)
 
 ---
 
-## 📊 Métricas a Monitorear
+## 11. Contenido Continuo
 
-### Mensual:
-- Tráfico orgánico (Google Analytics)
-- Posiciones en Google (Google Search Console)
-- Nuevas reseñas
-- Enlaces entrantes
+### Blog - Calendario recomendado
+Publica **al menos 2 artículos al mes** sobre:
+- Ejercicios para problemas comunes
+- Prevención de lesiones
+- Explicación de tratamientos
+- Casos de éxito (con permiso)
+- Novedades del centro
 
-### Trimestral:
-- PageSpeed Score
-- Posiciones de palabras clave principales
-- Conversiones (citas, llamadas)
-- ROI de esfuerzos SEO
-
----
-
-## 🎯 Objetivos a 6 Meses
-
-1. **Tráfico orgánico:** Aumentar 50-100%
-2. **Posiciones:** Top 3 para "fisioterapia Cambrils"
-3. **Reseñas:** 20+ reseñas en Google (4+ estrellas)
-4. **Enlaces:** 10+ enlaces de calidad desde sitios locales
-5. **Conversiones:** Aumentar citas online 30%
+### Keywords locales importantes
+Optimiza contenido para:
+- "fisioterapia Cambrils"
+- "fisioterapeuta Cambrils"
+- "drenaje linfático Tarragona"
+- "suelo pélvico Cambrils"
+- "rehabilitación Cambrils"
+- "fisio cerca de mí"
 
 ---
 
-## 📝 Notas Importantes
+## 12. Velocidad y Core Web Vitals
 
-1. **SEO es a largo plazo:** Los resultados pueden tardar 3-6 meses
-2. **Consistencia:** Publicar contenido regular es clave
-3. **Calidad sobre cantidad:** Mejor 1 post excelente que 5 mediocres
-4. **Local es clave:** Para un negocio local, el SEO local es más importante que el general
-5. **Paciencia:** No esperes resultados inmediatos, pero sé constante
+### Verificar regularmente
+1. Accede a [PageSpeed Insights](https://pagespeed.web.dev)
+2. Analiza `https://www.axiscambrils.com`
+3. Objetivo: Puntuación > 90 en móvil y escritorio
 
----
-
-## 🔗 Recursos Útiles
-
-- [Google Search Central](https://developers.google.com/search) - Documentación oficial
-- [Moz Beginner's Guide to SEO](https://moz.com/beginners-guide-to-seo) - Guía completa
-- [Ahrefs Blog](https://ahrefs.com/blog/) - Artículos sobre SEO
-- [Search Engine Journal](https://www.searchenginejournal.com/) - Noticias SEO
+### Optimizaciones de hosting
+- Usa CDN (Cloudflare recomendado - gratuito)
+- Activa compresión GZIP/Brotli
+- Configura caché del navegador
+- Usa HTTP/2 o HTTP/3
 
 ---
 
-## ✅ Checklist Rápido
+## 13. Seguridad
 
-- [ ] Google Search Console configurado
-- [ ] Google Business Profile creado y optimizado
-- [ ] Bing Webmaster Tools configurado
-- [ ] Imagen OG creada y optimizada
-- [ ] Favicon mejorado
-- [ ] Google Analytics configurado
-- [ ] SSL activo (https://)
-- [ ] Primera reseña en Google
-- [ ] Primer post de blog publicado
-- [ ] Perfiles sociales actualizados
-- [ ] Velocidad del sitio optimizada (>90 PageSpeed)
-- [ ] Schema.org verificado con herramientas de Google
+### SSL/HTTPS
+- Asegúrate de que HTTPS esté activo
+- Configura redirección de HTTP a HTTPS
+- Verifica que no haya contenido mixto
+
+### Headers de seguridad (en tu hosting)
+```
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: strict-origin-when-cross-origin
+```
 
 ---
 
-**Última actualización:** [Fecha]
-**Próxima revisión:** [Fecha + 3 meses]
+## Checklist Resumen
+
+### Prioridad Alta (hacer inmediatamente)
+- [ ] Verificar Google Search Console
+- [ ] Crear/verificar Google Business Profile
+- [ ] Crear og-image.jpg (1200x630px)
+- [ ] Crear iconos PWA
+- [ ] Enviar sitemap
+
+### Prioridad Media (primera semana)
+- [ ] Registrar en Bing Webmaster Tools
+- [ ] Registrar en Doctoralia
+- [ ] Configurar Google Analytics 4
+- [ ] Actualizar redes sociales
+
+### Prioridad Normal (primer mes)
+- [ ] Registrar en directorios locales
+- [ ] Buscar colaboraciones locales
+- [ ] Configurar CDN
+- [ ] Crear calendario de contenido
+
+### Continuo
+- [ ] Publicar 2+ artículos/mes en el blog
+- [ ] Responder reseñas
+- [ ] Publicar en redes sociales
+- [ ] Monitorizar métricas
+
+---
+
+## Recursos Útiles
+
+- [Google Search Central](https://developers.google.com/search) - Documentación oficial SEO
+- [Schema.org](https://schema.org) - Documentación de datos estructurados
+- [Web.dev](https://web.dev) - Guías de rendimiento web
+- [Ahrefs Blog](https://ahrefs.com/blog) - Estrategias SEO avanzadas
+- [Moz Blog](https://moz.com/blog) - SEO y marketing digital
+
+---
+
+*Documento generado el 22 de Enero de 2026*
+*Última actualización del código SEO: feature/seo-improvements*

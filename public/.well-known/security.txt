@@ -1,0 +1,7 @@
+# Security Policy for Axis Cambrils
+# https://securitytxt.org/
+
+Contact: mailto:fisioaxiscambrils@gmail.com
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: ca, es, en
+Canonical: https://www.axiscambrils.com/.well-known/security.txt

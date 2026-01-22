@@ -35,10 +35,14 @@ const teamConfig = [
 ];
 ---
 
-<Layout title={`${translation('aboutUs.team.title')} | Axis Cambrils`} description={translation('aboutUs.team.subtitle')}>
+<Layout 
+  title={lang === 'ca' ? 'El Nostre Equip de Fisioterapeutes | Axis Cambrils' : lang === 'es' ? 'Nuestro Equipo de Fisioterapeutas | Axis Cambrils' : 'Our Physiotherapy Team | Axis Cambrils'} 
+  description={translation('aboutUs.team.subtitle')}
+  keywords={lang === 'ca' ? 'equip fisioterapeutes, professionals fisioteràpia, fisioterapeutes Cambrils, Montse Prim, Maria Cabré, Vania Moreno' : lang === 'es' ? 'equipo fisioterapeutas, profesionales fisioterapia, fisioterapeutas Cambrils, Montse Prim, Maria Cabré, Vania Moreno' : 'physiotherapy team, physiotherapy professionals, physiotherapists Cambrils, Montse Prim, Maria Cabré, Vania Moreno'}
+>
   <Header />
   
-  <main class="pt-24 pb-20">
+  <main id="main-content" class="pt-24 pb-20">
     <div class="container mx-auto px-4">
       <!-- Team Section -->
       <div class="text-center mb-12">
