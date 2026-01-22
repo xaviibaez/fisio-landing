@@ -18,7 +18,6 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const postUrl = `${siteConfig.url}/blog/${post.slug}`;
-const postImage = post.data.image ? `${siteConfig.url}${post.data.image}` : `${siteConfig.url}/og-image.jpg`;
 const datePublished = post.data.date.toISOString();
 const dateModified = post.data.date.toISOString(); // Update this if you track modified dates
 

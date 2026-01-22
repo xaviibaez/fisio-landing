@@ -1,5 +1,5 @@
 ---
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl } from '../i18n/utils';
 import { generateBreadcrumbSchema } from '../utils/seo';
 import { siteConfig } from '../config';
 
@@ -9,7 +9,6 @@ interface Props {
 
 const { items } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 
 // Always include home
 const breadcrumbItems = [
@@ -39,4 +38,4 @@ const schema = generateBreadcrumbSchema(breadcrumbItems);
   </ol>
 </nav>
 
-<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
