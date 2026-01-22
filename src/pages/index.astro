@@ -18,16 +18,16 @@ const t = useTranslations(lang);
 
 const allPosts = await getCollection('blog');
 const latestPosts = allPosts
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .sort((a: typeof allPosts[0], b: typeof allPosts[0]) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 3);
 
 // Get services in the current language
 const allServices = await getCollection('services');
 const langPrefix = lang === 'ca' ? 'ca/' : lang === 'es' ? 'es/' : 'en/';
 const services = allServices
-  .filter(s => s.id.startsWith(langPrefix))
-  .sort((a, b) => a.data.order - b.data.order)
-  .map(service => {
+  .filter((s: typeof allServices[0]) => s.id.startsWith(langPrefix))
+  .sort((a: typeof allServices[0], b: typeof allServices[0]) => a.data.order - b.data.order)
+  .map((service: typeof allServices[0]) => {
     const slug = service.id.replace(langPrefix, '').replace('.md', '');
     const serviceWord = lang === 'ca' ? 'serveis' : lang === 'es' ? 'servicios' : 'services';
     const href = lang === 'ca' ? `/${serviceWord}/${slug}` : `/${lang}/${serviceWord}/${slug}`;
@@ -183,7 +183,7 @@ const services = allServices
         </div>
 
         <div class="max-w-8xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {services.map((service) => (
+          {services.map((service: typeof services[0]) => (
             <ServiceCard
               title={service.title}
               description={service.description}
@@ -381,7 +381,7 @@ const services = allServices
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {latestPosts.map((post) => (
+          {latestPosts.map((post: typeof latestPosts[0]) => (
             <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-2">
               <div class="bg-gradient-to-br from-primary-500 to-primary-600 h-48 flex items-center justify-center">
                 <svg class="w-20 h-20 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -425,7 +425,7 @@ const services = allServices
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div class="bg-white rounded-xl shadow-lg p-8">
             <div class="flex items-center gap-1 mb-4">
-              {[...Array(5)].map((_, i) => (
+              {[...Array(5)].map(() => (
                 <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                 </svg>
@@ -445,7 +445,7 @@ const services = allServices
 
           <div class="bg-white rounded-xl shadow-lg p-8">
             <div class="flex items-center gap-1 mb-4">
-              {[...Array(5)].map((_, i) => (
+              {[...Array(5)].map(() => (
                 <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                 </svg>
@@ -465,7 +465,7 @@ const services = allServices
 
           <div class="bg-white rounded-xl shadow-lg p-8">
             <div class="flex items-center gap-1 mb-4">
-              {[...Array(5)].map((_, i) => (
+              {[...Array(5)].map(() => (
                 <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                 </svg>

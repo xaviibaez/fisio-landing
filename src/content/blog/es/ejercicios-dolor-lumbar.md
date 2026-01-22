@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "5 Ejercicios para Aliviar el Dolor Lumbar"
 description: "Descubre ejercicios efectivos y seguros para reducir el dolor de espalda baja desde casa."
 author: "Dra. María García"

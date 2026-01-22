@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: 'Lymphatic Drainage'
 shortDescription: 'Technique that stimulates lymphatic flow to treat fluid retention, inflammation and cellulite.'
 description: 'Lymphatic drainage is a gentle therapeutic technique that stimulates the lymphatic system to eliminate toxins and retained fluids. The lymphatic system is a network of vessels, nodes and organs that transport and filter lymph, a fluid containing white blood cells and cellular waste. This treatment improves circulation, reduces inflammation and strengthens the immune system.'

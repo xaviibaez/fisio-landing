@@ -1,0 +1,240 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Optional: Editorial workflow for drafts
+# publish_mode: editorial_workflow
+
+# Site URL for previews
+site_url: https://axiscambrils.com
+display_url: https://axiscambrils.com
+
+# Media files will be stored in the repo under public/images/uploads
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+# Locale for CMS interface
+locale: ca
+
+# Collections
+collections:
+  # Blog Posts - Catalan
+  - name: "blog_ca"
+    label: "Blog (Català)"
+    folder: "src/content/blog/ca"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Lang", name: "lang", widget: "hidden", default: "ca" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Author", name: "author", widget: "string", default: "Axis Cambrils" }
+      - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Esportiva", value: "deportiva" }
+          - { label: "Traumatològica", value: "traumatologica" }
+          - { label: "Neurològica", value: "neurologica" }
+          - { label: "Pediàtrica", value: "pediatrica" }
+          - { label: "Respiratòria", value: "respiratoria" }
+          - { label: "Geriàtrica", value: "geriatrica" }
+      - { label: "Tags", name: "tags", widget: "list", allow_add: true, default: [] }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # Blog Posts - Spanish
+  - name: "blog_es"
+    label: "Blog (Español)"
+    folder: "src/content/blog/es"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Lang", name: "lang", widget: "hidden", default: "es" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Author", name: "author", widget: "string", default: "Axis Cambrils" }
+      - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Deportiva", value: "deportiva" }
+          - { label: "Traumatológica", value: "traumatologica" }
+          - { label: "Neurológica", value: "neurologica" }
+          - { label: "Pediátrica", value: "pediatrica" }
+          - { label: "Respiratoria", value: "respiratoria" }
+          - { label: "Geriátrica", value: "geriatrica" }
+      - { label: "Tags", name: "tags", widget: "list", allow_add: true, default: [] }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # Blog Posts - English
+  - name: "blog_en"
+    label: "Blog (English)"
+    folder: "src/content/blog/en"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Lang", name: "lang", widget: "hidden", default: "en" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Author", name: "author", widget: "string", default: "Axis Cambrils" }
+      - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - label: "Category" 
+        name: "category" 
+        widget: "select" 
+        options: 
+          - { label: "Sports", value: "deportiva" }
+          - { label: "Traumatology", value: "traumatologica" }
+          - { label: "Neurology", value: "neurologica" }
+          - { label: "Pediatric", value: "pediatrica" }
+          - { label: "Respiratory", value: "respiratoria" }
+          - { label: "Geriatric", value: "geriatrica" }
+      - { label: "Tags", name: "tags", widget: "list", allow_add: true, default: [] }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # Services Collection - Catalan
+  - name: "services_ca"
+    label: "Services (Català)"
+    folder: "src/content/services/ca"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Lang", name: "lang", widget: "hidden", default: "ca" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Short Description", name: "shortDescription", widget: "text" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Icon", name: "icon", widget: "string", hint: "Icon name (e.g., droplet, heart, etc.)" }
+      - { label: "Image", name: "image", widget: "string", required: false, hint: "Path to image (e.g., /images/DL.png)" }
+      - { 
+          label: "Benefits", 
+          name: "benefits", 
+          widget: "list"
+        }
+      - label: "Process Steps"
+        name: "process"
+        widget: "list" 
+        allow_add: true
+        required: false
+        fields:
+          - { label: "Step", name: "step", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+        
+      - { label: "Duration", name: "duration", widget: "string", required: false, hint: "e.g., 60 minuts" }
+      - { label: "Price", name: "price", widget: "string", required: false, hint: "e.g., 50€" }
+      - { label: "Order", name: "order", widget: "number", default: 0, hint: "Display order (lower numbers first)" }
+      - label: "FAQs" 
+        name: "faqs" 
+        widget: "list" 
+        allow_add: true
+        required: false
+        fields:
+          - { label: "Question", name: "question", widget: "string" }
+          - { label: "Answer", name: "answer", widget: "markdown" }
+        
+      - { 
+          label: "Gallery Images", 
+          name: "gallery", 
+          widget: "list", 
+          required: false,
+          field: { label: "Image Path", name: "image", widget: "string", hint: "Path to image (e.g., /images/gallery/image.jpg)" }
+        }
+      - { label: "Body Content", name: "body", widget: "markdown", required: false }
+
+  # Services Collection - Spanish
+  - name: "services_es"
+    label: "Services (Español)"
+    folder: "src/content/services/es"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Lang", name: "lang", widget: "hidden", default: "es" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Short Description", name: "shortDescription", widget: "text" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Icon", name: "icon", widget: "string", hint: "Icon name (e.g., droplet, heart, etc.)" }
+      - { label: "Image", name: "image", widget: "string", required: false, hint: "Path to image (e.g., /images/DL.png)" }
+      - { 
+          label: "Benefits", 
+          name: "benefits", 
+          widget: "list"
+        }
+      - label: "Process Steps" 
+        name: "process"
+        widget: "list"
+        allow_add: true
+        required: false
+        fields:
+          - { label: "Step", name: "step", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+      - { label: "Duration", name: "duration", widget: "string", required: false, hint: "e.g., 60 minutos" }
+      - { label: "Price", name: "price", widget: "string", required: false, hint: "e.g., 50€" }
+      - { label: "Order", name: "order", widget: "number", default: 0, hint: "Display order (lower numbers first)" }
+      - label: "FAQs"
+        name: "faqs"
+        widget: "list"
+        allow_add: true
+        required: false
+        fields:
+          - { label: "Question", name: "question", widget: "string" }
+          - { label: "Answer", name: "answer", widget: "markdown" }
+        
+      - { 
+          label: "Gallery Images", 
+          name: "gallery", 
+          widget: "list", 
+          required: false,
+          field: { label: "Image Path", name: "image", widget: "string", hint: "Path to image (e.g., /images/gallery/image.jpg)" }
+        }
+      - { label: "Body Content", name: "body", widget: "markdown", required: false }
+
+  # Services Collection - English
+  - name: "services_en"
+    label: "Services (English)"
+    folder: "src/content/services/en"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Lang", name: "lang", widget: "hidden", default: "en" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Short Description", name: "shortDescription", widget: "text" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Icon", name: "icon", widget: "string", hint: "Icon name (e.g., droplet, heart, etc.)" }
+      - { label: "Image", name: "image", widget: "string", required: false, hint: "Path to image (e.g., /images/DL.png)" }
+      - { 
+          label: "Benefits", 
+          name: "benefits", 
+          widget: "list"
+        }
+      - label: "Process Steps"
+        name: "process"
+        widget: "list" 
+        allow_add: true
+        required: false
+        fields:
+          - { label: "Step", name: "step", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+        
+      - { label: "Duration", name: "duration", widget: "string", required: false, hint: "e.g., 60 minutes" }
+      - { label: "Price", name: "price", widget: "string", required: false, hint: "e.g., €50" }
+      - { label: "Order", name: "order", widget: "number", default: 0, hint: "Display order (lower numbers first)" }
+      - label: "FAQs" 
+        name: "faqs"
+        widget: "list"
+        allow_add: true
+        required: false
+        fields:
+          - { label: "Question", name: "question", widget: "string" }
+          - { label: "Answer", name: "answer", widget: "markdown" }
+        
+      - { 
+          label: "Gallery Images", 
+          name: "gallery", 
+          widget: "list", 
+          required: false,
+          field: { label: "Image Path", name: "image", widget: "string", hint: "Path to image (e.g., /images/gallery/image.jpg)" }
+        }
+      - { label: "Body Content", name: "body", widget: "markdown", required: false }

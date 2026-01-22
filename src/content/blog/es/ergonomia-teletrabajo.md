@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Ergonomía en el Teletrabajo: Tu Espalda te lo Agradecerá"
 description: "Aprende a configurar tu espacio de trabajo en casa para evitar dolores y lesiones."
 author: "Dra. Laura Sánchez"

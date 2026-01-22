@@ -8,7 +8,9 @@ import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const allPosts = await getCollection('blog');
+const allPosts = await getCollection('blog', (entry) => {
+  return entry.data.lang === lang;
+});
 const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
@@ -44,7 +46,9 @@ const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTim
           </div>
         ) : (
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post) => (
+            {posts.map((post) => {
+              const postSlug = post.slug.split('/').pop();
+              return (
               <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-2">
                 <div class="bg-gradient-to-br from-primary-500 to-primary-600 h-48 flex items-center justify-center">
                   <svg class="w-20 h-20 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -53,7 +57,7 @@ const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTim
                 </div>
                 <div class="p-6">
                   <h2 class="text-xl font-heading font-bold mb-2 line-clamp-2">
-                    <a href={lang === 'ca' ? `/blog/${post.slug}` : `/${lang}/blog/${post.slug}`} class="hover:text-primary-600 transition">
+                    <a href={lang === 'ca' ? `/blog/${postSlug}` : `/${lang}/blog/${postSlug}`} class="hover:text-primary-600 transition">
                       {post.data.title}
                     </a>
                   </h2>
@@ -66,7 +70,7 @@ const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTim
                       {post.data.date.toLocaleDateString(lang === 'ca' ? 'ca-ES' : lang === 'es' ? 'es-ES' : 'en-GB', { year: 'numeric', month: 'short', day: 'numeric' })}
                     </time>
                   </div>
-                  <a href={lang === 'ca' ? `/blog/${post.slug}` : `/${lang}/blog/${post.slug}`} class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 transition">
+                  <a href={lang === 'ca' ? `/blog/${postSlug}` : `/${lang}/blog/${postSlug}`} class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 transition">
                     {t('blog.readMore')}
                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -74,7 +78,7 @@ const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTim
                   </a>
                 </div>
               </article>
-            ))}
+            )})}
           </div>
         )}
       </div>
