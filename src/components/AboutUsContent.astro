@@ -2,41 +2,26 @@
 import Layout from '../layouts/Layout.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
-import { Image } from 'astro:assets';
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
-
-import usImg1 from '../assets/us/1.png';
-import usImg2 from '../assets/us/2.png';
-import usImg3 from '../assets/us/3.png';
+import teamData from '../data/team.json';
 
 const lang = getLangFromUrl(Astro.url);
 const translation = useTranslations(lang);
 
-// Helper function for type-safe dynamic translation keys
-const getTeamTranslation = (member: string, key: string): string => 
-  translation(`team.${member}.${key}` as const as Parameters<typeof translation>[0]);
+// Map language keys
+type LangKey = 'ca' | 'es' | 'en';
+const langKey = lang as LangKey;
 
-// Configuración del equipo con las imágenes
-const teamConfig = [
-  {
-    id: 'montse',
-    image: usImg3,
-    educationCount: 2,
-    coursesCount: 8
-  },
-  {
-    id: 'maria',
-    image: usImg2,
-    educationCount: 2,
-    coursesCount: 1
-  },
-  {
-    id: 'vania',
-    image: usImg1,
-    educationCount: 5,
-    coursesCount: 9
-  }
-];
+// Transform team data based on current language
+const teamConfig = teamData.team.map((member: any) => ({
+  id: member.id,
+  image: member.image,
+  name: member[`name_${langKey}`] || member.name_ca,
+  role: member[`role_${langKey}`] || member.role_ca,
+  col: member.col,
+  education: (member[`education_${langKey}`] || member.education_ca || '').split('\n').filter((e: string) => e.trim()),
+  courses: (member[`courses_${langKey}`] || member.courses_ca || '').split('\n').filter((c: string) => c.trim()),
+}));
 ---
 
 <Layout title={`${translation('aboutUs.team.title')} | Axis Cambrils`} description={translation('aboutUs.team.subtitle')}>
@@ -55,38 +40,38 @@ const teamConfig = [
         {teamConfig.map((member) => (
           <div class="bg-white rounded-2xl shadow-lg">
             <div class="aspect-square overflow-hidden rounded-t-2xl">
-              <Image 
+              <img 
                 src={member.image} 
-                alt={translation(`team.${member.id}.name` as any)}
+                alt={member.name}
                 class="w-full h-full object-cover"
                 loading="lazy"
               />
             </div>
             <div class="p-6">
-              <h2 class="text-xl font-heading font-bold text-primary-700">{translation(`team.${member.id}.name` as any)}</h2>
-              <p class="text-gray-600 mb-4">{translation(`team.${member.id}.role` as any)} · Col. {translation(`team.${member.id}.col` as any)}</p>
+              <h2 class="text-xl font-heading font-bold text-primary-700">{member.name}</h2>
+              <p class="text-gray-600 mb-4">{member.role} · Col. {member.col}</p>
               
               <div class="space-y-4 text-sm">
                 <div>
                   <h3 class="font-bold text-gray-800 mb-2">{translation('aboutUs.team.education')}</h3>
                   <ul class="space-y-1 text-gray-600">
-                    {Array.from({ length: member.educationCount }, (_, i) => i + 1).map((num) => (
+                    {member.education.map((edu: string) => (
                       <li class="flex items-start gap-2">
                         <span class="text-primary-500 mt-1">•</span>
-                        <span>{translation(`team.${member.id}.education.${num}` as any)}</span>
+                        <span>{edu}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
                 
-                {member.coursesCount > 0 && (
+                {member.courses.length > 0 && (
                   <div>
                     <h3 class="font-bold text-gray-800 mb-2">{translation('aboutUs.team.courses')}</h3>
                     <ul class="space-y-1 text-gray-600">
-                      {Array.from({ length: member.coursesCount }, (_, i) => i + 1).map((num) => (
+                      {member.courses.map((course: string) => (
                         <li class="flex items-start gap-2">
                           <span class="text-primary-500 mt-1">•</span>
-                          <span>{translation(`team.${member.id}.courses.${num}` as any)}</span>
+                          <span>{course}</span>
                         </li>
                       ))}
                     </ul>

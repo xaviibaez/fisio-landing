@@ -1,0 +1,58 @@
+{
+  "gallery": [
+    {
+      "image": "/images/gallery/1.png",
+      "title_ca": "Sala de tractaments",
+      "title_es": "Sala de tratamientos",
+      "title_en": "Treatment room",
+      "description_ca": "Espai modern i confortable",
+      "description_es": "Espacio moderno y confortable",
+      "description_en": "Modern and comfortable space"
+    },
+    {
+      "image": "/images/gallery/2.png",
+      "title_ca": "Equipament especialitzat",
+      "title_es": "Equipamiento especializado",
+      "title_en": "Specialized equipment",
+      "description_ca": "Tecnologia d'última generació",
+      "description_es": "Tecnología de última generación",
+      "description_en": "Latest generation technology"
+    },
+    {
+      "image": "/images/gallery/3.png",
+      "title_ca": "Àrea de rehabilitació",
+      "title_es": "Área de rehabilitación",
+      "title_en": "Rehabilitation area",
+      "description_ca": "Per a la teva recuperació",
+      "description_es": "Para tu recuperación",
+      "description_en": "For your recovery"
+    },
+    {
+      "image": "/images/gallery/4.png",
+      "title_ca": "Zona de benestar",
+      "title_es": "Zona de bienestar",
+      "title_en": "Wellness zone",
+      "description_ca": "Relaxa't i recupera't",
+      "description_es": "Relájate y recupérate",
+      "description_en": "Relax and recover"
+    },
+    {
+      "image": "/images/gallery/5.png",
+      "title_ca": "Consulta privada",
+      "title_es": "Consulta privada",
+      "title_en": "Private consultation",
+      "description_ca": "Atenció personalitzada",
+      "description_es": "Atención personalizada",
+      "description_en": "Personalized attention"
+    },
+    {
+      "image": "/images/gallery/6.png",
+      "title_ca": "Recepció",
+      "title_es": "Recepción",
+      "title_en": "Reception",
+      "description_ca": "Et donem la benvinguda",
+      "description_es": "Te damos la bienvenida",
+      "description_en": "We welcome you"
+    }
+  ]
+}
