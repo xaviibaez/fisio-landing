@@ -1,29 +1,35 @@
 ---
-lang: "ca"
-title: 'Drenatge Limfàtic'
-shortDescription: 'Tècnica que estimula el flux limfàtic per tractar la retenció de líquids, inflamació i cel·lulitis.'
-description: 'El drenatge limfàtic és una tècnica terapèutica suau que estimula el sistema limfàtic per eliminar toxines i líquids retinguts. El sistema limfàtic és una xarxa de vasos, ganglis i òrgans que transporten i filtren la limfa, un líquid que conté glòbuls blancs i deixalles cel·lulars. Aquest tractament millora la circulació, redueix la inflamació i enforteix el sistema immunològic.'
-icon: 'droplet'
-image: '/images/DL.png'
+lang: ca
+title: Drenatge Limfàtic
+shortDescription: Tècnica que estimula el flux limfàtic per tractar la retenció
+  de líquids, inflamació i cel·lulitis.
+description: El drenatge limfàtic és una tècnica terapèutica suau que estimula
+  el sistema limfàtic per eliminar toxines i líquids retinguts. El sistema
+  limfàtic és una xarxa de vasos, ganglis i òrgans que transporten i filtren la
+  limfa, un líquid que conté glòbuls blancs i deixalles cel·lulars. Aquest
+  tractament millora la circulació, redueix la inflamació i enforteix el sistema
+  immunològic.
+icon: droplet
+image: /images/services/DL.png
 benefits:
-  - 'Eliminació de toxines i deixalles del cos'
-  - 'Reducció de la retenció de líquids i edemes'
-  - 'Millora de la circulació limfàtica i venosa'
-  - 'Regulació de lequilibri de líquids corporal'
-  - 'Enfortiment del sistema immunològic'
-  - 'Reducció de la cel·lulitis i millora de la textura de la pell'
-  - 'Alleugeriment de la sensació de cames pesades'
-  - 'Recuperació post-operatòria i post-lesions'
+  - Eliminació de toxines i deixalles del cos
+  - Reducció de la retenció de líquids i edemes
+  - Millora de la circulació limfàtica i venosa
+  - Regulació de lequilibri de líquids corporal
+  - Enfortiment del sistema immunològic
+  - Reducció de la cel·lulitis i millora de la textura de la pell
+  - Alleugeriment de la sensació de cames pesades
+  - Recuperació post-operatòria i post-lesions
 process:
-  - step: 'Avaluació inicial'
-    description: 'Valoració del sistema limfàtic i identificació de zones afectades'
-  - step: 'Preparació'
-    description: 'El pacient es situa en una posició còmoda per facilitar el drenatge'
-  - step: 'Tractament manual'
-    description: 'Moviments suaus, lents i rítmics seguint les vies limfàtiques'
-  - step: 'Finalització'
-    description: 'Recomanacions post-tractament i pautes dhidratació'
-duration: '60 minuts'
+  - step: Avaluació inicial
+    description: Valoració del sistema limfàtic i identificació de zones afectades
+  - step: Preparació
+    description: El pacient es situa en una posició còmoda per facilitar el drenatge
+  - step: Tractament manual
+    description: Moviments suaus, lents i rítmics seguint les vies limfàtiques
+  - step: Finalització
+    description: Recomanacions post-tractament i pautes dhidratació
+duration: 60 minuts
 order: 1
 ---
 

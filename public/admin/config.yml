@@ -1,9 +1,13 @@
+# Backend para desarrollo local (sin autenticación)
+# En producción, esto se cambia automáticamente a git-gateway
 backend:
-  name: git-gateway
+  name: proxy
+  proxy_url: http://localhost:8081/api/v1
   branch: main
 
 # NOTA: local_backend se activa/desactiva automáticamente según el entorno
 # En desarrollo (localhost): activo | En producción (Netlify): desactivado
+# Cuando local_backend está activo, no se requiere autenticación
 local_backend: true
 
 # Optional: Editorial workflow for drafts

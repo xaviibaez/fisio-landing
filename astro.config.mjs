@@ -6,7 +6,7 @@ import netlify from '@astrojs/netlify';
 export default defineConfig({
   integrations: [tailwind()],
   site: 'https://www.axiscambrils.com',
-  output: 'hybrid',
+  output: 'static',
   adapter: netlify(),
   i18n: {
     defaultLocale: 'ca',

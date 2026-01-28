@@ -4,13 +4,37 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Manager - Axis Cambrils</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <!-- Solo cargar Netlify Identity si NO estamos en localhost -->
+  <script>
+    // Detectar si estamos en localhost
+    const isLocalhost = window.location.hostname === 'localhost' || 
+                        window.location.hostname === '127.0.0.1' ||
+                        window.location.hostname === '';
+    
+    // Solo cargar Netlify Identity si NO estamos en localhost
+    if (!isLocalhost) {
+      const script = document.createElement('script');
+      script.src = 'https://identity.netlify.com/v1/netlify-identity-widget.js';
+      document.head.appendChild(script);
+    }
+  </script>
 </head>
 <body>
   <!-- Include the script that builds the page and powers Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
-    if (window.netlifyIdentity) {
+    // Configurar la ruta del config.yml
+    if (window.CMS) {
+      window.CMS.registerPreviewStyle('');
+    }
+  </script>
+  <script>
+    // Solo inicializar Netlify Identity si NO estamos en localhost
+    const isLocalhost = window.location.hostname === 'localhost' || 
+                        window.location.hostname === '127.0.0.1' ||
+                        window.location.hostname === '';
+    
+    if (!isLocalhost && window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
         if (!user) {
           window.netlifyIdentity.on("login", () => {

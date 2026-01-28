@@ -9,8 +9,38 @@
   <meta name="robots" content="noindex" />
   <title>Content Manager - Axis Cambrils</title>
   <style>body { margin: 0; }</style>
+  <!-- Solo cargar Netlify Identity si NO estamos en localhost -->
+  <script>
+    // Detectar si estamos en localhost
+    const isLocalhost = window.location.hostname === 'localhost' || 
+                        window.location.hostname === '127.0.0.1' ||
+                        window.location.hostname === '';
+    
+    // Solo cargar Netlify Identity si NO estamos en localhost
+    if (!isLocalhost) {
+      const script = document.createElement('script');
+      script.src = 'https://identity.netlify.com/v1/netlify-identity-widget.js';
+      document.head.appendChild(script);
+    }
+  </script>
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // Solo inicializar Netlify Identity si NO estamos en localhost
+    const isLocalhost = window.location.hostname === 'localhost' || 
+                        window.location.hostname === '127.0.0.1' ||
+                        window.location.hostname === '';
+    
+    if (!isLocalhost && window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>
