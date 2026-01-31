@@ -18,7 +18,7 @@
   ],
   "scripts": {
     "dev": "astro dev",
-    "dev:cms": "concurrently \"npx decap-server\" \"astro dev\" --names \"CMS,ASTRO\" --prefix-colors \"cyan,green\"",
+    "dev:cms": "concurrently \"decap-server\" \"astro dev\" --names \"CMS,ASTRO\" --prefix-colors \"cyan,green\"",
     "cms:server": "npx decap-server",
     "start": "astro dev",
     "build": "astro check && astro build",
