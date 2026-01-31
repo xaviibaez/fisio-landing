@@ -48,8 +48,25 @@ npm install
 # Copiar variables de entorno
 cp .env.example .env
 
-# Iniciar servidor de desarrollo
+# Inicia el servidor de backend (en una terminal):
+
+npm run cms:server
+
+# Deberías ver: "Server listening on port 8081" o similar.
+# Asegúrate de que el servidor de Astro esté corriendo (en otra terminal o ya corriendo):
+
 npm run dev
+
+# Recarga la página del CMS en http://localhost:4321/admin.
+
+# Alternativa: todo en un comando
+# Si prefieres iniciar ambos servidores a la vez:
+
+npm run dev:cms
+
+# Esto iniciará:
+# • El servidor de backend de Decap CMS en el puerto 8081
+# • El servidor de desarrollo de Astro en el puerto 4321
 ```
 
 El sitio estará disponible en `http://localhost:4321`
