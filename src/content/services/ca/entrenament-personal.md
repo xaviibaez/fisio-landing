@@ -1,6 +1,6 @@
 ---
 lang: "ca"
-slug: ca/entrenament-personal
+slug: ca-entrenament-personal
 title: 'Entrenament Personal i Recuperació Funcional'
 shortDescription: 'Programes personalitzats de reeducació del moviment, readaptació esportiva i entrenaments individuals o en parella.'
 description: 'Oferim un servei integral dentrenament personal i recuperació funcional, adaptat a les teves necessitats específiques. Treballem la reeducació del moviment, la readaptació esportiva i abdominopèlvica, lanàlisi de la marxa per corredors i entrenaments personalitzats individuals o en grups reduïts de màxim 2 persones.'

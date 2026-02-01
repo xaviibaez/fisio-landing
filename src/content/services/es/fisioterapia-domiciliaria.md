@@ -1,6 +1,6 @@
 ---
 lang: "es"
-slug: es/fisioterapia-domiciliaria
+slug: es-fisioterapia-domiciliaria
 title: 'Fisioterapia Domiciliaria'
 shortDescription: 'Tratamiento de fisioterapia profesional en tu domicilio para personas con dificultad de desplazamiento.'
 description: 'Si no puedes acercarte a nuestro centro, ¡nosotros nos desplazamos a tu casa! Este servicio se ofrece a las personas que tienen dificultad para desplazarse o que prefieren recibir el tratamiento en su entorno familiar. Esta modalidad es especialmente beneficiosa para personas que están convalecientes de una lesión, cirugía o enfermedad, así como para personas mayores o con discapacidades que pueden tener dificultades para acceder a nuestra clínica.'

@@ -1,6 +1,6 @@
 ---
 lang: en
-slug: en/drenatge-linfatic
+slug: en-drenatge-linfatic
 title: Lymphatic Drainage
 shortDescription: Technique that stimulates lymphatic flow to treat fluid
   retention, inflammation and cellulite.

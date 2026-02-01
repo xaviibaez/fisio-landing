@@ -1,6 +1,6 @@
 ---
 lang: es
-slug: es/drenatge-linfatic
+slug: es-drenatge-linfatic
 title: Drenaje Linfático
 shortDescription: Técnica que estimula el flujo linfático para tratar la
   retención de líquidos, inflamación y celulitis.

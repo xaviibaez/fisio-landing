@@ -1,6 +1,6 @@
 ---
 lang: "en"
-slug: en/magnetoterapia
+slug: en-magnetoterapia
 title: 'Magnetotherapy'
 shortDescription: 'Therapy with magnetic fields to relieve pain, improve circulation and accelerate healing.'
 description: 'Magnetotherapy is based on the theory that magnetic fields can positively affect the human body at the cellular level. Exposure to magnetic fields has various therapeutic effects such as pain relief, improvement of blood circulation, acceleration of the healing process of bone fractures and injured soft tissues, and muscle relaxation.'
