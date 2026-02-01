@@ -98,7 +98,6 @@ Para posts del blog en varios idiomas, crear:
 /src/content/blog/en/lower-back-exercises.md
 ```
 
-Y actualizar `config.ts` para soportar slugs con idioma.
 
 ## 📋 Añadir nuevas traducciones:
 

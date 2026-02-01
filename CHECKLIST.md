@@ -4,7 +4,6 @@
 
 ### Configuración
 - [x] Archivo `.env.example` creado con variables de configuración
-- [x] Archivo `src/config.ts` con configuración centralizada del sitio
 - [x] `package.json` actualizado con metadata completa
 - [x] `astro.config.mjs` con URL del sitio configurada
 

@@ -16,11 +16,9 @@ Multilingual landing page for Axis Cambrils physiotherapy center with integrated
 - `/src/layouts/` - Page layouts
 - `/src/content/` - Blog posts in Markdown
 - `/src/i18n/` - Translation system (ui.ts, utils.ts)
-- `/src/config.ts` - Centralized site configuration
 - `/public/` - Static assets
 
 ## Development Guidelines
-- **Always use `siteConfig`** from `/src/config.ts` for contact info and site metadata
 - Use Tailwind CSS for all styling
 - Follow Astro best practices for performance
 - Optimize images for web

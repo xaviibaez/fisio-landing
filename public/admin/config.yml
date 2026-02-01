@@ -1,17 +1,10 @@
-# Backend para desarrollo local (sin autenticación)
-# En producción, esto se cambia automáticamente a git-gateway
 backend:
   name: proxy
   proxy_url: http://localhost:8081/api/v1
   branch: main
 
-# NOTA: local_backend se activa/desactiva automáticamente según el entorno
-# En desarrollo (localhost): activo | En producción (Netlify): desactivado
-# Cuando local_backend está activo, no se requiere autenticación
 local_backend: true
 
-# Optional: Editorial workflow for drafts
-# publish_mode: editorial_workflow
 
 # Site URL for previews
 site_url: https://axiscambrils.com
@@ -21,10 +14,8 @@ display_url: https://axiscambrils.com
 media_folder: public/images/uploads
 public_folder: /images/uploads
 
-# Locale for CMS interface
 locale: ca
 
-# Collections
 collections:
   # ============================================
   # SETTINGS - Site Configuration Files
@@ -45,11 +36,6 @@ collections:
               - { label: "Nom del lloc", name: "name", widget: "string" }
               - { label: "Logo", name: "logo", widget: "image", required: false }
               - { label: "Favicon", name: "favicon", widget: "image", required: false }
-          - label: "Hero Section"
-            name: "hero"
-            widget: "object"
-            fields:
-              - { label: "Imatge de fons", name: "backgroundImage", widget: "image", required: false }
           - label: "Contacte"
             name: "contact"
             widget: "object"

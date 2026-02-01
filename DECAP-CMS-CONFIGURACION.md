@@ -58,16 +58,6 @@ Se actualizó completamente para soportar multiidioma:
 - Se añadió campo `lang` oculto a las 3 colecciones existentes
 - `services_ca`, `services_es`, `services_en`
 
-### 3. ✅ Content Collections (`src/content/config.ts`)
-Se actualizó el schema para incluir el campo `lang`:
-
-```typescript
-// Blog Collection
-lang: z.enum(['ca', 'es', 'en'])
-
-// Services Collection  
-lang: z.enum(['ca', 'es', 'en'])
-```
 
 ### 4. ✅ Migración de Posts Existentes
 Los 3 posts del blog se movieron a `/src/content/blog/es/` con el campo `lang: "es"` añadido:

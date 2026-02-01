@@ -6,7 +6,7 @@ import GalleryModal from '../components/GalleryModal.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import { getCollection } from 'astro:content';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
-import { siteConfig } from '../config';
+import siteSettings from '../data/site-settings.json';
 import galleryData from '../data/gallery.json';
 
 const lang = getLangFromUrl(Astro.url);
@@ -493,7 +493,7 @@ const services = allServices
                   </div>
                   <div>
                     <h4 class="font-semibold mb-1">{t('contact.info.address')}</h4>
-                    <p class="text-gray-600">{siteConfig.contact.address.street}<br>{siteConfig.contact.address.postalCode} {siteConfig.contact.address.city}, {siteConfig.contact.address.province}</p>
+                    <p class="text-gray-600">{siteSettings.contact.address.street}<br>{siteSettings.contact.address.postalCode} {siteSettings.contact.address.city}, {siteSettings.contact.address.province}</p>
                   </div>
                 </div>
 
@@ -505,8 +505,8 @@ const services = allServices
                   </div>
                   <div>
                     <h4 class="font-semibold mb-1">{t('contact.info.phone')}</h4>
-                    <a href={`tel:${siteConfig.contact.phone1.replace(/\s/g, '')}`} class="text-primary-600 hover:text-primary-700">{siteConfig.contact.phone1}</a>
-                    <a href={`tel:${siteConfig.contact.phone2.replace(/\s/g, '')}`} class="text-primary-600 hover:text-primary-700">{siteConfig.contact.phone2}</a>
+                    <a href={`tel:${siteSettings.contact.phone1.replace(/\s/g, '')}`} class="text-primary-600 hover:text-primary-700">{siteSettings.contact.phone1}</a>
+                    <a href={`tel:${siteSettings.contact.phone2.replace(/\s/g, '')}`} class="text-primary-600 hover:text-primary-700">{siteSettings.contact.phone2}</a>
                   </div>
                 </div>
 
@@ -518,7 +518,7 @@ const services = allServices
                   </div>
                   <div>
                     <h4 class="font-semibold mb-1">{t('contact.info.email')}</h4>
-                    <a href={`mailto:${siteConfig.contact.email}`} class="text-primary-600 hover:text-primary-700">{siteConfig.contact.email}</a>
+                    <a href={`mailto:${siteSettings.contact.email}`} class="text-primary-600 hover:text-primary-700">{siteSettings.contact.email}</a>
                   </div>
                 </div>
 

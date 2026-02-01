@@ -127,7 +127,6 @@ Consulta `MULTIIDIOMA.md` para más detalles.
 │   │   ├── Header.astro
 │   │   └── Footer.astro
 │   ├── content/         # Blog posts en Markdown
-│   │   ├── config.ts
 │   │   └── blog/
 │   ├── layouts/         # Layouts de página
 │   │   ├── Layout.astro

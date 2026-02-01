@@ -1,11 +1,10 @@
 {
   "site": {
     "name": "Axis Cambrils",
-    "logo": "/images/logo.png",
-    "favicon": "/favicon.svg"
-  },
-  "hero": {
-    "backgroundImage": "/images/hero-bg.jpg"
+    "url": "https://axiscambrils.com",
+    "description": "Centro de fisioterapia en Cambrils. Tratamientos personalizados de rehabilitación, drenaje linfático, suelo pélvico y más.",
+    "logo": "/images/uploads/minecraft_creeper_-crop-.png",
+    "favicon": "/images/uploads/minecraft_creeper_-crop-.png"
   },
   "contact": {
     "email": "fisioaxiscambrils@gmail.com",
