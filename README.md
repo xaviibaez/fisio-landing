@@ -50,7 +50,7 @@ cp .env.example .env
 
 # Inicia el servidor de backend (en una terminal):
 
-npm run cms:server
+pnpm run cms:server
 
 # Deberías ver: "Server listening on port 8081" o similar.
 # Asegúrate de que el servidor de Astro esté corriendo (en otra terminal o ya corriendo):
