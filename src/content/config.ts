@@ -4,6 +4,7 @@ const blogCollection = defineCollection({
   type: 'content',
   schema: z.object({
     lang: z.enum(['ca', 'es', 'en']),
+    slug: z.string().optional(),
     title: z.string(),
     description: z.string(),
     author: z.string(),
@@ -18,6 +19,7 @@ const servicesCollection = defineCollection({
   type: 'content',
   schema: z.object({
     lang: z.enum(['ca', 'es', 'en']),
+    slug: z.string().optional(),
     title: z.string(),
     shortDescription: z.string(),
     description: z.string(),

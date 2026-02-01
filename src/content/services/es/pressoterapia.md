@@ -1,5 +1,6 @@
 ---
 lang: "es"
+slug: es/pressoterapia
 title: 'Presoterapia'
 shortDescription: 'Sistema de masaje mecánico para estimular la circulación linfática y venosa mediante cámaras de aire.'
 description: 'La Presoterapia consiste en un sistema de bombeo suministrado por accesorios especiales equipados con cámaras de aire. Estas cámaras se inflan alternativamente empujando los líquidos desde el extremo de las extremidades hacia el interior, ejerciendo un masaje mecánico que sirve para estimular y hacer más eficiente la circulación linfática y venosa. El dispositivo reproduce el mecanismo de compresión controlada simulando un masaje linfodrenante manual.'

@@ -1,9 +1,10 @@
 ---
+author: Dra. María García
+slug: es/ejercicios-dolor-lumbar
 lang: es
 title: 5 Ejercicios para Aliviar el Dolor Lumbar
 description: Descubre ejercicios efectivos y seguros para reducir el dolor de
-  espalda baja desde casa.1
-author: Dra. María García
+  espalda baja desde casa.
 date: 2025-12-15
 category: traumatologica
 tags:

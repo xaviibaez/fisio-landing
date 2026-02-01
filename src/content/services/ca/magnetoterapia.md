@@ -1,5 +1,6 @@
 ---
 lang: "ca"
+slug: ca/magnetoterapia
 title: 'Magnetoteràpia'
 shortDescription: 'Teràpia amb camps magnètics per alleujar el dolor, millorar la circulació i accelerar la curació.'
 description: 'La Magnetoteràpia es basa en la teoria que els camps magnètics poden afectar positivament el cos humà a nivell cel·lular. Lexposició a camps magnètics té diversos efectes terapèutics com lalleugeriment del dolor, la millora de la circulació sanguínia, lacceleració del procés de curació de fractures òssies i teixits tous lesionats, i la relaxació muscular.'

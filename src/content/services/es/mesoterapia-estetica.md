@@ -1,5 +1,6 @@
 ---
 lang: "es"
+slug: es/mesoterapia-estetica
 title: 'Mesoterapia Estética'
 shortDescription: 'Tratamiento médico mínimamente invasivo para mejorar la piel y tratar celulitis, flacidez y arrugas.'
 description: 'La Mesoterapia Estética es un tratamiento médico mínimamente invasivo que se utiliza para mejorar la apariencia de la piel y tratar diversas condiciones estéticas como la celulitis, la flacidez, las arrugas y la grasa localizada. Mediante la inyección de pequeñas cantidades de sustancias farmacológicas y nutrientes directamente en la mesodermis (capa media de la piel), se consiguen resultados visibles y duraderos.'
