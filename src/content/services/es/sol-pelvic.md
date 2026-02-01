@@ -4,7 +4,7 @@ title: 'Suelo Pélvico'
 shortDescription: 'Evaluación y tratamiento especializado de los problemas musculares y funcionales del suelo pélvico.'
 description: 'La fisioterapia del suelo pélvico está enfocada a evalaruar y tratar los problemas musculares y funcionales que afectan a esta zona tan importante del cuerpo. Ayudamos en casos de pérdidas de orina, prolapsos, diástasis abdominal, dolor pélvico, dolor en las relaciones sexuales y debilidad de la musculatura perineal, tanto en mujeres como en hombres.'
 icon: 'heart-pulse'
-image: '/images/DL.png'
+image: '/images/uploads/DL.png'
 benefits:
   - 'Recuperación del control de esfínteres'
   - 'Reducción o eliminación de las pérdidas de orina'

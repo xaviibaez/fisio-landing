@@ -4,7 +4,7 @@ title: 'Personal Training and Functional Recovery'
 shortDescription: 'Personalized programs for movement re-education, sports readaptation, and individual or paired training sessions.'
 description: 'We offer a comprehensive personal training and functional recovery service, tailored to your specific needs. We work on movement re-education, sports and abdominopelvic readaptation, gait analysis for runners, and personalized training sessions individually or in small groups of maximum 2 people.'
 icon: 'activity'
-image: '/images/EP.png'
+image: '/images/uploads/EP.png'
 benefits:
   - 'Recovery of correct movement patterns'
   - 'Safe return to sports activity'

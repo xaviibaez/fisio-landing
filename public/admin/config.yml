@@ -125,8 +125,6 @@ collections:
     folder: "src/content/blog/ca"
     create: true
     slug: "{{slug}}"
-    media_folder: "/public/images/uploads/blog"
-    public_folder: "/images/uploads/blog"
     fields:
       - { label: "Lang", name: "lang", widget: "hidden", default: "ca" }
       - { label: "Títol", name: "title", widget: "string" }
@@ -153,8 +151,6 @@ collections:
     folder: "src/content/blog/es"
     create: true
     slug: "{{slug}}"
-    media_folder: "/public/images/uploads/blog"
-    public_folder: "/images/uploads/blog"
     fields:
       - { label: "Lang", name: "lang", widget: "hidden", default: "es" }
       - { label: "Título", name: "title", widget: "string" }
@@ -181,8 +177,6 @@ collections:
     folder: "src/content/blog/en"
     create: true
     slug: "{{slug}}"
-    media_folder: "/public/images/uploads/blog"
-    public_folder: "/images/uploads/blog"
     fields:
       - { label: "Lang", name: "lang", widget: "hidden", default: "en" }
       - { label: "Title", name: "title", widget: "string" }
@@ -213,8 +207,6 @@ collections:
     folder: "src/content/services/ca"
     create: true
     slug: "{{slug}}"
-    media_folder: "/public/images/services"
-    public_folder: "/images/services"
     fields:
       - { label: "Lang", name: "lang", widget: "hidden", default: "ca" }
       - { label: "Títol", name: "title", widget: "string" }
@@ -257,8 +249,6 @@ collections:
     folder: "src/content/services/es"
     create: true
     slug: "{{slug}}"
-    media_folder: "/public/images/services"
-    public_folder: "/images/services"
     fields:
       - { label: "Lang", name: "lang", widget: "hidden", default: "es" }
       - { label: "Título", name: "title", widget: "string" }
@@ -301,8 +291,6 @@ collections:
     folder: "src/content/services/en"
     create: true
     slug: "{{slug}}"
-    media_folder: "/public/images/services"
-    public_folder: "/images/services"
     fields:
       - { label: "Lang", name: "lang", widget: "hidden", default: "en" }
       - { label: "Title", name: "title", widget: "string" }

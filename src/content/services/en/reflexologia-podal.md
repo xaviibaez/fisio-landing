@@ -4,7 +4,7 @@ title: 'Foot Reflexology'
 shortDescription: 'Ancient therapeutic technique that stimulates reflex zones of the feet connected to the entire body.'
 description: 'Foot Reflexology is a therapeutic technique with Asian origins based on manual stimulation of reflex zones located on the soles of the feet. These zones are connected to different parts of the body through the Peripheral Nervous System, allowing balance of the physical and emotional body to improve various disorders and functional problems.'
 icon: 'foot'
-image: '/images/DL.png'
+image: '/images/uploads/DL.png'
 benefits:
   - 'Physical and emotional balance of the body'
   - 'Improvement of the respiratory system'

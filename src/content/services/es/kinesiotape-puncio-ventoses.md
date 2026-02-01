@@ -4,7 +4,7 @@ title: 'Kinesiotape, Punción Seca y Ventosas'
 shortDescription: 'Técnicas complementarias para reducir el dolor, mejorar la función muscular y acelerar la recuperación.'
 description: 'Conjunto de técnicas terapéuticas avanzadas que utilizamos para reducir el dolor, mejorar la función muscular y articular, facilitar la recuperación neuromuscular y tratar cicatrices. Estas herramientas complementan el tratamiento de fisioterapia convencional para optimizar los resultados.'
 icon: 'bandage'
-image: '/images/DL.png'
+image: '/images/uploads/DL.png'
 benefits:
   - 'Reducción significativa del dolor muscular y articular'
   - 'Mejora de la función muscular y la fuerza'

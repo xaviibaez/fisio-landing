@@ -4,7 +4,7 @@ title: 'Fisioteràpia Domiciliària'
 shortDescription: 'Tractament de fisioteràpia professional al teu domicili per a persones amb dificultat de desplaçament.'
 description: 'Si no pots apropar-te al nostre centre, nosaltres ens desplacem a casa teva! Aquest servei sofereix a les persones que tenen dificultat per desplaçar-se o que prefereixen rebre el tractament al seu entorn familiar. Aquesta modalitat és especialment beneficiosa per persones que estan convalescents duna lesió, cirurgia o malaltia, així com per persones grans o amb discapacitats que poden tenir dificultats per accedir a la nostra clínica.'
 icon: 'home'
-image: '/images/domiciliaria.png'
+image: '/images/uploads/domiciliaria.png'
 benefits:
   - 'Tractament al teu propi domicili'
   - 'Comfort i comoditat del teu entorn familiar'

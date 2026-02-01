@@ -1,7 +1,7 @@
 {
   "gallery": [
     {
-      "image": "/images/gallery/1.png",
+      "image": "/images/uploads/1.png",
       "title_ca": "Sala de tractaments",
       "title_es": "Sala de tratamientos",
       "title_en": "Treatment room",
@@ -10,7 +10,7 @@
       "description_en": "Modern and comfortable space"
     },
     {
-      "image": "/images/gallery/2.png",
+      "image": "/images/uploads/2.png",
       "title_ca": "Equipament especialitzat",
       "title_es": "Equipamiento especializado",
       "title_en": "Specialized equipment",
@@ -19,7 +19,7 @@
       "description_en": "Latest generation technology"
     },
     {
-      "image": "/images/gallery/3.png",
+      "image": "/images/uploads/3.png",
       "title_ca": "Àrea de rehabilitació",
       "title_es": "Área de rehabilitación",
       "title_en": "Rehabilitation area",
@@ -28,7 +28,7 @@
       "description_en": "For your recovery"
     },
     {
-      "image": "/images/gallery/4.png",
+      "image": "/images/uploads/4.png",
       "title_ca": "Zona de benestar",
       "title_es": "Zona de bienestar",
       "title_en": "Wellness zone",
@@ -37,7 +37,7 @@
       "description_en": "Relax and recover"
     },
     {
-      "image": "/images/gallery/5.png",
+      "image": "/images/uploads/5.png",
       "title_ca": "Consulta privada",
       "title_es": "Consulta privada",
       "title_en": "Private consultation",
@@ -46,7 +46,7 @@
       "description_en": "Personalized attention"
     },
     {
-      "image": "/images/gallery/6.png",
+      "image": "/images/uploads/6.png",
       "title_ca": "Recepció",
       "title_es": "Recepción",
       "title_en": "Reception",

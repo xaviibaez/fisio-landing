@@ -14,7 +14,7 @@
       "courses_es": "Punción seca\nKinesiotaping\nDrenaje linfático\nFisioterapia deportiva\nElectroterapia\nTerapia miofascial\nRehabilitación funcional\nOsteopatía",
       "role_es": "Fisioterapeuta",
       "id": "montse",
-      "image": "/images/team/3.png",
+      "image": "/images/uploads/membre3.png",
       "name_en": "Montse"
     },
     {
@@ -31,7 +31,7 @@
       "courses_es": "Fisioterapia respiratoria",
       "role_es": "Fisioterapeuta",
       "id": "maria",
-      "image": "/images/team/2.png",
+      "image": "/images/uploads/membre2.png",
       "name_en": "Maria"
     },
     {
@@ -48,22 +48,8 @@
       "courses_es": "Presoterapia\nMagnetoterapia\nReflexología podal\nMesoterapia estética\nTerapia con ventosas\nPilates terapéutico\nElectroestimulación\nFisioterapia oncológica\nReeducación postural global",
       "role_es": "Fisioterapeuta",
       "id": "vania",
-      "image": "/images/team/1.png",
+      "image": "/images/uploads/membre1.png",
       "name_en": "Vania"
-    },
-    {
-      "education_en": "much",
-      "col": "123456",
-      "name_es": "xavi",
-      "education_es": "poca",
-      "role_ca": "tecleador",
-      "role_en": "tecleador",
-      "name_ca": "xavi",
-      "education_ca": "molta",
-      "role_es": "tecleador",
-      "id": "Xavi test",
-      "image": "/images/uploads/minecraft_creeper_-crop-.png",
-      "name_en": "xavi"
     }
   ]
 }

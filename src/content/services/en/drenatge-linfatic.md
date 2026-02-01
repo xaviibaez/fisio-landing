@@ -1,29 +1,35 @@
 ---
-lang: "en"
-title: 'Lymphatic Drainage'
-shortDescription: 'Technique that stimulates lymphatic flow to treat fluid retention, inflammation and cellulite.'
-description: 'Lymphatic drainage is a gentle therapeutic technique that stimulates the lymphatic system to eliminate toxins and retained fluids. The lymphatic system is a network of vessels, nodes and organs that transport and filter lymph, a fluid containing white blood cells and cellular waste. This treatment improves circulation, reduces inflammation and strengthens the immune system.'
-icon: 'droplet'
-image: '/images/DL.png'
+lang: en
+title: Lymphatic Drainage
+shortDescription: Technique that stimulates lymphatic flow to treat fluid
+  retention, inflammation and cellulite.
+description: Lymphatic drainage is a gentle therapeutic technique that
+  stimulates the lymphatic system to eliminate toxins and retained fluids. The
+  lymphatic system is a network of vessels, nodes and organs that transport and
+  filter lymph, a fluid containing white blood cells and cellular waste. This
+  treatment improves circulation, reduces inflammation and strengthens the
+  immune system.
+icon: droplet
+image: /images/uploads/DL.png
 benefits:
-  - 'Elimination of toxins and waste from the body'
-  - 'Reduction of fluid retention and edema'
-  - 'Improvement of lymphatic and venous circulation'
-  - 'Regulation of body fluid balance'
-  - 'Strengthening of the immune system'
-  - 'Reduction of cellulite and improvement of skin texture'
-  - 'Relief of heavy legs sensation'
-  - 'Post-operative and post-injury recovery'
+  - Elimination of toxins and waste from the body
+  - Reduction of fluid retention and edema
+  - Improvement of lymphatic and venous circulation
+  - Regulation of body fluid balance
+  - Strengthening of the immune system
+  - Reduction of cellulite and improvement of skin texture
+  - Relief of heavy legs sensation
+  - Post-operative and post-injury recovery
 process:
-  - step: 'Initial assessment'
-    description: 'Evaluation of the lymphatic system and identification of affected areas'
-  - step: 'Preparation'
-    description: 'Patient is positioned comfortably to facilitate drainage'
-  - step: 'Manual treatment'
-    description: 'Gentle, slow and rhythmic movements following lymphatic pathways'
-  - step: 'Completion'
-    description: 'Post-treatment recommendations and hydration guidelines'
-duration: '60 minutes'
+  - step: Initial assessment
+    description: Evaluation of the lymphatic system and identification of affected areas
+  - step: Preparation
+    description: Patient is positioned comfortably to facilitate drainage
+  - step: Manual treatment
+    description: Gentle, slow and rhythmic movements following lymphatic pathways
+  - step: Completion
+    description: Post-treatment recommendations and hydration guidelines
+duration: 60 minutes
 order: 1
 ---
 

@@ -4,7 +4,7 @@ title: 'Reflexología Podal'
 shortDescription: 'Técnica terapéutica milenaria que estimula zonas reflejas de los pies conectadas con todo el cuerpo.'
 description: 'La Reflexología Podal es una técnica terapéutica con orígenes asiáticos que se basa en la estimulación manual de zonas reflejas situadas en la planta de los pies. Estas zonas están conectadas con diferentes partes del cuerpo a través del Sistema Nervioso Periférico, permitiendo equilibrar el cuerpo físico y emocional para mejorar diferentes trastornos y problemas funcionales.'
 icon: 'foot'
-image: '/images/DL.png'
+image: '/images/uploads/DL.png'
 benefits:
   - 'Equilibrio físico y emocional del cuerpo'
   - 'Mejora del sistema respiratorio'

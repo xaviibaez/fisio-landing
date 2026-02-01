@@ -1,11 +1,15 @@
 ---
-lang: "es"
-title: "5 Ejercicios para Aliviar el Dolor Lumbar"
-description: "Descubre ejercicios efectivos y seguros para reducir el dolor de espalda baja desde casa."
-author: "Dra. María García"
+lang: es
+title: 5 Ejercicios para Aliviar el Dolor Lumbar
+description: Descubre ejercicios efectivos y seguros para reducir el dolor de
+  espalda baja desde casa.1
+author: Dra. María García
 date: 2025-12-15
-category: "traumatologica"
-tags: ["dolor lumbar", "ejercicios", "espalda"]
+category: traumatologica
+tags:
+  - dolor lumbar
+  - ejercicios
+  - espalda
 ---
 
 El dolor lumbar es una de las consultas más frecuentes en fisioterapia. Aquí te presentamos 5 ejercicios que puedes hacer en casa para aliviar las molestias.

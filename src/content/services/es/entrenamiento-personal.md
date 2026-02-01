@@ -4,7 +4,7 @@ title: 'Entrenamiento Personal y Recuperación Funcional'
 shortDescription: 'Programas personalizados de reeducación del movimiento, readaptación deportiva y entrenamientos individuales o en pareja.'
 description: 'Ofrecemos un servicio integral de entrenamiento personal y recuperación funcional, adaptado a tus necesidades específicas. Trabajamos la reeducación del movimiento, la readaptación deportiva y abdominopélvica, el análisis de la marcha para corredores y entrenamientos personalizados individuales o en grupos reducidos de máximo 2 personas.'
 icon: 'activity'
-image: '/images/EP.png'
+image: '/images/uploads/EP.png'
 benefits:
   - 'Recuperación de patrones de movimiento correctos'
   - 'Retorno seguro a la actividad deportiva'

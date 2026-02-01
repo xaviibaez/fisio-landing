@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import Layout from './Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -10,23 +9,8 @@ const { frontmatter } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// Support images from both src/assets and public/images
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/services/*.{jpeg,jpg,png,gif,webp}');
-
-// Check if image path starts with /images/ (public folder) or needs transformation
-let imageModule = null;
-let publicImagePath = null;
-
-if (frontmatter.image) {
-  // Try to find in src/assets/services first (old format: /images/DL.png -> /src/assets/services/DL.png)
-  const assetPath = frontmatter.image.replace('/images/', '/src/assets/services/').replace('/images/services/', '/src/assets/services/');
-  if (images[assetPath]) {
-    imageModule = await images[assetPath]();
-  } else {
-    // Use public image path directly (new format from CMS: /images/services/...)
-    publicImagePath = frontmatter.image;
-  }
-}
+// Imágenes en public/images/uploads/ (ruta pública directa)
+const publicImagePath = frontmatter.image ?? null;
 ---
 
 <Layout title={`${frontmatter.title} - ${siteSettings.site.name}`} description={frontmatter.shortDescription}>
@@ -46,23 +30,14 @@ if (frontmatter.image) {
         <div class="max-w-6xl mx-auto">
           <!-- Image & Description Grid -->
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 items-start">
-            {(imageModule || publicImagePath) && (
+            {publicImagePath && (
               <div class="rounded-xl overflow-hidden shadow-lg lg:sticky lg:top-8">
-                {imageModule ? (
-                  <Image 
-                    src={imageModule.default} 
-                    alt={frontmatter.title}
-                    class="w-full h-auto object-cover"
-                    loading="eager"
-                  />
-                ) : (
-                  <img 
-                    src={publicImagePath} 
-                    alt={frontmatter.title}
-                    class="w-full h-auto object-cover"
-                    loading="eager"
-                  />
-                )}
+                <img 
+                  src={publicImagePath} 
+                  alt={frontmatter.title}
+                  class="w-full h-auto object-cover"
+                  loading="eager"
+                />
               </div>
             )}
             

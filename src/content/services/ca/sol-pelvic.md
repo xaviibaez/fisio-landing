@@ -1,30 +1,35 @@
 ---
-lang: "ca"
-title: 'Sòl Pèlvic'
-shortDescription: 'Avaluació i tractament especialitzat dels problemes musculars i funcionals del sòl pèlvic.'
-description: 'La fisioteràpia del sòl pèlvic està enfocada a avaluar i tractar els problemes musculars i funcionals que afecten a aquesta zona tan important del cos. Ajudem en casos de pèrdues dorina, prolapses, diàstasis abdominal, dolor pelvià, dolor en les relacions sexuals i debilitat de la musculatura perineal, tant en dones com en homes.'
-icon: 'heart-pulse'
-image: '/images/pelvic.png'
+lang: ca
+title: Sòl Pèlvic
+shortDescription: Avaluació i tractament especialitzat dels problemes musculars
+  i funcionals del sòl pèlvic.
+description: La fisioteràpia del sòl pèlvic està enfocada a avaluar i tractar
+  els problemes musculars i funcionals que afecten a aquesta zona tan important
+  del cos. Ajudem en casos de pèrdues dorina, prolapses, diàstasis abdominal,
+  dolor pelvià, dolor en les relacions sexuals i debilitat de la musculatura
+  perineal, tant en dones com en homes.
+icon: heart-pulse
+image: /images/uploads/pelvic.png
 benefits:
-  - 'Recuperació del control desfínters'
-  - 'Reducció o eliminació de les pèrdues dorina'
-  - 'Millora de prolapses i sensació de pes pelvià'
-  - 'Tractament de la diàstasis dels rectes abdominals'
-  - 'Alleugeriment del dolor en les relacions sexuals'
-  - 'Tractament especialitzat de cicatrius (cesària, episiotomia)'
-  - 'Enfortiment de la musculatura perineal'
-  - 'Reducció del dolor al còccix'
-  - 'Preparació pre i post part'
+  - Recuperació del control desfínters
+  - Reducció o eliminació de les pèrdues dorina
+  - Millora de prolapses i sensació de pes pelvià
+  - Tractament de la diàstasis dels rectes abdominals
+  - Alleugeriment del dolor en les relacions sexuals
+  - Tractament especialitzat de cicatrius (cesària, episiotomia)
+  - Enfortiment de la musculatura perineal
+  - Reducció del dolor al còccix
+  - Preparació pre i post part
 process:
-  - step: 'Avaluació inicial'
-    description: 'Entrevista detallada i valoració de lhistorial clínic'
-  - step: 'Exploració funcional'
-    description: 'Valoració de la musculatura pelviana i abdominal'
-  - step: 'Tractament personalitzat'
-    description: 'Exercicis, tècniques manuals i pautes específiques'
-  - step: 'Seguiment'
-    description: 'Reevaluació periòdica i ajust del tractament'
-duration: '45-60 minuts'
+  - step: Avaluació inicial
+    description: Entrevista detallada i valoració de lhistorial clínic
+  - step: Exploració funcional
+    description: Valoració de la musculatura pelviana i abdominal
+  - step: Tractament personalitzat
+    description: Exercicis, tècniques manuals i pautes específiques
+  - step: Seguiment
+    description: Reevaluació periòdica i ajust del tractament
+duration: 45-60 minuts
 order: 3
 ---
 

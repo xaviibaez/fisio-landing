@@ -1,29 +1,35 @@
 ---
-lang: "es"
-title: 'Drenaje Linfático'
-shortDescription: 'Técnica que estimula el flujo linfático para tratar la retención de líquidos, inflamación y celulitis.'
-description: 'El drenaje linfático es una técnica terapéutica suave que estimula el sistema linfático para eliminar toxinas y líquidos retenidos. El sistema linfático es una red de vasos, ganglios y órganos que transportan y filtran la linfa, un líquido que contiene glóbulos blancos y desechos celulares. Este tratamiento mejora la circulación, reduce la inflamación y fortalece el sistema inmunológico.'
-icon: 'droplet'
-image: '/images/DL.png'
+lang: es
+title: Drenaje Linfático
+shortDescription: Técnica que estimula el flujo linfático para tratar la
+  retención de líquidos, inflamación y celulitis.
+description: El drenaje linfático es una técnica terapéutica suave que estimula
+  el sistema linfático para eliminar toxinas y líquidos retenidos. El sistema
+  linfático es una red de vasos, ganglios y órganos que transportan y filtran la
+  linfa, un líquido que contiene glóbulos blancos y desechos celulares. Este
+  tratamiento mejora la circulación, reduce la inflamación y fortalece el
+  sistema inmunológico.
+icon: droplet
+image: /images/uploads/DL.png
 benefits:
-  - 'Eliminación de toxinas y desechos del cuerpo'
-  - 'Reducción de la retención de líquidos y edemas'
-  - 'Mejora de la circulación linfática y venosa'
-  - 'Regulación del equilibrio de líquidos corporal'
-  - 'Fortalecimiento del sistema inmunológico'
-  - 'Reducción de la celulitis y mejora de la textura de la piel'
-  - 'Alivio de la sensación de piernas pesadas'
-  - 'Recuperación post-operatoria y post-lesiones'
+  - Eliminación de toxinas y desechos del cuerpo
+  - Reducción de la retención de líquidos y edemas
+  - Mejora de la circulación linfática y venosa
+  - Regulación del equilibrio de líquidos corporal
+  - Fortalecimiento del sistema inmunológico
+  - Reducción de la celulitis y mejora de la textura de la piel
+  - Alivio de la sensación de piernas pesadas
+  - Recuperación post-operatoria y post-lesiones
 process:
-  - step: 'Evaluación inicial'
-    description: 'Valoración del sistema linfático e identificación de zonas afectadas'
-  - step: 'Preparación'
-    description: 'El paciente se sitúa en una posición cómoda para facilitar el drenaje'
-  - step: 'Tratamiento manual'
-    description: 'Movimientos suaves, lentos y rítmicos siguiendo las vías linfáticas'
-  - step: 'Finalización'
-    description: 'Recomendaciones post-tratamiento y pautas de hidratación'
-duration: '60 minutos'
+  - step: Evaluación inicial
+    description: Valoración del sistema linfático e identificación de zonas afectadas
+  - step: Preparación
+    description: El paciente se sitúa en una posición cómoda para facilitar el drenaje
+  - step: Tratamiento manual
+    description: Movimientos suaves, lentos y rítmicos siguiendo las vías linfáticas
+  - step: Finalización
+    description: Recomendaciones post-tratamiento y pautas de hidratación
+duration: 60 minutos
 order: 1
 ---
 

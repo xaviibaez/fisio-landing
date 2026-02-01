@@ -4,7 +4,7 @@ title: 'Magnetoterapia'
 shortDescription: 'Terapia con campos magnéticos para aliviar el dolor, mejorar la circulación y acelerar la curación.'
 description: 'La Magnetoterapia se basa en la teoría de que los campos magnéticos pueden afectar positivamente el cuerpo humano a nivel celular. La exposición a campos magnéticos tiene diversos efectos terapéuticos como el alivio del dolor, la mejora de la circulación sanguínea, la aceleración del proceso de curación de fracturas óseas y tejidos blandos lesionados, y la relajación muscular.'
 icon: 'magnet'
-image: '/images/DL.png'
+image: '/images/uploads/DL.png'
 benefits:
   - 'Alivio significativo del dolor'
   - 'Mejora de la circulación sanguínea'
