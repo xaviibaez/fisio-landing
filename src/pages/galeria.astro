@@ -8,10 +8,10 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import siteSettings from '../data/site-settings.json';
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const translation = useTranslations(lang);
 ---
 
-<Layout title={`${t('gallery.pageTitle')} | ${siteSettings.site.name}`} description={t('gallery.pageSubtitle')}>
+<Layout title={`${translation('gallery.pageTitle')} | ${siteSettings.site.name}`} description={translation('gallery.pageSubtitle')}>
   <Header />
   <GalleryContent />
   <Footer />

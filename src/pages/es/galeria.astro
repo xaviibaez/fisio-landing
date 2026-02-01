@@ -1,19 +1,5 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import GalleryModal from '../../components/GalleryModal.astro';
-import GalleryContent from '../../components/GalleryContent.astro';
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-import siteSettings from '../../data/site-settings.json';
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+import GalleryPage from '../galeria.astro';
 ---
 
-<Layout title={`${t('gallery.pageTitle')} | ${siteSettings.site.name}`} description={t('gallery.pageSubtitle')}>
-  <Header />
-  <GalleryContent />
-  <Footer />
-  <GalleryModal />
-</Layout>
+<GalleryPage />
