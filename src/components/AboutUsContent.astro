@@ -4,6 +4,7 @@ import Header from './Header.astro';
 import Footer from './Footer.astro';
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 import teamData from '../data/team.json';
+import siteSettings from '../data/site-settings.json';
 
 const lang = getLangFromUrl(Astro.url);
 const translation = useTranslations(lang);
@@ -24,7 +25,7 @@ const teamConfig = teamData.team.map((member: any) => ({
 }));
 ---
 
-<Layout title={`${translation('aboutUs.team.title')} | Axis Cambrils`} description={translation('aboutUs.team.subtitle')}>
+<Layout title={`${translation('aboutUs.team.title')} | ${siteSettings.site.name}`} description={translation('aboutUs.team.subtitle')}>
   <Header />
   
   <main class="pt-24 pb-20">

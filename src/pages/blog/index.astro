@@ -4,6 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { getCollection } from 'astro:content';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import siteSettings from '../../data/site-settings.json';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -14,7 +15,7 @@ const allPosts = await getCollection('blog', (entry) => {
 const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<Layout title={`${t('blog.title')} - Axis Cambrils`} description={t('blog.subtitle')}>
+<Layout title={`${t('blog.title')} - ${siteSettings.site.name}`} description={t('blog.subtitle')}>
   <Header />
   
   <main class="pt-24 pb-20">

@@ -1,5 +1,6 @@
 ---
 // Admin page for Decap CMS
+import siteSettings from '../../data/site-settings.json';
 ---
 <!DOCTYPE html>
 <html>
@@ -7,7 +8,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
-  <title>Content Manager - Axis Cambrils</title>
+  <title>Content Manager - {siteSettings.site.name}</title>
   <style>body { margin: 0; }</style>
   <!-- Solo cargar Netlify Identity si NO estamos en localhost -->
   <script>

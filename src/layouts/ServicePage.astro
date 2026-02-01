@@ -4,6 +4,7 @@ import Layout from './Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import siteSettings from '../data/site-settings.json';
 
 const { frontmatter } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
@@ -28,7 +29,7 @@ if (frontmatter.image) {
 }
 ---
 
-<Layout title={`${frontmatter.title} - Axis Cambrils`} description={frontmatter.shortDescription}>
+<Layout title={`${frontmatter.title} - ${siteSettings.site.name}`} description={frontmatter.shortDescription}>
   <Header />
   
   <main class="pt-24 pb-20">

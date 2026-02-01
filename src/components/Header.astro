@@ -1,6 +1,7 @@
 ---
 import LanguagePicker from './LanguagePicker.astro';
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+import siteSettings from '../data/site-settings.json';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -10,8 +11,12 @@ const currentPath = Astro.url.pathname;
 <header class="bg-white shadow-sm sticky top-0 z-50">
   <nav class="container mx-auto px-4 py-4">
     <div class="flex items-center justify-between">
-      <a href={getLocalizedPath('/', lang)} class="text-2xl font-heading font-bold text-primary-600">
-        Axis Cambrils
+      <a href={getLocalizedPath('/', lang)} class="text-2xl font-heading font-bold text-primary-600 flex items-center gap-2">
+        {siteSettings.site.logo ? (
+          <img src={siteSettings.site.logo} alt={siteSettings.site.name} class="h-8 md:h-10 w-auto" />
+        ) : (
+          <span>{siteSettings.site.name}</span>
+        )}
       </a>
       
       <!-- Desktop Menu -->
