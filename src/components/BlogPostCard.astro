@@ -1,0 +1,57 @@
+---
+import type { TranslationFunction } from '../i18n/utils';
+
+interface Props {
+  post: {
+    slug: string;
+    data: {
+      title: string;
+      description: string;
+      author: string;
+      date: Date;
+    };
+  };
+  lang: string;
+  translation: TranslationFunction;
+}
+
+const { post, lang, translation: t } = Astro.props;
+
+const postUrl = lang === 'ca' ? `/blog/${post.slug}` : `/${lang}/blog/${post.slug}`;
+const locale = lang === 'ca' ? 'ca-ES' : lang === 'es' ? 'es-ES' : 'en-GB';
+const formattedDate = post.data.date.toLocaleDateString(locale, { 
+  year: 'numeric', 
+  month: 'short', 
+  day: 'numeric' 
+});
+---
+
+<article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-2">
+  <div class="bg-gradient-to-br from-primary-500 to-primary-600 h-48 flex items-center justify-center">
+    <svg class="w-20 h-20 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+    </svg>
+  </div>
+  <div class="p-6">
+    <h2 class="text-xl font-heading font-bold mb-2 line-clamp-2">
+      <a href={postUrl} class="hover:text-primary-600 transition">
+        {post.data.title}
+      </a>
+    </h2>
+    <p class="text-gray-600 mb-4 line-clamp-3">
+      {post.data.description}
+    </p>
+    <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+      <span class="font-medium">{post.data.author}</span>
+      <time datetime={post.data.date.toISOString()}>
+        {formattedDate}
+      </time>
+    </div>
+    <a href={postUrl} class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 transition">
+      {t('blog.readMore')}
+      <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </a>
+  </div>
+</article>

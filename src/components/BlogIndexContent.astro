@@ -1,0 +1,52 @@
+---
+import BlogPostCard from './BlogPostCard.astro';
+import BlogEmpty from './BlogEmpty.astro';
+import type { TranslationFunction } from '../i18n/utils';
+
+interface Props {
+  posts: Array<{
+    slug: string;
+    data: {
+      title: string;
+      description: string;
+      author: string;
+      date: Date;
+    };
+  }>;
+  lang: string;
+  translation: TranslationFunction;
+}
+
+const { posts, lang, translation } = Astro.props;
+
+const mainClasses = "pt-24 pb-20";
+const containerClasses = "container mx-auto px-4";
+const headerWrapperClasses = "text-center mb-12";
+const titleClasses = "text-4xl md:text-5xl font-heading font-bold mb-4";
+const subtitleClasses = "text-xl text-gray-600 max-w-2xl mx-auto";
+const sectionClasses = "py-16 bg-gray-50";
+const gridClasses = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8";
+---
+
+<main class={mainClasses}>
+  <div class={containerClasses}>
+    <div class={headerWrapperClasses}>
+      <h1 class={titleClasses}>{translation('blog.title')}</h1>
+      <p class={subtitleClasses}>{translation('blog.subtitle')}</p>
+    </div>
+  </div>
+
+  <section class={sectionClasses}>
+    <div class={containerClasses}>
+      {posts.length === 0 ? (
+        <BlogEmpty lang={lang} t={translation} />
+      ) : (
+        <div class={gridClasses}>
+          {posts.map((post) => (
+            <BlogPostCard post={post} lang={lang} translation={translation} />
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</main>
