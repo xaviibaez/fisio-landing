@@ -44,6 +44,16 @@ const services = allServices
       icon: service.data.icon
     };
   });
+
+// Claves de la checklist "What is Physiotherapy"
+const generalBenefitsKeys = [
+  'whatIs.conditions.musculoskeletal',
+  'whatIs.conditions.postop',
+  'whatIs.conditions.neurological',
+  'whatIs.conditions.chronic',
+  'whatIs.conditions.respiratory',
+  'whatIs.conditions.sports',
+] as const;
 ---
 
 <Layout title={`${siteSettings.site.name} - ${translation('hero.subtitle')}`}>
@@ -124,42 +134,14 @@ const services = allServices
           
           <!-- Checklist - 2 columns on large screens -->
           <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 mb-10">
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              <span class="text-gray-700">{translation('whatIs.conditions.musculoskeletal')}</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              <span class="text-gray-700">{translation('whatIs.conditions.postop')}</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              <span class="text-gray-700">{translation('whatIs.conditions.neurological')}</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              <span class="text-gray-700">{translation('whatIs.conditions.chronic')}</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              <span class="text-gray-700">{translation('whatIs.conditions.respiratory')}</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              <span class="text-gray-700">{translation('whatIs.conditions.sports')}</span>
-            </li>
+            {generalBenefitsKeys.map((key) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-gray-700">{translation(key)}</span>
+              </li>
+            ))}
           </ul>
 
           <!-- Techniques banner -->
