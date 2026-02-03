@@ -3,26 +3,6 @@
 Documento de tareas para eliminar duplicación en archivos Astro. Marca cada item al completarlo.
 
 
-## 3. Páginas detalle de blog [slug] (3 archivos ~90% duplicados)
-
-**Archivos afectados:**
-- `src/pages/blog/[slug].astro`
-- `src/pages/en/blog/[slug].astro`
-- `src/pages/es/blog/[slug].astro`
-
-**Problema:** Solo cambian la ruta de import de BlogPost y el filtro de idioma en getCollection (`'ca'`, `'en'`, `'es'`).
-
-**Tarea (opción A - ruta dinámica):**
-- [ ] Crear `src/pages/[lang]/blog/[slug].astro` con parámetro `lang`
-- [ ] Consolidar getStaticPaths para generar rutas de los 3 idiomas
-- [ ] Eliminar los 3 archivos actuales (requiere verificar que las URLs sigan siendo correctas: `/blog/x`, `/en/blog/x`, `/es/blog/x`)
-
-**Tarea (opción B - componente compartido):**
-- [ ] Crear componente que reciba `post` y `lang` como props
-- [ ] Hacer que cada archivo [slug] pase el idioma correspondiente al componente
-
----
-
 ## 4. Patrones repetidos en index.astro
 
 **Archivo:** `src/pages/index.astro` (~460 líneas)
