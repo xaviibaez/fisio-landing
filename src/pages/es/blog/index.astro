@@ -2,7 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
-import BlogIndexContent from '../../../components/BlogIndexContent.astro';
+import BlogContent from '../../../components/BlogContent.astro';
 import { getCollection } from 'astro:content';
 import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
 import siteSettings from '../../../data/site-settings.json';
@@ -15,6 +15,6 @@ const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTim
 
 <Layout title={`${translation('blog.title')} - ${siteSettings.site.name}`} description={translation('blog.subtitle')}>
   <Header />
-  <BlogIndexContent posts={posts} lang={lang} translation={translation} />
+  <BlogContent posts={posts} lang={lang} translation={translation} />
   <Footer />
 </Layout>
