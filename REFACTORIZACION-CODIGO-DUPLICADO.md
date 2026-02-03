@@ -2,42 +2,6 @@
 
 Documento de tareas para eliminar duplicación en archivos Astro. Marca cada item al completarlo.
 
----
-
-## 1. Páginas de galería (3 archivos idénticos)
-
-**Archivos afectados:**
-- `src/pages/galeria.astro`
-- `src/pages/en/gallery.astro`
-- `src/pages/es/galeria.astro`
-
-**Problema:** Los 3 archivos son idénticos excepto las rutas de import (`../` vs `../../`).
-
-**Tarea:**
-- [x] ~~Crear componente~~ Se usa el patrón de importar galeria.astro directamente (como index.astro)
-- [x] Hacer que `galeria.astro` sea la página canónica (sin cambios)
-- [x] Hacer que `en/gallery.astro` importe y use `galeria.astro`
-- [x] Hacer que `es/galeria.astro` importe y use `galeria.astro`
-
----
-
-## 2. Páginas índice del blog (3 archivos ~90% duplicados)
-
-**Archivos afectados:**
-- `src/pages/blog/index.astro`
-- `src/pages/en/blog/index.astro`
-- `src/pages/es/blog/index.astro`
-
-**Problema:** ~87 líneas casi idénticas en cada archivo. Solo cambian rutas de import.
-
-**Tarea:**
-- [ ] Crear componente `src/components/BlogIndexContent.astro`
-- [ ] Mover Layout, Header, Footer, lógica de posts y template al componente
-- [ ] Actualizar `blog/index.astro` para importar el componente
-- [ ] Actualizar `en/blog/index.astro` para importar el componente
-- [ ] Actualizar `es/blog/index.astro` para importar el componente
-
----
 
 ## 3. Páginas detalle de blog [slug] (3 archivos ~90% duplicados)
 
