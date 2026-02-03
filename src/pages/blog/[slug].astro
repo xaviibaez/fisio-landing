@@ -1,16 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
+import BlogPostPage from '../../components/BlogPostPage.astro';
+import { getBlogPostStaticPaths } from '../../utils/blogPages';
 
 export async function getStaticPaths() {
-  const blogPosts = await getCollection('blog', (entry) => entry.data.lang === 'ca');
-  return blogPosts.map(post => ({
-    params: { slug: post.slug },
-    props: { post },
-  }));
+  return getBlogPostStaticPaths('ca');
 }
 
 const { post } = Astro.props;
 ---
 
-<BlogPost post={post} />
+<BlogPostPage post={post} />
