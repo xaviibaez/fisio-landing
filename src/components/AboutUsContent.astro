@@ -2,16 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
-import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+import { getLangFromUrl, useTranslations, getLocalizedPath, getLangKey } from '../i18n/utils';
 import teamData from '../data/team.json';
 import siteSettings from '../data/site-settings.json';
 
 const lang = getLangFromUrl(Astro.url);
 const translation = useTranslations(lang);
-
-// Map language keys
-type LangKey = 'ca' | 'es' | 'en';
-const langKey = lang as LangKey;
+const langKey = getLangKey(lang);
 
 // Transform team data based on current language
 const teamConfig = teamData.team.map((member: any) => ({

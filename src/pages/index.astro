@@ -5,16 +5,13 @@ import Footer from '../components/Footer.astro';
 import GalleryModal from '../components/GalleryModal.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import { getCollection } from 'astro:content';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, useTranslations, getLangKey } from '../i18n/utils';
 import siteSettings from '../data/site-settings.json';
 import galleryData from '../data/gallery.json';
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-
-// Map language keys for gallery
-type LangKey = 'ca' | 'es' | 'en';
-const langKey = lang as LangKey;
+const translation = useTranslations(lang);
+const langKey = getLangKey(lang);
 
 // Get first 3 gallery images with translations
 const galleryPreview = galleryData.gallery.slice(0, 3).map((item: any) => ({
@@ -49,7 +46,7 @@ const services = allServices
   });
 ---
 
-<Layout title={`${siteSettings.site.name} - ${t('hero.subtitle')}`}>
+<Layout title={`${siteSettings.site.name} - ${translation('hero.subtitle')}`}>
   <Header />
   
   <main>
@@ -71,14 +68,14 @@ const services = allServices
       <div class="container mx-auto px-4 relative z-10">
         <div class="max-w-3xl">
           <h1 class="text-4xl md:text-6xl font-heading font-bold mb-6">
-            {t('hero.title')}
+            {translation('hero.title')}
           </h1>
           <p class="text-xl md:text-2xl mb-8 text-primary-50">
-            {t('hero.subtitle')}
+            {translation('hero.subtitle')}
           </p>
           <div class="flex justify-center md:hidden">
             <a href="#contacto" class="inline-block bg-white text-primary-600 px-8 py-4 rounded-lg font-semibold hover:bg-primary-50 transition-all transform hover:scale-105 text-center">
-              {t('hero.cta')}
+              {translation('hero.cta')}
             </a>
           </div>
         </div>
@@ -115,15 +112,15 @@ const services = allServices
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
           <!-- Title -->
-          <h2 class="text-4xl md:text-5xl font-heading font-bold mb-6 text-center">{t('whatIs.title')}</h2>
+          <h2 class="text-4xl md:text-5xl font-heading font-bold mb-6 text-center">{translation('whatIs.title')}</h2>
           
           <!-- Description -->
           <p class="text-xl text-gray-700 leading-relaxed mb-10 text-center">
-            {t('whatIs.description')}
+            {translation('whatIs.description')}
           </p>
 
           <!-- Conditions subtitle -->
-          <h3 class="text-2xl font-heading font-semibold mb-6 text-primary-700">{t('whatIs.conditions.title')}</h3>
+          <h3 class="text-2xl font-heading font-semibold mb-6 text-primary-700">{translation('whatIs.conditions.title')}</h3>
           
           <!-- Checklist - 2 columns on large screens -->
           <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 mb-10">
@@ -131,44 +128,44 @@ const services = allServices
               <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
               </svg>
-              <span class="text-gray-700">{t('whatIs.conditions.musculoskeletal')}</span>
+              <span class="text-gray-700">{translation('whatIs.conditions.musculoskeletal')}</span>
             </li>
             <li class="flex items-start gap-3">
               <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
               </svg>
-              <span class="text-gray-700">{t('whatIs.conditions.postop')}</span>
+              <span class="text-gray-700">{translation('whatIs.conditions.postop')}</span>
             </li>
             <li class="flex items-start gap-3">
               <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
               </svg>
-              <span class="text-gray-700">{t('whatIs.conditions.neurological')}</span>
+              <span class="text-gray-700">{translation('whatIs.conditions.neurological')}</span>
             </li>
             <li class="flex items-start gap-3">
               <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
               </svg>
-              <span class="text-gray-700">{t('whatIs.conditions.chronic')}</span>
+              <span class="text-gray-700">{translation('whatIs.conditions.chronic')}</span>
             </li>
             <li class="flex items-start gap-3">
               <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
               </svg>
-              <span class="text-gray-700">{t('whatIs.conditions.respiratory')}</span>
+              <span class="text-gray-700">{translation('whatIs.conditions.respiratory')}</span>
             </li>
             <li class="flex items-start gap-3">
               <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
               </svg>
-              <span class="text-gray-700">{t('whatIs.conditions.sports')}</span>
+              <span class="text-gray-700">{translation('whatIs.conditions.sports')}</span>
             </li>
           </ul>
 
           <!-- Techniques banner -->
           <div class="bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl p-8 text-white text-center">
             <p class="text-lg leading-relaxed">
-              {t('whatIs.techniques')}
+              {translation('whatIs.techniques')}
             </p>
           </div>
         </div>
@@ -179,9 +176,9 @@ const services = allServices
     <section id="servicios" class="py-20 bg-white">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">{t('services.title')}</h2>
+          <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">{translation('services.title')}</h2>
           <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-            {t('services.subtitle')}
+            {translation('services.subtitle')}
           </p>
         </div>
 
@@ -204,9 +201,9 @@ const services = allServices
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 class="text-4xl md:text-5xl font-heading font-bold mb-6">{t('about.title')}</h2>
-            <p class="text-xl text-gray-600 mb-4">{t('about.subtitle')}</p>
-            <p class="text-lg text-gray-500 mb-8">{t('about.intro')}</p>
+            <h2 class="text-4xl md:text-5xl font-heading font-bold mb-6">{translation('about.title')}</h2>
+            <p class="text-xl text-gray-600 mb-4">{translation('about.subtitle')}</p>
+            <p class="text-lg text-gray-500 mb-8">{translation('about.intro')}</p>
             
             <div class="space-y-6">
               <div class="flex gap-4">
@@ -216,8 +213,8 @@ const services = allServices
                   </svg>
                 </div>
                 <div>
-                  <h3 class="text-xl font-bold mb-2">{t('about.professionals.title')}</h3>
-                  <p class="text-gray-600">{t('about.professionals.description')}</p>
+                  <h3 class="text-xl font-bold mb-2">{translation('about.professionals.title')}</h3>
+                  <p class="text-gray-600">{translation('about.professionals.description')}</p>
                 </div>
               </div>
 
@@ -228,8 +225,8 @@ const services = allServices
                   </svg>
                 </div>
                 <div>
-                  <h3 class="text-xl font-bold mb-2">{t('about.technology.title')}</h3>
-                  <p class="text-gray-600">{t('about.technology.description')}</p>
+                  <h3 class="text-xl font-bold mb-2">{translation('about.technology.title')}</h3>
+                  <p class="text-gray-600">{translation('about.technology.description')}</p>
                 </div>
               </div>
 
@@ -240,39 +237,39 @@ const services = allServices
                   </svg>
                 </div>
                 <div>
-                  <h3 class="text-xl font-bold mb-2">{t('about.personalized.title')}</h3>
-                  <p class="text-gray-600">{t('about.personalized.description')}</p>
+                  <h3 class="text-xl font-bold mb-2">{translation('about.personalized.title')}</h3>
+                  <p class="text-gray-600">{translation('about.personalized.description')}</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl p-8 text-white">
-            <h3 class="text-3xl font-heading font-bold mb-6">{t('about.values.title')}</h3>
+            <h3 class="text-3xl font-heading font-bold mb-6">{translation('about.values.title')}</h3>
             <ul class="space-y-4 text-lg">
               <li class="flex items-start gap-3">
                 <svg class="w-6 h-6 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                 </svg>
-                <span><strong>{t('about.values.excellence')}</strong> {t('about.values.excellenceText')}</span>
+                <span><strong>{translation('about.values.excellence')}</strong> {translation('about.values.excellenceText')}</span>
               </li>
               <li class="flex items-start gap-3">
                 <svg class="w-6 h-6 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                 </svg>
-                <span><strong>{t('about.values.empathy')}</strong> {t('about.values.empathyText')}</span>
+                <span><strong>{translation('about.values.empathy')}</strong> {translation('about.values.empathyText')}</span>
               </li>
               <li class="flex items-start gap-3">
                 <svg class="w-6 h-6 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                 </svg>
-                <span><strong>{t('about.values.innovation')}</strong> {t('about.values.innovationText')}</span>
+                <span><strong>{translation('about.values.innovation')}</strong> {translation('about.values.innovationText')}</span>
               </li>
               <li class="flex items-start gap-3">
                 <svg class="w-6 h-6 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                 </svg>
-                <span><strong>{t('about.values.results')}</strong> {t('about.values.resultsText')}</span>
+                <span><strong>{translation('about.values.results')}</strong> {translation('about.values.resultsText')}</span>
               </li>
             </ul>
           </div>
@@ -282,11 +279,11 @@ const services = allServices
         <div class="mt-16">
           <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
             <div>
-              <h3 class="text-2xl font-heading font-bold mb-2">{t('gallery.title')}</h3>
-              <p class="text-gray-600">{t('gallery.subtitle')}</p>
+              <h3 class="text-2xl font-heading font-bold mb-2">{translation('gallery.title')}</h3>
+              <p class="text-gray-600">{translation('gallery.subtitle')}</p>
             </div>
             <a href={lang === 'ca' ? '/galeria' : lang === 'en' ? '/en/gallery' : '/es/galeria'} class="mt-4 md:mt-0 inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors">
-              {t('gallery.viewAll')}
+              {translation('gallery.viewAll')}
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
               </svg>
@@ -327,11 +324,11 @@ const services = allServices
       <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-16">
           <div class="text-center md:text-left">
-            <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">{t('blog.title')}</h2>
-            <p class="text-xl text-gray-600 max-w-2xl">{t('blog.subtitle')}</p>
+            <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">{translation('blog.title')}</h2>
+            <p class="text-xl text-gray-600 max-w-2xl">{translation('blog.subtitle')}</p>
           </div>
           <a href="/blog" class="mt-4 md:mt-0 inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors">
-            {t('blog.viewAll')}
+            {translation('blog.viewAll')}
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
@@ -349,7 +346,7 @@ const services = allServices
               <div class="p-6">
                 <div class="mb-3">
                   <span class="inline-block bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-medium">
-                    {t(`category.${post.data.category}` as any)}
+                    {translation(`category.${post.data.category}` as any)}
                   </span>
                 </div>
                 <h3 class="text-xl font-heading font-bold mb-2 line-clamp-2">{post.data.title}</h3>
@@ -361,7 +358,7 @@ const services = allServices
                   </time>
                 </div>
                 <a href={`/blog/${post.slug}`} class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 transition">
-                  {t('blog.readMore')}
+                  {translation('blog.readMore')}
                   <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                   </svg>
@@ -377,7 +374,7 @@ const services = allServices
     <section class="py-20 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">{t('testimonials.title')}</h2>
+          <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">{translation('testimonials.title')}</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -389,14 +386,14 @@ const services = allServices
                 </svg>
               ))}
             </div>
-            <p class="text-gray-700 mb-6 italic">{t('testimonials.patient1.text')}</p>
+            <p class="text-gray-700 mb-6 italic">{translation('testimonials.patient1.text')}</p>
             <div class="flex items-center gap-3">
               <div class="w-12 h-12 bg-primary-200 rounded-full flex items-center justify-center">
                 <span class="text-primary-700 font-bold text-lg">MC</span>
               </div>
               <div>
-                <p class="font-semibold">{t('testimonials.patient1.name')}</p>
-                <p class="text-sm text-gray-600">{t('testimonials.patient1.info')}</p>
+                <p class="font-semibold">{translation('testimonials.patient1.name')}</p>
+                <p class="text-sm text-gray-600">{translation('testimonials.patient1.info')}</p>
               </div>
             </div>
           </div>
@@ -409,14 +406,14 @@ const services = allServices
                 </svg>
               ))}
             </div>
-            <p class="text-gray-700 mb-6 italic">{t('testimonials.patient2.text')}</p>
+            <p class="text-gray-700 mb-6 italic">{translation('testimonials.patient2.text')}</p>
             <div class="flex items-center gap-3">
               <div class="w-12 h-12 bg-primary-200 rounded-full flex items-center justify-center">
                 <span class="text-primary-700 font-bold text-lg">JS</span>
               </div>
               <div>
-                <p class="font-semibold">{t('testimonials.patient2.name')}</p>
-                <p class="text-sm text-gray-600">{t('testimonials.patient2.info')}</p>
+                <p class="font-semibold">{translation('testimonials.patient2.name')}</p>
+                <p class="text-sm text-gray-600">{translation('testimonials.patient2.info')}</p>
               </div>
             </div>
           </div>
@@ -429,14 +426,14 @@ const services = allServices
                 </svg>
               ))}
             </div>
-            <p class="text-gray-700 mb-6 italic">{t('testimonials.patient3.text')}</p>
+            <p class="text-gray-700 mb-6 italic">{translation('testimonials.patient3.text')}</p>
             <div class="flex items-center gap-3">
               <div class="w-12 h-12 bg-primary-200 rounded-full flex items-center justify-center">
                 <span class="text-primary-700 font-bold text-lg">AG</span>
               </div>
               <div>
-                <p class="font-semibold">{t('testimonials.patient3.name')}</p>
-                <p class="text-sm text-gray-600">{t('testimonials.patient3.info')}</p>
+                <p class="font-semibold">{translation('testimonials.patient3.name')}</p>
+                <p class="text-sm text-gray-600">{translation('testimonials.patient3.info')}</p>
               </div>
             </div>
           </div>
@@ -448,33 +445,33 @@ const services = allServices
     <section id="contacto" class="py-20 bg-white">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">{t('contact.title')}</h2>
-          <p class="text-xl text-gray-600 max-w-2xl mx-auto">{t('contact.subtitle')}</p>
+          <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">{translation('contact.title')}</h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">{translation('contact.subtitle')}</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <!-- Contact Form -->
           <div class="bg-gray-50 rounded-2xl p-8">
-            <h3 class="text-2xl font-heading font-bold mb-6">{t('contact.form.title')}</h3>
+            <h3 class="text-2xl font-heading font-bold mb-6">{translation('contact.form.title')}</h3>
             <form class="space-y-6">
               <div>
-                <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">{t('contact.form.name')}</label>
-                <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition" placeholder={t('contact.form.namePlaceholder')} required>
+                <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">{translation('contact.form.name')}</label>
+                <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition" placeholder={translation('contact.form.namePlaceholder')} required>
               </div>
               <div>
-                <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">{t('contact.form.email')}</label>
-                <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition" placeholder={t('contact.form.emailPlaceholder')} required>
+                <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">{translation('contact.form.email')}</label>
+                <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition" placeholder={translation('contact.form.emailPlaceholder')} required>
               </div>
               <div>
-                <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">{t('contact.form.phone')}</label>
-                <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition" placeholder={t('contact.form.phonePlaceholder')}>
+                <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">{translation('contact.form.phone')}</label>
+                <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition" placeholder={translation('contact.form.phonePlaceholder')}>
               </div>
               <div>
-                <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">{t('contact.form.message')}</label>
-                <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition resize-none" placeholder={t('contact.form.messagePlaceholder')} required></textarea>
+                <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">{translation('contact.form.message')}</label>
+                <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition resize-none" placeholder={translation('contact.form.messagePlaceholder')} required></textarea>
               </div>
               <button type="submit" class="w-full bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-700 transition-all transform hover:scale-105">
-                {t('contact.form.submit')}
+                {translation('contact.form.submit')}
               </button>
             </form>
           </div>
@@ -482,7 +479,7 @@ const services = allServices
           <!-- Contact Info & Map -->
           <div class="space-y-8">
             <div class="bg-gray-50 rounded-2xl p-8">
-              <h3 class="text-2xl font-heading font-bold mb-6">{t('contact.info.title')}</h3>
+              <h3 class="text-2xl font-heading font-bold mb-6">{translation('contact.info.title')}</h3>
               <div class="space-y-6">
                 <div class="flex items-start gap-4">
                   <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -492,7 +489,7 @@ const services = allServices
                     </svg>
                   </div>
                   <div>
-                    <h4 class="font-semibold mb-1">{t('contact.info.address')}</h4>
+                    <h4 class="font-semibold mb-1">{translation('contact.info.address')}</h4>
                     <p class="text-gray-600">{siteSettings.contact.address.street}<br>{siteSettings.contact.address.postalCode} {siteSettings.contact.address.city}, {siteSettings.contact.address.province}</p>
                   </div>
                 </div>
@@ -504,7 +501,7 @@ const services = allServices
                     </svg>
                   </div>
                   <div>
-                    <h4 class="font-semibold mb-1">{t('contact.info.phone')}</h4>
+                    <h4 class="font-semibold mb-1">{translation('contact.info.phone')}</h4>
                     <a href={`tel:${siteSettings.contact.phone1.replace(/\s/g, '')}`} class="text-primary-600 hover:text-primary-700">{siteSettings.contact.phone1}</a>
                     <a href={`tel:${siteSettings.contact.phone2.replace(/\s/g, '')}`} class="text-primary-600 hover:text-primary-700">{siteSettings.contact.phone2}</a>
                   </div>
@@ -517,7 +514,7 @@ const services = allServices
                     </svg>
                   </div>
                   <div>
-                    <h4 class="font-semibold mb-1">{t('contact.info.email')}</h4>
+                    <h4 class="font-semibold mb-1">{translation('contact.info.email')}</h4>
                     <a href={`mailto:${siteSettings.contact.email}`} class="text-primary-600 hover:text-primary-700">{siteSettings.contact.email}</a>
                   </div>
                 </div>
@@ -530,7 +527,7 @@ const services = allServices
                   </div>
                   <div>
                     <h4 class="font-semibold mb-1">WhatsApp</h4>
-                    <a href="https://wa.me/34608032857" target="_blank" rel="noopener noreferrer" class="text-green-600 hover:text-green-700">{t('contact.info.whatsappText')}</a>
+                    <a href="https://wa.me/34608032857" target="_blank" rel="noopener noreferrer" class="text-green-600 hover:text-green-700">{translation('contact.info.whatsappText')}</a>
                   </div>
                 </div>
 
@@ -541,9 +538,9 @@ const services = allServices
                     </svg>
                   </div>
                   <div>
-                    <h4 class="font-semibold mb-1">{t('contact.info.schedule')}</h4>
+                    <h4 class="font-semibold mb-1">{translation('contact.info.schedule')}</h4>
                     <p class="text-gray-600">
-                      {t('contact.info.scheduleText')}
+                      {translation('contact.info.scheduleText')}
                     </p>
                   </div>
                 </div>
@@ -560,7 +557,7 @@ const services = allServices
                 allowfullscreen="" 
                 loading="lazy" 
                 referrerpolicy="no-referrer-when-downgrade"
-                title={t('contact.map')}
+                title={translation('contact.map')}
               ></iframe>
             </div>
           </div>

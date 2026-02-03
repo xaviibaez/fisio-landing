@@ -1,7 +1,11 @@
-import { ui, defaultLang } from './ui';
+import { ui, defaultLang, type LangKey } from './ui';
 
 export type TranslationKey = keyof (typeof ui)[typeof defaultLang];
 export type TranslationFunction = (key: TranslationKey) => string;
+
+export function getLangKey(lang: keyof typeof ui): LangKey {
+  return lang as LangKey;
+}
 
 export function getLangFromUrl(url: URL) {
   const [, lang] = url.pathname.split('/');

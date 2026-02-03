@@ -1,13 +1,10 @@
 ---
-import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+import { getLangFromUrl, useTranslations, getLocalizedPath, getLangKey } from '../i18n/utils';
 import galleryData from '../data/gallery.json';
 
 const lang = getLangFromUrl(Astro.url);
 const translation = useTranslations(lang);
-
-// Map language keys
-type LangKey = 'ca' | 'es' | 'en';
-const langKey = lang as LangKey;
+const langKey = getLangKey(lang);
 
 // Transform gallery data based on current language
 const galleryImages = galleryData.gallery.map((item: any) => ({

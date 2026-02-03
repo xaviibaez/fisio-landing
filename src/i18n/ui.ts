@@ -6,6 +6,8 @@ export const languages = {
 
 export const defaultLang = 'ca';
 
+export type LangKey = keyof typeof languages;
+
 export const ui = {
   ca: {
     'nav.services': 'Serveis',
