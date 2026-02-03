@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import BlogContent from './BlogContent.astro';
+import type { TranslationFunction } from '../i18n/utils';
+import siteSettings from '../data/site-settings.json';
+
+interface Props {
+  posts: Array<{
+    slug: string;
+    data: {
+      title: string;
+      description: string;
+      author: string;
+      date: Date;
+    };
+  }>;
+  lang: string;
+  translation: TranslationFunction;
+}
+
+const { posts, lang, translation } = Astro.props;
+---
+
+<Layout title={`${translation('blog.title')} - ${siteSettings.site.name}`} description={translation('blog.subtitle')}>
+  <Header />
+  <BlogContent posts={posts} lang={lang} translation={translation} />
+  <Footer />
+</Layout>
