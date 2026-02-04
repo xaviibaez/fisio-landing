@@ -3,35 +3,6 @@
 Documento de tareas para eliminar duplicación en archivos Astro. Marca cada item al completarlo.
 
 
-## 4. Patrones repetidos en index.astro
-
-**Archivo:** `src/pages/index.astro` (~460 líneas)
-
-
-### 4.3 Values list items (4 repeticiones)
-
-**Ubicación:** Líneas 251-276 (excelencia, empatía, innovación, resultados)
-
-**Patrón repetido:** Icono check + `<strong>título</strong> texto`
-
-**Tarea:**
-- [ ] Crear `src/components/ValueItem.astro` con props `title`, `text`
-- [ ] Reemplazar las 4 repeticiones por el componente
-
----
-
-### 4.4 Tarjetas de testimonios (3 repeticiones)
-
-**Ubicación:** Líneas 325-379
-
-**Patrón repetido:** Estrellas + cita + avatar + nombre + info del paciente
-
-**Tarea:**
-- [ ] Crear `src/components/TestimonialCard.astro` con props `text`, `name`, `info`, `initials`
-- [ ] Reemplazar las 3 tarjetas por el componente
-
----
-
 ## 5. Tarjeta de artículo de blog duplicada
 
 **Archivos:** 
