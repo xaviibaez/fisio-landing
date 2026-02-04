@@ -8,18 +8,6 @@ Documento de tareas para eliminar duplicación en archivos Astro. Marca cada ite
 **Archivo:** `src/pages/index.astro` (~460 líneas)
 
 
-### 4.2 Feature boxes (3 repeticiones)
-
-**Ubicación:** Líneas 215-245 (sección About - profesionales, tecnología, personalizado)
-
-**Patrón repetido:** Icono + título + descripción en bloque flex.
-
-**Tarea:**
-- [ ] Crear `src/components/FeatureCard.astro` con props `title`, `description`, `icon` (o `iconKey`)
-- [ ] Reemplazar las 3 repeticiones por el componente
-
----
-
 ### 4.3 Values list items (4 repeticiones)
 
 **Ubicación:** Líneas 251-276 (excelencia, empatía, innovación, resultados)

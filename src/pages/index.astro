@@ -46,13 +46,41 @@ const services = allServices
   });
 
 // Claves de la checklist "What is Physiotherapy"
-const generalBenefitsKeys = [
+const generalBenefits = [
   'whatIs.conditions.musculoskeletal',
   'whatIs.conditions.postop',
   'whatIs.conditions.neurological',
   'whatIs.conditions.chronic',
   'whatIs.conditions.respiratory',
   'whatIs.conditions.sports',
+] as const;
+
+const aboutPillars = [
+  {
+    iconPath:
+      'M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z',
+    titleKey: 'about.professionals.title',
+    descriptionKey: 'about.professionals.description',
+  },
+  {
+    iconPath:
+      'M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z',
+    titleKey: 'about.technology.title',
+    descriptionKey: 'about.technology.description',
+  },
+  {
+    iconPath:
+      'M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z',
+    titleKey: 'about.personalized.title',
+    descriptionKey: 'about.personalized.description',
+  },
+] as const;
+
+const aboutValues = [
+  { titleKey: 'about.values.excellence', textKey: 'about.values.excellenceText' },
+  { titleKey: 'about.values.empathy', textKey: 'about.values.empathyText' },
+  { titleKey: 'about.values.innovation', textKey: 'about.values.innovationText' },
+  { titleKey: 'about.values.results', textKey: 'about.values.resultsText' },
 ] as const;
 ---
 
@@ -134,7 +162,7 @@ const generalBenefitsKeys = [
           
           <!-- Checklist - 2 columns on large screens -->
           <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 mb-10">
-            {generalBenefitsKeys.map((key) => (
+            {generalBenefits.map((key) => (
               <li class="flex items-start gap-3">
                 <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
@@ -188,71 +216,39 @@ const generalBenefitsKeys = [
             <p class="text-lg text-gray-500 mb-8">{translation('about.intro')}</p>
             
             <div class="space-y-6">
-              <div class="flex gap-4">
-                <div class="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                  <svg class="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path>
-                  </svg>
+              {aboutPillars.map((pillar) => (
+                <div class="flex gap-4">
+                  <div class="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                    <svg class="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path d={pillar.iconPath}></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-bold mb-2">{translation(pillar.titleKey)}</h3>
+                    <p class="text-gray-600">{translation(pillar.descriptionKey)}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 class="text-xl font-bold mb-2">{translation('about.professionals.title')}</h3>
-                  <p class="text-gray-600">{translation('about.professionals.description')}</p>
-                </div>
-              </div>
-
-              <div class="flex gap-4">
-                <div class="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                  <svg class="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="text-xl font-bold mb-2">{translation('about.technology.title')}</h3>
-                  <p class="text-gray-600">{translation('about.technology.description')}</p>
-                </div>
-              </div>
-
-              <div class="flex gap-4">
-                <div class="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                  <svg class="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="text-xl font-bold mb-2">{translation('about.personalized.title')}</h3>
-                  <p class="text-gray-600">{translation('about.personalized.description')}</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
           <div class="bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl p-8 text-white">
             <h3 class="text-3xl font-heading font-bold mb-6">{translation('about.values.title')}</h3>
             <ul class="space-y-4 text-lg">
-              <li class="flex items-start gap-3">
-                <svg class="w-6 h-6 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                </svg>
-                <span><strong>{translation('about.values.excellence')}</strong> {translation('about.values.excellenceText')}</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-6 h-6 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                </svg>
-                <span><strong>{translation('about.values.empathy')}</strong> {translation('about.values.empathyText')}</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-6 h-6 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                </svg>
-                <span><strong>{translation('about.values.innovation')}</strong> {translation('about.values.innovationText')}</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-6 h-6 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                </svg>
-                <span><strong>{translation('about.values.results')}</strong> {translation('about.values.resultsText')}</span>
-              </li>
+              {aboutValues.map((value) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-6 h-6 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <span>
+                    <strong>{translation(value.titleKey)}</strong> {translation(value.textKey)}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
