@@ -7,25 +7,6 @@ Documento de tareas para eliminar duplicación en archivos Astro. Marca cada ite
 
 **Archivo:** `src/pages/index.astro` (~460 líneas)
 
-### 4.1 Checklist items (6 repeticiones)
-
-**Ubicación:** Líneas 131-171 (sección "What is Physiotherapy")
-
-**Patrón repetido:**
-```astro
-<li class="flex items-start gap-3">
-  <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" ...>
-    <path stroke-linecap="round" ... d="M5 13l4 4L19 7"></path>
-  </svg>
-  <span class="text-gray-700">{t('whatIs.conditions.XXX')}</span>
-</li>
-```
-
-**Tarea:**
-- [ ] Crear `src/components/ChecklistItem.astro` con prop `text`
-- [ ] Reemplazar las 6 repeticiones por el componente
-
----
 
 ### 4.2 Feature boxes (3 repeticiones)
 
