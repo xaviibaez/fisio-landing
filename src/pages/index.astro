@@ -14,7 +14,6 @@ const lang = getLangFromUrl(Astro.url);
 const translation = useTranslations(lang);
 const langKey = getLangKey(lang);
 
-// Get first 3 gallery images with translations
 const galleryPreview = galleryData.gallery.slice(0, 3).map((item: any) => ({
   src: item.image,
   title: item[`title_${langKey}`] || item.title_ca,
@@ -44,7 +43,6 @@ const services = allServices
     };
   });
 
-// Claves de la checklist "What is Physiotherapy"
 const generalBenefitsValues = [
   'whatIs.conditions.musculoskeletal',
   'whatIs.conditions.postop',
@@ -367,7 +365,7 @@ const contactIcons: Record<typeof contactValues[number], { bg: string; color: st
                     {post.data.date.toLocaleDateString(lang === 'ca' ? 'ca-ES' : lang === 'es' ? 'es-ES' : 'en-GB', { year: 'numeric', month: 'short', day: 'numeric' })}
                   </time>
                 </div>
-                <a href={`/blog/${post.slug}`} class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 transition">
+                <a href={lang === 'ca' ? `/blog/${post.slug}` : lang === 'en' ? `/en/blog/${post.slug}` : `/es/blog/${post.slug}`} class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 transition">
                   {translation('blog.readMore')}
                   <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
