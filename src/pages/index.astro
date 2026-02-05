@@ -6,6 +6,7 @@ import GalleryModal from '../components/GalleryModal.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import { getCollection } from 'astro:content';
 import { getLangFromUrl, useTranslations, getLangKey } from '../i18n/utils';
+import { getBlogPostsByLang } from '../utils/blogPages';
 import siteSettings from '../data/site-settings.json';
 import galleryData from '../data/gallery.json';
 
@@ -20,10 +21,8 @@ const galleryPreview = galleryData.gallery.slice(0, 3).map((item: any) => ({
   description: item[`description_${langKey}`] || item.description_ca,
 }));
 
-const allPosts = await getCollection('blog');
-const latestPosts = allPosts
-  .sort((a: typeof allPosts[0], b: typeof allPosts[0]) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 3);
+const allPosts = await getBlogPostsByLang(langKey);
+const latestPosts = allPosts.slice(0, 3);
 
 // Get services in the current language
 const allServices = await getCollection('services');
