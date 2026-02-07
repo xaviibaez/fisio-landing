@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import GalleryModal from '../components/GalleryModal.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import { getCollection } from 'astro:content';
-import { getLangFromUrl, useTranslations, getLangKey } from '../i18n/utils';
+import { getLangFromUrl, useTranslations, getLangKey, getLocalizedPath } from '../i18n/utils';
 import { getBlogPostsByLang } from '../utils/blogPages';
 import siteSettings from '../data/site-settings.json';
 import galleryData from '../data/gallery.json';
@@ -31,8 +31,7 @@ const services = allServices
   .sort((a: typeof allServices[0], b: typeof allServices[0]) => a.data.order - b.data.order)
   .map((service: typeof allServices[0]) => {
     const slug = service.id.replace(langPrefix, '').replace('.md', '');
-    const serviceWord = lang === 'ca' ? 'serveis' : lang === 'es' ? 'servicios' : 'services';
-    const href = lang === 'ca' ? `/${serviceWord}/${slug}` : `/${lang}/${serviceWord}/${slug}`;
+    const href = getLocalizedPath(`/serveis/${slug}`, lang);
     
     return {
       title: service.data.title,
@@ -270,7 +269,7 @@ const contactIcons: Record<typeof contactValues[number], { bg: string; color: st
               <h3 class="text-2xl font-heading font-bold mb-2">{translation('gallery.title')}</h3>
               <p class="text-gray-600">{translation('gallery.subtitle')}</p>
             </div>
-            <a href={lang === 'ca' ? '/galeria' : lang === 'en' ? '/en/gallery' : '/es/galeria'} class="mt-4 md:mt-0 inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors">
+            <a href={getLocalizedPath('/galeria', lang)} class="mt-4 md:mt-0 inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors">
               {translation('gallery.viewAll')}
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -315,7 +314,7 @@ const contactIcons: Record<typeof contactValues[number], { bg: string; color: st
             <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">{translation('blog.title')}</h2>
             <p class="text-xl text-gray-600 max-w-2xl">{translation('blog.subtitle')}</p>
           </div>
-          <a href="/blog" class="mt-4 md:mt-0 inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors">
+          <a href={getLocalizedPath('/blog', lang)} class="mt-4 md:mt-0 inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors">
             {translation('blog.viewAll')}
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -345,7 +344,7 @@ const contactIcons: Record<typeof contactValues[number], { bg: string; color: st
                     {post.data.date.toLocaleDateString(lang === 'ca' ? 'ca-ES' : lang === 'es' ? 'es-ES' : 'en-GB', { year: 'numeric', month: 'short', day: 'numeric' })}
                   </time>
                 </div>
-                <a href={lang === 'ca' ? `/blog/${post.slug}` : lang === 'en' ? `/en/blog/${post.slug}` : `/es/blog/${post.slug}`} class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 transition">
+                <a href={getLocalizedPath(`/blog/${post.slug}`, lang)} class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 transition">
                   {translation('blog.readMore')}
                   <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>

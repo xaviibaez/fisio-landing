@@ -23,6 +23,9 @@ export function getLocalizedPath(path: string, lang: keyof typeof ui) {
   // Handle special routes that have different names per language
   const routeMap: Record<string, Record<keyof typeof ui, string>> = {
     '/nosaltres': { ca: '/nosaltres', es: '/nosotros', en: '/about-us' },
+    '/galeria':   { ca: '/galeria',   es: '/galeria',   en: '/gallery' },
+    '/serveis':   { ca: '/serveis',   es: '/servicios', en: '/services' },
+    '/blog':      { ca: '/blog',      es: '/blog',      en: '/blog' },
   };
 
   // Check if this path needs translation
