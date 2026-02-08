@@ -162,6 +162,8 @@ export const ui = {
     'blog.tryAnother': 'Prova amb una altra categoria o torna a veure tots els articles',
     'blog.readArticle': 'Llegir article',
     'blog.backToBlog': '← Tornar al blog',
+    'blog.cta.title': 'Necessites ajuda professional?',
+    'blog.cta.subtitle': 'Agenda la teva cita amb el nostre equip d\'especialistes.',
     
     // Categories
     'category.todos': 'Tots',
@@ -434,6 +436,8 @@ export const ui = {
     'blog.tryAnother': 'Prueba con otra categoría o vuelve a ver todos los artículos',
     'blog.readArticle': 'Leer artículo',
     'blog.backToBlog': '← Volver al blog',
+    'blog.cta.title': '¿Necesitas ayuda profesional?',
+    'blog.cta.subtitle': 'Agenda tu cita con nuestro equipo de especialistas.',
     
     // Categories
     'category.todos': 'Todos',
@@ -707,6 +711,8 @@ export const ui = {
     'blog.tryAnother': 'Try another category or view all articles',
     'blog.readArticle': 'Read article',
     'blog.backToBlog': '← Back to blog',
+    'blog.cta.title': 'Need professional help?',
+    'blog.cta.subtitle': 'Book your appointment with our team of specialists.',
     
     // Categories
     'category.todos': 'All',

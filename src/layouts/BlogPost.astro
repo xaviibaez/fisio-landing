@@ -12,7 +12,7 @@ interface Props {
 const { post } = Astro.props;
 const { Content } = await post.render();
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const translation = useTranslations(lang);
 ---
 
 <Layout title={post.data.title} description={post.data.description}>
@@ -73,10 +73,10 @@ const t = useTranslations(lang);
 
       <!-- CTA -->
       <div class="mt-16 bg-gradient-to-r from-primary-500 to-primary-600 rounded-2xl p-8 md:p-12 text-white text-center">
-        <h2 class="text-3xl font-heading font-bold mb-4">¿Necesitas ayuda profesional?</h2>
-        <p class="text-xl mb-6 text-primary-50">Agenda tu cita con nuestro equipo de especialistas</p>
+        <h2 class="text-3xl font-heading font-bold mb-4">{translation('blog.cta.title')}</h2>
+        <p class="text-xl mb-6 text-primary-50">{translation('blog.cta.subtitle')}</p>
         <a href="/#contacto" class="inline-block bg-white text-primary-600 px-8 py-4 rounded-lg font-semibold hover:bg-primary-50 transition-all transform hover:scale-105">
-          {t('hero.cta')}
+          {translation('hero.cta')}
         </a>
       </div>
       </article>
