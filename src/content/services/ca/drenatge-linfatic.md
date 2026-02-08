@@ -1,5 +1,5 @@
 ---
-title: Drenatge Limfàtic23
+title: Drenatge Limfàtic
 shortDescription: Tècnica que estimula el flux limfàtic per tractar la retenció
   de líquids, inflamació i cel·lulitis.
 slug: drenatge-linfatic
