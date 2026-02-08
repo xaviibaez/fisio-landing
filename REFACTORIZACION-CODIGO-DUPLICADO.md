@@ -3,21 +3,6 @@
 Documento de tareas para eliminar duplicación en archivos Astro. Marca cada item al completarlo.
 
 
-## 6. Item de galería duplicado
-
-**Archivos:**
-- `src/pages/index.astro` (líneas 273-292) - preview galería en home
-- `src/components/GalleryContent.astro` (líneas 30-60)
-
-**Problema:** Estructura casi idéntica: overlay, gradiente, icono zoom, data-gallery-item.
-
-**Tarea:**
-- [ ] Crear `src/components/GalleryItem.astro` con props `src`, `alt`, `description`
-- [ ] Usar en index.astro (preview galería)
-- [ ] Usar en GalleryContent.astro
-
----
-
 ## 7. Texto hardcodeado en español (BlogPost.astro)
 
 **Archivo:** `src/layouts/BlogPost.astro` (líneas 75-76)
