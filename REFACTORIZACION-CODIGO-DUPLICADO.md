@@ -3,21 +3,6 @@
 Documento de tareas para eliminar duplicación en archivos Astro. Marca cada item al completarlo.
 
 
-## 5. Tarjeta de artículo de blog duplicada
-
-**Archivos:** 
-- `src/pages/index.astro` (líneas 299-321) - preview en home
-- `src/pages/blog/index.astro` (líneas 47-76) - listado de blog
-
-**Problema:** Misma estructura: icono documento, badge categoría, título, descripción, autor/fecha, enlace "Leer más".
-
-**Tarea:**
-- [ ] Crear `src/components/BlogCard.astro` con props `post`, `lang`, `t`, `blogPath` (o función para construir href)
-- [ ] Usar en index.astro (sección blog preview)
-- [ ] Usar en blog/index.astro (o BlogIndexContent si ya lo creaste)
-
----
-
 ## 6. Item de galería duplicado
 
 **Archivos:**
