@@ -23,6 +23,7 @@ const currentPath = Astro.url.pathname;
       <ul class="hidden md:flex items-center gap-8">
         <li><a href={getLocalizedPath('/#servicios', lang)} class="nav-link text-gray-700 hover:text-primary-600 transition pb-1" data-section="servicios">{t('nav.services')}</a></li>
         <li><a href={getLocalizedPath('/#nosotros', lang)} class="nav-link text-gray-700 hover:text-primary-600 transition pb-1" data-section="nosotros">{t('nav.about')}</a></li>
+        <li><a href={getLocalizedPath('/#opiniones', lang)} class="nav-link text-gray-700 hover:text-primary-600 transition pb-1" data-section="opiniones">{t('nav.opinions')}</a></li>
         <li><a href={getLocalizedPath('/#contacto', lang)} class="nav-link text-gray-700 hover:text-primary-600 transition pb-1" data-section="contacto">{t('nav.contact')}</a></li>
         <li><a href={getLocalizedPath('/nosaltres', lang)} class={`nav-link transition pb-1 ${currentPath.includes('/nosaltres') || currentPath.includes('/nosotros') || currentPath.includes('/about-us') ? 'text-primary-600 font-semibold border-b-2 border-primary-500' : 'text-gray-700 hover:text-primary-600'}`} data-page="nosaltres">{t('nav.aboutUs')}</a></li>
         <li><a href={getLocalizedPath('/blog', lang)} class={`nav-link transition pb-1 ${currentPath.includes('/blog') ? 'text-primary-600 font-semibold border-b-2 border-primary-500' : 'text-gray-700 hover:text-primary-600'}`} data-page="blog">{t('nav.blog')}</a></li>
@@ -49,6 +50,7 @@ const currentPath = Astro.url.pathname;
       <ul class="flex flex-col gap-4">
         <li><a href={getLocalizedPath('/#servicios', lang)} class="nav-link-mobile block text-gray-700 hover:text-primary-600 transition" data-section="servicios">{t('nav.services')}</a></li>
         <li><a href={getLocalizedPath('/#nosotros', lang)} class="nav-link-mobile block text-gray-700 hover:text-primary-600 transition" data-section="nosotros">{t('nav.about')}</a></li>
+        <li><a href={getLocalizedPath('/#opiniones', lang)} class="nav-link-mobile block text-gray-700 hover:text-primary-600 transition" data-section="opiniones">{t('nav.opinions')}</a></li>
         <li><a href={getLocalizedPath('/#contacto', lang)} class="nav-link-mobile block text-gray-700 hover:text-primary-600 transition" data-section="contacto">{t('nav.contact')}</a></li>
         <li><a href={getLocalizedPath('/nosaltres', lang)} class={`nav-link-mobile block transition ${currentPath.includes('/nosaltres') || currentPath.includes('/nosotros') || currentPath.includes('/about-us') ? 'text-primary-600 font-semibold' : 'text-gray-700 hover:text-primary-600'}`} data-page="nosaltres">{t('nav.aboutUs')}</a></li>
         <li><a href={getLocalizedPath('/blog', lang)} class={`nav-link-mobile block transition ${currentPath.includes('/blog') ? 'text-primary-600 font-semibold' : 'text-gray-700 hover:text-primary-600'}`} data-page="blog">{t('nav.blog')}</a></li>
@@ -75,7 +77,7 @@ const currentPath = Astro.url.pathname;
 
   // Scroll Spy - detectar sección activa
   function updateActiveSection() {
-    const sections = ['servicios', 'nosotros', 'contacto'];
+    const sections = ['servicios', 'nosotros', 'opiniones', 'contacto'];
     const navLinks = document.querySelectorAll('.nav-link[data-section]');
     const navLinksMobile = document.querySelectorAll('.nav-link-mobile[data-section]');
     

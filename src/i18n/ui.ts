@@ -15,6 +15,7 @@ export const ui = {
     'nav.aboutUs': 'Nosaltres',
     'nav.blog': 'Blog',
     'nav.contact': 'Contacte',
+    'nav.opinions': 'Opinions',
     'nav.bookAppointment': 'Reservar Cita',
     
     // Hero
@@ -289,6 +290,7 @@ export const ui = {
     'nav.aboutUs': 'Nosotros',
     'nav.blog': 'Blog',
     'nav.contact': 'Contacto',
+    'nav.opinions': 'Opiniones',
     'nav.bookAppointment': 'Reservar Cita',
     
     // Hero
@@ -564,6 +566,7 @@ export const ui = {
     'nav.aboutUs': 'About Us',
     'nav.blog': 'Blog',
     'nav.contact': 'Contact',
+    'nav.opinions': 'Opinions',
     'nav.bookAppointment': 'Book Appointment',
     
     // Hero
