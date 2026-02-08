@@ -13,14 +13,16 @@ const localeByLang: Record<keyof typeof ui, string> = {
   en: 'en-GB',
 };
 
+const defaultDateOptions: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: 'numeric' };
+
 /** Formatea una fecha según el idioma. Por defecto mes corto (short); usa { month: 'long' } para mes completo. */
 export function formatLocaleDate(
   date: Date,
   lang: keyof typeof ui,
-  options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: 'numeric' }
+  options: Intl.DateTimeFormatOptions = defaultDateOptions
 ): string {
   const locale = localeByLang[lang];
-  return date.toLocaleDateString(locale, { year: 'numeric', month: 'short', day: 'numeric', ...options });
+  return date.toLocaleDateString(locale, { ...defaultDateOptions, ...options });
 }
 
 export function getLangFromUrl(url: URL) {
