@@ -3,20 +3,6 @@
 Documento de tareas para eliminar duplicación en archivos Astro. Marca cada item al completarlo.
 
 
-## 7. Texto hardcodeado en español (BlogPost.astro)
-
-**Archivo:** `src/layouts/BlogPost.astro` (líneas 75-76)
-
-**Texto hardcodeado:**
-- "¿Necesitas ayuda profesional?"
-- "Agenda tu cita con nuestro equipo de especialistas"
-
-**Tarea:**
-- [ ] Añadir claves de traducción en el sistema i18n (ui.ts o donde corresponda)
-- [ ] Reemplazar texto por `{t('blog.cta.title')}` y `{t('blog.cta.subtitle')}` (o similar)
-
----
-
 ## 8. Aria-labels en catalán (GalleryModal.astro)
 
 **Archivo:** `src/components/GalleryModal.astro`
