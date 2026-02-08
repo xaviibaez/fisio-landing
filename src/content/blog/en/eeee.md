@@ -1,5 +1,6 @@
 ---
 lang: en
+slug: eee
 title: eeee
 description: eeeee
 author: Axis Cambrils

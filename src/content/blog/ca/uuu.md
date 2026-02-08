@@ -1,5 +1,6 @@
 ---
 lang: ca
+slug: uuu
 title: uuu
 description: uuu
 author: Axis Cambrils

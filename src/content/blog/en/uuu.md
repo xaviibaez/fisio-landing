@@ -1,6 +1,7 @@
 ---
 lang: en
 title: uuu
+slug: uuu
 description: uuu
 author: Axis Cambrils
 date: 2026-02-03
