@@ -42,7 +42,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || siteSettings.site
     <meta name="twitter:image" content={new URL(image, Astro.site || siteSettings.site.url)} />
     
     <!-- JSON-LD Organization (incluye redes sociales) -->
-    <script type="application/ld+json" set:html={JSON.stringify({
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": siteSettings.site.name,
@@ -70,10 +70,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || siteSettings.site
     <!-- Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
+      const identity = window.netlifyIdentity;
+      if (identity) {
+        identity.on("init", user => {
           if (!user) {
-            window.netlifyIdentity.on("login", () => {
+            identity.on("login", () => {
               document.location.href = "/admin/";
             });
           }

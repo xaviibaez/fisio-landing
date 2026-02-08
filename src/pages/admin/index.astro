@@ -33,10 +33,11 @@ import siteSettings from '../../data/site-settings.json';
                         window.location.hostname === '127.0.0.1' ||
                         window.location.hostname === '';
     
-    if (!isLocalhost && window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
+    const identity = window.netlifyIdentity;
+    if (!isLocalhost && identity) {
+      identity.on("init", user => {
         if (!user) {
-          window.netlifyIdentity.on("login", () => {
+          identity.on("login", () => {
             document.location.href = "/admin/";
           });
         }
