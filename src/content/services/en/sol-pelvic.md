@@ -1,6 +1,6 @@
 ---
 lang: "en"
-slug: en-sol-pelvic
+slug: sol-pelvic
 title: 'Pelvic Floor'
 shortDescription: 'Specialized assessment and treatment of muscular and functional problems of the pelvic floor.'
 description: 'Pelvic floor physiotherapy is focused on assessing and treating muscular and functional problems affecting this important area of the body. We help in cases of urinary incontinence, prolapses, abdominal diastasis, pelvic pain, pain during sexual intercourse and perineal muscle weakness, in both women and men.'

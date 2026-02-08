@@ -2,7 +2,7 @@
 title: Drenatge Limfàtic23
 shortDescription: Tècnica que estimula el flux limfàtic per tractar la retenció
   de líquids, inflamació i cel·lulitis.
-slug: ca-drenatge-linfatic
+slug: drenatge-linfatic
 lang: ca
 description: El drenatge limfàtic és una tècnica terapèutica suau que estimula
   el sistema limfàtic per eliminar toxines i líquids retinguts. El sistema

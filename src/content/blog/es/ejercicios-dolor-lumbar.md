@@ -1,6 +1,6 @@
 ---
 author: Dra. María García
-slug: es-ejercicios-dolor-lumbar
+slug: ejercicios-dolor-lumbar
 lang: es
 title: 5 Ejercicios para Aliviar el Dolor Lumbar
 description: Descubre ejercicios efectivos y seguros para reducir el dolor de

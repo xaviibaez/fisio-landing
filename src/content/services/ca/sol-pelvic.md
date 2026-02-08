@@ -1,6 +1,6 @@
 ---
 lang: ca
-slug: ca-sol-pelvic
+slug: sol-pelvic
 title: Sòl Pèlvic
 shortDescription: Avaluació i tractament especialitzat dels problemes musculars
   i funcionals del sòl pèlvic.

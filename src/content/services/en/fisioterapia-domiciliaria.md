@@ -1,6 +1,6 @@
 ---
 lang: en
-slug: en-fisioterapia-domiciliaria
+slug: fisioterapia-domiciliaria
 title: Home Physiotherapy
 shortDescription: Professional physiotherapy treatment at your home for people
   with mobility difficulties.
