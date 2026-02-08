@@ -15,7 +15,7 @@ const lang = getLangFromUrl(Astro.url);
 const translation = useTranslations(lang);
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
+<Layout title={post.data.title} description={post.data.description} image={post.data.image}>
   <Header />
   
   <main class="pt-24 pb-20">
@@ -37,6 +37,16 @@ const translation = useTranslations(lang);
             {formatLocaleDate(post.data.date, lang, { month: 'long' })}
           </time>
         </div>
+        {post.data.image && (
+          <div class="mt-8 rounded-xl overflow-hidden shadow-lg max-w-4xl mx-auto">
+            <img
+              src={post.data.image}
+              alt={post.data.title}
+              class="w-full h-auto object-cover"
+              loading="eager"
+            />
+          </div>
+        )}
       </div>
 
       <!-- Article Content -->
