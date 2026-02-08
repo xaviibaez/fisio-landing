@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import GalleryModal from '../components/GalleryModal.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import { getCollection } from 'astro:content';
-import { getLangFromUrl, useTranslations, getLangKey, getLocalizedPath } from '../i18n/utils';
+import { getLangFromUrl, useTranslations, getLangKey, getLocalizedPath, formatLocaleDate } from '../i18n/utils';
 import { getBlogPostsByLang } from '../utils/blogPages';
 import siteSettings from '../data/site-settings.json';
 import galleryData from '../data/gallery.json';
@@ -341,7 +341,7 @@ const contactIcons: Record<typeof contactValues[number], { bg: string; color: st
                 <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
                   <span>{post.data.author}</span>
                   <time datetime={post.data.date.toISOString()}>
-                    {post.data.date.toLocaleDateString(lang === 'ca' ? 'ca-ES' : lang === 'es' ? 'es-ES' : 'en-GB', { year: 'numeric', month: 'short', day: 'numeric' })}
+                    {formatLocaleDate(post.data.date, lang)}
                   </time>
                 </div>
                 <a href={getLocalizedPath(`/blog/${post.slug}`, lang)} class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 transition">

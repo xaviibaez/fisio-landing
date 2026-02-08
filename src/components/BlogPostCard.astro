@@ -1,6 +1,6 @@
 ---
 import type { TranslationFunction } from '../i18n/utils';
-import { getLocalizedPath } from '../i18n/utils';
+import { getLocalizedPath, formatLocaleDate } from '../i18n/utils';
 
 interface Props {
   post: {
@@ -19,12 +19,7 @@ interface Props {
 const { post, lang, translation: t } = Astro.props;
 
 const postUrl = getLocalizedPath(`/blog/${post.slug}`, lang as any);
-const locale = lang === 'ca' ? 'ca-ES' : lang === 'es' ? 'es-ES' : 'en-GB';
-const formattedDate = post.data.date.toLocaleDateString(locale, { 
-  year: 'numeric', 
-  month: 'short', 
-  day: 'numeric' 
-});
+const formattedDate = formatLocaleDate(post.data.date, lang as any);
 ---
 
 <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-2">

@@ -3,7 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import Layout from './Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, useTranslations, formatLocaleDate } from '../i18n/utils';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -34,7 +34,7 @@ const t = useTranslations(lang);
           <span>{post.data.author}</span>
           <span>•</span>
           <time datetime={post.data.date.toISOString()}>
-            {post.data.date.toLocaleDateString(lang === 'en' ? 'en-US' : lang === 'es' ? 'es-ES' : 'ca-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
+            {formatLocaleDate(post.data.date, lang, { month: 'long' })}
           </time>
         </div>
       </div>

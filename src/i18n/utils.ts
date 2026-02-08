@@ -7,6 +7,22 @@ export function getLangKey(lang: keyof typeof ui): LangKey {
   return lang as LangKey;
 }
 
+const localeByLang: Record<keyof typeof ui, string> = {
+  ca: 'ca-ES',
+  es: 'es-ES',
+  en: 'en-GB',
+};
+
+/** Formatea una fecha según el idioma. Por defecto mes corto (short); usa { month: 'long' } para mes completo. */
+export function formatLocaleDate(
+  date: Date,
+  lang: keyof typeof ui,
+  options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: 'numeric' }
+): string {
+  const locale = localeByLang[lang];
+  return date.toLocaleDateString(locale, { year: 'numeric', month: 'short', day: 'numeric', ...options });
+}
+
 export function getLangFromUrl(url: URL) {
   const [, lang] = url.pathname.split('/');
   if (lang in ui) return lang as keyof typeof ui;
