@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { lang, translation: t } = Astro.props;
-const blogUrl = getLocalizedPath('/blog', lang as any);
+const homeUrl = getLocalizedPath('/', lang as any);
 ---
 
 <div class="text-center py-16">
@@ -16,8 +16,7 @@ const blogUrl = getLocalizedPath('/blog', lang as any);
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
   </svg>
   <h2 class="text-2xl font-heading font-bold text-gray-700 mb-2">{t('blog.noArticles')}</h2>
-  <p class="text-gray-600 mb-6">{t('blog.tryAnother')}</p>
-  <a href={blogUrl} class="inline-block bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition">
-    {t('blog.viewAll')}
+  <a href={homeUrl} class="inline-block bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition mt-6">
+    {t('blog.backToHome')}
   </a>
 </div>
