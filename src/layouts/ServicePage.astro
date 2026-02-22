@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import siteSettings from '../data/site-settings.json';
+import { marked } from 'marked';
 
 const { frontmatter } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
@@ -12,18 +13,11 @@ const t = useTranslations(lang);
 // Imágenes en public/images/uploads/ (ruta pública directa)
 const publicImagePath = frontmatter.image ?? null;
 
-// Función simple para procesar markdown básico a HTML
+// Misma lógica de markdown que el contenido del body (content layer)
+marked.setOptions({ breaks: true });
 function processMarkdown(markdown: string): string {
   if (!markdown) return '';
-  return markdown
-    // Negrita: **texto** o __texto__
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/__(.*?)__/g, '<strong>$1</strong>')
-    // Cursiva: *texto* o _texto_
-    .replace(/\*(.*?)\*/g, '<em>$1</em>')
-    .replace(/_(.*?)_/g, '<em>$1</em>')
-    // Saltos de línea
-    .replace(/\n/g, '<br>');
+  return marked.parse(markdown) as string;
 }
 ---
 
