@@ -11,6 +11,20 @@ const t = useTranslations(lang);
 
 // Imágenes en public/images/uploads/ (ruta pública directa)
 const publicImagePath = frontmatter.image ?? null;
+
+// Función simple para procesar markdown básico a HTML
+function processMarkdown(markdown: string): string {
+  if (!markdown) return '';
+  return markdown
+    // Negrita: **texto** o __texto__
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/__(.*?)__/g, '<strong>$1</strong>')
+    // Cursiva: *texto* o _texto_
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/_(.*?)_/g, '<em>$1</em>')
+    // Saltos de línea
+    .replace(/\n/g, '<br>');
+}
 ---
 
 <Layout title={`${frontmatter.title} - ${siteSettings.site.name}`} description={frontmatter.shortDescription}>
@@ -118,6 +132,21 @@ const publicImagePath = frontmatter.image ?? null;
                   <p class="text-2xl font-semibold text-primary-600">{frontmatter.price}</p>
                 </div>
               )}
+            </div>
+          )}
+
+          <!-- FAQs Section -->
+          {frontmatter.faqs && frontmatter.faqs.length > 0 && (
+            <div class="mb-12">
+              <h2 class="text-3xl font-heading font-bold mb-8">{t('service.faqs')}</h2>
+              <div class="space-y-4">
+                {frontmatter.faqs.map((faq: { question: string; answer: string }) => (
+                  <div class="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-primary-300 transition-colors">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">{faq.question}</h3>
+                    <div class="prose prose-sm max-w-none text-gray-700" set:html={processMarkdown(faq.answer)} />
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>
