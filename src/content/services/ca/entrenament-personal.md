@@ -1,31 +1,39 @@
 ---
-lang: "ca"
+title: Entrenament Personal i Recuperació Funcional
+shortDescription: Programes personalitzats de reeducació del moviment,
+  readaptació esportiva i entrenaments individuals o en parella.
 slug: entrenament-personal
-title: 'Entrenament Personal i Recuperació Funcional'
-shortDescription: 'Programes personalitzats de reeducació del moviment, readaptació esportiva i entrenaments individuals o en parella.'
-description: 'Oferim un servei integral dentrenament personal i recuperació funcional, adaptat a les teves necessitats específiques. Treballem la reeducació del moviment, la readaptació esportiva i abdominopèlvica, lanàlisi de la marxa per corredors i entrenaments personalitzats individuals o en grups reduïts de màxim 2 persones.'
-icon: 'activity'
-image: '/images/uploads/EP.png'
+lang: ca
+description: Oferim un servei integral dentrenament personal i recuperació
+  funcional, adaptat a les teves necessitats específiques. Treballem la
+  reeducació del moviment, la readaptació esportiva i abdominopèlvica, lanàlisi
+  de la marxa per corredors i entrenaments personalitzats individuals o en grups
+  reduïts de màxim 2 persones.
+icon: activity
+image: /images/uploads/EP.png
 benefits:
-  - 'Recuperació de patrons de moviment correctes'
-  - 'Retorn segur a lactivitat esportiva'
-  - 'Millora de la funció abdominopèlvica'
-  - 'Optimització de la tècnica de carrera'
-  - 'Prevenció de lesions recurrents'
-  - 'Atenció personalitzada i individualitzada'
-  - 'Entrenaments adaptats als teus objectius'
-  - 'Seguiment i progressió controlada'
+  - Recuperació de patrons de moviment correctes
+  - Retorn segur a lactivitat esportiva
+  - Millora de la funció abdominopèlvica
+  - Optimització de la tècnica de carrera
+  - Prevenció de lesions recurrents
+  - Atenció personalitzada i individualitzada
+  - Entrenaments adaptats als teus objectius
+  - Seguiment i progressió controlada
 process:
-  - step: 'Valoració inicial'
-    description: 'Anàlisi completa del moviment, postura i necessitats específiques'
-  - step: 'Disseny del programa'
-    description: 'Creació dun pla dentrenament personalitzat segons els teus objectius'
-  - step: 'Sessions dentrenament'
-    description: 'Execució del programa amb supervisió directa del fisioterapeuta'
-  - step: 'Avaluació i ajust'
-    description: 'Seguiment continu i adaptació del programa segons la teva evolució'
-duration: '45-60 minuts'
+  - step: Valoració inicial
+    description: Anàlisi completa del moviment, postura i necessitats específiques
+  - step: Disseny del programa
+    description: Creació dun pla dentrenament personalitzat segons els teus objectius
+  - step: Sessions dentrenament
+    description: Execució del programa amb supervisió directa del fisioterapeuta
+  - step: Avaluació i ajust
+    description: Seguiment continu i adaptació del programa segons la teva evolució
+duration: 45-60 minuts
 order: 9
+faqs:
+  - question: Fa mal?
+    answer: No
 ---
 
 ## Què és l'Entrenament Personal i la Recuperació Funcional?

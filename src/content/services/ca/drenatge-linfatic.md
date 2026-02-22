@@ -32,6 +32,9 @@ process:
     description: Recomanacions post-tractament i pautes dhidratació
 duration: 60 minuts
 order: 1
+faqs:
+  - question: Fa mal?
+    answer: No
 ---
 
 ## Com funciona el Drenatge Limfàtic?
