@@ -29,7 +29,7 @@ const allServices = await getCollection('services');
 const langPrefix = lang === 'ca' ? 'ca/' : lang === 'es' ? 'es/' : 'en/';
 const services = allServices
   .filter((s: typeof allServices[0]) => s.id.startsWith(langPrefix))
-  .sort((a: typeof allServices[0], b: typeof allServices[0]) => a.data.order - b.data.order)
+  .sort((a: typeof allServices[0], b: typeof allServices[0]) => (a.data.order ?? 0) - (b.data.order ?? 0))
   .map((service: typeof allServices[0]) => {
     const slug = service.id.replace(langPrefix, '').replace('.md', '');
     const href = getLocalizedPath(`/serveis/${slug}`, lang);

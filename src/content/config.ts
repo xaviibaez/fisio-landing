@@ -36,7 +36,7 @@ const servicesCollection = defineCollection({
       question: z.string(),
       answer: z.string(),
     })).optional(),
-    order: z.number(),
+    order: z.number().optional(),
   }),
 });
 

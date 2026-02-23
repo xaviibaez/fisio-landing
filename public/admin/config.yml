@@ -244,7 +244,6 @@ collections:
           - { label: "Descripció", name: "description", widget: "text" }
       - { label: "Durada", name: "duration", widget: "string", required: false, hint: "ex: 60 minuts" }
       - { label: "Preu", name: "price", widget: "string", required: false, hint: "ex: 50€" }
-      - { label: "Ordre", name: "order", widget: "number", default: 0, hint: "Ordre de visualització (números més baixos primer)" }
       - label: "Preguntes Freqüents"
         name: "faqs"
         widget: "list"
@@ -303,7 +302,6 @@ collections:
           - { label: "Descripción", name: "description", widget: "text" }
       - { label: "Duración", name: "duration", widget: "string", required: false, hint: "ej: 60 minutos" }
       - { label: "Precio", name: "price", widget: "string", required: false, hint: "ej: 50€" }
-      - { label: "Orden", name: "order", widget: "number", default: 0, hint: "Orden de visualización (números más bajos primero)" }
       - label: "Preguntas Frecuentes"
         name: "faqs"
         widget: "list"
@@ -362,7 +360,6 @@ collections:
           - { label: "Description", name: "description", widget: "text" }
       - { label: "Duration", name: "duration", widget: "string", required: false, hint: "e.g., 60 minutes" }
       - { label: "Price", name: "price", widget: "string", required: false, hint: "e.g., €50" }
-      - { label: "Order", name: "order", widget: "number", default: 0, hint: "Display order (lower numbers first)" }
       - label: "FAQs"
         name: "faqs"
         widget: "list"
