@@ -3,7 +3,7 @@ import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils
 import siteSettings from '../data/site-settings.json';
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const translation = useTranslations(lang);
 ---
 
 <footer class="bg-gray-900 text-gray-300">
@@ -13,25 +13,25 @@ const t = useTranslations(lang);
       <div class="md:col-span-2">
         <h3 class="text-2xl font-heading font-bold text-white mb-4">{siteSettings.site.name}</h3>
         <p class="text-gray-400 mb-4">
-          {t('footer.description')}
+          {translation('footer.description')}
         </p>
       </div>
 
       <!-- Quick Links -->
       <div>
-        <h4 class="text-white font-semibold mb-4">{t('footer.links')}</h4>
+        <h4 class="text-white font-semibold mb-4">{translation('footer.links')}</h4>
         <ul class="space-y-2">
-          <li><a href={getLocalizedPath('/#servicios', lang)} class="hover:text-primary-400 transition">{t('nav.services')}</a></li>
-          <li><a href={getLocalizedPath('/#nosotros', lang)} class="hover:text-primary-400 transition">{t('nav.about')}</a></li>
-          <li><a href={getLocalizedPath('/#contacto', lang)} class="hover:text-primary-400 transition">{t('nav.contact')}</a></li>
-          <li><a href={getLocalizedPath('/nosaltres', lang)} class="hover:text-primary-400 transition">{t('nav.aboutUs')}</a></li>
-          <li><a href={getLocalizedPath('/blog', lang)} class="hover:text-primary-400 transition">{t('nav.blog')}</a></li>
+          <li><a href={getLocalizedPath('/#servicios', lang)} class="hover:text-primary-400 transition">{translation('nav.services')}</a></li>
+          <li><a href={getLocalizedPath('/#nosotros', lang)} class="hover:text-primary-400 transition">{translation('nav.about')}</a></li>
+          <li><a href={getLocalizedPath('/#contacto', lang)} class="hover:text-primary-400 transition">{translation('nav.contact')}</a></li>
+          <li><a href={getLocalizedPath('/nosaltres', lang)} class="hover:text-primary-400 transition">{translation('nav.aboutUs')}</a></li>
+          <li><a href={getLocalizedPath('/blog', lang)} class="hover:text-primary-400 transition">{translation('nav.blog')}</a></li>
         </ul>
       </div>
 
       <!-- Contact Info -->
       <div>
-        <h4 class="text-white font-semibold mb-4">{t('footer.contact')}</h4>
+        <h4 class="text-white font-semibold mb-4">{translation('footer.contact')}</h4>
         <ul class="space-y-2">
           <li class="flex items-start gap-2">
             <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -59,7 +59,7 @@ const t = useTranslations(lang);
 
     <!-- Bottom Bar -->
     <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
-      <p>&copy; {new Date().getFullYear()} {siteSettings.site.name}. {t('footer.rights')}</p>
+      <p>&copy; {new Date().getFullYear()} {siteSettings.site.name}. {translation('footer.rights')}</p>
       <p class="mt-2 flex items-center justify-center gap-1">
         Made by: 
         <a href="https://github.com/xaviibaez" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-primary-400 hover:text-primary-300 transition">

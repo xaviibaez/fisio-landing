@@ -8,7 +8,7 @@ import { marked } from 'marked';
 
 const { frontmatter } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const translation = useTranslations(lang);
 
 // Imágenes en public/images/uploads/ (ruta pública directa)
 const publicImagePath = frontmatter.image ?? null;
@@ -60,7 +60,7 @@ function processMarkdown(markdown: string): string {
               <!-- Benefits Section -->
               {frontmatter.benefits && frontmatter.benefits.length > 0 && (
                 <div class="bg-primary-50 rounded-xl p-6">
-                  <h2 class="text-2xl font-heading font-bold mb-4 text-primary-900">{t('service.benefits')}</h2>
+                  <h2 class="text-2xl font-heading font-bold mb-4 text-primary-900">{translation('service.benefits')}</h2>
                   <ul class="space-y-3">
                     {frontmatter.benefits.map((benefit: string) => (
                       <li class="flex items-start gap-3">
@@ -84,7 +84,7 @@ function processMarkdown(markdown: string): string {
           <!-- Process Section -->
           {frontmatter.process && frontmatter.process.length > 0 && (
             <div class="mb-12">
-              <h2 class="text-3xl font-heading font-bold mb-8">{t('service.process')}</h2>
+              <h2 class="text-3xl font-heading font-bold mb-8">{translation('service.process')}</h2>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {frontmatter.process.map((item: any, index: number) => (
                   <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary-600">
@@ -110,7 +110,7 @@ function processMarkdown(markdown: string): string {
                     <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
-                    <h3 class="text-lg font-bold text-gray-900">{t('service.duration')}</h3>
+                    <h3 class="text-lg font-bold text-gray-900">{translation('service.duration')}</h3>
                   </div>
                   <p class="text-2xl font-semibold text-primary-600">{frontmatter.duration}</p>
                 </div>
@@ -121,7 +121,7 @@ function processMarkdown(markdown: string): string {
                     <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
-                    <h3 class="text-lg font-bold text-gray-900">{t('service.price')}</h3>
+                    <h3 class="text-lg font-bold text-gray-900">{translation('service.price')}</h3>
                   </div>
                   <p class="text-2xl font-semibold text-primary-600">{frontmatter.price}</p>
                 </div>
@@ -132,7 +132,7 @@ function processMarkdown(markdown: string): string {
           <!-- FAQs Section -->
           {frontmatter.faqs && frontmatter.faqs.length > 0 && (
             <div class="mb-12">
-              <h2 class="text-3xl font-heading font-bold mb-8">{t('service.faqs')}</h2>
+              <h2 class="text-3xl font-heading font-bold mb-8">{translation('service.faqs')}</h2>
               <div class="space-y-4">
                 {frontmatter.faqs.map((faq: { question: string; answer: string }) => (
                   <div class="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-primary-300 transition-colors">
