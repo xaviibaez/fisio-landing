@@ -3,6 +3,11 @@ import LanguagePicker from './LanguagePicker.astro';
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 import siteSettings from '../data/site-settings.json';
 
+interface Props {
+  showLanguagePicker?: boolean;
+}
+
+const { showLanguagePicker = true } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const currentPath = Astro.url.pathname;
@@ -27,9 +32,11 @@ const currentPath = Astro.url.pathname;
         <li><a href={getLocalizedPath('/#contacto', lang)} class="nav-link text-gray-700 hover:text-primary-600 transition pb-1" data-section="contacto">{t('nav.contact')}</a></li>
         <li><a href={getLocalizedPath('/nosaltres', lang)} class={`nav-link transition pb-1 ${currentPath.includes('/nosaltres') || currentPath.includes('/nosotros') || currentPath.includes('/about-us') ? 'text-primary-600 font-semibold border-b-2 border-primary-500' : 'text-gray-700 hover:text-primary-600'}`} data-page="nosaltres">{t('nav.aboutUs')}</a></li>
         <li><a href={getLocalizedPath('/blog', lang)} class={`nav-link transition pb-1 ${currentPath.includes('/blog') ? 'text-primary-600 font-semibold border-b-2 border-primary-500' : 'text-gray-700 hover:text-primary-600'}`} data-page="blog">{t('nav.blog')}</a></li>
+        {showLanguagePicker && (
         <li>
           <LanguagePicker />
         </li>
+        )}
         <li>
           <a href={getLocalizedPath('/#contacto', lang)} class="bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition-all transform hover:scale-105">
             {t('nav.bookAppointment')}
@@ -54,9 +61,11 @@ const currentPath = Astro.url.pathname;
         <li><a href={getLocalizedPath('/#contacto', lang)} class="nav-link-mobile block text-gray-700 hover:text-primary-600 transition" data-section="contacto">{t('nav.contact')}</a></li>
         <li><a href={getLocalizedPath('/nosaltres', lang)} class={`nav-link-mobile block transition ${currentPath.includes('/nosaltres') || currentPath.includes('/nosotros') || currentPath.includes('/about-us') ? 'text-primary-600 font-semibold' : 'text-gray-700 hover:text-primary-600'}`} data-page="nosaltres">{t('nav.aboutUs')}</a></li>
         <li><a href={getLocalizedPath('/blog', lang)} class={`nav-link-mobile block transition ${currentPath.includes('/blog') ? 'text-primary-600 font-semibold' : 'text-gray-700 hover:text-primary-600'}`} data-page="blog">{t('nav.blog')}</a></li>
+        {showLanguagePicker && (
         <li class="flex justify-center">
           <LanguagePicker />
         </li>
+        )}
         <li>
           <a href={getLocalizedPath('/#contacto', lang)} class="block text-center bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition">
             {t('nav.bookAppointment')}
