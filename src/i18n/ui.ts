@@ -167,6 +167,14 @@ export const ui = {
     'blog.backToHome': 'Tornar al inici',
     'blog.cta.title': 'Necessites ajuda professional?',
     'blog.cta.subtitle': 'Agenda la teva cita amb el nostre equip d\'especialistes.',
+
+    '404.title': 'Pàgina no trobada',
+    '404.subtitle': 'Error 404',
+    '404.message': 'La pàgina que cerques no existeix, s\'ha mogut o l\'enllaç és incorrecte.',
+    '404.whatToDo': 'Què pots fer:',
+    '404.backHome': 'Tornar a l\'inici',
+    '404.goBlog': 'Veure el blog',
+    '404.goContact': 'Contactar',
     
     // Categories
     'category.todos': 'Tots',
@@ -444,6 +452,14 @@ export const ui = {
     'blog.backToHome': 'Volver al inicio',
     'blog.cta.title': '¿Necesitas ayuda profesional?',
     'blog.cta.subtitle': 'Agenda tu cita con nuestro equipo de especialistas.',
+
+    '404.title': 'Página no encontrada',
+    '404.subtitle': 'Error 404',
+    '404.message': 'La página que buscas no existe, se ha movido o el enlace es incorrecto.',
+    '404.whatToDo': 'Qué puedes hacer:',
+    '404.backHome': 'Volver al inicio',
+    '404.goBlog': 'Ver el blog',
+    '404.goContact': 'Contactar',
     
     // Categories
     'category.todos': 'Todos',
@@ -722,6 +738,14 @@ export const ui = {
     'blog.backToHome': 'Back to home',
     'blog.cta.title': 'Need professional help?',
     'blog.cta.subtitle': 'Book your appointment with our team of specialists.',
+
+    '404.title': 'Page not found',
+    '404.subtitle': 'Error 404',
+    '404.message': 'The page you are looking for does not exist, has been moved, or the link is incorrect.',
+    '404.whatToDo': 'What you can do:',
+    '404.backHome': 'Back to home',
+    '404.goBlog': 'View blog',
+    '404.goContact': 'Contact us',
     
     // Categories
     'category.todos': 'All',
