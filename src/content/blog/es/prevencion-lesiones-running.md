@@ -1,6 +1,5 @@
 ---
 lang: "es"
-slug: prevencion-lesiones-running
 title: "Prevención de Lesiones en Corredores"
 description: "Consejos esenciales de fisioterapia deportiva para evitar lesiones al correr."
 author: "Dr. Carlos Martínez"

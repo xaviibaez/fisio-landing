@@ -1,6 +1,5 @@
 ---
 lang: es
-slug: nuevo-post-3
 title: nuevo post 3
 description: nuevo blog 3
 author: Axis Cambrils

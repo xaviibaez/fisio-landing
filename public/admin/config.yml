@@ -119,16 +119,14 @@ collections:
   # BLOG Posts - Multi-language
   # ============================================
 
-  # Blog Posts - Catalan
+  # Blog Posts - Catalan (la URL es el nom del fitxer, sense camp slug)
   - name: "blog_ca"
     label: "Blog (Català)"
     folder: "src/content/blog/ca"
     create: true
     slug: "{{slug}}"
-    identifier_field: "slug"
     fields:
       - { label: "Lang", name: "lang", widget: "hidden", default: "ca" }
-      - { label: "Slug (URL)", name: "slug", widget: "string", hint: "Part de la URL, sense espais ni accents (ex: consells-dolor-lumbar). Es genera el fitxer amb aquest nom.", default: "nou-post" }
       - { label: "Títol", name: "title", widget: "string" }
       - { label: "Descripció", name: "description", widget: "text" }
       - { label: "Autor", name: "author", widget: "string", default: "Axis Cambrils" }
@@ -147,16 +145,14 @@ collections:
       - { label: "Imatge Destacada", name: "image", widget: "image", required: false }
       - { label: "Contingut", name: "body", widget: "markdown" }
 
-  # Blog Posts - Spanish
+  # Blog Posts - Spanish (la URL es el nombre del archivo, sin campo slug)
   - name: "blog_es"
     label: "Blog (Español)"
     folder: "src/content/blog/es"
     create: true
     slug: "{{slug}}"
-    identifier_field: "slug"
     fields:
       - { label: "Lang", name: "lang", widget: "hidden", default: "es" }
-      - { label: "Slug (URL)", name: "slug", widget: "string", hint: "Parte de la URL, sin espacios ni acentos (ej: consejos-dolor-lumbar). El archivo se guarda con este nombre.", default: "nuevo-post" }
       - { label: "Título", name: "title", widget: "string" }
       - { label: "Descripción", name: "description", widget: "text" }
       - { label: "Autor", name: "author", widget: "string", default: "Axis Cambrils" }
@@ -175,16 +171,14 @@ collections:
       - { label: "Imagen Destacada", name: "image", widget: "image", required: false }
       - { label: "Contenido", name: "body", widget: "markdown" }
 
-  # Blog Posts - English
+  # Blog Posts - English (URL is the file name, no slug field)
   - name: "blog_en"
     label: "Blog (English)"
     folder: "src/content/blog/en"
     create: true
     slug: "{{slug}}"
-    identifier_field: "slug"
     fields:
       - { label: "Lang", name: "lang", widget: "hidden", default: "en" }
-      - { label: "Slug (URL)", name: "slug", widget: "string", hint: "URL-friendly name, no spaces or accents (e.g. tips-back-pain). File is saved with this name.", default: "new-post" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Author", name: "author", widget: "string", default: "Axis Cambrils" }

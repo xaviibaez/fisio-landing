@@ -7,15 +7,7 @@ import type { TranslationFunction } from '../i18n/utils';
 import siteSettings from '../data/site-settings.json';
 
 interface Props {
-  posts: Array<{
-    slug: string;
-    data: {
-      title: string;
-      description: string;
-      author: string;
-      date: Date;
-    };
-  }>;
+  posts: import('astro:content').CollectionEntry<'blog'>[];
   lang: string;
   translation: TranslationFunction;
 }

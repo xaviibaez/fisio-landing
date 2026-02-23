@@ -28,6 +28,26 @@ import siteSettings from '../../data/site-settings.json';
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
+    // Generar slug desde el título al crear/guardar servicios (el blog usa el nombre del fitxer, sense slug)
+    if (window.CMS) {
+      const SLUG_PLACEHOLDERS = { services_ca: 'nou-servei', services_es: 'nuevo-servicio', services_en: 'new-service' };
+      window.CMS.registerEventListener({
+        name: 'preSave',
+        handler: ({ entry }) => {
+          const collection = entry.get('collection');
+          const placeholder = SLUG_PLACEHOLDERS[collection];
+          if (!placeholder) return;
+          const data = entry.get('data');
+          const currentSlug = data.get('slug');
+          const title = data.get('title');
+          if (!title) return;
+          if (currentSlug && currentSlug !== placeholder) return;
+          const slug = String(title).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || placeholder;
+          return data.set('slug', slug);
+        }
+      });
+    }
+
     // Solo inicializar Netlify Identity si NO estamos en localhost
     const isLocalhost = window.location.hostname === 'localhost' || 
                         window.location.hostname === '127.0.0.1' ||

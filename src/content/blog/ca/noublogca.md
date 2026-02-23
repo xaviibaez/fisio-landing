@@ -1,6 +1,5 @@
 ---
 lang: ca
-slug: nouBlogCa
 title: nouBlogCaTitol
 description: nouBlogCaDesc
 author: Axis Cambrils Xavi

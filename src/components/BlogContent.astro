@@ -4,15 +4,7 @@ import BlogEmpty from './BlogEmpty.astro';
 import type { TranslationFunction } from '../i18n/utils';
 
 interface Props {
-  posts: Array<{
-    slug: string;
-    data: {
-      title: string;
-      description: string;
-      author: string;
-      date: Date;
-    };
-  }>;
+  posts: import('astro:content').CollectionEntry<'blog'>[];
   lang: string;
   translation: TranslationFunction;
 }

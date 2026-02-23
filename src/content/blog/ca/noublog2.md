@@ -1,7 +1,6 @@
 ---
 lang: ca
 title: nouBLog2
-slug: nouBLog2
 description: nouBlog2
 author: Axis Cambrils
 date: 2026-02-09

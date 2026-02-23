@@ -1,17 +1,17 @@
 ---
-author: Dra. María García
-lang: es
-title: 5 Ejercicios para Aliviar el Dolor Lumbar
+lang: ca
+title: hola 5 Ejercicios para Aliviar el Dolor Lumbar
 description: Descubre ejercicios efectivos y seguros para reducir el dolor de
   espalda baja desde casa.
-date: 2025-12-15
-category: traumatologica
+author: Axis Cambrils
+date: 2026-02-23
+category: neurologica
 tags:
   - dolor lumbar
   - ejercicios
   - espalda
+image: /images/uploads/5.png
 ---
-
 El dolor lumbar es una de las consultas más frecuentes en fisioterapia. Aquí te presentamos 5 ejercicios que puedes hacer en casa para aliviar las molestias.
 
 ## 1. Inclinación Pélvica
@@ -46,9 +46,9 @@ Acostado boca arriba, eleva la cadera manteniendo hombros y pies en el suelo.
 
 ## Recomendaciones
 
-- Realiza los ejercicios de forma suave y controlada
-- Si sientes dolor agudo, detente inmediatamente
-- La constancia es clave: practica 2-3 veces por semana
-- Consulta con un fisioterapeuta si el dolor persiste
+* Realiza los ejercicios de forma suave y controlada
+* Si sientes dolor agudo, detente inmediatamente
+* La constancia es clave: practica 2-3 veces por semana
+* Consulta con un fisioterapeuta si el dolor persiste
 
 **Importante:** Estos ejercicios son orientativos. Cada caso es único y requiere evaluación profesional.
