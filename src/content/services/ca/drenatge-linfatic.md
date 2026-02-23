@@ -10,7 +10,7 @@ description: El drenatge limfàtic és una tècnica terapèutica suau que estimu
   limfa, un líquid que conté glòbuls blancs i deixalles cel·lulars. Aquest
   tractament millora la circulació, redueix la inflamació i enforteix el sistema
   immunològic.
-icon: droplet
+icon: wind
 image: /images/uploads/DL.png
 benefits:
   - Eliminació de toxines i deixalles del cos

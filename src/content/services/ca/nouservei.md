@@ -10,7 +10,7 @@ description: NouServei descripció Si no pots apropar-te al nostre centre,
   que estan convalescents duna lesió, cirurgia o malaltia, així com per persones
   grans o amb discapacitats que poden tenir dificultats per accedir a la nostra
   clínica.
-icon: Droplet
+icon: hand
 image: /images/uploads/3.png
 benefits:
   - moltissim

@@ -218,7 +218,24 @@ collections:
       - { label: "Títol", name: "title", widget: "string" }
       - { label: "Descripció Curta", name: "shortDescription", widget: "text" }
       - { label: "Descripció", name: "description", widget: "text" }
-      - { label: "Icona", name: "icon", widget: "string", hint: "Nom de la icona (ex: droplet, heart, etc.)" }
+      - label: "Icona"
+        name: "icon"
+        widget: "select"
+        options:
+          - { label: "💧 Drenatge limfàtic", value: "droplet" }
+          - { label: "📊 Exercici / Rehabilitació", value: "activity" }
+          - { label: "❤️ Benestar", value: "heart" }
+          - { label: "💓 Cardiorespiratori", value: "heart-pulse" }
+          - { label: "🏠 Fisioteràpia domiciliària", value: "home" }
+          - { label: "🧲 Magnetoteràpia", value: "magnet" }
+          - { label: "🦶 Reflexologia podal", value: "foot" }
+          - { label: "💨 Pressoteràpia", value: "wind" }
+          - { label: "🩹 Kinesiotape / Vendatge", value: "bandage" }
+          - { label: "✨ Mesoteràpia estètica", value: "sparkles" }
+          - { label: "⚡ Electroteràpia", value: "lightning" }
+          - { label: "✋ Teràpia manual", value: "hand" }
+          - { label: "🛡️ Prevenció", value: "shield" }
+          - { label: "👥 Tractament grupal", value: "users" }
       - { label: "Imatge del Servei", name: "image", widget: "image", required: false }
       - label: "Beneficis"
         name: "benefits"
@@ -260,7 +277,24 @@ collections:
       - { label: "Título", name: "title", widget: "string" }
       - { label: "Descripción Corta", name: "shortDescription", widget: "text" }
       - { label: "Descripción", name: "description", widget: "text" }
-      - { label: "Icono", name: "icon", widget: "string", hint: "Nombre del icono (ej: droplet, heart, etc.)" }
+      - label: "Icono"
+        name: "icon"
+        widget: "select"
+        options:
+          - { label: "💧 Drenaje linfático", value: "droplet" }
+          - { label: "📊 Ejercicio / Rehabilitación", value: "activity" }
+          - { label: "❤️ Bienestar", value: "heart" }
+          - { label: "💓 Cardiorespiratorio", value: "heart-pulse" }
+          - { label: "🏠 Fisioterapia domiciliaria", value: "home" }
+          - { label: "🧲 Magnetoterapia", value: "magnet" }
+          - { label: "🦶 Reflexología podal", value: "foot" }
+          - { label: "💨 Pressoterapia", value: "wind" }
+          - { label: "🩹 Kinesiotape / Vendaje", value: "bandage" }
+          - { label: "✨ Mesoterapia estética", value: "sparkles" }
+          - { label: "⚡ Electroterapia", value: "lightning" }
+          - { label: "✋ Terapia manual", value: "hand" }
+          - { label: "🛡️ Prevención", value: "shield" }
+          - { label: "👥 Tratamiento grupal", value: "users" }
       - { label: "Imagen del Servicio", name: "image", widget: "image", required: false }
       - label: "Beneficios"
         name: "benefits"
@@ -302,7 +336,24 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Short Description", name: "shortDescription", widget: "text" }
       - { label: "Description", name: "description", widget: "text" }
-      - { label: "Icon", name: "icon", widget: "string", hint: "Icon name (e.g., droplet, heart, etc.)" }
+      - label: "Icon"
+        name: "icon"
+        widget: "select"
+        options:
+          - { label: "💧 Lymphatic drainage", value: "droplet" }
+          - { label: "📊 Exercise / Rehabilitation", value: "activity" }
+          - { label: "❤️ Wellness", value: "heart" }
+          - { label: "💓 Cardiorespiratory", value: "heart-pulse" }
+          - { label: "🏠 Home physiotherapy", value: "home" }
+          - { label: "🧲 Magnetotherapy", value: "magnet" }
+          - { label: "🦶 Foot reflexology", value: "foot" }
+          - { label: "💨 Pressotherapy", value: "wind" }
+          - { label: "🩹 Kinesiotape / Bandaging", value: "bandage" }
+          - { label: "✨ Aesthetic mesotherapy", value: "sparkles" }
+          - { label: "⚡ Electrotherapy", value: "lightning" }
+          - { label: "✋ Manual therapy", value: "hand" }
+          - { label: "🛡️ Prevention", value: "shield" }
+          - { label: "👥 Group treatment", value: "users" }
       - { label: "Service Image", name: "image", widget: "image", required: false }
       - label: "Benefits"
         name: "benefits"
