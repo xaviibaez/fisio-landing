@@ -23,7 +23,7 @@ const servicesCollection = defineCollection({
     shortDescription: z.string(),
     description: z.string(),
     icon: z.string(),
-    benefits: z.array(z.string()),
+    benefits: z.array(z.union([z.string(), z.object({ item: z.string() })])),
     process: z.array(z.object({
       step: z.string(),
       description: z.string(),

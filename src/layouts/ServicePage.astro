@@ -11,10 +11,12 @@ const { frontmatter } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const translation = useTranslations(lang);
 
-// Imágenes en public/images/uploads/ (ruta pública directa)
 const publicImagePath = frontmatter.image ?? null;
 
-// Misma lógica de markdown que el contenido del body (content layer)
+const benefitsList: string[] = Array.isArray(frontmatter.benefits)
+  ? frontmatter.benefits.map((b: string | { item?: string }) => (typeof b === 'string' ? b : b?.item ?? ''))
+  : [];
+
 marked.setOptions({ breaks: true });
 function processMarkdown(markdown: string): string {
   if (!markdown) return '';
@@ -59,17 +61,12 @@ function processMarkdown(markdown: string): string {
               </div>
 
               <!-- Benefits Section -->
-              {frontmatter.benefits && frontmatter.benefits.length > 0 && (
+              {benefitsList.length > 0 && (
                 <div class="bg-primary-50 rounded-xl p-6">
                   <h2 class="text-2xl font-heading font-bold mb-4 text-primary-900">{translation('service.benefits')}</h2>
-                  <ul class="space-y-3">
-                    {frontmatter.benefits.map((benefit: string) => (
-                      <li class="flex items-start gap-3">
-                        <svg class="w-6 h-6 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="text-gray-700">{benefit}</span>
-                      </li>
+                  <ul class="list-disc list-inside space-y-2 text-gray-700 marker:text-primary-600">
+                    {benefitsList.map((benefit: string) => (
+                      <li>{benefit}</li>
                     ))}
                   </ul>
                 </div>

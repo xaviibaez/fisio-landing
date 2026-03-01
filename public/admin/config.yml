@@ -234,6 +234,8 @@ collections:
       - label: "Beneficis"
         name: "benefits"
         widget: "list"
+        allow_add: true
+        field: { label: "Benefici", name: "item", widget: "string" }
       - label: "Passos del Procés"
         name: "process"
         widget: "list"
@@ -292,6 +294,8 @@ collections:
       - label: "Beneficios"
         name: "benefits"
         widget: "list"
+        allow_add: true
+        field: { label: "Beneficio", name: "item", widget: "string" }
       - label: "Pasos del Proceso"
         name: "process"
         widget: "list"
@@ -350,6 +354,8 @@ collections:
       - label: "Benefits"
         name: "benefits"
         widget: "list"
+        allow_add: true
+        field: { label: "Benefit", name: "item", widget: "string" }
       - label: "Process Steps"
         name: "process"
         widget: "list"

@@ -34,10 +34,13 @@ const services = allServices
     const slug = service.id.replace(langPrefix, '').replace('.md', '');
     const href = getLocalizedPath(`/serveis/${slug}`, lang);
     
+    const benefitsList: string[] = Array.isArray(service.data.benefits)
+        ? service.data.benefits.map((b: string | { item?: string }) => (typeof b === 'string' ? b : b?.item ?? ''))
+        : [];
     return {
       title: service.data.title,
       description: service.data.shortDescription,
-      features: service.data.benefits.slice(0, 4), // Max 4 features
+      features: benefitsList.slice(0, 4), // Max 4 features
       href,
       icon: service.data.icon
     };
