@@ -23,6 +23,9 @@ importers:
       decap-cms-app:
         specifier: ^3.10.0
         version: 3.10.0(@types/hoist-non-react-statics@3.3.7(@types/react@19.2.9))(@types/node@25.0.10)(@types/react@19.2.9)(graphql@15.10.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      marked:
+        specifier: ^17.0.3
+        version: 17.0.3
       tailwindcss:
         specifier: ^3.4.0
         version: 3.4.19(yaml@2.8.2)
@@ -3481,6 +3484,11 @@ packages:
 
   markdown-table@3.0.4:
     resolution: {integrity: sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw==}
+
+  marked@17.0.3:
+    resolution: {integrity: sha512-jt1v2ObpyOKR8p4XaUJVk3YWRJ5n+i4+rjQopxvV32rSndTJXvIzuUdWWIy/1pFQMkQmvTXawzDNqOH/CUmx6A==}
+    engines: {node: '>= 20'}
+    hasBin: true
 
   material-colors@1.2.6:
     resolution: {integrity: sha512-6qE4B9deFBIa9YSpOc9O0Sgc43zTeVYbgDT5veRKSlB2+ZuHNoVVxA1L/ckMUayV9Ay9y7Z/SZCLcGteW9i7bg==}
@@ -9773,6 +9781,8 @@ snapshots:
       repeat-string: 1.6.1
 
   markdown-table@3.0.4: {}
+
+  marked@17.0.3: {}
 
   material-colors@1.2.6: {}
 
