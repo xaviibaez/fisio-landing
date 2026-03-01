@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 
 Astro.response.status = 404;
 
@@ -22,9 +22,12 @@ const translation = useTranslations(lang);
             <h1 class="text-3xl md:text-4xl font-heading font-bold text-black mb-4">
               {translation('404.title')}
             </h1>
-            <p class="text-xl text-black">
+            <p class="text-xl text-black mb-8">
               {translation('404.message')}
             </p>
+            <a href={getLocalizedPath('/', lang)} class="inline-block bg-primary-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors">
+              {translation('404.backHome')}
+            </a>
           </div>
         </div>
       </section>
