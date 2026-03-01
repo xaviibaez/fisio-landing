@@ -30,14 +30,14 @@ import siteSettings from '../../data/site-settings.json';
   <script>
     // Generar slug desde el título al crear/guardar servicios (el blog usa el nombre del fitxer, sense slug)
     if (window.CMS) {
-      const SLUG_PLACEHOLDERS = { services_ca: 'nou-servei', services_es: 'nuevo-servicio', services_en: 'new-service' };
+      const SLUG_PLACEHOLDERS: { services_ca: string; services_es: string; services_en: string } = { services_ca: 'nou-servei', services_es: 'nuevo-servicio', services_en: 'new-service' };
       window.CMS.registerEventListener({
         name: 'preSave',
-        handler: ({ entry }) => {
-          const collection = entry.get('collection');
+        handler: ({ entry }: { entry: { get: (key: string) => unknown } }) => {
+          const collection = entry.get('collection') as keyof typeof SLUG_PLACEHOLDERS;
           const placeholder = SLUG_PLACEHOLDERS[collection];
           if (!placeholder) return;
-          const data = entry.get('data');
+          const data = entry.get('data') as { get: (key: string) => unknown; set: (key: string, value: string) => unknown };
           const currentSlug = data.get('slug');
           const title = data.get('title');
           if (!title) return;
