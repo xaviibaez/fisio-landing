@@ -196,27 +196,71 @@ const contactIcons: Record<typeof contactValues[number], { bg: string; color: st
     </section>
 
     <!-- Services Section -->
-    <section id="servicios" class="py-20 bg-white">
+    <section id="servicios" class="py-20 bg-white" data-services-expanded="false">
+      <style is:inline>
+        #servicios .services-extra { display: none; }
+        @media (min-width: 768px) { #servicios .services-extra { display: block; } }
+        #servicios[data-services-expanded="true"] .services-extra { display: block !important; }
+      </style>
       <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">{translation('services.title')}</h2>
-          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-            {translation('services.subtitle')}
-          </p>
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-16">
+          <div class="text-center md:text-left">
+            <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">{translation('services.title')}</h2>
+            <p class="text-xl text-gray-600 max-w-2xl">
+              {translation('services.subtitle')}
+            </p>
+          </div>
+          {services.length > 3 && (
+            <div class="mt-4 md:mt-0 md:hidden">
+              <button
+                type="button"
+                id="services-toggle"
+                class="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors"
+                aria-expanded="false"
+                data-label-more={translation('services.viewAll')}
+                data-label-less={translation('services.viewLess')}
+              >
+                <span class="services-toggle-text">{translation('services.viewAll')}</span>
+                <svg class="w-5 h-5 transition-transform" id="services-toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </button>
+            </div>
+          )}
         </div>
 
         <div class="max-w-8xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {services.map((service: typeof services[0]) => (
-            <ServiceCard
-              title={service.title}
-              description={service.description}
-              features={service.features}
-              href={service.href}
-              icon={service.icon}
-            />
+          {services.map((service: typeof services[0], i: number) => (
+            <div class={i >= 3 ? 'services-extra' : ''}>
+              <ServiceCard
+                title={service.title}
+                description={service.description}
+                features={service.features}
+                href={service.href}
+                icon={service.icon}
+              />
+            </div>
           ))}
         </div>
       </div>
+      <script>
+        (function () {
+          const section = document.getElementById('servicios');
+          const btn = document.getElementById('services-toggle');
+          const icon = document.getElementById('services-toggle-icon');
+          const textEl = btn?.querySelector('.services-toggle-text');
+          if (!section || !btn || !textEl) return;
+          const labelMore = btn.getAttribute('data-label-more') ?? 'Ver más';
+          const labelLess = btn.getAttribute('data-label-less') ?? 'Ver menos';
+          btn.addEventListener('click', function () {
+            const expanded = section.getAttribute('data-services-expanded') === 'true';
+            section.setAttribute('data-services-expanded', (!expanded).toString());
+            btn.setAttribute('aria-expanded', (!expanded).toString());
+            textEl.textContent = expanded ? labelMore : labelLess;
+            if (icon) icon.style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
+          });
+        })();
+      </script>
     </section>
 
     <!-- About Section -->

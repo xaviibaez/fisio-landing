@@ -26,6 +26,8 @@ export const ui = {
     // Services
     'services.title': 'La salut, en bones mans',
     'services.subtitle': `El nostre equip de fisioterapeutes formats/es i amb experiència t'oferiran els millors tractaments, de manera individualitzada.`,
+    'services.viewAll': 'Veure tots els serveis',
+    'services.viewLess': 'Veure menys',
 
     'services.sports.title': 'Drenatge Limfàtic',
     'services.sports.description': 'El drenatge limfàtic és una tècnica que estimula el flux limfàtic i facilita la seva evacuació. S\'utilitza per tractar la retenció de líquids, la inflamació, la cel·lulitis i per millorar la funció immunològica.',
@@ -312,7 +314,9 @@ export const ui = {
     // Services
     'services.title': 'La salud, en buenas manos',
     'services.subtitle': 'Nuestro equipo de fisioterapeutas formados y con experiencia te ofrecerán los mejores tratamientos, de manera individualizada.',
-    
+'services.viewAll': 'Ver todos los servicios',
+    'services.viewLess': 'Ver menos',
+
     'services.sports.title': 'Drenaje Linfático',
     'services.sports.description': 'El drenaje linfático es una técnica que estimula el flujo linfático y facilita su evacuación. Se utiliza para tratar la retención de líquidos, la inflamación, la celulitis y para mejorar la función inmunológica.',
     'services.sports.feature1': 'Eliminación de toxinas y desechos',
@@ -599,7 +603,9 @@ export const ui = {
     // Services
     'services.title': 'Health in Good Hands',
     'services.subtitle': 'Our team of trained and experienced physiotherapists will offer you the best treatments, individually tailored.',
-    
+'services.viewAll': 'View all services',
+    'services.viewLess': 'View less',
+
     'services.sports.title': 'Lymphatic Drainage',
     'services.sports.description': 'Lymphatic drainage is a technique that stimulates lymphatic flow and facilitates its evacuation. It is used to treat fluid retention, inflammation, cellulite and to improve immune function.',
     'services.sports.feature1': 'Elimination of toxins and waste',
