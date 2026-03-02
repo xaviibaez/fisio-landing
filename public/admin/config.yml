@@ -1,14 +1,11 @@
 backend:
-  name: proxy
-  proxy_url: http://localhost:8081/api/v1
+  name: git-gateway
   branch: main
-
-local_backend: true
 
 
 # Site URL for previews
-site_url: https://axiscambrils.com
-display_url: https://axiscambrils.com
+site_url: https://fisio-landing.netlify.app
+display_url: https://fisio-landing.netlify.app
 
 # Media files will be stored in the repo under public/images
 media_folder: public/images/uploads
