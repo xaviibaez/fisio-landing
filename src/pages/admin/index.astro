@@ -1,0 +1,68 @@
+---
+// Admin page for Decap CMS
+import siteSettings from '../../data/site-settings.json';
+---
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Content Manager - {siteSettings.site.name}</title>
+  <style>body { margin: 0; }</style>
+  <!-- Solo cargar Netlify Identity si NO estamos en localhost -->
+  <script>
+    // Detectar si estamos en localhost
+    const isLocalhost = window.location.hostname === 'localhost' || 
+                        window.location.hostname === '127.0.0.1' ||
+                        window.location.hostname === '';
+    
+    // Solo cargar Netlify Identity si NO estamos en localhost
+    if (!isLocalhost) {
+      const script = document.createElement('script');
+      script.src = 'https://identity.netlify.com/v1/netlify-identity-widget.js';
+      document.head.appendChild(script);
+    }
+  </script>
+</head>
+<body>
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // Generar slug desde el título al crear/guardar servicios (el blog usa el nombre del fitxer, sense slug)
+    if (window.CMS) {
+      const SLUG_PLACEHOLDERS: { services_ca: string; services_es: string; services_en: string } = { services_ca: 'nou-servei', services_es: 'nuevo-servicio', services_en: 'new-service' };
+      window.CMS.registerEventListener({
+        name: 'preSave',
+        handler: ({ entry }: { entry: { get: (key: string) => unknown } }) => {
+          const collection = entry.get('collection') as keyof typeof SLUG_PLACEHOLDERS;
+          const placeholder = SLUG_PLACEHOLDERS[collection];
+          if (!placeholder) return;
+          const data = entry.get('data') as { get: (key: string) => unknown; set: (key: string, value: string) => unknown };
+          const currentSlug = data.get('slug');
+          const title = data.get('title');
+          if (!title) return;
+          if (currentSlug && currentSlug !== placeholder) return;
+          const slug = String(title).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || placeholder;
+          return data.set('slug', slug);
+        }
+      });
+    }
+
+    // Solo inicializar Netlify Identity si NO estamos en localhost
+    const isLocalhost = window.location.hostname === 'localhost' || 
+                        window.location.hostname === '127.0.0.1' ||
+                        window.location.hostname === '';
+    
+    const identity = window.netlifyIdentity;
+    if (!isLocalhost && identity) {
+      identity.on("init", user => {
+        if (!user) {
+          identity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>

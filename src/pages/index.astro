@@ -3,46 +3,121 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import GalleryModal from '../components/GalleryModal.astro';
+import GalleryCard from '../components/GalleryCard.astro';
 import ServiceCard from '../components/ServiceCard.astro';
-import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
-import { siteConfig } from '../config';
-
-import galleryImg1 from '../assets/gallery/1.png';
-import galleryImg2 from '../assets/gallery/2.png';
-import galleryImg3 from '../assets/gallery/3.png';
+import { getLangFromUrl, useTranslations, getLangKey, getLocalizedPath, formatLocaleDate } from '../i18n/utils';
+import { getBlogPostsByLang, getBlogSlug } from '../utils/blogPages';
+import siteSettings from '../data/site-settings.json';
+import galleryData from '../data/gallery.json';
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const translation = useTranslations(lang);
+const langKey = getLangKey(lang);
 
-const allPosts = await getCollection('blog');
-const latestPosts = allPosts
-  .sort((a: typeof allPosts[0], b: typeof allPosts[0]) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 3);
+const galleryPreview = galleryData.gallery.slice(0, 3).map((item: any) => ({
+  src: item.image,
+  title: item[`title_${langKey}`] || item.title_ca,
+  description: item[`description_${langKey}`] || item.description_ca,
+}));
+
+const allPosts = await getBlogPostsByLang(langKey);
+const latestPosts = allPosts.slice(0, 3);
 
 // Get services in the current language
 const allServices = await getCollection('services');
 const langPrefix = lang === 'ca' ? 'ca/' : lang === 'es' ? 'es/' : 'en/';
 const services = allServices
   .filter((s: typeof allServices[0]) => s.id.startsWith(langPrefix))
-  .sort((a: typeof allServices[0], b: typeof allServices[0]) => a.data.order - b.data.order)
+  .sort((a: typeof allServices[0], b: typeof allServices[0]) => (a.data.order ?? 0) - (b.data.order ?? 0))
   .map((service: typeof allServices[0]) => {
     const slug = service.id.replace(langPrefix, '').replace('.md', '');
-    const serviceWord = lang === 'ca' ? 'serveis' : lang === 'es' ? 'servicios' : 'services';
-    const href = lang === 'ca' ? `/${serviceWord}/${slug}` : `/${lang}/${serviceWord}/${slug}`;
+    const href = getLocalizedPath(`/serveis/${slug}`, lang);
     
+    const benefitsList: string[] = Array.isArray(service.data.benefits)
+        ? service.data.benefits.map((b: string | { item?: string }) => (typeof b === 'string' ? b : b?.item ?? ''))
+        : [];
     return {
       title: service.data.title,
       description: service.data.shortDescription,
-      features: service.data.benefits.slice(0, 4), // Max 4 features
+      features: benefitsList.slice(0, 4), // Max 4 features
       href,
       icon: service.data.icon
     };
   });
+
+const generalBenefitsValues = [
+  'whatIs.conditions.musculoskeletal',
+  'whatIs.conditions.postop',
+  'whatIs.conditions.neurological',
+  'whatIs.conditions.chronic',
+  'whatIs.conditions.respiratory',
+  'whatIs.conditions.sports',
+] as const;
+
+const whyUsValues = [
+  {
+    iconPath:
+      'M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z',
+    titleKey: 'about.professionals.title',
+    descriptionKey: 'about.professionals.description',
+  },
+  {
+    iconPath:
+      'M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z',
+    titleKey: 'about.technology.title',
+    descriptionKey: 'about.technology.description',
+  },
+  {
+    iconPath:
+      'M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z',
+    titleKey: 'about.personalized.title',
+    descriptionKey: 'about.personalized.description',
+  },
+] as const;
+
+const prideValues = [
+  { titleKey: 'about.values.excellence', textKey: 'about.values.excellenceText' },
+  { titleKey: 'about.values.empathy', textKey: 'about.values.empathyText' },
+  { titleKey: 'about.values.innovation', textKey: 'about.values.innovationText' },
+  { titleKey: 'about.values.results', textKey: 'about.values.resultsText' },
+] as const;
+
+const testimonialsValues = [
+  {
+    initials: 'MC',
+    textKey: 'testimonials.patient1.text',
+    nameKey: 'testimonials.patient1.name',
+    infoKey: 'testimonials.patient1.info',
+    stars: 5
+  },
+  {
+    initials: 'JS',
+    textKey: 'testimonials.patient2.text',
+    nameKey: 'testimonials.patient2.name',
+    infoKey: 'testimonials.patient2.info',
+    stars: 4
+  },
+  {
+    initials: 'AG',
+    textKey: 'testimonials.patient3.text',
+    nameKey: 'testimonials.patient3.name',
+    infoKey: 'testimonials.patient3.info',
+    stars: 5
+  },
+] as const;
+
+const contactValues = ['address', 'phone', 'email', 'whatsapp', 'schedule'] as const;
+const contactIcons: Record<typeof contactValues[number], { bg: string; color: string; paths: string[]; stroke: boolean }> = {
+  address: { bg: 'bg-primary-100', color: 'text-primary-600', stroke: true, paths: ['M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z', 'M15 11a3 3 0 11-6 0 3 3 0 016 0z'] },
+  phone: { bg: 'bg-primary-100', color: 'text-primary-600', stroke: true, paths: ['M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z'] },
+  email: { bg: 'bg-primary-100', color: 'text-primary-600', stroke: true, paths: ['M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'] },
+  whatsapp: { bg: 'bg-green-100', color: 'text-green-600', stroke: false, paths: ['M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z'] },
+  schedule: { bg: 'bg-primary-100', color: 'text-primary-600', stroke: true, paths: ['M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'] },
+};
 ---
 
-<Layout title={`Axis Cambrils - ${t('hero.subtitle')}`}>
+<Layout title={`${siteSettings.site.name} - ${translation('hero.subtitle')}`}>
   <Header />
   
   <main>
@@ -64,14 +139,14 @@ const services = allServices
       <div class="container mx-auto px-4 relative z-10">
         <div class="max-w-3xl">
           <h1 class="text-4xl md:text-6xl font-heading font-bold mb-6">
-            {t('hero.title')}
+            {translation('hero.title')}
           </h1>
           <p class="text-xl md:text-2xl mb-8 text-primary-50">
-            {t('hero.subtitle')}
+            {translation('hero.subtitle')}
           </p>
           <div class="flex justify-center md:hidden">
             <a href="#contacto" class="inline-block bg-white text-primary-600 px-8 py-4 rounded-lg font-semibold hover:bg-primary-50 transition-all transform hover:scale-105 text-center">
-              {t('hero.cta')}
+              {translation('hero.cta')}
             </a>
           </div>
         </div>
@@ -83,85 +158,37 @@ const services = allServices
       </div>
     </section>
 
-    <style>
-      @keyframes wave {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-      }
-      @keyframes wave-reverse {
-        0% { transform: translateX(-50%); }
-        100% { transform: translateX(0); }
-      }
-      .animate-wave {
-        animation: wave 15s linear infinite;
-      }
-      .animate-wave-slow {
-        animation: wave-reverse 20s linear infinite;
-      }
-      .animate-wave-slower {
-        animation: wave 25s linear infinite;
-      }
-    </style>
-
     <!-- What is Physiotherapy Section -->
     <section class="py-20 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
           <!-- Title -->
-          <h2 class="text-4xl md:text-5xl font-heading font-bold mb-6 text-center">{t('whatIs.title')}</h2>
+          <h2 class="text-4xl md:text-5xl font-heading font-bold mb-6 text-center">{translation('whatIs.title')}</h2>
           
           <!-- Description -->
           <p class="text-xl text-gray-700 leading-relaxed mb-10 text-center">
-            {t('whatIs.description')}
+            {translation('whatIs.description')}
           </p>
 
           <!-- Conditions subtitle -->
-          <h3 class="text-2xl font-heading font-semibold mb-6 text-primary-700">{t('whatIs.conditions.title')}</h3>
+          <h3 class="text-2xl font-heading font-semibold mb-6 text-primary-700">{translation('whatIs.conditions.title')}</h3>
           
           <!-- Checklist - 2 columns on large screens -->
           <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 mb-10">
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              <span class="text-gray-700">{t('whatIs.conditions.musculoskeletal')}</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              <span class="text-gray-700">{t('whatIs.conditions.postop')}</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              <span class="text-gray-700">{t('whatIs.conditions.neurological')}</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              <span class="text-gray-700">{t('whatIs.conditions.chronic')}</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              <span class="text-gray-700">{t('whatIs.conditions.respiratory')}</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              <span class="text-gray-700">{t('whatIs.conditions.sports')}</span>
-            </li>
+            {generalBenefitsValues.map((key) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-gray-700">{translation(key)}</span>
+              </li>
+            ))}
           </ul>
 
           <!-- Techniques banner -->
           <div class="bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl p-8 text-white text-center">
             <p class="text-lg leading-relaxed">
-              {t('whatIs.techniques')}
+              {translation('whatIs.techniques')}
             </p>
           </div>
         </div>
@@ -169,27 +196,71 @@ const services = allServices
     </section>
 
     <!-- Services Section -->
-    <section id="servicios" class="py-20 bg-white">
+    <section id="servicios" class="py-20 bg-white" data-services-expanded="false">
+      <style is:inline>
+        #servicios .services-extra { display: none; }
+        @media (min-width: 768px) { #servicios .services-extra { display: block; } }
+        #servicios[data-services-expanded="true"] .services-extra { display: block !important; }
+      </style>
       <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">{t('services.title')}</h2>
-          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-            {t('services.subtitle')}
-          </p>
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-16">
+          <div class="text-center md:text-left">
+            <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">{translation('services.title')}</h2>
+            <p class="text-xl text-gray-600 max-w-2xl">
+              {translation('services.subtitle')}
+            </p>
+          </div>
+          {services.length > 3 && (
+            <div class="mt-4 md:mt-0 md:hidden">
+              <button
+                type="button"
+                id="services-toggle"
+                class="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors"
+                aria-expanded="false"
+                data-label-more={translation('services.viewAll')}
+                data-label-less={translation('services.viewLess')}
+              >
+                <span class="services-toggle-text">{translation('services.viewAll')}</span>
+                <svg class="w-5 h-5 transition-transform" id="services-toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </button>
+            </div>
+          )}
         </div>
 
         <div class="max-w-8xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {services.map((service: typeof services[0]) => (
-            <ServiceCard
-              title={service.title}
-              description={service.description}
-              features={service.features}
-              href={service.href}
-              icon={service.icon}
-            />
+          {services.map((service: typeof services[0], i: number) => (
+            <div class={i >= 3 ? 'services-extra' : ''}>
+              <ServiceCard
+                title={service.title}
+                description={service.description}
+                features={service.features}
+                href={service.href}
+                icon={service.icon}
+              />
+            </div>
           ))}
         </div>
       </div>
+      <script>
+        (function () {
+          const section = document.getElementById('servicios');
+          const btn = document.getElementById('services-toggle');
+          const icon = document.getElementById('services-toggle-icon');
+          const textEl = btn?.querySelector('.services-toggle-text');
+          if (!section || !btn || !textEl) return;
+          const labelMore = btn.getAttribute('data-label-more') ?? 'Ver más';
+          const labelLess = btn.getAttribute('data-label-less') ?? 'Ver menos';
+          btn.addEventListener('click', function () {
+            const expanded = section.getAttribute('data-services-expanded') === 'true';
+            section.setAttribute('data-services-expanded', (!expanded).toString());
+            btn.setAttribute('aria-expanded', (!expanded).toString());
+            textEl.textContent = expanded ? labelMore : labelLess;
+            if (icon) icon.style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
+          });
+        })();
+      </script>
     </section>
 
     <!-- About Section -->
@@ -197,76 +268,44 @@ const services = allServices
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 class="text-4xl md:text-5xl font-heading font-bold mb-6">{t('about.title')}</h2>
-            <p class="text-xl text-gray-600 mb-4">{t('about.subtitle')}</p>
-            <p class="text-lg text-gray-500 mb-8">{t('about.intro')}</p>
+            <h2 class="text-4xl md:text-5xl font-heading font-bold mb-6">{translation('about.title')}</h2>
+            <p class="text-xl text-gray-600 mb-4">{translation('about.subtitle')}</p>
+            <p class="text-lg text-gray-500 mb-8">{translation('about.intro')}</p>
             
             <div class="space-y-6">
-              <div class="flex gap-4">
-                <div class="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                  <svg class="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path>
-                  </svg>
+              {whyUsValues.map((pillar) => (
+                <div class="flex gap-4">
+                  <div class="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                    <svg class="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path d={pillar.iconPath}></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-bold mb-2">{translation(pillar.titleKey)}</h3>
+                    <p class="text-gray-600">{translation(pillar.descriptionKey)}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 class="text-xl font-bold mb-2">{t('about.professionals.title')}</h3>
-                  <p class="text-gray-600">{t('about.professionals.description')}</p>
-                </div>
-              </div>
-
-              <div class="flex gap-4">
-                <div class="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                  <svg class="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="text-xl font-bold mb-2">{t('about.technology.title')}</h3>
-                  <p class="text-gray-600">{t('about.technology.description')}</p>
-                </div>
-              </div>
-
-              <div class="flex gap-4">
-                <div class="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                  <svg class="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="text-xl font-bold mb-2">{t('about.personalized.title')}</h3>
-                  <p class="text-gray-600">{t('about.personalized.description')}</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
           <div class="bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl p-8 text-white">
-            <h3 class="text-3xl font-heading font-bold mb-6">{t('about.values.title')}</h3>
+            <h3 class="text-3xl font-heading font-bold mb-6">{translation('about.values.title')}</h3>
             <ul class="space-y-4 text-lg">
-              <li class="flex items-start gap-3">
-                <svg class="w-6 h-6 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                </svg>
-                <span><strong>{t('about.values.excellence')}</strong> {t('about.values.excellenceText')}</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-6 h-6 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                </svg>
-                <span><strong>{t('about.values.empathy')}</strong> {t('about.values.empathyText')}</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-6 h-6 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                </svg>
-                <span><strong>{t('about.values.innovation')}</strong> {t('about.values.innovationText')}</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-6 h-6 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                </svg>
-                <span><strong>{t('about.values.results')}</strong> {t('about.values.resultsText')}</span>
-              </li>
+              {prideValues.map((value) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-6 h-6 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <span>
+                    <strong>{translation(value.titleKey)}</strong> {translation(value.textKey)}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -275,86 +314,20 @@ const services = allServices
         <div class="mt-16">
           <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
             <div>
-              <h3 class="text-2xl font-heading font-bold mb-2">{t('gallery.title')}</h3>
-              <p class="text-gray-600">{t('gallery.subtitle')}</p>
+              <h3 class="text-2xl font-heading font-bold mb-2">{translation('gallery.title')}</h3>
+              <p class="text-gray-600">{translation('gallery.subtitle')}</p>
             </div>
-            <a href={lang === 'ca' ? '/galeria' : lang === 'en' ? '/en/gallery' : '/es/galeria'} class="mt-4 md:mt-0 inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors">
-              {t('gallery.viewAll')}
+            <a href={getLocalizedPath('/galeria', lang)} class="mt-4 md:mt-0 inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors">
+              {translation('gallery.viewAll')}
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
               </svg>
             </a>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div 
-              class="relative rounded-xl overflow-hidden shadow-md aspect-[4/3] cursor-pointer group"
-              data-gallery-item
-              data-src={galleryImg1.src}
-              data-alt={t('gallery.img1.title')}
-              data-description={t('gallery.img1.description')}
-            >
-              <Image src={galleryImg1} alt={t('gallery.img1.title')} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
-                <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
-                  <h3 class="font-bold text-lg mb-1">{t('gallery.img1.title')}</h3>
-                  <p class="text-sm text-gray-200">{t('gallery.img1.description')}</p>
-                </div>
-              </div>
-              <!-- Hover overlay with zoom icon -->
-              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                <div class="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 rounded-full p-3">
-                  <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div 
-              class="relative rounded-xl overflow-hidden shadow-md aspect-[4/3] cursor-pointer group"
-              data-gallery-item
-              data-src={galleryImg2.src}
-              data-alt={t('gallery.img2.title')}
-              data-description={t('gallery.img2.description')}
-            >
-              <Image src={galleryImg2} alt={t('gallery.img2.title')} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
-                <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
-                  <h3 class="font-bold text-lg mb-1">{t('gallery.img2.title')}</h3>
-                  <p class="text-sm text-gray-200">{t('gallery.img2.description')}</p>
-                </div>
-              </div>
-              <!-- Hover overlay with zoom icon -->
-              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                <div class="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 rounded-full p-3">
-                  <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div 
-              class="relative rounded-xl overflow-hidden shadow-md aspect-[4/3] cursor-pointer group"
-              data-gallery-item
-              data-src={galleryImg3.src}
-              data-alt={t('gallery.img3.title')}
-              data-description={t('gallery.img3.description')}
-            >
-              <Image src={galleryImg3} alt={t('gallery.img3.title')} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
-                <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
-                  <h3 class="font-bold text-lg mb-1">{t('gallery.img3.title')}</h3>
-                  <p class="text-sm text-gray-200">{t('gallery.img3.description')}</p>
-                </div>
-              </div>
-              <!-- Hover overlay with zoom icon -->
-              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                <div class="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 rounded-full p-3">
-                  <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
-                  </svg>
-                </div>
-              </div>
-            </div>
+            {galleryPreview.map((image) => (
+              <GalleryCard image={image} />
+            ))}
           </div>
         </div>
       </div>
@@ -365,11 +338,11 @@ const services = allServices
       <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-16">
           <div class="text-center md:text-left">
-            <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">{t('blog.title')}</h2>
-            <p class="text-xl text-gray-600 max-w-2xl">{t('blog.subtitle')}</p>
+            <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">{translation('blog.title')}</h2>
+            <p class="text-xl text-gray-600 max-w-2xl">{translation('blog.subtitle')}</p>
           </div>
-          <a href="/blog" class="mt-4 md:mt-0 inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors">
-            {t('blog.viewAll')}
+          <a href={getLocalizedPath('/blog', lang)} class="mt-4 md:mt-0 inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors">
+            {translation('blog.viewAll')}
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
@@ -387,7 +360,7 @@ const services = allServices
               <div class="p-6">
                 <div class="mb-3">
                   <span class="inline-block bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-medium">
-                    {t(`category.${post.data.category}` as any)}
+                    {translation(`category.${post.data.category}` as any)}
                   </span>
                 </div>
                 <h3 class="text-xl font-heading font-bold mb-2 line-clamp-2">{post.data.title}</h3>
@@ -395,11 +368,11 @@ const services = allServices
                 <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
                   <span>{post.data.author}</span>
                   <time datetime={post.data.date.toISOString()}>
-                    {post.data.date.toLocaleDateString(lang === 'ca' ? 'ca-ES' : lang === 'es' ? 'es-ES' : 'en-GB', { year: 'numeric', month: 'short', day: 'numeric' })}
+                    {formatLocaleDate(post.data.date, lang)}
                   </time>
                 </div>
-                <a href={`/blog/${post.slug}`} class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 transition">
-                  {t('blog.readMore')}
+                <a href={getLocalizedPath(`/blog/${getBlogSlug(post)}`, lang)} class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 transition">
+                  {translation('blog.readMore')}
                   <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                   </svg>
@@ -412,72 +385,34 @@ const services = allServices
     </section>
 
     <!-- Testimonials Section -->
-    <section class="py-20 bg-gray-50">
+    <section id="opiniones" class="py-20 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">{t('testimonials.title')}</h2>
+          <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">{translation('testimonials.title')}</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="bg-white rounded-xl shadow-lg p-8">
-            <div class="flex items-center gap-1 mb-4">
-              {[...Array(5)].map(() => (
-                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                </svg>
-              ))}
-            </div>
-            <p class="text-gray-700 mb-6 italic">{t('testimonials.patient1.text')}</p>
-            <div class="flex items-center gap-3">
-              <div class="w-12 h-12 bg-primary-200 rounded-full flex items-center justify-center">
-                <span class="text-primary-700 font-bold text-lg">MC</span>
+          {testimonialsValues.map((testimonial) => (
+            <div class="bg-white rounded-xl shadow-lg p-8">
+              <div class="flex items-center gap-1 mb-4">
+                {[...Array(testimonial.stars)].map(() => (
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                  </svg>
+                ))}
               </div>
-              <div>
-                <p class="font-semibold">{t('testimonials.patient1.name')}</p>
-                <p class="text-sm text-gray-600">{t('testimonials.patient1.info')}</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-white rounded-xl shadow-lg p-8">
-            <div class="flex items-center gap-1 mb-4">
-              {[...Array(5)].map(() => (
-                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                </svg>
-              ))}
-            </div>
-            <p class="text-gray-700 mb-6 italic">{t('testimonials.patient2.text')}</p>
-            <div class="flex items-center gap-3">
-              <div class="w-12 h-12 bg-primary-200 rounded-full flex items-center justify-center">
-                <span class="text-primary-700 font-bold text-lg">JS</span>
-              </div>
-              <div>
-                <p class="font-semibold">{t('testimonials.patient2.name')}</p>
-                <p class="text-sm text-gray-600">{t('testimonials.patient2.info')}</p>
+              <p class="text-gray-700 mb-6 italic">{translation(testimonial.textKey)}</p>
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-primary-200 rounded-full flex items-center justify-center">
+                  <span class="text-primary-700 font-bold text-lg">{testimonial.initials}</span>
+                </div>
+                <div>
+                  <p class="font-semibold">{translation(testimonial.nameKey)}</p>
+                  <p class="text-sm text-gray-600">{translation(testimonial.infoKey)}</p>
+                </div>
               </div>
             </div>
-          </div>
-
-          <div class="bg-white rounded-xl shadow-lg p-8">
-            <div class="flex items-center gap-1 mb-4">
-              {[...Array(5)].map(() => (
-                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                </svg>
-              ))}
-            </div>
-            <p class="text-gray-700 mb-6 italic">{t('testimonials.patient3.text')}</p>
-            <div class="flex items-center gap-3">
-              <div class="w-12 h-12 bg-primary-200 rounded-full flex items-center justify-center">
-                <span class="text-primary-700 font-bold text-lg">AG</span>
-              </div>
-              <div>
-                <p class="font-semibold">{t('testimonials.patient3.name')}</p>
-                <p class="text-sm text-gray-600">{t('testimonials.patient3.info')}</p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
@@ -486,33 +421,33 @@ const services = allServices
     <section id="contacto" class="py-20 bg-white">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">{t('contact.title')}</h2>
-          <p class="text-xl text-gray-600 max-w-2xl mx-auto">{t('contact.subtitle')}</p>
+          <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">{translation('contact.title')}</h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">{translation('contact.subtitle')}</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <!-- Contact Form -->
           <div class="bg-gray-50 rounded-2xl p-8">
-            <h3 class="text-2xl font-heading font-bold mb-6">{t('contact.form.title')}</h3>
+            <h3 class="text-2xl font-heading font-bold mb-6">{translation('contact.form.title')}</h3>
             <form class="space-y-6">
               <div>
-                <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">{t('contact.form.name')}</label>
-                <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition" placeholder={t('contact.form.namePlaceholder')} required>
+                <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">{translation('contact.form.name')}</label>
+                <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition" placeholder={translation('contact.form.namePlaceholder')} required>
               </div>
               <div>
-                <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">{t('contact.form.email')}</label>
-                <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition" placeholder={t('contact.form.emailPlaceholder')} required>
+                <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">{translation('contact.form.email')}</label>
+                <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition" placeholder={translation('contact.form.emailPlaceholder')} required>
               </div>
               <div>
-                <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">{t('contact.form.phone')}</label>
-                <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition" placeholder={t('contact.form.phonePlaceholder')}>
+                <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">{translation('contact.form.phone')}</label>
+                <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition" placeholder={translation('contact.form.phonePlaceholder')}>
               </div>
               <div>
-                <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">{t('contact.form.message')}</label>
-                <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition resize-none" placeholder={t('contact.form.messagePlaceholder')} required></textarea>
+                <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">{translation('contact.form.message')}</label>
+                <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition resize-none" placeholder={translation('contact.form.messagePlaceholder')} required></textarea>
               </div>
               <button type="submit" class="w-full bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-700 transition-all transform hover:scale-105">
-                {t('contact.form.submit')}
+                {translation('contact.form.submit')}
               </button>
             </form>
           </div>
@@ -520,71 +455,29 @@ const services = allServices
           <!-- Contact Info & Map -->
           <div class="space-y-8">
             <div class="bg-gray-50 rounded-2xl p-8">
-              <h3 class="text-2xl font-heading font-bold mb-6">{t('contact.info.title')}</h3>
+              <h3 class="text-2xl font-heading font-bold mb-6">{translation('contact.info.title')}</h3>
               <div class="space-y-6">
-                <div class="flex items-start gap-4">
-                  <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 class="font-semibold mb-1">{t('contact.info.address')}</h4>
-                    <p class="text-gray-600">{siteConfig.contact.address.street}<br>{siteConfig.contact.address.postalCode} {siteConfig.contact.address.city}, {siteConfig.contact.address.province}</p>
-                  </div>
-                </div>
-
-                <div class="flex items-start gap-4">
-                  <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 class="font-semibold mb-1">{t('contact.info.phone')}</h4>
-                    <a href={`tel:${siteConfig.contact.phone1.replace(/\s/g, '')}`} class="text-primary-600 hover:text-primary-700">{siteConfig.contact.phone1}</a>
-                    <a href={`tel:${siteConfig.contact.phone2.replace(/\s/g, '')}`} class="text-primary-600 hover:text-primary-700">{siteConfig.contact.phone2}</a>
-                  </div>
-                </div>
-
-                <div class="flex items-start gap-4">
-                  <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 class="font-semibold mb-1">{t('contact.info.email')}</h4>
-                    <a href={`mailto:${siteConfig.contact.email}`} class="text-primary-600 hover:text-primary-700">{siteConfig.contact.email}</a>
-                  </div>
-                </div>
-
-                <div class="flex items-start gap-4">
-                  <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 class="font-semibold mb-1">WhatsApp</h4>
-                    <a href="https://wa.me/34608032857" target="_blank" rel="noopener noreferrer" class="text-green-600 hover:text-green-700">{t('contact.info.whatsappText')}</a>
-                  </div>
-                </div>
-
-                <div class="flex items-start gap-4">
-                  <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 class="font-semibold mb-1">{t('contact.info.schedule')}</h4>
-                    <p class="text-gray-600">
-                      {t('contact.info.scheduleText')}
-                    </p>
-                  </div>
-                </div>
+                {contactValues.map((type) => {
+                  const icon = contactIcons[type];
+                  const title = translation(`contact.info.${type}`);
+                  return (
+                    <div class="flex items-start gap-4">
+                      <div class={`w-12 h-12 ${icon.bg} rounded-lg flex items-center justify-center flex-shrink-0`}>
+                        <svg class={`w-6 h-6 ${icon.color}`} fill={icon.stroke ? 'none' : 'currentColor'} {...(icon.stroke ? { stroke: 'currentColor', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2' } : {})} viewBox="0 0 24 24">
+                          {icon.paths.map((d) => <path d={d} {...(icon.stroke ? { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2' } : {})} />)}
+                        </svg>
+                      </div>
+                      <div>
+                        <h4 class="font-semibold mb-1">{title}</h4>
+                        {type === 'address' && <p class="text-gray-600">{siteSettings.contact.address.street}<br />{siteSettings.contact.address.postalCode} {siteSettings.contact.address.city}, {siteSettings.contact.address.province}</p>}
+                        {type === 'phone' && (<><a href={`tel:${siteSettings.contact.phone1.replace(/\s/g, '')}`} class="text-primary-600 hover:text-primary-700">{siteSettings.contact.phone1}</a><a href={`tel:${siteSettings.contact.phone2.replace(/\s/g, '')}`} class="text-primary-600 hover:text-primary-700">{siteSettings.contact.phone2}</a></>)}
+                        {type === 'email' && <a href={`mailto:${siteSettings.contact.email}`} class="text-primary-600 hover:text-primary-700">{siteSettings.contact.email}</a>}
+                        {type === 'whatsapp' && <a href="https://wa.me/34608032857" target="_blank" rel="noopener noreferrer" class="text-green-600 hover:text-green-700">{translation('contact.info.whatsappText')}</a>}
+                        {type === 'schedule' && <p class="text-gray-600">{translation('contact.info.scheduleText')}</p>}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
@@ -598,7 +491,7 @@ const services = allServices
                 allowfullscreen="" 
                 loading="lazy" 
                 referrerpolicy="no-referrer-when-downgrade"
-                title={t('contact.map')}
+                title={translation('contact.map')}
               ></iframe>
             </div>
           </div>

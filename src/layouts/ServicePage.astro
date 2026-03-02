@@ -1,21 +1,31 @@
 ---
-import { Image } from 'astro:assets';
 import Layout from './Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import GalleryModal from '../components/GalleryModal.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import siteSettings from '../data/site-settings.json';
+import { marked } from 'marked';
 
 const { frontmatter } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const translation = useTranslations(lang);
 
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/services/*.{jpeg,jpg,png,gif,webp}');
-const imagePath = frontmatter.image?.replace('/images/', '/src/assets/services/');
-const imageModule = imagePath && images[imagePath] ? await images[imagePath]() : null;
+const publicImagePath = frontmatter.image ?? null;
+
+const benefitsList: string[] = Array.isArray(frontmatter.benefits)
+  ? frontmatter.benefits.map((b: string | { item?: string }) => (typeof b === 'string' ? b : b?.item ?? ''))
+  : [];
+
+marked.setOptions({ breaks: true });
+function processMarkdown(markdown: string): string {
+  if (!markdown) return '';
+  return marked.parse(markdown) as string;
+}
 ---
 
-<Layout title={`${frontmatter.title} - Axis Cambrils`} description={frontmatter.shortDescription}>
-  <Header />
+<Layout title={`${frontmatter.title} - ${siteSettings.site.name}`} description={frontmatter.shortDescription}>
+  <Header showLanguagePicker={false} />
   
   <main class="pt-24 pb-20">
     <div class="container mx-auto px-4">
@@ -31,10 +41,10 @@ const imageModule = imagePath && images[imagePath] ? await images[imagePath]() :
         <div class="max-w-6xl mx-auto">
           <!-- Image & Description Grid -->
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 items-start">
-            {imageModule && (
+            {publicImagePath && (
               <div class="rounded-xl overflow-hidden shadow-lg lg:sticky lg:top-8">
-                <Image 
-                  src={imageModule.default} 
+                <img 
+                  src={publicImagePath} 
                   alt={frontmatter.title}
                   class="w-full h-auto object-cover"
                   loading="eager"
@@ -51,17 +61,12 @@ const imageModule = imagePath && images[imagePath] ? await images[imagePath]() :
               </div>
 
               <!-- Benefits Section -->
-              {frontmatter.benefits && frontmatter.benefits.length > 0 && (
+              {benefitsList.length > 0 && (
                 <div class="bg-primary-50 rounded-xl p-6">
-                  <h2 class="text-2xl font-heading font-bold mb-4 text-primary-900">{t('service.benefits')}</h2>
-                  <ul class="space-y-3">
-                    {frontmatter.benefits.map((benefit: string) => (
-                      <li class="flex items-start gap-3">
-                        <svg class="w-6 h-6 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="text-gray-700">{benefit}</span>
-                      </li>
+                  <h2 class="text-2xl font-heading font-bold mb-4 text-primary-900">{translation('service.benefits')}</h2>
+                  <ul class="list-disc list-inside space-y-2 text-gray-700 marker:text-primary-600">
+                    {benefitsList.map((benefit: string) => (
+                      <li>{benefit}</li>
                     ))}
                   </ul>
                 </div>
@@ -74,10 +79,37 @@ const imageModule = imagePath && images[imagePath] ? await images[imagePath]() :
             <slot />
           </div>
 
+          <!-- Service Gallery -->
+          {frontmatter.gallery && frontmatter.gallery.length > 0 && (
+            <div class="mb-12">
+              <h2 class="text-3xl font-heading font-bold mb-8">{translation('service.gallery')}</h2>
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {frontmatter.gallery.map((src: string, index: number) => (
+                  <div
+                    class="relative rounded-xl overflow-hidden shadow-md aspect-[4/3] cursor-pointer group"
+                    data-gallery-item
+                    data-src={src}
+                    data-alt={`${frontmatter.title} - ${index + 1}`}
+                    data-description=""
+                  >
+                    <img src={src} alt={`${frontmatter.title} - ${index + 1}`} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                      <div class="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 rounded-full p-3">
+                        <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           <!-- Process Section -->
           {frontmatter.process && frontmatter.process.length > 0 && (
             <div class="mb-12">
-              <h2 class="text-3xl font-heading font-bold mb-8">{t('service.process')}</h2>
+              <h2 class="text-3xl font-heading font-bold mb-8">{translation('service.process')}</h2>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {frontmatter.process.map((item: any, index: number) => (
                   <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary-600">
@@ -103,7 +135,7 @@ const imageModule = imagePath && images[imagePath] ? await images[imagePath]() :
                     <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
-                    <h3 class="text-lg font-bold text-gray-900">{t('service.duration')}</h3>
+                    <h3 class="text-lg font-bold text-gray-900">{translation('service.duration')}</h3>
                   </div>
                   <p class="text-2xl font-semibold text-primary-600">{frontmatter.duration}</p>
                 </div>
@@ -114,11 +146,26 @@ const imageModule = imagePath && images[imagePath] ? await images[imagePath]() :
                     <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
-                    <h3 class="text-lg font-bold text-gray-900">{t('service.price')}</h3>
+                    <h3 class="text-lg font-bold text-gray-900">{translation('service.price')}</h3>
                   </div>
                   <p class="text-2xl font-semibold text-primary-600">{frontmatter.price}</p>
                 </div>
               )}
+            </div>
+          )}
+
+          <!-- FAQs Section -->
+          {frontmatter.faqs && frontmatter.faqs.length > 0 && (
+            <div class="mb-12">
+              <h2 class="text-3xl font-heading font-bold mb-8">{translation('service.faqs')}</h2>
+              <div class="space-y-4">
+                {frontmatter.faqs.map((faq: { question: string; answer: string }) => (
+                  <div class="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-primary-300 transition-colors">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">{faq.question}</h3>
+                    <div class="prose prose-sm max-w-none text-gray-700" set:html={processMarkdown(faq.answer)} />
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>
@@ -128,4 +175,5 @@ const imageModule = imagePath && images[imagePath] ? await images[imagePath]() :
   </main>
 
   <Footer />
+  <GalleryModal />
 </Layout>

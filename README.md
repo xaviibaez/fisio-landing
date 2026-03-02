@@ -39,17 +39,34 @@ Centro de fisioterapia especializado ubicado en:
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/tu-usuario/fisio-landing.git
+git clone https://github.com/xaviibaez/fisio-landing.git
 cd fisio-landing
 
-# Instalar dependencias
+# Instalar dependencias usando node > 18
 npm install
 
 # Copiar variables de entorno
 cp .env.example .env
 
-# Iniciar servidor de desarrollo
+# Inicia el servidor de backend (en una terminal):
+
+pnpm run cms:server
+
+# Deberías ver: "Server listening on port 8081" o similar.
+# Asegúrate de que el servidor de Astro esté corriendo (en otra terminal o ya corriendo):
+
 npm run dev
+
+# Recarga la página del CMS en http://localhost:4321/admin.
+
+# Alternativa: todo en un comando
+# Si prefieres iniciar ambos servidores a la vez:
+
+npm run dev:cms
+
+# Esto iniciará:
+# • El servidor de backend de Decap CMS en el puerto 8081
+# • El servidor de desarrollo de Astro en el puerto 4321
 ```
 
 El sitio estará disponible en `http://localhost:4321`
@@ -110,7 +127,6 @@ Consulta `MULTIIDIOMA.md` para más detalles.
 │   │   ├── Header.astro
 │   │   └── Footer.astro
 │   ├── content/         # Blog posts en Markdown
-│   │   ├── config.ts
 │   │   └── blog/
 │   ├── layouts/         # Layouts de página
 │   │   ├── Layout.astro
@@ -153,32 +169,6 @@ Consulta `MULTIIDIOMA.md` para más detalles.
 
 4. Abre tu navegador en `http://localhost:4321`
 
-## 📝 Añadir Artículos al Blog
-
-1. Crea un nuevo archivo `.md` en `src/content/blog/`
-2. Añade el frontmatter con los metadatos:
-
-```markdown
----
-title: "Título del artículo"
-description: "Descripción breve"
-author: "Nombre del autor"
-date: 2025-12-28
-category: "deportiva"
-tags: ["tag1", "tag2"]
----
-
-Contenido del artículo aquí...
-```
-
-### Categorías Disponibles
-
-- `deportiva` - Fisioterapia deportiva
-- `traumatologica` - Fisioterapia traumatológica
-- `neurologica` - Fisioterapia neurológica
-- `pediatrica` - Fisioterapia pediátrica
-- `respiratoria` - Fisioterapia respiratoria
-- `geriatrica` - Fisioterapia geriátrica
 
 ## 🎨 Personalización
 
@@ -193,16 +183,6 @@ colors: {
 }
 ```
 
-### Datos de Contacto
-
-Actualiza la información de contacto en:
-- `src/components/Footer.astro`
-- `src/pages/index.astro` (sección de contacto)
-
-### Logo y Nombre
-
-Busca "Axis Cambrils" en los archivos y reemplázalo con tu nombre de marca.
-
 ## 📦 Scripts Disponibles
 
 ```bash
@@ -212,21 +192,7 @@ npm run preview      # Vista previa de la build
 npm run astro        # CLI de Astro
 ```
 
-## 🌐 Despliegue
 
-El proyecto está listo para desplegarse en:
-
-- **Vercel** (recomendado)
-- **Netlify**
-- **GitHub Pages**
-- Cualquier servidor con soporte para Node.js
-
-### Ejemplo con Vercel:
-
-```bash
-npm install -g vercel
-vercel
-```
 
 ## 📄 Licencia
 
@@ -234,4 +200,4 @@ Proyecto privado - Axis Cambrils © 2025
 
 ## 🤝 Soporte
 
-Para preguntas o soporte, contacta a: fisioaxiscambrils@gmail.com
+Para preguntas o soporte, contacta a: 241xavi@gmail.com

@@ -1,6 +1,43 @@
 # ✅ Configuración de Decap CMS - Completada
 
-## Cambios Realizados
+## Cambios Realizados (Actualización: Gestión de Imágenes)
+
+### Gestión Completa de Imágenes
+
+Se ha añadido la capacidad de gestionar TODAS las imágenes de la web desde Decap CMS:
+
+**Nuevas Colecciones de Archivos:**
+
+1. **Configuració del Lloc** - Configuración general del sitio
+   - Logo, favicon, imagen de fondo del hero
+   - Datos de contacto (email, teléfonos, dirección)
+   - Redes sociales
+
+2. **Galeria d'Imatges** - Gestión de la galería
+   - Añadir/eliminar/reordenar imágenes
+   - Títulos y descripciones en los 3 idiomas
+
+3. **Equip** - Gestión del equipo
+   - Fotos de los miembros del equipo
+   - Nombres, roles, formación y cursos en los 3 idiomas
+
+**Archivos de Datos Creados:**
+- `src/data/gallery.json` - Configuración de la galería
+- `src/data/team.json` - Configuración del equipo
+- `src/data/site-settings.json` - Configuración del sitio
+
+**Estructura de Imágenes:**
+```
+public/images/
+├── gallery/     # Imágenes de la galería
+├── team/        # Fotos del equipo
+├── services/    # Imágenes de servicios
+└── uploads/     # Subidas desde el CMS
+```
+
+---
+
+## Cambios Realizados Anteriormente
 
 ### 1. ✅ Estructura de Carpetas para Blog Multiidioma
 Se crearon las carpetas necesarias para organizar el blog por idiomas:
@@ -21,16 +58,6 @@ Se actualizó completamente para soportar multiidioma:
 - Se añadió campo `lang` oculto a las 3 colecciones existentes
 - `services_ca`, `services_es`, `services_en`
 
-### 3. ✅ Content Collections (`src/content/config.ts`)
-Se actualizó el schema para incluir el campo `lang`:
-
-```typescript
-// Blog Collection
-lang: z.enum(['ca', 'es', 'en'])
-
-// Services Collection  
-lang: z.enum(['ca', 'es', 'en'])
-```
 
 ### 4. ✅ Migración de Posts Existentes
 Los 3 posts del blog se movieron a `/src/content/blog/es/` con el campo `lang: "es"` añadido:

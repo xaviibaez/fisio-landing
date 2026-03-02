@@ -3,7 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import Layout from './Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, useTranslations, formatLocaleDate } from '../i18n/utils';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -12,11 +12,11 @@ interface Props {
 const { post } = Astro.props;
 const { Content } = await post.render();
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const translation = useTranslations(lang);
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
-  <Header />
+<Layout title={post.data.title} description={post.data.description} image={post.data.image}>
+  <Header showLanguagePicker={false} />
   
   <main class="pt-24 pb-20">
     <div class="container mx-auto px-4">
@@ -34,9 +34,19 @@ const t = useTranslations(lang);
           <span>{post.data.author}</span>
           <span>•</span>
           <time datetime={post.data.date.toISOString()}>
-            {post.data.date.toLocaleDateString(lang === 'en' ? 'en-US' : lang === 'es' ? 'es-ES' : 'ca-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
+            {formatLocaleDate(post.data.date, lang, { month: 'long' })}
           </time>
         </div>
+        {post.data.image && (
+          <div class="mt-8 rounded-xl overflow-hidden shadow-lg max-w-4xl mx-auto">
+            <img
+              src={post.data.image}
+              alt={post.data.title}
+              class="w-full h-auto object-cover"
+              loading="eager"
+            />
+          </div>
+        )}
       </div>
 
       <!-- Article Content -->
@@ -73,10 +83,10 @@ const t = useTranslations(lang);
 
       <!-- CTA -->
       <div class="mt-16 bg-gradient-to-r from-primary-500 to-primary-600 rounded-2xl p-8 md:p-12 text-white text-center">
-        <h2 class="text-3xl font-heading font-bold mb-4">¿Necesitas ayuda profesional?</h2>
-        <p class="text-xl mb-6 text-primary-50">Agenda tu cita con nuestro equipo de especialistas</p>
+        <h2 class="text-3xl font-heading font-bold mb-4">{translation('blog.cta.title')}</h2>
+        <p class="text-xl mb-6 text-primary-50">{translation('blog.cta.subtitle')}</p>
         <a href="/#contacto" class="inline-block bg-white text-primary-600 px-8 py-4 rounded-lg font-semibold hover:bg-primary-50 transition-all transform hover:scale-105">
-          {t('hero.cta')}
+          {translation('hero.cta')}
         </a>
       </div>
       </article>

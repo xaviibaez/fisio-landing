@@ -1,16 +1,17 @@
 ---
-lang: ca
-title: Drenatge Limfàtic TEST ADDING DATA VERSION 2
+title: Drenatge Limfàtic
 shortDescription: Tècnica que estimula el flux limfàtic per tractar la retenció
-  de líquids, inflamació i cel·lulitis. TEST ADDING DATA
-description: El drenatge limfàtic2 és una tècnica terapèutica suau que estimula
+  de líquids, inflamació i cel·lulitis.
+slug: drenatge-linfatic
+lang: ca
+description: El drenatge limfàtic és una tècnica terapèutica suau que estimula
   el sistema limfàtic per eliminar toxines i líquids retinguts. El sistema
   limfàtic és una xarxa de vasos, ganglis i òrgans que transporten i filtren la
   limfa, un líquid que conté glòbuls blancs i deixalles cel·lulars. Aquest
   tractament millora la circulació, redueix la inflamació i enforteix el sistema
-  immunològic TEST ADDING DATA.
-icon: droplet
-image: /images/DL.png
+  immunològic.
+icon: wind
+image: /images/uploads/DL.png
 benefits:
   - Eliminació de toxines i deixalles del cos
   - Reducció de la retenció de líquids i edemes
@@ -29,10 +30,11 @@ process:
     description: Moviments suaus, lents i rítmics seguint les vies limfàtiques
   - step: Finalització
     description: Recomanacions post-tractament i pautes dhidratació
-  - step: TEST ADDING STEP
-    description: TEST ADDING DATA
 duration: 60 minuts
 order: 1
+faqs:
+  - question: Fa mal?
+    answer: No
 ---
 ## Com funciona el Drenatge Limfàtic?
 

@@ -18,11 +18,12 @@ const servicesCollection = defineCollection({
   type: 'content',
   schema: z.object({
     lang: z.enum(['ca', 'es', 'en']),
+    slug: z.string().optional(),
     title: z.string(),
     shortDescription: z.string(),
     description: z.string(),
     icon: z.string(),
-    benefits: z.array(z.string()),
+    benefits: z.array(z.union([z.string(), z.object({ item: z.string() })])),
     process: z.array(z.object({
       step: z.string(),
       description: z.string(),
@@ -35,7 +36,7 @@ const servicesCollection = defineCollection({
       question: z.string(),
       answer: z.string(),
     })).optional(),
-    order: z.number(),
+    order: z.number().optional(),
   }),
 });
 

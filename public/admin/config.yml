@@ -1,24 +1,125 @@
 backend:
-  name: git-gateway
+  name: proxy
+  proxy_url: http://localhost:8081/api/v1
   branch: main
 
-# Optional: Editorial workflow for drafts
-# publish_mode: editorial_workflow
+local_backend: true
+
 
 # Site URL for previews
 site_url: https://axiscambrils.com
 display_url: https://axiscambrils.com
 
-# Media files will be stored in the repo under public/images/uploads
+# Media files will be stored in the repo under public/images
 media_folder: public/images/uploads
 public_folder: /images/uploads
 
-# Locale for CMS interface
 locale: ca
 
-# Collections
 collections:
-  # Blog Posts - Catalan
+  # ============================================
+  # SETTINGS - Site Configuration Files
+  # ============================================
+  
+  # Site Settings
+  - name: "settings"
+    label: "Configuració del Lloc"
+    files:
+      - name: "site_settings"
+        label: "Configuració General"
+        file: "src/data/site-settings.json"
+        fields:
+          - label: "Lloc Web"
+            name: "site"
+            widget: "object"
+            fields:
+              - { label: "Nom del lloc", name: "name", widget: "string" }
+              - { label: "Logo", name: "logo", widget: "image", required: false }
+              - { label: "Favicon", name: "favicon", widget: "image", required: false }
+          - label: "Contacte"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Telèfon 1", name: "phone1", widget: "string" }
+              - { label: "Telèfon 2", name: "phone2", widget: "string", required: false }
+              - label: "Adreça"
+                name: "address"
+                widget: "object"
+                fields:
+                  - { label: "Carrer", name: "street", widget: "string" }
+                  - { label: "Ciutat", name: "city", widget: "string" }
+                  - { label: "Codi Postal", name: "postalCode", widget: "string" }
+                  - { label: "Província", name: "province", widget: "string" }
+                  - { label: "País", name: "country", widget: "string" }
+          - label: "Xarxes Socials"
+            name: "social"
+            widget: "object"
+            fields:
+              - { label: "Facebook", name: "facebook", widget: "string", required: false }
+              - { label: "Instagram", name: "instagram", widget: "string", required: false }
+
+  # ============================================
+  # GALLERY - Image Gallery Management
+  # ============================================
+  
+  - name: "gallery"
+    label: "Galeria d'Imatges"
+    files:
+      - name: "gallery_images"
+        label: "Imatges de la Galeria"
+        file: "src/data/gallery.json"
+        fields:
+          - label: "Imatges"
+            name: "gallery"
+            widget: "list"
+            label_singular: "Imatge"
+            fields:
+              - { label: "Imatge", name: "image", widget: "image" }
+              - { label: "Títol (Català)", name: "title_ca", widget: "string" }
+              - { label: "Títol (Español)", name: "title_es", widget: "string" }
+              - { label: "Títol (English)", name: "title_en", widget: "string" }
+              - { label: "Descripció (Català)", name: "description_ca", widget: "string" }
+              - { label: "Descripció (Español)", name: "description_es", widget: "string" }
+              - { label: "Descripció (English)", name: "description_en", widget: "string" }
+
+  # ============================================
+  # TEAM - Team Members Management
+  # ============================================
+  
+  - name: "team"
+    label: "Equip"
+    files:
+      - name: "team_members"
+        label: "Membres de l'Equip"
+        file: "src/data/team.json"
+        fields:
+          - label: "Membres"
+            name: "team"
+            widget: "list"
+            label_singular: "Membre"
+            fields:
+              - { label: "ID (únic)", name: "id", widget: "string", hint: "Identificador únic sense espais (ex: montse, maria)" }
+              - { label: "Foto", name: "image", widget: "image" }
+              - { label: "Nom (Català)", name: "name_ca", widget: "string" }
+              - { label: "Nom (Español)", name: "name_es", widget: "string" }
+              - { label: "Nom (English)", name: "name_en", widget: "string" }
+              - { label: "Càrrec (Català)", name: "role_ca", widget: "string" }
+              - { label: "Càrrec (Español)", name: "role_es", widget: "string" }
+              - { label: "Càrrec (English)", name: "role_en", widget: "string" }
+              - { label: "Número de Col·legiat", name: "col", widget: "string" }
+              - { label: "Formació (Català)", name: "education_ca", widget: "text", hint: "Una línia per cada formació" }
+              - { label: "Formació (Español)", name: "education_es", widget: "text", hint: "Una línea por cada formación" }
+              - { label: "Formació (English)", name: "education_en", widget: "text", hint: "One line per education item" }
+              - { label: "Cursos (Català)", name: "courses_ca", widget: "text", required: false, hint: "Una línia per cada curs" }
+              - { label: "Cursos (Español)", name: "courses_es", widget: "text", required: false, hint: "Una línea por cada curso" }
+              - { label: "Cursos (English)", name: "courses_en", widget: "text", required: false, hint: "One line per course" }
+
+  # ============================================
+  # BLOG Posts - Multi-language
+  # ============================================
+
+  # Blog Posts - Catalan (la URL es el nom del fitxer, sense camp slug)
   - name: "blog_ca"
     label: "Blog (Català)"
     folder: "src/content/blog/ca"
@@ -26,11 +127,11 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Lang", name: "lang", widget: "hidden", default: "ca" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Author", name: "author", widget: "string", default: "Axis Cambrils" }
-      - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
-      - label: "Category"
+      - { label: "Títol", name: "title", widget: "string" }
+      - { label: "Descripció", name: "description", widget: "text" }
+      - { label: "Autor", name: "author", widget: "string", default: "Axis Cambrils" }
+      - { label: "Data de Publicació", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - label: "Categoria"
         name: "category"
         widget: "select"
         options:
@@ -40,11 +141,11 @@ collections:
           - { label: "Pediàtrica", value: "pediatrica" }
           - { label: "Respiratòria", value: "respiratoria" }
           - { label: "Geriàtrica", value: "geriatrica" }
-      - { label: "Tags", name: "tags", widget: "list", allow_add: true, default: [] }
-      - { label: "Featured Image", name: "image", widget: "image", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Etiquetes", name: "tags", widget: "list", allow_add: true, default: [] }
+      - { label: "Imatge Destacada", name: "image", widget: "image", required: false }
+      - { label: "Contingut", name: "body", widget: "markdown" }
 
-  # Blog Posts - Spanish
+  # Blog Posts - Spanish (la URL es el nombre del archivo, sin campo slug)
   - name: "blog_es"
     label: "Blog (Español)"
     folder: "src/content/blog/es"
@@ -52,11 +153,11 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Lang", name: "lang", widget: "hidden", default: "es" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Author", name: "author", widget: "string", default: "Axis Cambrils" }
-      - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
-      - label: "Category"
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Descripción", name: "description", widget: "text" }
+      - { label: "Autor", name: "author", widget: "string", default: "Axis Cambrils" }
+      - { label: "Fecha de Publicación", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - label: "Categoría"
         name: "category"
         widget: "select"
         options:
@@ -66,11 +167,11 @@ collections:
           - { label: "Pediátrica", value: "pediatrica" }
           - { label: "Respiratoria", value: "respiratoria" }
           - { label: "Geriátrica", value: "geriatrica" }
-      - { label: "Tags", name: "tags", widget: "list", allow_add: true, default: [] }
-      - { label: "Featured Image", name: "image", widget: "image", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Etiquetas", name: "tags", widget: "list", allow_add: true, default: [] }
+      - { label: "Imagen Destacada", name: "image", widget: "image", required: false }
+      - { label: "Contenido", name: "body", widget: "markdown" }
 
-  # Blog Posts - English
+  # Blog Posts - English (URL is the file name, no slug field)
   - name: "blog_en"
     label: "Blog (English)"
     folder: "src/content/blog/en"
@@ -82,10 +183,10 @@ collections:
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Author", name: "author", widget: "string", default: "Axis Cambrils" }
       - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
-      - label: "Category" 
-        name: "category" 
-        widget: "select" 
-        options: 
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
           - { label: "Sports", value: "deportiva" }
           - { label: "Traumatology", value: "traumatologica" }
           - { label: "Neurology", value: "neurologica" }
@@ -96,100 +197,129 @@ collections:
       - { label: "Featured Image", name: "image", widget: "image", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
 
+  # ============================================
+  # SERVICES - Multi-language
+  # ============================================
+
   # Services Collection - Catalan
   - name: "services_ca"
-    label: "Services (Català)"
+    label: "Serveis (Català)"
     folder: "src/content/services/ca"
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Lang", name: "lang", widget: "hidden", default: "ca" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Short Description", name: "shortDescription", widget: "text" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Icon", name: "icon", widget: "string", hint: "Icon name (e.g., droplet, heart, etc.)" }
-      - { label: "Image", name: "image", widget: "string", required: false, hint: "Path to image (e.g., /images/DL.png)" }
-      - { 
-          label: "Benefits", 
-          name: "benefits", 
-          widget: "list"
-        }
-      - label: "Process Steps"
-        name: "process"
-        widget: "list" 
+      - { label: "Títol", name: "title", widget: "string" }
+      - { label: "Descripció Curta", name: "shortDescription", widget: "text" }
+      - { label: "Descripció", name: "description", widget: "text" }
+      - label: "Icona"
+        name: "icon"
+        widget: "select"
+        options:
+          - { label: "💧 Drenatge limfàtic", value: "droplet" }
+          - { label: "📊 Exercici / Rehabilitació", value: "activity" }
+          - { label: "❤️ Benestar", value: "heart" }
+          - { label: "💓 Cardiorespiratori", value: "heart-pulse" }
+          - { label: "🏠 Fisioteràpia domiciliària", value: "home" }
+          - { label: "🧲 Magnetoteràpia", value: "magnet" }
+          - { label: "🦶 Reflexologia podal", value: "foot" }
+          - { label: "💨 Pressoteràpia", value: "wind" }
+          - { label: "🩹 Kinesiotape / Vendatge", value: "bandage" }
+          - { label: "✨ Mesoteràpia estètica", value: "sparkles" }
+          - { label: "⚡ Electroteràpia", value: "lightning" }
+          - { label: "✋ Teràpia manual", value: "hand" }
+          - { label: "🛡️ Prevenció", value: "shield" }
+          - { label: "👥 Tractament grupal", value: "users" }
+      - { label: "Imatge del Servei", name: "image", widget: "image", required: false }
+      - label: "Beneficis"
+        name: "benefits"
+        widget: "list"
         allow_add: true
-        required: false
-        fields:
-          - { label: "Step", name: "step", widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
-        
-      - { label: "Duration", name: "duration", widget: "string", required: false, hint: "e.g., 60 minuts" }
-      - { label: "Price", name: "price", widget: "string", required: false, hint: "e.g., 50€" }
-      - { label: "Order", name: "order", widget: "number", default: 0, hint: "Display order (lower numbers first)" }
-      - label: "FAQs" 
-        name: "faqs" 
-        widget: "list" 
-        allow_add: true
-        required: false
-        fields:
-          - { label: "Question", name: "question", widget: "string" }
-          - { label: "Answer", name: "answer", widget: "markdown" }
-        
-      - { 
-          label: "Gallery Images", 
-          name: "gallery", 
-          widget: "list", 
-          required: false,
-          field: { label: "Image Path", name: "image", widget: "string", hint: "Path to image (e.g., /images/gallery/image.jpg)" }
-        }
-      - { label: "Body Content", name: "body", widget: "markdown", required: false }
-
-  # Services Collection - Spanish
-  - name: "services_es"
-    label: "Services (Español)"
-    folder: "src/content/services/es"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Lang", name: "lang", widget: "hidden", default: "es" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Short Description", name: "shortDescription", widget: "text" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Icon", name: "icon", widget: "string", hint: "Icon name (e.g., droplet, heart, etc.)" }
-      - { label: "Image", name: "image", widget: "string", required: false, hint: "Path to image (e.g., /images/DL.png)" }
-      - { 
-          label: "Benefits", 
-          name: "benefits", 
-          widget: "list"
-        }
-      - label: "Process Steps" 
+        field: { label: "Benefici", name: "item", widget: "string" }
+      - label: "Passos del Procés"
         name: "process"
         widget: "list"
         allow_add: true
         required: false
         fields:
-          - { label: "Step", name: "step", widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
-      - { label: "Duration", name: "duration", widget: "string", required: false, hint: "e.g., 60 minutos" }
-      - { label: "Price", name: "price", widget: "string", required: false, hint: "e.g., 50€" }
-      - { label: "Order", name: "order", widget: "number", default: 0, hint: "Display order (lower numbers first)" }
-      - label: "FAQs"
+          - { label: "Pas", name: "step", widget: "string" }
+          - { label: "Descripció", name: "description", widget: "text" }
+      - { label: "Durada", name: "duration", widget: "string", required: false, hint: "ex: 60 minuts" }
+      - { label: "Preu", name: "price", widget: "string", required: false, hint: "ex: 50€" }
+      - label: "Preguntes Freqüents"
         name: "faqs"
         widget: "list"
         allow_add: true
         required: false
         fields:
-          - { label: "Question", name: "question", widget: "string" }
-          - { label: "Answer", name: "answer", widget: "markdown" }
-        
-      - { 
-          label: "Gallery Images", 
-          name: "gallery", 
-          widget: "list", 
-          required: false,
-          field: { label: "Image Path", name: "image", widget: "string", hint: "Path to image (e.g., /images/gallery/image.jpg)" }
-        }
-      - { label: "Body Content", name: "body", widget: "markdown", required: false }
+          - { label: "Pregunta", name: "question", widget: "string" }
+          - { label: "Resposta", name: "answer", widget: "markdown" }
+      - label: "Galeria d'Imatges"
+        name: "gallery"
+        widget: "list"
+        required: false
+        field: { label: "Imatge", name: "image", widget: "image" }
+      - { label: "Contingut Addicional", name: "body", widget: "markdown", required: false }
+
+  # Services Collection - Spanish
+  - name: "services_es"
+    label: "Servicios (Español)"
+    folder: "src/content/services/es"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Lang", name: "lang", widget: "hidden", default: "es" }
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Descripción Corta", name: "shortDescription", widget: "text" }
+      - { label: "Descripción", name: "description", widget: "text" }
+      - label: "Icono"
+        name: "icon"
+        widget: "select"
+        options:
+          - { label: "💧 Drenaje linfático", value: "droplet" }
+          - { label: "📊 Ejercicio / Rehabilitación", value: "activity" }
+          - { label: "❤️ Bienestar", value: "heart" }
+          - { label: "💓 Cardiorespiratorio", value: "heart-pulse" }
+          - { label: "🏠 Fisioterapia domiciliaria", value: "home" }
+          - { label: "🧲 Magnetoterapia", value: "magnet" }
+          - { label: "🦶 Reflexología podal", value: "foot" }
+          - { label: "💨 Pressoterapia", value: "wind" }
+          - { label: "🩹 Kinesiotape / Vendaje", value: "bandage" }
+          - { label: "✨ Mesoterapia estética", value: "sparkles" }
+          - { label: "⚡ Electroterapia", value: "lightning" }
+          - { label: "✋ Terapia manual", value: "hand" }
+          - { label: "🛡️ Prevención", value: "shield" }
+          - { label: "👥 Tratamiento grupal", value: "users" }
+      - { label: "Imagen del Servicio", name: "image", widget: "image", required: false }
+      - label: "Beneficios"
+        name: "benefits"
+        widget: "list"
+        allow_add: true
+        field: { label: "Beneficio", name: "item", widget: "string" }
+      - label: "Pasos del Proceso"
+        name: "process"
+        widget: "list"
+        allow_add: true
+        required: false
+        fields:
+          - { label: "Paso", name: "step", widget: "string" }
+          - { label: "Descripción", name: "description", widget: "text" }
+      - { label: "Duración", name: "duration", widget: "string", required: false, hint: "ej: 60 minutos" }
+      - { label: "Precio", name: "price", widget: "string", required: false, hint: "ej: 50€" }
+      - label: "Preguntas Frecuentes"
+        name: "faqs"
+        widget: "list"
+        allow_add: true
+        required: false
+        fields:
+          - { label: "Pregunta", name: "question", widget: "string" }
+          - { label: "Respuesta", name: "answer", widget: "markdown" }
+      - label: "Galería de Imágenes"
+        name: "gallery"
+        widget: "list"
+        required: false
+        field: { label: "Imagen", name: "image", widget: "image" }
+      - { label: "Contenido Adicional", name: "body", widget: "markdown", required: false }
 
   # Services Collection - English
   - name: "services_en"
@@ -202,26 +332,41 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Short Description", name: "shortDescription", widget: "text" }
       - { label: "Description", name: "description", widget: "text" }
-      - { label: "Icon", name: "icon", widget: "string", hint: "Icon name (e.g., droplet, heart, etc.)" }
-      - { label: "Image", name: "image", widget: "string", required: false, hint: "Path to image (e.g., /images/DL.png)" }
-      - { 
-          label: "Benefits", 
-          name: "benefits", 
-          widget: "list"
-        }
+      - label: "Icon"
+        name: "icon"
+        widget: "select"
+        options:
+          - { label: "💧 Lymphatic drainage", value: "droplet" }
+          - { label: "📊 Exercise / Rehabilitation", value: "activity" }
+          - { label: "❤️ Wellness", value: "heart" }
+          - { label: "💓 Cardiorespiratory", value: "heart-pulse" }
+          - { label: "🏠 Home physiotherapy", value: "home" }
+          - { label: "🧲 Magnetotherapy", value: "magnet" }
+          - { label: "🦶 Foot reflexology", value: "foot" }
+          - { label: "💨 Pressotherapy", value: "wind" }
+          - { label: "🩹 Kinesiotape / Bandaging", value: "bandage" }
+          - { label: "✨ Aesthetic mesotherapy", value: "sparkles" }
+          - { label: "⚡ Electrotherapy", value: "lightning" }
+          - { label: "✋ Manual therapy", value: "hand" }
+          - { label: "🛡️ Prevention", value: "shield" }
+          - { label: "👥 Group treatment", value: "users" }
+      - { label: "Service Image", name: "image", widget: "image", required: false }
+      - label: "Benefits"
+        name: "benefits"
+        widget: "list"
+        allow_add: true
+        field: { label: "Benefit", name: "item", widget: "string" }
       - label: "Process Steps"
         name: "process"
-        widget: "list" 
+        widget: "list"
         allow_add: true
         required: false
         fields:
           - { label: "Step", name: "step", widget: "string" }
           - { label: "Description", name: "description", widget: "text" }
-        
       - { label: "Duration", name: "duration", widget: "string", required: false, hint: "e.g., 60 minutes" }
       - { label: "Price", name: "price", widget: "string", required: false, hint: "e.g., €50" }
-      - { label: "Order", name: "order", widget: "number", default: 0, hint: "Display order (lower numbers first)" }
-      - label: "FAQs" 
+      - label: "FAQs"
         name: "faqs"
         widget: "list"
         allow_add: true
@@ -229,12 +374,9 @@ collections:
         fields:
           - { label: "Question", name: "question", widget: "string" }
           - { label: "Answer", name: "answer", widget: "markdown" }
-        
-      - { 
-          label: "Gallery Images", 
-          name: "gallery", 
-          widget: "list", 
-          required: false,
-          field: { label: "Image Path", name: "image", widget: "string", hint: "Path to image (e.g., /images/gallery/image.jpg)" }
-        }
+      - label: "Gallery Images"
+        name: "gallery"
+        widget: "list"
+        required: false
+        field: { label: "Image", name: "image", widget: "image" }
       - { label: "Body Content", name: "body", widget: "markdown", required: false }

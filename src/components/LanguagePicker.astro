@@ -5,16 +5,8 @@ import { getLangFromUrl } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 let currentPath = Astro.url.pathname.replace(/^\/(ca|es|en)/, '') || '/';
 
-// Translate paths based on target language
+// Translate paths based on target language (detalle blog/servicios no muestran selector)
 const translatePath = (path: string, targetLang: string) => {
-  // Service paths
-  const serviceMatch = path.match(/\/(serveis|servicios|services)\/(.+)/);
-  if (serviceMatch) {
-    const slug = serviceMatch[2];
-    const serviceWord = targetLang === 'ca' ? 'serveis' : targetLang === 'es' ? 'servicios' : 'services';
-    return `/${serviceWord}/${slug}`;
-  }
-  
   // About us page
   if (path === '/nosaltres' || path === '/nosotros' || path === '/about-us') {
     return targetLang === 'ca' ? '/nosaltres' : targetLang === 'es' ? '/nosotros' : '/about-us';

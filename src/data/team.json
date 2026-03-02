@@ -1,0 +1,55 @@
+{
+  "team": [
+    {
+      "education_en": "Degree in Physiotherapy\nManual Therapy Specialization",
+      "col": "1234",
+      "name_es": "Montse",
+      "education_es": "Grado en Fisioterapia\nEspecialización en Terapia Manual",
+      "courses_ca": "Punció seca\nKinesiotaping\nDrenatge limfàtic\nFisioteràpia esportiva\nElectroteràpia\nTeràpia miofascial\nRehabilitació funcional\nOsteopatia",
+      "role_ca": "Fisioterapeuta",
+      "courses_en": "Dry needling\nKinesiotaping\nLymphatic drainage\nSports physiotherapy\nElectrotherapy\nMyofascial therapy\nFunctional rehabilitation\nOsteopathy",
+      "role_en": "Physiotherapist",
+      "name_ca": "Montse",
+      "education_ca": "Grau en Fisioteràpia\nEspecialització en Teràpia Manual",
+      "courses_es": "Punción seca\nKinesiotaping\nDrenaje linfático\nFisioterapia deportiva\nElectroterapia\nTerapia miofascial\nRehabilitación funcional\nOsteopatía",
+      "role_es": "Fisioterapeuta",
+      "id": "montse",
+      "image": "/images/uploads/membre3.png",
+      "name_en": "Montse"
+    },
+    {
+      "education_en": "Degree in Physiotherapy\nMaster in Pediatric Physiotherapy",
+      "col": "5678",
+      "name_es": "María",
+      "education_es": "Grado en Fisioterapia\nMáster en Fisioterapia Pediátrica",
+      "courses_ca": "Fisioteràpia respiratòria",
+      "role_ca": "Fisioterapeuta",
+      "courses_en": "Respiratory physiotherapy",
+      "role_en": "Physiotherapist",
+      "name_ca": "Maria",
+      "education_ca": "Grau en Fisioteràpia\nMàster en Fisioteràpia Pediàtrica",
+      "courses_es": "Fisioterapia respiratoria",
+      "role_es": "Fisioterapeuta",
+      "id": "maria",
+      "image": "/images/uploads/membre2.png",
+      "name_en": "Maria"
+    },
+    {
+      "education_en": "Degree in Physiotherapy\nPelvic Floor Specialization\nPostgraduate in Musculoskeletal Ultrasound\nMaster in Orthopedic Manual Therapy\nDermatofunctional Physiotherapy Specialization",
+      "col": "9012",
+      "name_es": "Vania",
+      "education_es": "Grado en Fisioterapia\nEspecialización en Suelo Pélvico\nPostgrado en Ecografía Musculoesquelética\nMáster en Terapia Manual Ortopédica\nEspecialización en Fisioterapia Dermatofuncional",
+      "courses_ca": "Pressoteràpia\nMagnetoteràpia\nReflexologia podal\nMesoteràpia estètica\nTeràpia amb ventoses\nPilates terapèutic\nElectroestimulació\nFisioteràpia oncològica\nReeducació postural global",
+      "role_ca": "Fisioterapeuta",
+      "courses_en": "Pressotherapy\nMagnetotherapy\nFoot reflexology\nAesthetic mesotherapy\nCupping therapy\nTherapeutic Pilates\nElectrostimulation\nOncological physiotherapy\nGlobal postural reeducation",
+      "role_en": "Physiotherapist",
+      "name_ca": "Vania",
+      "education_ca": "Grau en Fisioteràpia\nEspecialització en Sòl Pelvià\nPostgrau en Ecografia Musculoesquelètica\nMàster en Teràpia Manual Ortopèdica\nEspecialització en Fisioteràpia Dermatofuncional",
+      "courses_es": "Presoterapia\nMagnetoterapia\nReflexología podal\nMesoterapia estética\nTerapia con ventosas\nPilates terapéutico\nElectroestimulación\nFisioterapia oncológica\nReeducación postural global",
+      "role_es": "Fisioterapeuta",
+      "id": "vania",
+      "image": "/images/uploads/membre1.png",
+      "name_en": "Vania"
+    }
+  ]
+}

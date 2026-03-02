@@ -1,32 +1,45 @@
 ---
 import LanguagePicker from './LanguagePicker.astro';
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+import siteSettings from '../data/site-settings.json';
 
+interface Props {
+  showLanguagePicker?: boolean;
+}
+
+const { showLanguagePicker = true } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const translation = useTranslations(lang);
 const currentPath = Astro.url.pathname;
 ---
 
 <header class="bg-white shadow-sm sticky top-0 z-50">
   <nav class="container mx-auto px-4 py-4">
     <div class="flex items-center justify-between">
-      <a href={getLocalizedPath('/', lang)} class="text-2xl font-heading font-bold text-primary-600">
-        Axis Cambrils
+      <a href={getLocalizedPath('/', lang)} class="text-2xl font-heading font-bold text-primary-600 flex items-center gap-2">
+        {siteSettings.site.logo ? (
+          <img src={siteSettings.site.logo} alt={siteSettings.site.name} class="h-8 md:h-10 w-auto" />
+        ) : (
+          <span>{siteSettings.site.name}</span>
+        )}
       </a>
       
       <!-- Desktop Menu -->
       <ul class="hidden md:flex items-center gap-8">
-        <li><a href={getLocalizedPath('/#servicios', lang)} class="nav-link text-gray-700 hover:text-primary-600 transition pb-1" data-section="servicios">{t('nav.services')}</a></li>
-        <li><a href={getLocalizedPath('/#nosotros', lang)} class="nav-link text-gray-700 hover:text-primary-600 transition pb-1" data-section="nosotros">{t('nav.about')}</a></li>
-        <li><a href={getLocalizedPath('/#contacto', lang)} class="nav-link text-gray-700 hover:text-primary-600 transition pb-1" data-section="contacto">{t('nav.contact')}</a></li>
-        <li><a href={getLocalizedPath('/nosaltres', lang)} class={`nav-link transition pb-1 ${currentPath.includes('/nosaltres') || currentPath.includes('/nosotros') || currentPath.includes('/about-us') ? 'text-primary-600 font-semibold border-b-2 border-primary-500' : 'text-gray-700 hover:text-primary-600'}`} data-page="nosaltres">{t('nav.aboutUs')}</a></li>
-        <li><a href={getLocalizedPath('/blog', lang)} class={`nav-link transition pb-1 ${currentPath.includes('/blog') ? 'text-primary-600 font-semibold border-b-2 border-primary-500' : 'text-gray-700 hover:text-primary-600'}`} data-page="blog">{t('nav.blog')}</a></li>
+        <li><a href={getLocalizedPath('/#servicios', lang)} class="nav-link text-gray-700 hover:text-primary-600 transition pb-1" data-section="servicios">{translation('nav.services')}</a></li>
+        <li><a href={getLocalizedPath('/#nosotros', lang)} class="nav-link text-gray-700 hover:text-primary-600 transition pb-1" data-section="nosotros">{translation('nav.about')}</a></li>
+        <li><a href={getLocalizedPath('/#opiniones', lang)} class="nav-link text-gray-700 hover:text-primary-600 transition pb-1" data-section="opiniones">{translation('nav.opinions')}</a></li>
+        <li><a href={getLocalizedPath('/#contacto', lang)} class="nav-link text-gray-700 hover:text-primary-600 transition pb-1" data-section="contacto">{translation('nav.contact')}</a></li>
+        <li><a href={getLocalizedPath('/nosaltres', lang)} class={`nav-link transition pb-1 ${currentPath.includes('/nosaltres') || currentPath.includes('/nosotros') || currentPath.includes('/about-us') ? 'text-primary-600 font-semibold border-b-2 border-primary-500' : 'text-gray-700 hover:text-primary-600'}`} data-page="nosaltres">{translation('nav.aboutUs')}</a></li>
+        <li><a href={getLocalizedPath('/blog', lang)} class={`nav-link transition pb-1 ${currentPath.includes('/blog') ? 'text-primary-600 font-semibold border-b-2 border-primary-500' : 'text-gray-700 hover:text-primary-600'}`} data-page="blog">{translation('nav.blog')}</a></li>
+        {showLanguagePicker && (
         <li>
           <LanguagePicker />
         </li>
+        )}
         <li>
           <a href={getLocalizedPath('/#contacto', lang)} class="bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition-all transform hover:scale-105">
-            {t('nav.bookAppointment')}
+            {translation('nav.bookAppointment')}
           </a>
         </li>
       </ul>
@@ -42,17 +55,20 @@ const currentPath = Astro.url.pathname;
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
       <ul class="flex flex-col gap-4">
-        <li><a href={getLocalizedPath('/#servicios', lang)} class="nav-link-mobile block text-gray-700 hover:text-primary-600 transition" data-section="servicios">{t('nav.services')}</a></li>
-        <li><a href={getLocalizedPath('/#nosotros', lang)} class="nav-link-mobile block text-gray-700 hover:text-primary-600 transition" data-section="nosotros">{t('nav.about')}</a></li>
-        <li><a href={getLocalizedPath('/#contacto', lang)} class="nav-link-mobile block text-gray-700 hover:text-primary-600 transition" data-section="contacto">{t('nav.contact')}</a></li>
-        <li><a href={getLocalizedPath('/nosaltres', lang)} class={`nav-link-mobile block transition ${currentPath.includes('/nosaltres') || currentPath.includes('/nosotros') || currentPath.includes('/about-us') ? 'text-primary-600 font-semibold' : 'text-gray-700 hover:text-primary-600'}`} data-page="nosaltres">{t('nav.aboutUs')}</a></li>
-        <li><a href={getLocalizedPath('/blog', lang)} class={`nav-link-mobile block transition ${currentPath.includes('/blog') ? 'text-primary-600 font-semibold' : 'text-gray-700 hover:text-primary-600'}`} data-page="blog">{t('nav.blog')}</a></li>
+        <li><a href={getLocalizedPath('/#servicios', lang)} class="nav-link-mobile block text-gray-700 hover:text-primary-600 transition" data-section="servicios">{translation('nav.services')}</a></li>
+        <li><a href={getLocalizedPath('/#nosotros', lang)} class="nav-link-mobile block text-gray-700 hover:text-primary-600 transition" data-section="nosotros">{translation('nav.about')}</a></li>
+        <li><a href={getLocalizedPath('/#opiniones', lang)} class="nav-link-mobile block text-gray-700 hover:text-primary-600 transition" data-section="opiniones">{translation('nav.opinions')}</a></li>
+        <li><a href={getLocalizedPath('/#contacto', lang)} class="nav-link-mobile block text-gray-700 hover:text-primary-600 transition" data-section="contacto">{translation('nav.contact')}</a></li>
+        <li><a href={getLocalizedPath('/nosaltres', lang)} class={`nav-link-mobile block transition ${currentPath.includes('/nosaltres') || currentPath.includes('/nosotros') || currentPath.includes('/about-us') ? 'text-primary-600 font-semibold' : 'text-gray-700 hover:text-primary-600'}`} data-page="nosaltres">{translation('nav.aboutUs')}</a></li>
+        <li><a href={getLocalizedPath('/blog', lang)} class={`nav-link-mobile block transition ${currentPath.includes('/blog') ? 'text-primary-600 font-semibold' : 'text-gray-700 hover:text-primary-600'}`} data-page="blog">{translation('nav.blog')}</a></li>
+        {showLanguagePicker && (
         <li class="flex justify-center">
           <LanguagePicker />
         </li>
+        )}
         <li>
           <a href={getLocalizedPath('/#contacto', lang)} class="block text-center bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition">
-            {t('nav.bookAppointment')}
+            {translation('nav.bookAppointment')}
           </a>
         </li>
       </ul>
@@ -70,7 +86,7 @@ const currentPath = Astro.url.pathname;
 
   // Scroll Spy - detectar sección activa
   function updateActiveSection() {
-    const sections = ['servicios', 'nosotros', 'contacto'];
+    const sections = ['servicios', 'nosotros', 'opiniones', 'contacto'];
     const navLinks = document.querySelectorAll('.nav-link[data-section]');
     const navLinksMobile = document.querySelectorAll('.nav-link-mobile[data-section]');
     
