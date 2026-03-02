@@ -5,7 +5,7 @@ import netlify from '@astrojs/netlify';
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind()],
-  site: 'https://www.axiscambrils.com',
+  site: 'https://fisio-landing.netlify.app',
   output: 'static',
   // Evita UnknownFilesystemError: cache en proyecto en lugar de node_modules (pnpm/Windows)
   cacheDir: './.astro',
