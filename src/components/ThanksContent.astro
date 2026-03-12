@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+import siteSettings from '../data/site-settings.json';
+
+const lang = getLangFromUrl(Astro.url);
+const translation = useTranslations(lang);
+const homeHref = getLocalizedPath('/', lang);
+---
+
+<Layout title={`${translation('thanks.title')} - ${siteSettings.site.name}`}>
+  <Header />
+  <main class="min-h-[60vh] flex items-center justify-center py-20">
+    <section class="container mx-auto px-4 text-center max-w-2xl">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-100 text-primary-600 mb-6">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4">
+        {translation('thanks.title')}
+      </h1>
+      <p class="text-lg text-gray-600 mb-8">
+        {translation('thanks.message')}
+      </p>
+      <a
+        href={homeHref}
+        class="inline-block bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-700 transition-all transform hover:scale-105"
+      >
+        {translation('thanks.backHome')}
+      </a>
+    </section>
+  </main>
+  <Footer />
+</Layout>

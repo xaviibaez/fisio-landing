@@ -135,7 +135,10 @@ export const ui = {
     'contact.info.scheduleText': 'De Dilluns a Divendres de 9h a 21h',
     'contact.info.whatsappText': 'Escriu-nos per WhatsApp',
     'contact.map': 'Mapa d\'Ubicació',
-    
+    'thanks.title': 'Missatge enviat',
+    'thanks.message': 'Gràcies per contactar-nos. Hem rebut el teu missatge i et respondrem el més aviat possible.',
+    'thanks.backHome': 'Tornar a l\'inici',
+
     // Cookies
     'cookies.title': 'Utilitzem cookies',
     'cookies.message': 'Utilitzem cookies per millorar la teva experiència i serveis com Google Maps.',
@@ -282,7 +285,10 @@ export const ui = {
     'contact.info.scheduleText': 'De Lunes a Viernes de 9h a 21h',
     'contact.info.whatsappText': 'Escríbenos por WhatsApp',
     'contact.map': 'Mapa de Ubicación',
-    
+    'thanks.title': 'Mensaje enviado',
+    'thanks.message': 'Gracias por contactarnos. Hemos recibido tu mensaje y te responderemos lo antes posible.',
+    'thanks.backHome': 'Volver al inicio',
+
     // Cookies
     'cookies.title': 'Utilizamos cookies',
     'cookies.message': 'Utilizamos cookies para mejorar tu experiencia y servicios como Google Maps.',
@@ -429,7 +435,10 @@ export const ui = {
     'contact.info.scheduleText': 'Monday to Friday from 9am to 9pm',
     'contact.info.whatsappText': 'Message us on WhatsApp',
     'contact.map': 'Location Map',
-    
+    'thanks.title': 'Message sent',
+    'thanks.message': 'Thank you for contacting us. We have received your message and will get back to you as soon as possible.',
+    'thanks.backHome': 'Back to home',
+
     // Cookies
     'cookies.title': 'We use cookies',
     'cookies.message': 'We use cookies to improve your experience and services like Google Maps.',
