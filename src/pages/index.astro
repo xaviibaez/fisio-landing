@@ -85,21 +85,21 @@ const prideValues = [
 
 const testimonialsValues = [
   {
-    initials: 'MC',
+    initials: 'P1',
     textKey: 'testimonials.patient1.text',
     nameKey: 'testimonials.patient1.name',
     infoKey: 'testimonials.patient1.info',
     stars: 5
   },
   {
-    initials: 'JS',
+    initials: 'P2',
     textKey: 'testimonials.patient2.text',
     nameKey: 'testimonials.patient2.name',
     infoKey: 'testimonials.patient2.info',
     stars: 4
   },
   {
-    initials: 'AG',
+    initials: 'P3',
     textKey: 'testimonials.patient3.text',
     nameKey: 'testimonials.patient3.name',
     infoKey: 'testimonials.patient3.info',
@@ -486,7 +486,7 @@ const contactIcons: Record<typeof contactValues[number], { bg: string; color: st
                         {type === 'address' && <p class="text-gray-600">{siteSettings.contact.address.street}<br />{siteSettings.contact.address.postalCode} {siteSettings.contact.address.city}, {siteSettings.contact.address.province}</p>}
                         {type === 'phone' && (<><a href={`tel:${siteSettings.contact.phone1.replace(/\s/g, '')}`} class="text-primary-600 hover:text-primary-700">{siteSettings.contact.phone1}</a><a href={`tel:${siteSettings.contact.phone2.replace(/\s/g, '')}`} class="text-primary-600 hover:text-primary-700">{siteSettings.contact.phone2}</a></>)}
                         {type === 'email' && <a href={`mailto:${siteSettings.contact.email}`} class="text-primary-600 hover:text-primary-700">{siteSettings.contact.email}</a>}
-                        {type === 'whatsapp' && <a href="https://wa.me/34608032857" target="_blank" rel="noopener noreferrer" class="text-green-600 hover:text-green-700">{translation('contact.info.whatsappText')}</a>}
+                        {type === 'whatsapp' && <a href={`https://wa.me/${siteSettings.contact.phone2.replace(/[\s+]/g, '')}`} target="_blank" rel="noopener noreferrer" class="text-green-600 hover:text-green-700">{translation('contact.info.whatsappText')}</a>}
                         {type === 'schedule' && <p class="text-gray-600">{translation('contact.info.scheduleText')}</p>}
                       </div>
                     </div>
@@ -498,7 +498,7 @@ const contactIcons: Record<typeof contactValues[number], { bg: string; color: st
             <!-- Google Maps -->
             <div class="rounded-2xl overflow-hidden h-64">
               <iframe 
-                src="https://maps.google.com/maps?q=Carrer+de+Sant+Josep+15+43850+Cambrils+Tarragona&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=Calle+Principal+1&t=&z=17&ie=UTF8&iwloc=&output=embed"
                 width="100%" 
                 height="100%" 
                 style="border:0;" 

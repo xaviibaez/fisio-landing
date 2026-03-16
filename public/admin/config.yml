@@ -126,7 +126,7 @@ collections:
       - { label: "Lang", name: "lang", widget: "hidden", default: "ca" }
       - { label: "Títol", name: "title", widget: "string" }
       - { label: "Descripció", name: "description", widget: "text" }
-      - { label: "Autor", name: "author", widget: "string", default: "Axis Cambrils" }
+      - { label: "Autor", name: "author", widget: "string", default: "FisioClinic" }
       - { label: "Data de Publicació", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
       - label: "Categoria"
         name: "category"
@@ -152,7 +152,7 @@ collections:
       - { label: "Lang", name: "lang", widget: "hidden", default: "es" }
       - { label: "Título", name: "title", widget: "string" }
       - { label: "Descripción", name: "description", widget: "text" }
-      - { label: "Autor", name: "author", widget: "string", default: "Axis Cambrils" }
+      - { label: "Autor", name: "author", widget: "string", default: "FisioClinic" }
       - { label: "Fecha de Publicación", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
       - label: "Categoría"
         name: "category"
@@ -178,7 +178,7 @@ collections:
       - { label: "Lang", name: "lang", widget: "hidden", default: "en" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }
-      - { label: "Author", name: "author", widget: "string", default: "Axis Cambrils" }
+      - { label: "Author", name: "author", widget: "string", default: "FisioClinic" }
       - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
       - label: "Category"
         name: "category"

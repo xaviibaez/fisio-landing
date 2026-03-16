@@ -137,7 +137,7 @@ Control periòdic de l'evolució i ajust del tractament segons progressos.
 ## Àrea de Servei
 
 Oferim servei domiciliari a:
-- **Cambrils** i voltants
+- **la teva zona** i voltants
 - **Salou**, **Mont-roig**, **Vinyols i els Arcs**
 - **Consulta** per altres ubicacions
 

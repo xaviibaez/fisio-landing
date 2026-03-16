@@ -1,7 +1,7 @@
-# Axis Cambrils - Fisioterapia Landing Page
+# FisioClinic - Fisioterapia Landing Page
 
 ## Project Overview
-Multilingual landing page for Axis Cambrils physiotherapy center with integrated blog.
+Multilingual landing page for a generic physiotherapy center with integrated blog.
 
 ## Tech Stack
 - Astro 4.x (SSG)

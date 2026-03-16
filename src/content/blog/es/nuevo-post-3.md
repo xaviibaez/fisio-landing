@@ -2,7 +2,7 @@
 lang: es
 title: nuevo post 3
 description: nuevo blog 3
-author: Axis Cambrils
+author: FisioClinic
 date: 2026-02-09
 category: traumatologica
 tags:

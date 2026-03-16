@@ -1,9 +1,9 @@
 {
-  "name": "axis-cambrils-fisioterapia",
+  "name": "fisio-landing",
   "type": "module",
   "version": "1.0.0",
-  "description": "Landing page multiidioma para Axis Cambrils - Centro de Fisioterapia",
-  "author": "Axis Cambrils",
+  "description": "Landing page multiidioma para clínica de fisioterapia",
+  "author": "FisioClinic",
   "license": "MIT",
   "repository": {
     "type": "git",

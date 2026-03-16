@@ -2,7 +2,7 @@
 lang: ca
 title: test
 description: test
-author: Axis Cambrils
+author: FisioClinic
 date: 2026-02-24
 category: neurologica
 tags:

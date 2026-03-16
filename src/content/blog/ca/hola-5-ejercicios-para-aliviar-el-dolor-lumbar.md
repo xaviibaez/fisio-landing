@@ -3,7 +3,7 @@ lang: ca
 title: hola 5 Ejercicios para Aliviar el Dolor Lumbar
 description: Descubre ejercicios efectivos y seguros para reducir el dolor de
   espalda baja desde casa.
-author: Axis Cambrils
+author: FisioClinic
 date: 2026-02-23
 category: neurologica
 tags:

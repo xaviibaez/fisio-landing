@@ -2,7 +2,7 @@
 lang: ca
 title: nouBlogCaTitol
 description: nouBlogCaDesc
-author: Axis Cambrils Xavi
+author: FisioClinic
 date: 2026-02-08
 category: pediatrica
 tags:

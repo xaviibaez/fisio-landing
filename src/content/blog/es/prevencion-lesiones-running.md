@@ -62,4 +62,4 @@ Consulta a un fisioterapeuta si experimentas:
 - Inflamación persistente
 - Limitación del rango de movimiento
 
-En Axis Cambrils estamos especializados en fisioterapia deportiva. ¡Agenda tu valoración!
+En nuestro centro estamos especializados en fisioterapia deportiva. ¡Agenda tu valoración!

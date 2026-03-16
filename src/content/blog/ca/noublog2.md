@@ -2,7 +2,7 @@
 lang: ca
 title: nouBLog2
 description: nouBlog2
-author: Axis Cambrils
+author: FisioClinic
 date: 2026-02-09
 category: neurologica
 tags:

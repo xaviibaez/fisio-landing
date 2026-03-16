@@ -45,7 +45,7 @@
 
 ```bash
 git add .
-git commit -m "Initial commit: Landing page multiidioma para Axis Cambrils
+git commit -m "Initial commit: Landing page multiidioma para FisioClinic
 
 Features:
 - Sistema i18n (CA/ES/EN)

@@ -1,25 +1,25 @@
 {
   "site": {
-    "name": "Axis Cambrils",
+    "name": "FisioClinic",
     "url": "https://fisio-landing.netlify.app",
-    "description": "Centro de fisioterapia en Cambrils. Tratamientos personalizados de rehabilitación, drenaje linfático, suelo pélvico y más.",
+    "description": "Centro de fisioterapia. Tratamientos personalizados de rehabilitación, drenaje linfático, suelo pélvico y más.",
     "logo": "/images/uploads/chiropractic-logo-design-illustration-caring-human-backbone-pain-logo-spine-care-logo-free-vector.jpg",
     "favicon": "/images/uploads/chiropractic-logo-design-illustration-caring-human-backbone-pain-logo-spine-care-logo-free-vector.jpg"
   },
   "contact": {
-    "email": "fisioaxiscambrils@gmail.com",
-    "phone1": "+34 977 79 54 33",
-    "phone2": "+34 608 03 28 57",
+    "email": "info@fisioclinic.com",
+    "phone1": "+34 900 000 000",
+    "phone2": "+34 600 000 000",
     "address": {
-      "street": "Carrer de Sant Josep, 15",
-      "city": "Cambrils",
-      "postalCode": "43850",
-      "province": "Tarragona",
+      "street": "Calle Principal, 1",
+      "city": "Tu Ciudad",
+      "postalCode": "00000",
+      "province": "Tu Provincia",
       "country": "España"
     }
   },
   "social": {
-    "facebook": "https://facebook.com/axiscambrils",
-    "instagram": "https://instagram.com/axiscambrils"
+    "facebook": "https://facebook.com/fisioclinic",
+    "instagram": "https://instagram.com/fisioclinic"
   }
 }

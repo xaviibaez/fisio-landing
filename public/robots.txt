@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://www.axiscambrils.com/sitemap-index.xml
+Sitemap: https://fisio-landing.netlify.app/sitemap-index.xml

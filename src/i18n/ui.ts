@@ -19,19 +19,19 @@ export const ui = {
     'nav.bookAppointment': 'Reservar Cita',
     
     // Hero
-    'hero.title': 'El vostre Centre de Fisioteràpia a Cambrils',
-    'hero.subtitle': `Al centre Axis trobaràs  el tractament més adequat per a tu.`,
+    'hero.title': 'El teu Centre de Fisioteràpia de Confiança',
+    'hero.subtitle': 'Trobaràs el tractament més adequat per a tu, amb professionals titulats i experiència demostrada.',
     'hero.cta': 'Reservar Cita',
     
     // Services
     'services.title': 'La salut, en bones mans',
-    'services.subtitle': `El nostre equip de fisioterapeutes formats/es i amb experiència t'oferiran els millors tractaments, de manera individualitzada.`,
+    'services.subtitle': "El nostre equip de fisioterapeutes formats/es i amb experiència t'oferiran els millors tractaments, de manera individualitzada.",
     'services.viewAll': 'Veure tots els serveis',
     'services.viewLess': 'Veure menys',
     
     // What is Physiotherapy
     'whatIs.title': 'Què és la Fisioteràpia?',
-    'whatIs.description': 'És una disciplina de la salut que s\'enfoca a prevenir, tractar i rehabilitar problemes físics i funcionals del cos humà. Els fisioterapeutes utilitzem una varietat de tècniques i modalitats per ajudar els pacients a recuperar o millorar el seu moviment i funció, alleujar el dolor i millorar la seva qualitat de vida.',
+    'whatIs.description': "És una disciplina de la salut que s'enfoca a prevenir, tractar i rehabilitar problemes físics i funcionals del cos humà. Els fisioterapeutes utilitzem una varietat de tècniques i modalitats per ajudar els pacients a recuperar o millorar el seu moviment i funció, alleujar el dolor i millorar la seva qualitat de vida.",
     'whatIs.conditions.title': 'Algunes de les condicions en què la fisioteràpia pot ser beneficiosa:',
     'whatIs.conditions.musculoskeletal': 'Lesions musculoesquelètiques',
     'whatIs.conditions.postop': 'Rehabilitació postoperatòria',
@@ -39,7 +39,7 @@ export const ui = {
     'whatIs.conditions.chronic': 'Dolor crònic',
     'whatIs.conditions.respiratory': 'Problemes respiratoris',
     'whatIs.conditions.sports': 'Lesions esportives',
-    'whatIs.techniques': 'Utilitzem una varietat de tècniques: exercicis terapèutics, teràpia manual, electroteràpia, massatge, estiraments i modalitats de calor o fred. El tractament s\'adapta a les necessitats individuals de cada pacient.',
+    'whatIs.techniques': "Utilitzem una varietat de tècniques: exercicis terapèutics, teràpia manual, electroteràpia, massatge, estiraments i modalitats de calor o fred. El tractament s'adapta a les necessitats individuals de cada pacient.",
 
     // Service Pages
     'service.benefits': 'Beneficis',
@@ -47,17 +47,17 @@ export const ui = {
     'service.duration': 'Durada',
     'service.price': 'Preu',
     'service.faqs': 'Preguntes Freqüents',
-    'service.gallery': 'Galeria d\'imatges',
+    'service.gallery': "Galeria d'imatges",
     'service.viewAll': 'Veure Tots els Serveis',
     
     // About
     'about.title': 'Per què triar-nos?',
-    'about.subtitle': "L'Axis és un centre de fisioteràpia situat al casc antic de Cambrils. Som un equip de fisioterapeutes formats i amb experiència, compromesos amb la teva recuperació.",
-    'about.intro': 'El centre disposa d\'unes còmodes instal·lacions totalment equipades per poder realitzar cada una de les nostres especialitats.',
+    'about.subtitle': "Som un centre de fisioteràpia format per un equip de professionals titulats i amb experiència, compromesos amb la teva recuperació.",
+    'about.intro': "El centre disposa d'unes còmodes instal·lacions totalment equipades per poder realitzar cada una de les nostres especialitats.",
     'about.professionals.title': 'Equip Expert',
-    'about.professionals.description': 'Fisioterapeutes col·legiats amb formació contínua i especialitzada en diverses tècniques.',
+    'about.professionals.description': "Fisioterapeutes col·legiats amb formació contínua i especialitzada en diverses tècniques.",
     'about.technology.title': 'Instal·lacions Equipades',
-    'about.technology.description': 'Còmodes instal·lacions amb equipament d\'última generació per a cada especialitat.',
+    'about.technology.description': "Còmodes instal·lacions amb equipament d'última generació per a cada especialitat.",
     'about.personalized.title': 'Tractament Individualitzat',
     'about.personalized.description': 'Realitzem el tractament que més us convingui de manera totalment personalitzada.',
     'about.values.title': 'Els Nostres Valors',
@@ -82,17 +82,17 @@ export const ui = {
     
     // Blog
     'blog.title': 'Consells de Salut',
-    'blog.subtitle': 'Articles escrits pel nostre equip de fisioterapeutes',
+    'blog.subtitle': "Articles escrits pel nostre equip de fisioterapeutes",
     'blog.readMore': 'Llegir més',
     'blog.viewAll': 'Veure Tots els Articles',
     'blog.noArticles': 'No hi ha blogs',
     'blog.backToHome': 'Tornar al inici',
     'blog.cta.title': 'Necessites ajuda professional?',
-    'blog.cta.subtitle': 'Agenda la teva cita amb el nostre equip d\'especialistes.',
+    'blog.cta.subtitle': "Agenda la teva cita amb el nostre equip d'especialistes.",
 
     '404.title': 'Pàgina no trobada',
-    '404.message': 'La pàgina que cerques no existeix, s\'ha mogut o l\'enllaç és incorrecte.',
-    '404.backHome': 'Tornar a l\'inici',
+    '404.message': "La pàgina que cerques no existeix, s'ha mogut o l'enllaç és incorrecte.",
+    '404.backHome': "Tornar a l'inici",
     
     // Categories
     'category.todos': 'Tots',
@@ -103,20 +103,20 @@ export const ui = {
     
     // Testimonials
     'testimonials.title': 'El Que Diuen els Nostres Pacients',
-    'testimonials.patient1.text': 'Excel·lent tracte i professionalitat. Després de mesos amb dolor lumbar, he aconseguit recuperar la meva qualitat de vida gràcies a l\'equip d\'Axis Cambrils.',
-    'testimonials.patient1.name': 'Maria Carmen R.',
-    'testimonials.patient1.info': 'Pacient des de 2024',
-    'testimonials.patient2.text': 'Com a corredor, les lesions són freqüents. La fisioteràpia esportiva d\'Axis m\'ha ajudat a prevenir problemes i a recuperar-me ràpid quan apareixen.',
-    'testimonials.patient2.name': 'Jordi S.',
+    'testimonials.patient1.text': "Excel·lent tracte i professionalitat. Després de mesos amb dolor lumbar, he aconseguit recuperar la meva qualitat de vida gràcies a l'equip de fisioterapeutes.",
+    'testimonials.patient1.name': 'Pacient 1',
+    'testimonials.patient1.info': 'Dolor lumbar',
+    'testimonials.patient2.text': "Com a corredor, les lesions són freqüents. La fisioteràpia esportiva m'ha ajudat a prevenir problemes i a recuperar-me ràpid quan apareixen.",
+    'testimonials.patient2.name': 'Pacient 2',
     'testimonials.patient2.info': 'Atleta Amateur',
     'testimonials.patient3.text': 'Instal·lacions modernes, personal atent i resultats visibles des de les primeres sessions. Totalment recomanable.',
-    'testimonials.patient3.name': 'Ana G.',
+    'testimonials.patient3.name': 'Pacient 3',
     'testimonials.patient3.info': 'Post-Operatori Genoll',
     
     // Contact
     'contact.title': 'Contacta amb Nosaltres',
-    'contact.subtitle': 'Som aquí per ajudar-te. Reserva la teva cita o consulta\'ns qualsevol dubte.',
-    'contact.form.title': 'Envia\'ns un Missatge',
+    'contact.subtitle': "Som aquí per ajudar-te. Reserva la teva cita o consulta'ns qualsevol dubte.",
+    'contact.form.title': "Envia'ns un Missatge",
     'contact.form.name': 'Nom Complet',
     'contact.form.namePlaceholder': 'El teu nom',
     'contact.form.email': 'Email',
@@ -124,7 +124,7 @@ export const ui = {
     'contact.form.phone': 'Telèfon',
     'contact.form.phonePlaceholder': '+34 600 000 000',
     'contact.form.message': 'Missatge',
-    'contact.form.messagePlaceholder': 'Explica\'ns com podem ajudar-te...',
+    'contact.form.messagePlaceholder': "Explica'ns com podem ajudar-te...",
     'contact.form.submit': 'Enviar Missatge',
     'contact.info.title': 'Informació de Contacte',
     'contact.info.address': 'Adreça',
@@ -133,11 +133,11 @@ export const ui = {
     'contact.info.whatsapp': 'WhatsApp',
     'contact.info.schedule': 'Horari',
     'contact.info.scheduleText': 'De Dilluns a Divendres de 9h a 21h',
-    'contact.info.whatsappText': 'Escriu-nos per WhatsApp',
-    'contact.map': 'Mapa d\'Ubicació',
+    'contact.info.whatsappText': "Escriu-nos per WhatsApp",
+    'contact.map': "Mapa d'Ubicació",
     'thanks.title': 'Missatge enviat',
     'thanks.message': 'Gràcies per contactar-nos. Hem rebut el teu missatge i et respondrem el més aviat possible.',
-    'thanks.backHome': 'Tornar a l\'inici',
+    'thanks.backHome': "Tornar a l'inici",
 
     // Cookies
     'cookies.title': 'Utilitzem cookies',
@@ -157,7 +157,7 @@ export const ui = {
     'aboutUs.team.education': 'Formació Acadèmica',
     'aboutUs.team.courses': 'Cursos de Formació',
     'aboutUs.cta.title': 'Vols conèixer-nos?',
-    'aboutUs.cta.subtitle': 'Reserva la teva cita i descobreix per què som el centre de fisioterapèutic de confiança a Cambrils.',
+    'aboutUs.cta.subtitle': 'Reserva la teva cita i descobreix per què som el centre de fisioteràpia de confiança.',
   },
   es: {
     'nav.services': 'Servicios',
@@ -169,14 +169,14 @@ export const ui = {
     'nav.bookAppointment': 'Reservar Cita',
     
     // Hero
-    'hero.title': 'Tu Centro de Fisioterapia en Cambrils',
-    'hero.subtitle': 'En el centro Axis encontrarás el tratamiento más adecuado para ti.',
+    'hero.title': 'Tu Centro de Fisioterapia de Confianza',
+    'hero.subtitle': 'Encontrarás el tratamiento más adecuado para ti, con profesionales titulados y experiencia demostrada.',
     'hero.cta': 'Reservar Cita',
     
     // Services
     'services.title': 'La salud, en buenas manos',
     'services.subtitle': 'Nuestro equipo de fisioterapeutas formados y con experiencia te ofrecerán los mejores tratamientos, de manera individualizada.',
-'services.viewAll': 'Ver todos los servicios',
+    'services.viewAll': 'Ver todos los servicios',
     'services.viewLess': 'Ver menos',
     
     // What is Physiotherapy
@@ -202,7 +202,7 @@ export const ui = {
     
     // About
     'about.title': '¿Por qué elegirnos?',
-    'about.subtitle': 'Axis es un centro de fisioterapia situado en el casco antiguo de Cambrils. Somos un equipo de fisioterapeutas formados y con experiencia, comprometidos con tu recuperación.',
+    'about.subtitle': 'Somos un centro de fisioterapia formado por un equipo de profesionales titulados y con experiencia, comprometidos con tu recuperación.',
     'about.intro': 'El centro dispone de unas cómodas instalaciones totalmente equipadas para poder realizar cada una de nuestras especialidades.',
     'about.professionals.title': 'Equipo Experto',
     'about.professionals.description': 'Fisioterapeutas colegiados con formación continua y especializada en diversas técnicas.',
@@ -253,14 +253,14 @@ export const ui = {
     
     // Testimonials
     'testimonials.title': 'Lo Que Dicen Nuestros Pacientes',
-    'testimonials.patient1.text': 'Excelente trato y profesionalidad. Después de meses con dolor lumbar, he conseguido recuperar mi calidad de vida gracias al equipo de Axis Cambrils.',
-    'testimonials.patient1.name': 'María Carmen R.',
-    'testimonials.patient1.info': 'Paciente desde 2024',
-    'testimonials.patient2.text': 'Como corredor, las lesiones son frecuentes. La fisioterapia deportiva de Axis me ha ayudado a prevenir problemas y a recuperarme rápido cuando aparecen.',
-    'testimonials.patient2.name': 'Jordi S.',
+    'testimonials.patient1.text': 'Excelente trato y profesionalidad. Después de meses con dolor lumbar, he conseguido recuperar mi calidad de vida gracias al equipo de fisioterapeutas.',
+    'testimonials.patient1.name': 'Paciente 1',
+    'testimonials.patient1.info': 'Dolor lumbar',
+    'testimonials.patient2.text': 'Como corredor, las lesiones son frecuentes. La fisioterapia deportiva me ha ayudado a prevenir problemas y a recuperarme rápido cuando aparecen.',
+    'testimonials.patient2.name': 'Paciente 2',
     'testimonials.patient2.info': 'Atleta Amateur',
     'testimonials.patient3.text': 'Instalaciones modernas, personal atento y resultados visibles desde las primeras sesiones. Totalmente recomendable.',
-    'testimonials.patient3.name': 'Ana G.',
+    'testimonials.patient3.name': 'Paciente 3',
     'testimonials.patient3.info': 'Post-Operatorio Rodilla',
     
     // Contact
@@ -307,7 +307,7 @@ export const ui = {
     'aboutUs.team.education': 'Formación Académica',
     'aboutUs.team.courses': 'Cursos de Formación',
     'aboutUs.cta.title': '¿Quieres conocernos?',
-    'aboutUs.cta.subtitle': 'Reserva tu cita y descubre por qué somos el centro de fisioterapia de confianza en Cambrils.',
+    'aboutUs.cta.subtitle': 'Reserva tu cita y descubre por qué somos el centro de fisioterapia de confianza.',
   },
   en: {
     'nav.services': 'Services',
@@ -319,14 +319,14 @@ export const ui = {
     'nav.bookAppointment': 'Book Appointment',
     
     // Hero
-    'hero.title': 'Your Physiotherapy Center in Cambrils',
-    'hero.subtitle': 'At Axis center you will find the most suitable treatment for you.',
+    'hero.title': 'Your Trusted Physiotherapy Center',
+    'hero.subtitle': 'Find the most suitable treatment for you, with qualified professionals and proven experience.',
     'hero.cta': 'Book Appointment',
     
     // Services
     'services.title': 'Health in Good Hands',
     'services.subtitle': 'Our team of trained and experienced physiotherapists will offer you the best treatments, individually tailored.',
-'services.viewAll': 'View all services',
+    'services.viewAll': 'View all services',
     'services.viewLess': 'View less',
     
     // What is Physiotherapy
@@ -352,7 +352,7 @@ export const ui = {
     
     // About
     'about.title': 'Why choose us?',
-    'about.subtitle': 'Axis is a physiotherapy center located in the old town of Cambrils. We are a team of trained and experienced physiotherapists, committed to your recovery.',
+    'about.subtitle': 'We are a physiotherapy center made up of a team of qualified and experienced professionals, committed to your recovery.',
     'about.intro': 'The center has comfortable facilities fully equipped to perform each of our specialties.',
     'about.professionals.title': 'Expert Team',
     'about.professionals.description': 'Licensed physiotherapists with continuous and specialized training in various techniques.',
@@ -403,14 +403,14 @@ export const ui = {
     
     // Testimonials
     'testimonials.title': 'What Our Patients Say',
-    'testimonials.patient1.text': 'Excellent treatment and professionalism. After months with lower back pain, I have managed to recover my quality of life thanks to the Axis Cambrils team.',
-    'testimonials.patient1.name': 'María Carmen R.',
-    'testimonials.patient1.info': 'Patient since 2024',
-    'testimonials.patient2.text': 'As a runner, injuries are frequent. The sports physiotherapy at Axis has helped me prevent problems and recover quickly when they appear.',
-    'testimonials.patient2.name': 'Jordi S.',
+    'testimonials.patient1.text': 'Excellent treatment and professionalism. After months with lower back pain, I have managed to recover my quality of life thanks to the physiotherapy team.',
+    'testimonials.patient1.name': 'Patient 1',
+    'testimonials.patient1.info': 'Lower back pain',
+    'testimonials.patient2.text': 'As a runner, injuries are frequent. Sports physiotherapy has helped me prevent problems and recover quickly when they appear.',
+    'testimonials.patient2.name': 'Patient 2',
     'testimonials.patient2.info': 'Amateur Athlete',
     'testimonials.patient3.text': 'Modern facilities, attentive staff and visible results from the first sessions. Totally recommended.',
-    'testimonials.patient3.name': 'Ana G.',
+    'testimonials.patient3.name': 'Patient 3',
     'testimonials.patient3.info': 'Knee Post-Op',
     
     // Contact
@@ -457,6 +457,6 @@ export const ui = {
     'aboutUs.team.education': 'Academic Background',
     'aboutUs.team.courses': 'Training Courses',
     'aboutUs.cta.title': 'Want to meet us?',
-    'aboutUs.cta.subtitle': 'Book your appointment and discover why we are the trusted physiotherapy center in Cambrils.',
+    'aboutUs.cta.subtitle': 'Book your appointment and discover why we are your trusted physiotherapy center.',
   },
 } as const;

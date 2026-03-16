@@ -1,11 +1,9 @@
-# Axis Cambrils - Centro de Fisioterapia
+# Centro de Fisioterapia
 
-Landing page moderna y multiidioma para Axis Cambrils, centro de fisioterapia en Cambrils (Tarragona), creada con Astro, TypeScript y Tailwind CSS.
+Landing page moderna y multiidioma para centro de fisioterapia, creada con Astro, TypeScript y Tailwind CSS.
 
 ## 🏥 Sobre el Proyecto
 
-Centro de fisioterapia especializado ubicado en:
-- **Dirección**: Carrer de Sant Josep, 15, 43850 Cambrils, Tarragona
 - **Idiomas**: Catalán (por defecto), Español, Inglés
 - **Servicios**: Fisioterapia deportiva, traumatológica, neurológica, pediátrica, respiratoria y geriátrica
 
@@ -191,12 +189,6 @@ npm run build        # Compilar para producción
 npm run preview      # Vista previa de la build
 npm run astro        # CLI de Astro
 ```
-
-
-
-## 📄 Licencia
-
-Proyecto privado - Axis Cambrils © 2025
 
 ## 🤝 Soporte
 

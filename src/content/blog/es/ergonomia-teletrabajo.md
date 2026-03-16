@@ -74,7 +74,7 @@ Después del trabajo, dedica 10 minutos a:
 
 ## ¿Necesitas Ayuda Profesional?
 
-En Axis Cambrils realizamos valoraciones posturales personalizadas y te enseñamos ejercicios específicos para tu caso.
+En nuestro centro realizamos valoraciones posturales personalizadas y te enseñamos ejercicios específicos para tu caso.
 
 **Recuerda:** La prevención es siempre mejor (y más barata) que el tratamiento.
 
